@@ -1,3 +1,4 @@
+a simple full image slider using Vue js and Bulma css
 # vue-bulma-full-slider
 
 ## Project setup
