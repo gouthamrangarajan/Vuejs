@@ -1,3 +1,4 @@
+a simple vertical image slider using Vue js and Bulma css
 # vue-bulma-vertical-slider
 
 ## Project setup
