@@ -1,3 +1,4 @@
+a simple landing page using Vue js and Bulma css
 # vue-bulma-landing-page
 
 ## Project setup
