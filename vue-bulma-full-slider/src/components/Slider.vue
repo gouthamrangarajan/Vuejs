@@ -1,12 +1,13 @@
 <template>
 <section class="hero is-dark is-bold is-fullheight">
-  <div class="hero-body">   
+  <div class="hero-body">  
+    <div class="container">
       <div class="icons-container">
         <div class="icon button is-link is-pulled-left" @click="decrementInd">
-          <i class="fa fa-arrow-left"></i>
+          <i class="fa fa-angle-left"></i>
         </div>
         <div class="icon button is-link is-pulled-right" @click="incrementInd">
-          <i class="fa fa-arrow-right"></i>
+          <i class="fa fa-angle-right"></i>
         </div>
       </div>      
       <figure class="image">
@@ -22,14 +23,14 @@
         </transition>  
       </figure>          
   </div>
+  </div>
 </section>
-
 </template>
 <script>
 export default {
     name:'Slider',
     data(){
-    return {selInd:0,transition:'slide-left',intr:{}};
+    return {selInd:0,transition:'slide-left',intr:null};
   },
   components:{
     
@@ -43,6 +44,7 @@ export default {
         this.selInd++;
       }
       clearInterval(this.intr);
+      this.intr=null;
       setTimeout(()=>{          
         this.startSlide();
         },3000);
@@ -58,21 +60,24 @@ export default {
         });
         this.transition='slide-right';
         clearInterval(this.intr);
+        this.intr=null;
         setTimeout(()=>{
           this.transition='slide-left';
           this.startSlide();
           },3000);
     },
     startSlide(){
-      this.intr=setInterval(()=>{
-            if(this.selInd==this.length-1){
-              this.selInd=0;
-            }
-            else{
-              this.selInd++;
-            }
-          },this.duration);
-    }    
+      if(this.intr==null){
+        this.intr=setInterval(()=>{
+              if(this.selInd==this.length-1){
+                this.selInd=0;
+              }
+              else{
+                this.selInd++;
+              }
+            },this.duration);
+      }    
+    }
   },  
   mounted(){    
     this.startSlide();
@@ -154,6 +159,7 @@ img{
 .icons-container{
   position:fixed;
    z-index: 200;
-   width: 91.9rem;
+   width: 84rem;
+  margin-top:19em;
 }
 </style>

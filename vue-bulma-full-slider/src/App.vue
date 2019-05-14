@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <slider :length="parseInt(6)" :duration="parseInt(7000)" />
+  <div id="app">    
+    <slider :length="parseInt(6)" :duration="parseInt(7000)" />   
   </div>
 </template>
 
