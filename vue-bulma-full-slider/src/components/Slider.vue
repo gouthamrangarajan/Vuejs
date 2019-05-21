@@ -160,6 +160,6 @@ img{
   position:fixed;
    z-index: 200;
    width: 84rem;
-  margin-top:19em;
+  margin-top:21rem;
 }
 </style>
