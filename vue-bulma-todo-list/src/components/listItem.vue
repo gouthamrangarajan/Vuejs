@@ -1,7 +1,7 @@
 <template>
       <li :class="{'strike-through has-text-primary':value
           ,'has-text-danger':!value}">
-       <slot name="data">{{data}}</slot>
+       <slot name="data">{{data}}&nbsp;</slot>
          <transition name="fade" mode="out-in">
             <template v-if="!value">
               &nbsp;
