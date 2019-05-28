@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <navBar></navBar>
    <modal :showModal="showModal" @closeModal="showModal=false"/>
    <div class="container">
-      <button class="button is-hovered is-link"
+      <button class="button is-hovered is-primary"
             @click="showModal=!showModal">
       Show Modal</button>     
   </div>
@@ -10,12 +11,12 @@
 </template>
 
 <script>
-import modal from './components/modal.vue'
-
+import modal from './components/Modal'
+import navBar from './components/NavBar'
 export default {
   name: 'app',
   components: {
-    modal
+    modal,navBar
   },
   data(){
     return {showModal:false};
@@ -25,6 +26,6 @@ export default {
 
 <style>
 .container{
-  padding-top:2rem;
+  padding-top:4rem;
 }
 </style>
