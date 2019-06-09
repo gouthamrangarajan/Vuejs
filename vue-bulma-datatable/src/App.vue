@@ -21,6 +21,16 @@ export default {
 
 <style>
   .container{
-    padding-top:4rem;
+    padding-top:4rem;    
   }
+  .fade-move{
+  transition: all 0.5s;
+}
+ .fade-enter-active,.fade-leave-active{
+  transition:opacity 0.5s;
+}
+.fade-enter,.fade-leave-to{
+  opacity: 0;
+}
+
 </style>

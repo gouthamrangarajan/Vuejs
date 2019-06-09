@@ -7,7 +7,7 @@
   </div>
   <div class="navbar-menu">
      <div class="navbar-end">
-         <a class="navbar-item">data src Datatable.net</a>
+         <a class="navbar-item">data Datatable.net</a>
        </div>
     </div>
     </nav>

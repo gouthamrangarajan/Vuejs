@@ -1,7 +1,14 @@
 <template>
 <transition name="fade" appear>
   <div>
-  <input class="input" placeholder="Search..." v-model="ftText"/>
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <input class="input" placeholder="Search...(min three characters)" v-model="ftText"/>
+    </div>
+    <div class="control">
+      <a class="button is-dark" @click="ftText=''"><i class="fa fa-times"></i></a>
+    </div>
+  </div>
   <table class="table is-bordered is-striped  is-hoverable is-fullwidth">
   <thead>
     <tr class="is-selected">
@@ -18,28 +25,37 @@
     </tr>
   </thead>  
     <transition-group name="tbl" tag="tbody">
-      <tr v-for="dt in sortedData" :key="dt.id">
-        <td v-for="(hd,ind) in headers" :key="ind">{{dt[hd]|tableData}}</td> 
+      <tr v-for="dt in pagedData" :key="dt.id">
+        <td v-for="(hd,ind) in headers" :key="ind"><span v-html="highlight(dt[hd])"></span></td> 
       </tr>
     </transition-group>  
+    <tfoot>
+      <tr>
+        <td :colspan="headers.length">
+          <pagination :info="{len:pageLen,total:filteredData.length}" v-model="curPage"></pagination>
+        </td>
+      </tr>
+    </tfoot>
   </table>
   </div>
   </transition>
  </template>
 <script>
-export default {
+import pagination from './Pagination'
+export default {  
   name: 'DataTable',
+  components:{pagination},
   props: {
-    msg: String
+    msg: String,
   },
   data(){
-    return {sortInfo:[],ftText:''};
+    return {sortInfo:[],ftText:'',curPage:1,pageLen:10};
   },
   mounted(){
     if(this.headers.length>0)
     {
       this.sortInfo.push(this.headers[0]);
-      this.sortInfo.push(0);
+      this.sortInfo.push(0);      
     }
   },
   methods:{
@@ -55,6 +71,30 @@ export default {
         this.sortInfo.splice(0);
         this.sortInfo.push(val);
         this.sortInfo.push(0);
+      }
+    },
+    highlight(val){      
+      if(this.ftText.trim()=='' || this.ftText.trim().length<3){
+        return val;
+      }
+      else{
+        var replVal=val;
+        var prevIndex=0;
+        var curIndex=-1;
+        curIndex=replVal.toLowerCase().indexOf(this.ftText.trim().toLowerCase(),prevIndex);  
+        var loop=0;              
+        while(curIndex>-1){          
+          replVal=replVal.substring(0,curIndex)+"<mark>"+replVal.substring(curIndex,curIndex+this.ftText.length)+"</mark>"
+                    +replVal.substring(curIndex+this.ftText.length);
+          prevIndex=curIndex+6+this.ftText.length;
+          curIndex=replVal.toLowerCase().indexOf(this.ftText.trim().toLowerCase(),prevIndex);    
+          loop++;
+          //RG just to check
+          if(loop>500){
+            break;
+          }            
+        }
+        return replVal;
       }
     }
   },
@@ -77,7 +117,7 @@ export default {
       return this.tblData.filter(el=>{
         var valid=false;
          this.headers.forEach(hd=>{
-           if(this.ftText.trim()=="")
+           if(this.ftText.trim()=="" || this.ftText.trim().length<3)
              {
                valid=true;
              }           
@@ -104,6 +144,10 @@ export default {
         else
           return 0;
       });
+    },
+    pagedData(){
+      var stInd=(parseInt(this.curPage)-1)*parseInt(this.pageLen);      
+      return this.sortedData.slice(stInd,this.pageLen+stInd);
     }
   },
   filters:{
@@ -114,18 +158,20 @@ export default {
     tableData(val){
       return val;
     }
+  },
+  watch:{
+    curPage(newVal,oldVal){      
+    },
+    filteredData:{
+      deep:true,
+      handler(newVal,oldVal){
+        this.curPage=1;
+      }
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.fade-enter-active,.fade-leave-active{
-  transition:opacity 0.5s;
-}
-.fade-enter,.fade-leave-to{
-  opacity: 0;
-}
 th{
   cursor: pointer;
 }
@@ -142,7 +188,5 @@ th{
   opacity: 0;
   transform: translateX(1rem);
 }
-.input{
-  width:60%;
-}
+
 </style>
