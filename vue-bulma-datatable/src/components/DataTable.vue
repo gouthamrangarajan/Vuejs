@@ -90,7 +90,8 @@ export default {
           curIndex=replVal.toLowerCase().indexOf(this.ftText.trim().toLowerCase(),prevIndex);    
           loop++;
           //RG just to check
-          if(loop>500){
+          if(loop>500)
+          {
             break;
           }            
         }
