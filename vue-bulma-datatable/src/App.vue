@@ -26,7 +26,7 @@ export default {
   .fade-move{
   transition: all 0.5s;
 }
- .fade-enter-active,.fade-leave-active{
+ .fade-enter-active{
   transition:opacity 0.5s;
 }
 .fade-enter,.fade-leave-to{

@@ -182,12 +182,11 @@ th{
 .tbl-move{
   transition: all 0.5s;
 }
-.tbl-enter-active,.tbl-leave-active{
+.tbl-enter-active{
  transition: all 0.5s;
 }
 .tbl-enter,.tbl-leave-to{
   opacity: 0;
   transform: translateX(1rem);
 }
-
 </style>
