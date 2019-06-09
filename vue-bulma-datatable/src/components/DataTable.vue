@@ -189,4 +189,7 @@ th{
   opacity: 0;
   transform: translateX(1rem);
 }
+table{
+  margin-top:-1rem;
+}
 </style>
