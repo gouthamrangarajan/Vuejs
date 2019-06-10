@@ -14,6 +14,12 @@
         </a>
           <a :class="{'navbar-item':true,'is-active':activeMenu==3}" @click="scrollTo('#bx3',3)">
           Header 3
+        </a>  
+          <a :class="{'navbar-item':true,'is-active':activeMenu==4}" @click="scrollTo('#bx4',4)">
+          Header 4
+        </a>  
+          <a :class="{'navbar-item':true,'is-active':activeMenu==5}" @click="scrollTo('#bx5',5)">
+          Header 5
         </a>         
       </div>
     </div>
