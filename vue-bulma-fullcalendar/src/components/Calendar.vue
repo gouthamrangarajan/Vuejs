@@ -33,7 +33,8 @@
    </thead>
    <tbody>
       <tr v-for="(dt,ind) in weeksData" :key="ind">
-        <td v-for="(idt,ind1) in dt" :key="'tr_'+ind+'_'+ind1" @click.stop="$emit('clicked',new Date(currYear,currMonthIndex,idt.date))">
+        <td v-for="(idt,ind1) in dt" :key="'tr_'+ind+'_'+ind1"
+         @click.stop="emitClicked(idt.date,idt.ind)">
             <h5 :class="{'is-size-6 is-pulled-right':true,'has-text-grey-light':idt.ind!='curr',
                         'has-text-success has-text-weight-bold':idt.ind=='curr' && idt.date==todayDate
                         && currMonthIndex==todayMonthIndex
@@ -72,6 +73,10 @@ export default {
    }
   },
   methods:{
+    emitClicked(date,index){
+      if(index=='curr')
+      this.$emit('clicked',new Date(this.currYear,this.currMonthIndex,date));
+    },
     toggleDisplay(){
       this.display=false;
       this.$nextTick(()=>{

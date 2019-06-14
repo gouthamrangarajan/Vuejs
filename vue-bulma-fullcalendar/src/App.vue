@@ -4,7 +4,7 @@
     <modal :showModal="showModal" @closeModal="showModal=false" :date="selectedDate"/>
     <div class="container">
       <calendar @clicked="calendarClicked"></calendar>
-      <p class="has-text-danger is-size-7">* Click on the date to add event...</p>
+      <p class="has-text-danger is-size-7">* Click on current month date(s) to add event...</p>
     </div>
   </div>
 </template>
