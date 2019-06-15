@@ -5,7 +5,7 @@
     <transition name="modal">
     <div class="modal-card is-pulled-right" v-show="animateModal">
     <header class="modal-card-head">
-      <p class="modal-card-title">Add Event</p>
+      <p class="modal-card-title">Add New Event</p>
       <button class="delete" aria-label="close"
              @click="animateModal=false"></button>
     </header>

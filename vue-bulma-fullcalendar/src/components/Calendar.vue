@@ -40,7 +40,7 @@
                         && currMonthIndex==todayMonthIndex
                         && currYear==todayYear}">{{idt.date}}</h5>  
             <transition-group name="scale" appear>  
-              <div :class="['tag',event.color]" 
+              <div :class="['tag',event.color]" :title="event.name"
                 v-for="(event,ind2) in idt.events" :key="ind2">              
               {{event.name}}              
               </div>     
@@ -200,7 +200,7 @@ td{
    cursor:pointer;
 }
 
-td>.tag
+.tag
 {   
    max-width:100%;
    max-height:2rem;
