@@ -24,11 +24,18 @@ export default new Vuex.Store({
     addEvent(state,event){
       state.events.push({id:state.maxEventId,date:event.date,name:event.name,color:event.color});
       state.maxEventId++;
+    },
+    deleteEvent(state,event){
+      var ind=state.events.findIndex(el=>el.id==event.id);
+      state.events.splice(ind,1);
     }
   },
   actions: {
     addEvent(state,event){
       state.commit('addEvent',event);
+    },
+    deleteEvent(state,event){
+      state.commit('deleteEvent',event);
     }
   }
 })

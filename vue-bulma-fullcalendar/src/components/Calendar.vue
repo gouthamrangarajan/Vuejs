@@ -41,8 +41,9 @@
                         && currYear==todayYear}">{{idt.date}}</h5>  
             <transition-group name="scale" appear>  
               <div :class="['tag',event.color]" :title="event.name"
-                v-for="(event,ind2) in idt.events" :key="ind2">              
+                v-for="(event,ind2) in idt.events" :key="ind2">                     
               {{event.name}}              
+              <button class="delete" @click.stop="emitDelete(event.id,idt.ind)"></button>         
               </div>     
             </transition-group>
         </td>
@@ -76,6 +77,10 @@ export default {
     emitClicked(date,index){
       if(index=='curr')
       this.$emit('clicked',new Date(this.currYear,this.currMonthIndex,date));
+    },
+    emitDelete(id,index){      
+      if(index=='curr')
+      this.$emit('deleteClicked',id);
     },
     toggleDisplay(){
       this.display=false;
