@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
-    <modal :showModal="showModal" @closeModal="showModal=false" :date="selectedDate"/>
+    <modal :showModal="showModal" @closeModal="showModal=false" :date="selectedDate" :eventId="updateId"/>
     <confirm-delete :showModal="confirmDelete" @closeModal="confirmDelete=false" @confirm="deleteEvent"></confirm-delete>
     <div class="container">
       <calendar @clicked="calendarClicked" @deleteClicked="showConfirm"></calendar>
@@ -21,13 +21,14 @@ export default {
     calendar,navBar,modal,confirmDelete
   },
    data(){
-    return {showModal:false,selectedDate:new Date(),confirmDelete:false,deleteId:0};
+    return {showModal:false,selectedDate:new Date(),confirmDelete:false,deleteId:0,updateId:0};
   },
   methods:{
-    calendarClicked(dat){
+    calendarClicked(dat,updateId){
       this.showModal=true;
       this.selectedDate=dat;
       this.deleteId=0;
+      this.updateId=updateId;      
     },
     showConfirm(id){
       this.deleteId=id;

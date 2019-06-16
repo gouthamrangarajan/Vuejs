@@ -18,6 +18,9 @@ export default new Vuex.Store({
       return elem.date.getDate()==date && elem.date.getMonth()==month 
         &&elem.date.getFullYear()==year;
       });
+    },
+    findEvent:(state)=>(id)=>{            
+      return state.events.find(el=>el.id==id);
     }
   },
   mutations: {
@@ -28,6 +31,11 @@ export default new Vuex.Store({
     deleteEvent(state,event){
       var ind=state.events.findIndex(el=>el.id==event.id);
       state.events.splice(ind,1);
+    },
+    updateEvent(state,event){
+      var dt=state.events.find(el=>el.id==event.id);
+      dt.name=event.name;
+      dt.color=event.color;
     }
   },
   actions: {
@@ -36,6 +44,9 @@ export default new Vuex.Store({
     },
     deleteEvent(state,event){
       state.commit('deleteEvent',event);
+    },
+    updateEvent(state,event){
+      state.commit('updateEvent',event);
     }
   }
 })

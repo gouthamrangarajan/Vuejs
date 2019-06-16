@@ -34,14 +34,14 @@
    <tbody>
       <tr v-for="(dt,ind) in weeksData" :key="ind">
         <td v-for="(idt,ind1) in dt" :key="'tr_'+ind+'_'+ind1"
-         @click.stop="emitClicked(idt.date,idt.ind)">
+         @click.stop="emitClicked(idt.date,idt.ind,0)">
             <h5 :class="{'is-size-6 is-pulled-right':true,'has-text-grey-light':idt.ind!='curr',
                         'has-text-success has-text-weight-bold':idt.ind=='curr' && idt.date==todayDate
                         && currMonthIndex==todayMonthIndex
                         && currYear==todayYear}">{{idt.date}}</h5>  
             <transition-group name="scale" appear>  
               <div :class="['tag',event.color]" :title="event.name"
-                v-for="(event,ind2) in idt.events" :key="ind2">                     
+                v-for="(event,ind2) in idt.events" :key="ind2" @click.stop="emitClicked(idt.date,idt.ind,event.id)">                     
               {{event.name}}              
               <button class="delete" @click.stop="emitDelete(event.id,idt.ind)"></button>         
               </div>     
@@ -74,9 +74,9 @@ export default {
    }
   },
   methods:{
-    emitClicked(date,index){
+    emitClicked(date,index,id){
       if(index=='curr')
-      this.$emit('clicked',new Date(this.currYear,this.currMonthIndex,date));
+      this.$emit('clicked',new Date(this.currYear,this.currMonthIndex,date),id);
     },
     emitDelete(id,index){      
       if(index=='curr')
