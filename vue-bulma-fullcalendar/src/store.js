@@ -39,14 +39,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    addEvent(state,event){
-      state.commit('addEvent',event);
+    addEvent({commit},event){
+      commit('addEvent',event);
     },
-    deleteEvent(state,event){
-      state.commit('deleteEvent',event);
+    deleteEvent({commit},event){
+       commit('deleteEvent',event);
     },
-    updateEvent(state,event){
-      state.commit('updateEvent',event);
+    updateEvent({commit},event){
+       commit('updateEvent',event);
     }
   }
 })
