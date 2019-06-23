@@ -35,10 +35,8 @@
                 </div>
         </div>
         </transition>
-        </nav>
-        <div :class="{'sideMenu':true,'box':menuOutline}">
-            <side-menu :menuShow="menuShow"></side-menu>
-        </div>
+        </nav>        
+        <side-menu :menuShow="menuShow"></side-menu>        
     </div>
 </transition>
 </template>
@@ -50,7 +48,7 @@ export default {
     components:{sideMenu},
     data(){
      return {
-        themesMenuVisible:true,menuShow:false,menuOutline:false,
+        themesMenuVisible:true,menuShow:false,
         themes:[
         {name:'Red',value:'is-danger',id:1,selected:false} ,
         {name:'Light',value:'is-light',id:2,selected:true} ,
@@ -77,14 +75,9 @@ export default {
                 this.themes.forEach(el=>el.selected=false);      
                 this.themes.filter(el=>el.value==newVal)[0].selected=true;
             });
-        },
-        menuShow(newVal,oldVal){
-            if(newVal){
-                this.menuOutline=true;
-            }
-            else{
-                setTimeout(()=>{this.menuOutline=false},500);
-            }
+        },       
+        $route (to, from){
+            this.menuShow = false;
         }
     },
     mounted(){
@@ -130,13 +123,6 @@ export default {
 }
 .navbar-burger.burger {
   padding-top:0.6rem;
-}
-.sideMenu{
-  position:fixed;
-  z-index:200;
-  margin-top:3.2rem;
-  height: 100%;
-  width:15rem;
 }
 .tag{
   max-height:1rem;
