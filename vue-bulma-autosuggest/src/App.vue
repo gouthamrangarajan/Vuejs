@@ -1,32 +1,38 @@
 <template>
-  <div id="app">
-   <nav-bar>
-      <template v-slot:item >  
-       <transition name="fade" appear>
-    <auto-suggest 
-                 v-model="navCountry"  v-if="showSearch">      
-    </auto-suggest>        
-      </transition>
-      <transition name="fade" appear>
-         <a class="button searchButton"
-            @click="showSearch=!showSearch">
-    <span class="icon is-small">
-      <i class="fas fa-search"></i>
-    </span>
-  </a>        
-      </transition>     
-    </template>          
-   
-   </nav-bar>
-   <div class="container">
-     <div class="field">      
-     <label class="label">Country:</label>   
-        <auto-suggest 
-                 v-model="selCountry">      
-    </auto-suggest>
-     </div>
-   </div>
+<div id="app">      
+  <section class="hero is-dark is-fullheight is-bold">
+    <div class="hero-head">
+      <nav-bar>
+        <template v-slot:item >  
+          <transition name="fade" appear>
+            <auto-suggest v-model="navCountry"  v-if="showSearch">      
+            </auto-suggest>        
+          </transition>
+          <transition name="fade" appear>
+            <a class="button searchButton" @click="showSearch=!showSearch">
+              <span class="icon is-small">
+              <i class="fas fa-search"></i>
+              </span>
+            </a>        
+          </transition>     
+        </template>          
+      </nav-bar>
+    </div>
+     <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Vue js, Vuex & Bulma css 
+      </h1>     
+      <p>
+        <span class="subtitle">
+          Country:
+        </span>                    
+        <auto-suggest v-model="selCountry"></auto-suggest>        
+      </p>
+    </div>
   </div>
+  </section>
+</div>
 </template>
 
 <script>
