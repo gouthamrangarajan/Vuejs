@@ -13,7 +13,7 @@
           *images fom NASA
         </p>
         <div class="is-pulled-right slideContainer">
-          <slider :length="parseInt(6)" :duration="parseInt(5000)" />
+          <slider :imgs="imgs" :duration="parseInt(5000)" />
        </div>         
        </div>
      </div>
@@ -29,7 +29,8 @@ export default {
     slider
   },
   data(){
-    return { };
+    return {imgs:['/imgs/Pic1.png','/imgs/Pic2.jpg','/imgs/Pic3.jpg',
+                '/imgs/Pic4.jpg','/imgs/Pic5.jpg','/imgs/Pic6.jpg']};
   }
 }
 </script>

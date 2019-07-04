@@ -2,18 +2,7 @@
 <div>
   <div class="sliderDiv">
  <figure class="image">      
-     <keep-alive>
-<transition name="slide-down" mode="out-in" appear>  
-    <!-- using image this way instead of instead of sending from app.vue
-    the other approach is also possible-->
-   <img src="./../../public/imgs/Pic1.png" key="1"  v-if="selInd==0">    
-   <img src="./../../public/imgs/Pic2.jpg" key="2"  v-else-if="selInd==1">    
-   <img src="./../../public/imgs/Pic3.jpg" key="3"  v-else-if="selInd==2">    
-   <img src="./../../public/imgs/Pic4.jpg" key="4"  v-else-if="selInd==3">    
-   <img src="./../../public/imgs/Pic5.jpg" key="5"  v-else-if="selInd==4">    
-   <img src="./../../public/imgs/Pic6.jpg" key="6"  v-else-if="selInd==5">    
-   </transition>  
-     </keep-alive>
+   <img :src="img" :key="ind"  v-for="(img,ind) in imgs"   :style="styls[ind]">    
    </figure>
 </div>
 <transition name="fade" appear>
@@ -26,25 +15,28 @@ import vprogress from './VProgress'
 export default {
     name:'Slider',
     data(){
-    return {selInd:0,showProgress:true};
+    return {selInd:0,showProgress:true,styls:[],strtLen:100,intr:null};
   },
   components:{
     vprogress
   },
-  mounted(){    
-    setInterval(()=>{
-      if(this.selInd==this.length-1){
-        this.selInd=0;
-      }
-      else{
-        this.selInd++;
-      }
-    },this.duration);
+mounted(){    
+    this.startSlide();
   },
-  props:{
-    length:
+  created(){
+    this.imgs.forEach((el,ind)=>{
+      if(ind==0){
+        this.styls.push('transform:translateY(0rem);position:absolute;');    
+      }
+      else{        
+        this.styls.push('display:none;position:absolute;');
+      }
+    });    
+  },
+   props:{
+    imgs:
     {
-      type:Number,
+      type:Array,
       required:true
     },
     duration:{
@@ -54,38 +46,43 @@ export default {
   },
   watch:{
       selInd(newVal,oldVal){
+          this.strtLen=0;
+          for(var i=0;i<40;i++){
+              setTimeout(()=>{
+                this.strtLen++;
+              if(this.strtLen<40){                
+                this.$set(this.styls,newVal,'transform:translateY(-'+
+                        (40-this.strtLen)+'rem);position:absolute;');
+                  this.$set(this.styls,oldVal,'transform:translateY('+
+                        this.strtLen+'rem);position:absolute;');                                    
+              }
+              else{
+                this.$set(this.styls,newVal,'transform:translateY(0rem);position:absolute;');
+                this.$set(this.styls,oldVal,'display:none;position:absolute;');                
+              }           
+              },5*i);         
+          }          
           this.showProgress=false;
           this.$nextTick(()=>{this.showProgress=true});
       }
+  },
+  methods:{
+     startSlide(){
+      if(this.intr==null){
+        this.intr=setInterval(()=>{
+              if(this.selInd==this.imgs.length-1){
+                this.selInd=0;
+              }
+              else{
+                this.selInd++;
+              }
+            },this.duration);
+      }    
+    }
   }
 }
 </script>
 <style scoped>
-.slide-down-enter-active{
-  animation:slide-in 1s;
-}
-
-.slide-down-leave-active{
-  animation:slide-out 1s;
-}
-
-@keyframes slide-in{
-  0%{
-    transform:translateY(-50rem);
-  }
-  100%{
-    transform:translateY(0);
-  }
-}
-@keyframes slide-out{
-  0%{
-    transform:translateY(0);
-  }
-  100%{
-    transform:translateY(50rem);
-  }
-}
-
 .sliderDiv{
   overflow:hidden;
   width: 40rem;
@@ -99,4 +96,5 @@ export default {
 .fade-leave-to{
   opacity:0;
 }
+
 </style>
