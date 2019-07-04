@@ -3,24 +3,15 @@
   <div class="hero-body">  
     <div class="container">
       <div class="icons-container">
-        <div class="icon button is-link is-pulled-left" @click="decrementInd">
+        <div class="icon button is-pulled-left" @click="decrementInd">
           <i class="fa fa-angle-left"></i>
         </div>
-        <div class="icon button is-link is-pulled-right" @click="incrementInd">
+        <div class="icon button is-pulled-right" @click="incrementInd">
           <i class="fa fa-angle-right"></i>
         </div>
       </div>      
       <figure class="image">
-        <transition :name="transition" mode="out-in" appear>  
-            <!-- using image this way instead of instead of sending from app.vue
-            the other approach is also possible-->
-          <img src="./../../public/imgs/Pic1.png" key="1"  v-if="selInd==0">    
-          <img src="./../../public/imgs/Pic2.jpg" key="2"  v-else-if="selInd==1">    
-          <img src="./../../public/imgs/Pic3.jpg" key="3"  v-else-if="selInd==2">    
-          <img src="./../../public/imgs/Pic4.jpg" key="4"  v-else-if="selInd==3">    
-          <img src="./../../public/imgs/Pic5.jpg" key="5"  v-else-if="selInd==4">    
-          <img src="./../../public/imgs/Pic6.jpg" key="6"  v-else-if="selInd==5">    
-        </transition>  
+          <img :src="img" :key="ind"  v-for="(img,ind) in imgs"   :style="styls[ind]"> 
       </figure>          
   </div>
   </div>
@@ -30,14 +21,14 @@
 export default {
     name:'Slider',
     data(){
-    return {selInd:0,transition:'slide-left',intr:null};
+    return {selInd:0,transition:'slide-left',intr:null,styls:[],strtLen:100};
   },
   components:{
     
   },
   methods:{
     incrementInd(){
-      if(this.selInd==this.length-1){
+      if(this.selInd==this.imgs.length-1){
         this.selInd=0;
       }
       else{
@@ -47,29 +38,27 @@ export default {
       this.intr=null;
       setTimeout(()=>{          
         this.startSlide();
-        },3000);
+        },500);
     },
-    decrementInd(){
-      this.$nextTick(()=>{
-        if(this.selInd==0){
-              this.selInd=this.length-1;
-            }
-            else{
-              this.selInd--;
-            }
-        });
+    decrementInd(){      
+      if(this.selInd==0){
+            this.selInd=this.imgs.length-1;
+          }
+          else{
+            this.selInd--;
+          }      
         this.transition='slide-right';
         clearInterval(this.intr);
         this.intr=null;
         setTimeout(()=>{
           this.transition='slide-left';
           this.startSlide();
-          },3000);
+          },500);
     },
     startSlide(){
       if(this.intr==null){
         this.intr=setInterval(()=>{
-              if(this.selInd==this.length-1){
+              if(this.selInd==this.imgs.length-1){
                 this.selInd=0;
               }
               else{
@@ -82,10 +71,20 @@ export default {
   mounted(){    
     this.startSlide();
   },
+  created(){
+    this.imgs.forEach((el,ind)=>{
+      if(ind==0){
+        this.styls.push('transform:translateX(0rem);position:absolute;');    
+      }
+      else{        
+        this.styls.push('display:none;position:absolute;');
+      }
+    });    
+  },
   props:{
-    length:
+    imgs:
     {
-      type:Number,
+      type:Array,
       required:true
     },
     duration:{
@@ -93,58 +92,37 @@ export default {
         required:true
     }
   },
-  watch:{
-    
-  }
+ watch:{
+    selInd(newVal,oldVal){      
+      this.strtLen=0;
+      for(var i=0;i<80;i++){
+           setTimeout(()=>{
+             this.strtLen++;
+           if(this.strtLen<80){
+             if(this.transition=="slide-left"){
+             this.$set(this.styls,newVal,'transform:translateX('+
+                     (80-this.strtLen)+'rem);position:absolute;');
+              this.$set(this.styls,oldVal,'transform:translateX(-'+
+                     this.strtLen+'rem);position:absolute;');     
+             }
+             else{
+                 this.$set(this.styls,newVal,'transform:translateX(-'+
+                        (80-this.strtLen)+'rem);position:absolute;');
+              this.$set(this.styls,oldVal,'transform:translateX('+
+                     this.strtLen+'rem);position:absolute;');    
+             }
+           }
+           else{
+            this.$set(this.styls,newVal,'transform:translateX(0rem);position:absolute;');
+             this.$set(this.styls,oldVal,'display:none;position:absolute;');                
+           }           
+          },5*i);         
+      }          
+    }
+  },
 }
 </script>
 <style scoped>
-.slide-right-enter-active{
-  animation:slide-in-opp 1s;
-}
-
-.slide-right-leave-active{
-  animation:slide-out-opp 1s;
-}
-.slide-left-enter-active{
-  animation:slide-in 1s;
-}
-
-.slide-left-leave-active{
-  animation:slide-out 1s;
-}
-@keyframes slide-in{
-  0%{
-    transform:translateX(100rem);
-  }
-  100%{
-    transform:translateX(0);
-  }
-}
-@keyframes slide-out{
-  0%{
-    transform:translateX(0);
-  }
-  100%{
-    transform:translateX(-100rem);
-  }
-}
-@keyframes slide-in-opp {
-  0%{
-    transform:translateX(-100rem);
-  }
-  100%{
-    transform: translateX(0rem);
-  }
-}
-@keyframes slide-out-opp {
-  0%{
-    transform: translateX(0rem);
-  }
-  100%{
-    transform: translateX(100rem);
-  }
-}
 img{
   height: 90vh;
   width: 100rem;
@@ -157,9 +135,13 @@ img{
   opacity: 1;
 }
 .icons-container{
-  position:fixed;
+  position:absolute;
    z-index: 200;
    width: 84rem;
-  margin-top:21rem;
+   margin-top:-2rem;
+
+}
+.image{
+  margin-top:-21rem;
 }
 </style>
