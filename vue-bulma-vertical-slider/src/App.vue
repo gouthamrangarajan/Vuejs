@@ -7,7 +7,8 @@
           Welcome
        </h1>
           <h2 class="subtitle">
-          A simple verical slider using Vue transition
+          A simple verical slider <strike>using Vue transition</strike><br/>
+          by setting style from Vue data
         </h2>
         <p class="is-size-7 has-text-warning">
           *images fom NASA
