@@ -9,7 +9,7 @@ import slider from './components/Slider'
 export default {
   name: 'app',
   components: {
-    slider
+    slider    
   },
   data(){
     return {imgs:['/imgs/Pic1.png','/imgs/Pic2.jpg','/imgs/Pic3.jpg',

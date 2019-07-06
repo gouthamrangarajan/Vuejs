@@ -1,12 +1,15 @@
 <template>
 <section class="hero is-dark is-bold is-fullheight">
+  <div class="hero-head">
+    <nav-bar></nav-bar>
+  </div>
   <div class="hero-body">  
     <div class="container">
       <div class="icons-container">
-        <div class="icon button is-pulled-left" @click="decrementInd">
+        <div class="icon button is-dark is-pulled-left" @click="decrementInd">
           <i class="fa fa-angle-left"></i>
         </div>
-        <div class="icon button is-pulled-right" @click="incrementInd">
+        <div class="icon button is-dark is-pulled-right" @click="incrementInd">
           <i class="fa fa-angle-right"></i>
         </div>
       </div>      
@@ -18,13 +21,14 @@
 </section>
 </template>
 <script>
+import navBar from  './NavBar'
 export default {
     name:'Slider',
+    components:{
+      navBar
+    },
     data(){
     return {selInd:0,transition:'slide-left',intr:null,styls:[],strtLen:100};
-  },
-  components:{
-    
   },
   methods:{
     incrementInd(){
