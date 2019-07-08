@@ -7,8 +7,8 @@
     </div>
     <div class="message-body">
         <transition name="slide" appear>
-        <div class="notification is-danger" v-if="apiError">
-            <button class="delete"></button>
+        <div class="notification is-danger" v-if="showApiError">            
+            <button class="delete" @click="showApiError=false"></button>
            Unknown error... Please check Api
         </div>
         </transition>
@@ -70,7 +70,8 @@
 export default {
     name:'register',
     data(){
-        return {firstName:'',lastName:'',screens:[],firstNameInvalid:false,lastNameInvalid:false,screensInvalid:false,isProcessing:false}
+        return {firstName:'',lastName:'',screens:[],firstNameInvalid:false,lastNameInvalid:false,
+        screensInvalid:false,isProcessing:false,showApiError:false}
     },
     methods:{
         submit(){    
@@ -123,7 +124,10 @@ export default {
             }
       },
       apiError(newVal,oldVal){
-
+          if(newVal==true)
+            this.showApiError=true;
+          else
+            this.showApiError=false;
       }
     },
     computed:{

@@ -18,8 +18,15 @@
                 <a role="button" class="navbar-burger burger icon is-medium" 
                 aria-label="menu" @click="themesMenuVisible=!themesMenuVisible">       
                 <i class="fas fa-bars fa-2x"></i>         
-                </a>
-            </div>        
+                </a>               
+            </div>   
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                 <a class="navbar-item">
+                   Welcome {{userName}}
+                 </a>
+              </div>
+            </div>     
         </nav>        
         <side-menu :menuShow="menuShow"></side-menu>        
     </div>
@@ -36,7 +43,9 @@ export default {
      }
     },
     computed:{
-         
+         userName(){
+           return this.$store.state.userName;
+         }
     },
      watch:{              
         $route (to, from){

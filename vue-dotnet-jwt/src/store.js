@@ -10,7 +10,8 @@ export default new Vuex.Store({
     token:'',
     apiUrl:'https://localhost:44328/api/jwt/'/*RG change it accordingly*/,
     apiError:false,
-    screens:[]
+    screens:[],
+    userName:''
   },
   mutations: {
     initialiseStore(state){
@@ -19,11 +20,16 @@ export default new Vuex.Store({
         state.token=tk;
         state.screens.splice(0);
         var decode=jwt.decode(tk);
+        console.log(decode);
        if(decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']){
          decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'].split(',').forEach(el=>{
           state.screens.push(el);
          });
        }
+       if(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']){
+         state.userName=decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+       }
+
       }      
     },
     setToken(state,token){
@@ -34,6 +40,9 @@ export default new Vuex.Store({
         decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'].split(',').forEach(el=>{
          state.screens.push(el);
         });
+      }
+      if(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']){
+        state.userName=decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
       }
     },
     resetApiError(state){
