@@ -50,6 +50,11 @@ export default new Vuex.Store({
     },
     setApiError(state){
       state.apiError=true;
+    },
+    clearToken(state){
+      state.screens.splice(0);
+      state.token='';
+      localStorage.clear();
     }
   },
   actions: {
@@ -70,6 +75,9 @@ export default new Vuex.Store({
         console.log(err);
         context.commit('setApiError');
       });
+    },
+    clearToken({commit}){
+      commit('clearToken');
     }
   }
 })

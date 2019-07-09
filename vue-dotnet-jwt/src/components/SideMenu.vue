@@ -10,7 +10,6 @@
        <li key="hr_1"><hr/></li>
      <router-link tag="li" key="reg_1" to="/"><a>Register New</a></router-link>
   </transition-group>
-
   </aside>   
  </div>
 </transition>
@@ -82,6 +81,7 @@ export default {
 .itemSlide-leave-to{
   transform:translateY(-100rem);
 }
+
 .slide-enter-active,
 .slide-leave-active{
   transition:all 0.3s;

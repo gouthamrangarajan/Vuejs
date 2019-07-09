@@ -35,7 +35,15 @@ export default {
           this.$router.push('/');
         }
       }
-    }   
+    },
+    screens:{
+      deep:true,
+      handler(newVal,oldVal){
+        if(newVal.length==0){
+          this.$router.push('/');
+        }
+      }
+    }  
   }
 }
 </script>

@@ -22,8 +22,21 @@
             </div>   
             <div class="navbar-menu">
               <div class="navbar-end">
-                 <a class="navbar-item">
-                   Welcome {{userName}}
+                 <a class="navbar-item" @click="ddShow=!ddShow">
+                   <div class="dropdown is-active">
+                     <div class="dropdown-trigger">
+                      Welcome {{userName}}
+                    </div>
+                    <transition name="fade">
+                      <div class="dropdown-menu" v-if="ddShow">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item" @click="clear">
+                              Clear & Logout
+                              </a>
+                          </div>
+                      </div>
+                    </transition>
+                   </div>
                  </a>
               </div>
             </div>     
@@ -39,7 +52,8 @@ export default {
     components:{sideMenu},
     data(){
      return {
-        menuShow:false,             
+        menuShow:false,      
+        ddShow:false       
      }
     },
     computed:{
@@ -55,7 +69,10 @@ export default {
     mounted(){        
     },
     methods:{
-          },
+      clear(){
+        this.$store.dispatch('clearToken');
+      }
+    },
 }
 </script>
 <style scoped>
@@ -78,5 +95,7 @@ export default {
 .rotate-leave-to{
   transform:rotate(-90deg);
 }
-
+.dropdown-menu{
+  margin-top:0.6rem;
+}
 </style>
