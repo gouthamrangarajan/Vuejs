@@ -19,8 +19,7 @@ export default new Vuex.Store({
       if(tk && tk!=null && tk!=undefined){
         state.token=tk;
         state.screens.splice(0);
-        var decode=jwt.decode(tk);
-        console.log(decode);
+        var decode=jwt.decode(tk);        
        if(decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']){
          decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'].split(',').forEach(el=>{
           state.screens.push(el);
