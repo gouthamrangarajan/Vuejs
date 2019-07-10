@@ -97,7 +97,7 @@ export default {
 }
 .box{
   position:fixed;
-  z-index:200;
+  z-index:999;
   margin-top:3.2rem;
   height: 100%;
   width:20rem;
