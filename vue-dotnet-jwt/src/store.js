@@ -19,17 +19,25 @@ export default new Vuex.Store({
       if(tk && tk!=null && tk!=undefined){
         state.token=tk;
         state.screens.splice(0);
-        var decode=jwt.decode(tk);        
-       if(decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']){
-         decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'].split(',').forEach(el=>{
-          state.screens.push(el);
-         });
-       }
-       if(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']){
-         state.userName=decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
-       }
-
-      }      
+        var decode=jwt.decode(tk);   
+        if(decode['exp']){
+          var dt=new Date(decode['exp']*1000);   
+          if(dt<new Date()){
+            console.log('expired token');
+            localStorage.clear();
+          }
+          else{
+            if(decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']){
+              decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'].split(',').forEach(el=>{
+                state.screens.push(el);
+              });
+            }
+            if(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']){
+              state.userName=decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+            }
+         }
+        }      
+      }
     },
     setToken(state,token){
       state.token=token;
