@@ -5,7 +5,7 @@
      <transition-group name="itemSlide" class="menu-list" tag="ul">     
    <router-link v-for="item in menuList"  :to="item.url" tag="li" 
        :key="item.id" v-show="item.display">       
-            <a>{{item.name}}</a>         
+            <a>{{item.name | capitalize}}</a>         
        </router-link>         
        <li key="hr_1"><hr/></li>
      <router-link tag="li" key="reg_1" to="/"><a>Register New</a></router-link>
@@ -28,6 +28,11 @@ export default {
           screens(){             
               return this.$store.state.screens;            
           }
+    },
+    filters:{
+        capitalize(val){            
+            return val.substring(0,1).toUpperCase()+val.substring(1);
+        }
     },
     props:{
         menuShow:{

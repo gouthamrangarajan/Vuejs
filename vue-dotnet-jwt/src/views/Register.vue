@@ -36,19 +36,19 @@
             <label class="label">Screens:</label>
             <div class="control">
                 <label class="checkbox">
-                    <input type="checkbox" v-model="screens" value="Home" @keyup.enter="submit">
+                    <input type="checkbox" v-model="screens" value="home" @keyup.enter="submit">
                      Home
                 </label>&nbsp;
                 <label class="checkbox">
-                    <input type="checkbox" v-model="screens" value="About" @keyup.enter="submit">
+                    <input type="checkbox" v-model="screens" value="about" @keyup.enter="submit">
                     About
                 </label>&nbsp;
                 <label class="checkbox">
-                    <input type="checkbox" v-model="screens" value="View1" @keyup.enter="submit">
+                    <input type="checkbox" v-model="screens" value="view1" @keyup.enter="submit">
                     View1
                 </label>&nbsp;
                 <label class="checkbox">
-                    <input type="checkbox" v-model="screens" value="View2" @keyup.enter="submit">
+                    <input type="checkbox" v-model="screens" value="view2" @keyup.enter="submit">
                     View2
                 </label>
             </div>
