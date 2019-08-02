@@ -21,7 +21,7 @@ export default new Vuex.Store({
         state.screens.splice(0);
         var decode=jwt.decode(tk);   
         if(decode['exp']){
-          var dt=new Date(decode['exp']*1000);   
+          var dt=new Date(decode['exp']*1000);            
           if(dt<new Date()){
             console.log('expired token');
             localStorage.clear();
@@ -67,8 +67,7 @@ export default new Vuex.Store({
   actions: {
     /*RG can be moved to separate file  for api calls*/
     registerUser(context,user){
-      context.commit('resetApiError');
-      console.log(user);
+      context.commit('resetApiError');      
       axios.post(context.state.apiUrl+'submit',user).then(resp=>{        
         if(resp.data.trim().toLowerCase()!="failure"){
           localStorage.setItem('token',resp.data);        
