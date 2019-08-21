@@ -29,4 +29,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Codepen version:
-https://codepen.io/GouthamRangarajan/full/ExYNjdR
+https://codepen.io/GouthamRangarajan/pen/ExYNjdR
