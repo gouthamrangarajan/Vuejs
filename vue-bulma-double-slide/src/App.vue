@@ -51,7 +51,7 @@ export default class App extends Vue {
 }
 .box{
   height:19rem;
-  padding-left:1rem;
+  padding-left:0.5rem;
 }
 .comp{
   position:absolute;
