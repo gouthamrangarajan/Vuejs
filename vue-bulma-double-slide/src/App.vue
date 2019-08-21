@@ -89,4 +89,27 @@ export default class App extends Vue {
 .notification{
   z-index:2;
 }
+@media only screen and (max-width:768px){
+ .slide-left-enter-active,
+.slide-left-leave-active{
+  transition:all 1s;
+}
+
+.slide-left-enter,
+.slide-left-leave-to{
+  opacity:0;
+  transform:translateX(10rem);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active{
+  transition:all 1s;
+}
+
+.slide-right-enter,
+.slide-right-leave-to{
+  opacity:0;
+  transform:translateX(-10rem);
+}
+}
 </style>
