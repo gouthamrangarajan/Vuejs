@@ -1,0 +1,23 @@
+{
+  "name": "vue-bulma-datatable-server-pagination",
+  "version": "1.0.0",
+  "description": "datatable server pagination using Express",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm run serve"
+  },
+  "author": "RG",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "cors": "^2.8.5",
+    "nodemon": "^1.19.2"
+  }
+}
