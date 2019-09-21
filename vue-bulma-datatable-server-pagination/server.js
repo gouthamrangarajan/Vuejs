@@ -8,7 +8,7 @@ const bodyParser=require('body-parser')
 app.use(cors())
 app.use(bodyParser.json())
 
-
+//simple filtering
 function filterEmployees(employees,filterTxt){
   return employees.filter(el=>{
     if(el.filter(inel=>{
@@ -25,6 +25,8 @@ function filterEmployees(employees,filterTxt){
      return false;
   });
 }
+
+//simple sorting 
 function sortEmployees(employees,sortInfo){
   return employees.sort((a,b)=>{
     if(sortInfo[1]==0)
@@ -45,7 +47,7 @@ app.post('/employee',(req,res)=>{
     const {body:{filterTxt,page,sortInfo}}=req;
     if(filterTxt==null || page==null || sortInfo==null
         || sortInfo.length<2){
-      res.statusCode=400;
+      res.statusCode=400; //if request doesnt have sort, page and filter info reject with invalid request
       return res.json({errors:['Invalid request']});
     }
      var pgLen=10;
@@ -55,6 +57,7 @@ app.post('/employee',(req,res)=>{
       strtInd=0;
      var ftEmployees=filterEmployees(employees,filterTxt);
      var stEmployess=sortEmployees(ftEmployees,sortInfo);
+     //filtered, sorted and paged data
      res.json({employees:stEmployess.slice(strtInd,endInd),totalLength:ftEmployees.length,page:page,pageLength:pgLen});    
 })
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

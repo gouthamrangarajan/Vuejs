@@ -1,3 +1,6 @@
+//simple api file to call express js 
+//called from vuex modules
+
 import axios from "axios"
 const apiUrl="http://localhost:3000/"
 export default  {   

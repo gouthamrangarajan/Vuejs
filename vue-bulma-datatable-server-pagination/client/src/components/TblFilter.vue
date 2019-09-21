@@ -13,7 +13,7 @@ import {debounce} from "debounce"
 export default {
     name:'TblFilter',
     created(){
-        this.debouncedFilterData=debounce(this.filterData,500);
+        this.debouncedFilterData=debounce(this.filterData,500);//debounce to wait for user key stroke 500 ms
         this.$store.dispatch('employees/getPageData',1);
     },
     data(){

@@ -1,4 +1,8 @@
-  import api from './../../api/employees'
+//simple vuex module
+//calls api 
+//stores all frond end employees data
+
+import api from './../../api/employees'
 
   const  state={
        totalLength:0,
@@ -53,7 +57,7 @@
       var data=[];
       state.data.forEach((el,ind)=>{        
         data.push({
-            id:el[0].substring(0,2)+"_"+(ind+1+(state.page*10)),//RG just a random logic for uniqueness
+            id:el[0].substring(0,2)+"_"+(ind+1+(state.page*10)),// just a random logic for uniqueness
             name:el[0],
             designation:el[1],
             location:el[2],
