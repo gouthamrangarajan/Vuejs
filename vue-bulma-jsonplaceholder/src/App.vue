@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="has-background-white-ter">   
+  <div id="app">   
     <nav-bar></nav-bar>
     <router-view/>
     <app-footer></app-footer>
@@ -17,6 +17,7 @@ export default {
     this.$store.dispatch('albums/refresh');
     this.$store.dispatch('users/refresh');
     this.$store.dispatch('todos/refresh');
+    document.body.classList.add("has-background-white-ter");
   },
   components:{
     NavBar,AppFooter
