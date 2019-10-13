@@ -1,4 +1,6 @@
-# vue-bulma-simple-crud
+# vue-bulma-JsonPlaceholder
+Simple display of JsonPlacedhold api data.
+### using Vuejs,Vuex & Bulmacss
 
 ## Project setup
 ```
