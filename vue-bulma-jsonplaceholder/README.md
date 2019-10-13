@@ -2,6 +2,8 @@
 Simple display of JsonPlacedhold api data.
 ### using Vuejs,Vuex & Bulmacss
 
+deployed test https://vuebulmajsonplaceholder.netlify.com/
+
 ## Project setup
 ```
 npm install
