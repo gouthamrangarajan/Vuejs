@@ -173,5 +173,9 @@ export default {
 .is-absolute{
     position: absolute;
     z-index:100;    
+    margin-left:-12rem;
+}
+tfoot .column{
+    padding:0;
 }
 </style>
