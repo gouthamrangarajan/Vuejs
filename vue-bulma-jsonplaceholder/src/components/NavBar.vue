@@ -64,7 +64,7 @@ export default {
                         left: 0,
                         behavior: 'smooth'
                     });
-                }, 400);
+                }, 500);
             }
         }
     },

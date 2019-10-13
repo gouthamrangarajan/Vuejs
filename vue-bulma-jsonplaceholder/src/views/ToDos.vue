@@ -3,6 +3,22 @@
     <div class="container">
         <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"
               @changeLen="changePgLen">
+              <template v-slot:additionalControls>
+                <div class="field is-horizontal">
+                    <div class="control">
+                        <label class="checkbox">
+                        <input type="checkbox" v-model="status" value="Pending">
+                            Show Pending&nbsp;&nbsp;
+                        </label>
+                    </div>
+                    <div class="control">                    
+                        <label class="checkbox">
+                        <input type="checkbox" v-model="status" value="Completed">
+                            Show Completed&nbsp;&nbsp;
+                        </label>
+                    </div>
+                </div>
+              </template>
         </pagination>
          <transition-group name="todos" tag="div" class="columns row" v-for="array in breakedToDosArray"  :key="array.id">
             <div class="column is-one-third" v-for="toDo in array.data" :key="toDo.id">
@@ -31,7 +47,7 @@ import Pagination from './../components/Pagination'
 export default {
     name:'ToDos',
      data(){
-        return {pageInfo:{currPage:1,totalPages:0,pageLen:21},toDoIdToShowUserInfo:-1}
+        return {pageInfo:{currPage:1,totalPages:0,pageLen:21},toDoIdToShowUserInfo:-1,status:["Completed","Pending"]}
      }, 
      components:{
          UserCard,Pagination
@@ -52,15 +68,25 @@ export default {
                 }
                 return el;
             }).filter(el=>{
-                if(this.ftTxt!=''){
-                    if( el.title.toLowerCase().indexOf(this.ftTxt.toLowerCase())>-1 ||
-                        el.user.username.toLowerCase().indexOf(this.ftTxt.toLowerCase())>-1
-                      )
-                      return true;
-                     else
-                     return false;
+                var retBool=false;
+                var statusBoolToString="Completed";
+                if(!el.completed){
+                    statusBoolToString="Pending";
                 }
-                return true;
+                if(this.status.includes(statusBoolToString)){
+                    retBool=true;
+                }
+                if(this.ftTxt!='' && retBool){
+                    if(el.title.toLowerCase().indexOf(this.ftTxt.toLowerCase())>-1 ||
+                        el.user.username.toLowerCase().indexOf(this.ftTxt.toLowerCase())>-1)
+                    {
+                      retBool=true;
+                    }
+                     else{
+                        retBool=false;
+                     }
+                }
+                return retBool;
             });            
             return data;
         },
