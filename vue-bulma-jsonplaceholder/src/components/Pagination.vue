@@ -2,12 +2,17 @@
      <transition name="fade" appear>
         <div class="column columns is-centered is-vcentered" v-show="info.display">        
             <div class="column is-2 is-offset-7">              
-                    <div class="dropdown is-active">
+                    <div :class="{'dropdown is-active':true,'is-up':toggleUp}">
                         <div class="dropdown-trigger">
                             <button class="button" aria-haspopup="true" @click.stop="showPgLenList=!showPgLenList">
                             <span>Show {{info.length}} entries</span>
                             <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                <template v-if="toggleUp">
+                                    <i class="fas fa-angle-up" aria-hidden="true"></i>
+                                </template>
+                                <template v-else>
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </template>
                             </span>
                             </button>
                         </div>
@@ -60,7 +65,11 @@ export default {
         info:{
             type:Object,
             required:true
-        }        
+        } ,
+        toggleUp:{
+            type:Boolean,
+            required:false
+        }       
     }
 }
 </script>

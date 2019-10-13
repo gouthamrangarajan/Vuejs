@@ -1,7 +1,8 @@
 <template>
   <transition name="slide">
     <div class="container">
-        <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"  @changeLen="changePgLen">
+        <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"
+              @changeLen="changePgLen">
         </pagination>
          <transition-group name="todos" tag="div" class="columns row" v-for="array in breakedToDosArray"  :key="array.id">
             <div class="column is-one-third" v-for="toDo in array.data" :key="toDo.id">
@@ -17,7 +18,8 @@
                 </div>      
             </div>
         </transition-group>     
-         <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"  @changeLen="changePgLen">
+         <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"  
+            @changeLen="changePgLen" :toggleUp="true">
         </pagination>
     </div>
   </transition>
@@ -107,13 +109,14 @@ export default {
     },
     methods:{
         increasePage(){
-            if(this.lastPage==true){
+           var isLastPage= this.pageInfo.currPage*this.pageInfo.pageLen >= this.toDosWithUser.length;
+            if(isLastPage==true){
                 return;
             }
             this.pageInfo.currPage++;
         },
         decreasePage(){
-            if(this.firstPage==true){
+            if(this.pageInfo.currPage==1){
                 return;
             }
             this.pageInfo.currPage--;

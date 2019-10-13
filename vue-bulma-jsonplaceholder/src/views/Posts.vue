@@ -32,7 +32,7 @@
             </div>
         </transition-group>
        <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"
-            @changeLen="changePgLen">
+            @changeLen="changePgLen" :toggleUp="true">
         </pagination>
     </div>
 </transition>
@@ -105,13 +105,14 @@ export default {
     },
     methods:{
         increasePage(){
-            if(this.lastPage==true){
+           var isLastPage= this.pageInfo.currPage*this.pageInfo.pageLen >= this.postsWithUser.length;
+            if(isLastPage==true){
                 return;
             }
             this.pageInfo.currPage++;
         },
         decreasePage(){
-            if(this.firstPage==true){
+            if(this.pageInfo.currPage==1){
                 return;
             }
             this.pageInfo.currPage--;
