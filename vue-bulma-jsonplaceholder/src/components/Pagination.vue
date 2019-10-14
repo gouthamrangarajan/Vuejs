@@ -1,6 +1,6 @@
 <template>
      <transition name="fade" appear>
-        <div class="column columns">    
+        <div class="column columns is-desktop">    
             <div class="column is-7">
                 <slot name="additionalControls"></slot>
             </div>    
@@ -35,7 +35,7 @@
                 </div>            
             </transition>
             <transition name="fade" appear>
-                <div class="column is-3" v-show="info.display">    
+                <div class="column is-3-desktop is-4-tablet" v-show="info.display">    
                     <div class="box">
                         <nav class="pagination" role="navigation" aria-label="pagination">
                             <a class="pagination-previous" :disabled="info.isFirstPage" @click="$emit('decrease')"><i class="fas fa-angle-left"></i></a>
