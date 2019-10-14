@@ -166,6 +166,9 @@ export default {
         'ftTxt':{
             immediate:true,
             handler:'resetPageInfo'
+        },
+        'status':{
+          handler:'resetPageInfo'  
         }
     }
 }
