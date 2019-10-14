@@ -36,6 +36,22 @@
         </transition-group>     
          <pagination :info="paginationData" @decrease="decreasePage" @increase="increasePage"  
             @changeLen="changePgLen" :toggleUp="true">
+            <template v-slot:additionalControls>
+                <div class="field is-horizontal">
+                    <div class="control">
+                        <label class="checkbox">
+                        <input type="checkbox" v-model="status" value="Pending">
+                            Show Pending&nbsp;&nbsp;
+                        </label>
+                    </div>
+                    <div class="control">                    
+                        <label class="checkbox">
+                        <input type="checkbox" v-model="status" value="Completed">
+                            Show Completed&nbsp;&nbsp;
+                        </label>
+                    </div>
+                </div>
+              </template>
         </pagination>
     </div>
   </transition>
