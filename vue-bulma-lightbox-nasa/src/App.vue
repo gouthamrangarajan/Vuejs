@@ -72,4 +72,8 @@ export default class App extends Vue {
 .blur{
   filter:blur(0.3rem);
 }
+#app{
+  height:93vh;
+  overflow-X:auto;
+}
 </style>
