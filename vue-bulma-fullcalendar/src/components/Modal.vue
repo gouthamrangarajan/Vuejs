@@ -151,6 +151,7 @@ export default {
         this.$nextTick(()=>{
            this.animateModal=newVal;
         });
+        this.descriptionInvalid=false;        
       }      
     },  
     animateModal(newVal,oldVal){
@@ -170,6 +171,7 @@ export default {
       }
       else{
         this.isUpdate=false;
+        this.description='';
       }
     }
   },
