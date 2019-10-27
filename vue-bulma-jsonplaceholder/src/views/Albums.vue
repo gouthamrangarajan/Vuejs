@@ -11,7 +11,7 @@
                    <tr  class="is-selected">
                       <th class="has-text-centered">Name</th>
                       <th class="has-text-centered">User Name</th>
-                      <th class="has-text-centered">Email</th>
+                      <th class="has-text-centered is-hidden-mobile">Email</th>
                    </tr>
                 </thead>                                    
                 <transition-group name="rows" tag="tbody">
@@ -27,7 +27,7 @@
                                </transition>   
                             </template>
                         </td>
-                        <td><span v-if="alb.user">{{alb.user.email}}</span></td>
+                        <td class="is-hidden-mobile"><span v-if="alb.user">{{alb.user.email}}</span></td>
                     </tr>
                 </transition-group>
                 <tfoot>
