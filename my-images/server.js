@@ -3,8 +3,6 @@ const path = require('path')
 const app =express()
 const fs=require('fs')
 const fileUpload = require('express-fileupload');
-const serverless = require('serverless-http');
-const router = express.Router();
 
 const port=process.env.PORT||3000
 app.use(fileUpload());
@@ -61,7 +59,4 @@ app.post('/upload', function(req, res) {
           });
     });    
   });
-// app.listen(port,()=>console.log(`listening on port ${port}`))
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(port,()=>console.log(`listening on port ${port}`))
