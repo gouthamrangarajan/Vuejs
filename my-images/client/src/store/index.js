@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     imgLen:0,
-    imgModified:[]
+    imgModified:[],
+    uploadPercent:0
   },
   mutations: {
     setImgLen(state,data){

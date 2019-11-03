@@ -47,6 +47,10 @@ app.post('/upload', function(req, res) {
     }  
     // The name of the input field (i.e. "myImage") is used to retrieve the uploaded file
     let fl = req.files.myImage;   
+    let validTypes=[".jpg",".jpeg",".gif",".png"];
+    if(!validTypes.includes(fl.name.toLowerCase().substring(fl.name.indexOf(".")))){
+        return res.status(400).send('Invalid file type.');
+    }    
     // Use the mv() method to place the file somewhere on your server
     fs.readdir(__dirname+'/imgs',(err,files)=>{              
         var len=files.length;

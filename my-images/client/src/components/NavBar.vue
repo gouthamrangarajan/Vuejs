@@ -1,17 +1,19 @@
 <template>
     <nav class="navbar is-transparent is-fixed-top">
   <div class="navbar-brand container">
-    <div class="navbar-item buttons">
-        <a class="button is-info" @click="$refs.fl.click()">
-            <span class="icon">
-            <i class="fas fa-upload"></i>
-            </span>
-            <span>Select Image</span>
-            <input type="file" single ref="fl" v-show="false" @change="fileChanged">
-        </a>  
-        <a class="button is-primary" @click="upload">Upload</a>
-    </div>
-  </div>
+    <transition name="fade" mode="in-out">
+        <div class="navbar-item buttons" v-if="uploadPercent==0">        
+            <a class="button is-info" @click="$refs.fl.click()">
+                <span class="icon">
+                <i class="fas fa-upload"></i>
+                </span>
+                <span>Select Image</span>
+                <input type="file" single ref="fl" v-show="false" @change="fileChanged">
+            </a>  
+            <a class="button is-primary" @click="upload">Upload</a>
+        </div>      
+    </transition>
+    </div>    
 </nav>
 </template>
 <script>
@@ -35,6 +37,8 @@ export default {
     },
     computed:{
         imgsLen(){return this.$store.state.imgLen;},
+        uploadPercent(){return this.$store.state.uploadPercent;}
+        
     },
     watch:{
         imgsLen(newVal,oldVal){
@@ -46,3 +50,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+</style>

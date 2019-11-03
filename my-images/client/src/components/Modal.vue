@@ -51,6 +51,6 @@ export default {
  }
  .modal-enter,
  .modal-leave-to{
-     transform: scaleY(0) translateX(-50rem);
+     transform: scale(0) skewX(60deg);
  }
 </style>
