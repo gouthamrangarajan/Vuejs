@@ -15,6 +15,9 @@ export default new Vuex.Store({
     },
     setImgModified(state,data){
       state.imgModified=data;      
+    },
+    setUploadPercent(state,data){
+      state.uploadPercent=data;
     }
   },
   actions: {
@@ -34,7 +37,13 @@ export default new Vuex.Store({
         var resp=await axios.post('/upload',data,{
           headers:{
             'Content-Type':'multipart/form-data'
-          }
+          },
+          onUploadProgress:ev=>{
+            commit('setUploadPercent',Math.round((ev.loaded*100)/ev.total));
+            if(ev.total==ev.loaded){
+              setTimeout(()=>{commit('setUploadPercent',0);},1000);
+            }
+          } 
         });        
       }
       catch(err){
