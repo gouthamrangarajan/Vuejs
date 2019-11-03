@@ -1,0 +1,26 @@
+{
+  "name": "my-images",
+  "version": "1.0.0",
+  "description": "server side express js for images",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && npm run serve",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "deploy": "node server.js"
+  },
+  "keywords": [
+    "my",
+    "images"
+  ],
+  "author": "RG",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.6"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  }
+}
