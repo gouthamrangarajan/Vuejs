@@ -22,6 +22,9 @@ export default {
 }
 </script>
 <style>
+.fade-move{
+  transition:all 0.3s;
+}
 .fade-enter-active,
 .fade-leave-active{
   transition:all 0.5s;

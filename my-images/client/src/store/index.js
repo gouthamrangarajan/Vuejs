@@ -7,7 +7,10 @@ export default new Vuex.Store({
   state: {
     imgLen:0,
     imgModified:[],
-    uploadPercent:0
+    uploadPercent:0,
+    showNotification:false,
+    notificationMsg:'',
+    isNotificationSuccess:true
   },
   mutations: {
     setImgLen(state,data){
@@ -18,6 +21,15 @@ export default new Vuex.Store({
     },
     setUploadPercent(state,data){
       state.uploadPercent=data;
+    },
+    setNotificationDisplay(state,data){
+      state.showNotification=data;
+    },
+    setNotificationMsg(state,data){
+      state.notificationMsg=data;
+    },
+    setNotificationSuccess(state,data){
+      state.isNotificationSuccess=data;
     }
   },
   actions: {
@@ -30,6 +42,7 @@ export default new Vuex.Store({
       }
       catch(err){
         console.log(err);
+
       }
     },   
     async uploadImage({commit},data){
@@ -44,11 +57,23 @@ export default new Vuex.Store({
               setTimeout(()=>{commit('setUploadPercent',0);},1000);
             }
           } 
-        });        
+        });
+              
+        commit('setNotificationMsg',resp.data);
+        commit('setNotificationSuccess',true);
       }
       catch(err){
         console.log(err);
+        commit('setNotificationMsg',err);
+        commit('setNotificationSuccess',false);
       }
+      commit('setNotificationDisplay',true);
+        setTimeout(() => {
+          commit('setNotificationDisplay',false);
+        }, 3000);  
+    },
+    closeNotification({commit}){
+      commit('setNotificationDisplay',false);
     }
   },
   modules: {

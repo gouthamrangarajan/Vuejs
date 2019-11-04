@@ -1,8 +1,7 @@
 <template>
     <nav class="navbar is-transparent is-fixed-top">
-  <div class="navbar-brand container">
-    <transition name="fade" mode="in-out">
-        <div class="navbar-item buttons">        
+  <transition-group name="fade" class="navbar-brand container" tag="div">       
+        <div class="navbar-item buttons" :key="1">        
             <a class="button is-info" @click="$refs.fl.click()">
                 <span class="icon">
                 <i class="fas fa-upload"></i>
@@ -11,16 +10,22 @@
                 <input type="file" single ref="fl" v-show="false" @change="fileChanged">
             </a>  
             <a :class="{'button is-primary':true,'is-loading':uploadPercent>0}" @click="upload">Upload</a>
-        </div>      
-    </transition>
-    </div>    
+        </div>        
+         <div class="navbar-item" :key="2">
+            <notification></notification>
+        </div>  
+  </transition-group>    
 </nav>
 </template>
 <script>
+import Notification from '@/components/Notification.vue'
 export default {
     name:'NavBar',
     data(){
         return {fl:{}}
+    },
+    components:{
+        Notification
     },
     methods:{
         fileChanged(ev){

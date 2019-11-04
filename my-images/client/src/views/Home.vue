@@ -10,7 +10,7 @@
                   </template>
               </div>        
           </transition-group>            
-      </div>
+      </div>      
     </div>
   </section>
 </template>
