@@ -1,7 +1,7 @@
 <template>       
 <div class="card" :id="'card'+num">
     <div class="card-image">
-        <figure class="image is-4by3" @click="$emit('imageSelected')">
+        <figure class="image" @click="$emit('imageSelected')">
          <img :src="'/imgs/'+num"/>
         </figure>
     </div>

@@ -3,11 +3,13 @@
     <div class="modal is-active" v-show="open">
         <div class="modal-background" v-show="showBckg"></div>
         <div class="modal-content">
-            <p class="image is-4by3" v-if="imageNum>0">
+            <p class="image" v-if="imageNum>0">
              <img :src="'/imgs/'+imageNum"/>
             </p>
         </div>
-        <button class="modal-close is-large" aria-label="close" @click.stop="close"></button>
+        <transition name="fade">
+            <button class="modal-close is-large" aria-label="close" @click.stop="close" v-show="showBckg"></button>
+        </transition>
     </div>
   </transition>
 </template>

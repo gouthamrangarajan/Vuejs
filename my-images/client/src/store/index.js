@@ -26,6 +26,9 @@ export default new Vuex.Store({
       state.showNotification=data;
     },
     setNotificationMsg(state,data){
+      if(data.toString().indexOf("400")>-1){
+        data="Invalid file.";
+      }
       state.notificationMsg=data;
     },
     setNotificationSuccess(state,data){
@@ -41,8 +44,7 @@ export default new Vuex.Store({
         commit('setImgModified',resp.data);
       }
       catch(err){
-        console.log(err);
-
+        console.log(err);        
       }
     },   
     async uploadImage({commit},data){
@@ -63,7 +65,7 @@ export default new Vuex.Store({
         commit('setNotificationSuccess',true);
       }
       catch(err){
-        console.log(err);
+        console.log(err);        
         commit('setNotificationMsg',err);
         commit('setNotificationSuccess',false);
       }

@@ -5,7 +5,9 @@ const fs=require('fs')
 const fileUpload = require('express-fileupload');
 
 const port=process.env.PORT||3000
-app.use(fileUpload());
+app.use(fileUpload({
+    limits: { fileSize: 7 * 1024 * 1024 },
+  }));
 
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname+'/client/dist'+'/index.html'));
@@ -43,14 +45,17 @@ app.get('/*',(req,res)=>{
 })
 app.post('/upload', function(req, res) {
     if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send('No files were uploaded.');
+      return res.status(400).json('No files were uploaded.');
     }  
     // The name of the input field (i.e. "myImage") is used to retrieve the uploaded file
     let fl = req.files.myImage;   
     let validTypes=[".jpg",".jpeg",".gif",".png"];
     if(!validTypes.includes(fl.name.toLowerCase().substring(fl.name.indexOf(".")))){
-        return res.status(400).send('Invalid file type.');
+        return res.status(400).json('Invalid file type.');
     }    
+    if(fl.size>7340032){
+        return res.status(400).json("Invalid file size.");
+    }
     // Use the mv() method to place the file somewhere on your server
     fs.readdir(__dirname+'/imgs',(err,files)=>{              
         var len=files.length;
