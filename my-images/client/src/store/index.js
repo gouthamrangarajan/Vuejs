@@ -26,7 +26,9 @@ export default new Vuex.Store({
       state.showNotification=data;
     },
     setNotificationMsg(state,data){
-      if(data.toString().indexOf("400")>-1){
+      if(data.toString().indexOf("400") >-1 || 
+       data.toString().indexOf("413")>-1)
+      {
         data="Invalid file.";
       }
       state.notificationMsg=data;

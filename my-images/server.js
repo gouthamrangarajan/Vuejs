@@ -10,7 +10,7 @@ app.use(fileUpload({
   }));
 
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname+'/client/dist'+'/index.html'));
+    res.sendFile(path.join(__dirname,'client/dist/index.html'));
 })
 app.get('/imgs/total',(req,res)=>{  
     fs.readdir(__dirname+'/imgs',(err,files)=>{                      
@@ -50,7 +50,7 @@ app.post('/upload', function(req, res) {
     // The name of the input field (i.e. "myImage") is used to retrieve the uploaded file
     let fl = req.files.myImage;   
     let validTypes=[".jpg",".jpeg",".gif",".png"];
-    if(!validTypes.includes(fl.name.toLowerCase().substring(fl.name.indexOf(".")))){
+    if(!validTypes.includes(path.extname(fl.name.toLowerCase()))){
         return res.status(400).json('Invalid file type.');
     }    
     if(fl.size>7340032){

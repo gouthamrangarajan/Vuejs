@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-grey is-bold">
+  <section class="hero is-light is-bold">
     <div class="hero-body">
       <div class="container">  
           <modal :open="showModal" @close="showModal=false" :imageNum="selectedImgNum"></modal>     
@@ -62,7 +62,7 @@ export default {
 
 .imgs-enter,.imgs-leave-to{
   opacity: 0;
-  transform: translateX(1rem);
+  transform: translateX(10rem);
 }
 
 </style>

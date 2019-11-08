@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-transparent is-fixed-top">
+    <nav class="navbar is-dark is-fixed-top is-bold">
   <transition-group name="fade" class="navbar-brand container" tag="div">       
         <div class="navbar-item buttons" :key="1">        
             <a class="button is-info" @click="$refs.fl.click()">
@@ -56,5 +56,7 @@ export default {
 }
 </script>
 <style scoped>
-
+    nav{
+        height:1.2rem!important;
+    }
 </style>
