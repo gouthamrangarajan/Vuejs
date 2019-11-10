@@ -29,8 +29,11 @@ export default {
                     return true;
                 }
             })[0];    
-            if(dt)        
-                return dt.substr(0,16).replace("T"," ");
+            if(dt)       
+            {                
+                var dat=new Date(dt);
+                return dat.toLocaleDateString() +" "+ dat.toLocaleTimeString() ;
+            }
             else
              return '';
         }
