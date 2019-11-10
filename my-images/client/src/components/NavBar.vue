@@ -50,7 +50,7 @@ export default {
             setTimeout(()=>{
                 var elToScroll=document.getElementById('card'+newVal);
                 elToScroll.scrollIntoView();
-            },300)
+            },500)
         }
     }
 }

@@ -33,4 +33,7 @@ export default {
 .fade-leave-to{
   opacity: 0;
 }
+#app{
+  font-family: 'Roboto', sans-serif;
+}
 </style>

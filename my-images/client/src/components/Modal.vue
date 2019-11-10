@@ -55,4 +55,7 @@ export default {
  .modal-leave-to{
      transform: scale(0) skewX(60deg);
  }
+ .modal{
+     z-index: 101;
+ }
 </style>
