@@ -56,8 +56,9 @@ export default {
 .slider .column{
   width:20rem!important;
 }
-.slider img{
-  height:10rem!important;     
+.slider {
+  height:22vh;
+  overflow: hidden;     
 }
 
 </style>

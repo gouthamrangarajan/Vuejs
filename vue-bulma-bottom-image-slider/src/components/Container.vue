@@ -1,14 +1,16 @@
 <template>
 <transition name="imgs" appear>
-    <section>
-  <div v-for="(outInd,outKey) in outerLoop" 
-       class="columns is-gapless imgs" :key="outKey">
-  <figure class="image column"
-          v-for="ind in innerLoop(outInd)"
-          :key="imgs[(outInd-1)*5+(ind-1)].id" 
-          >
-    <img :src="imgs[(outInd-1)*5+(ind-1)].src"/>
-  </figure>
+  <section class="hero is-light is-bold">
+  <div class="hero-body">
+    <div v-for="(outInd,outKey) in outerLoop" 
+        class="columns imgs" :key="outKey">
+    <figure class="image column"
+            v-for="ind in innerLoop(outInd)"
+            :key="imgs[(outInd-1)*5+(ind-1)].id" 
+            >
+      <img :src="imgs[(outInd-1)*5+(ind-1)].src"/>
+    </figure>
+    </div>
   </div>
   </section>
 </transition>
@@ -49,11 +51,16 @@ export default {
   opacity:0;
   transform:translateX(1rem);
 }
-section{
-  margin-bottom:10.1rem;
-}
-.imgs img{
-  height:18.8rem;
+
+.imgs img{  
   cursor:pointer;
+}
+.imgs{
+  height: 22vh;
+  overflow: hidden;
+}
+.hero{
+ height: 72vh;
+ overflow: auto;
 }
 </style>
