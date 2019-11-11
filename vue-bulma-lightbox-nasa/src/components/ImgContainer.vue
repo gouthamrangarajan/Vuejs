@@ -1,19 +1,20 @@
 <template>
 <transition name="imgs" appear>
-<section>
-  <div v-for="(outInd,outKey) in outerLoop" class="columns is-gapless imgs" :key="outKey">
-  <figure class="image column"
-          v-for="ind in innerLoop(outInd)"
-          :key="imgs[(outInd-1)*5+(ind-1)].id" 
-          @click.stop="$emit('selected',(imgs[(outInd-1)*5+(ind-1)].id))">
-    <img  class="column"
-         :src="imgs[(outInd-1)*5+(ind-1)].src"
-         />
-  </figure>
-  </div>
+<section class="hero is-light is-bold">
+  <div class="hero-body">
+      <div v-for="(outInd,outKey) in outerLoop" class="columns  imgs" :key="outKey">
+        <figure class="image column"
+                v-for="ind in innerLoop(outInd)"
+                :key="imgs[(outInd-1)*5+(ind-1)].id" 
+                @click.stop="$emit('selected',(imgs[(outInd-1)*5+(ind-1)].id))">
+          <img  class="column"
+              :src="imgs[(outInd-1)*5+(ind-1)].src"
+              />
+        </figure>
+      </div>
+    </div>
   </section>
-  </transition>
-     
+  </transition>     
 </template>
 <script lang="ts">
 import { Component, Vue,Prop } from 'vue-property-decorator';
@@ -45,7 +46,13 @@ export default class ImgContainer extends Vue{
   margin-bottom:0 !important;
 }
 .imgs img{
-  height:18.8rem;
   cursor:pointer;
+}
+.imgs{
+  height:22vh;
+  overflow: hidden;
+}
+.hero{
+  height: 93vh;
 }
 </style>

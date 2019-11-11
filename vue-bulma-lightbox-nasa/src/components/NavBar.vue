@@ -14,4 +14,8 @@ export default class NavBar extends Vue{
 
 }
 </script>
-
+<style scoped>
+nav{
+  height: 1.2rem;
+}
+</style>
