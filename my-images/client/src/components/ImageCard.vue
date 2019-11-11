@@ -47,4 +47,8 @@ img{
 .card:hover{
     box-shadow:0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
 }
+.card-image{
+    max-height: 43vh;
+    overflow: hidden;
+}
 </style>

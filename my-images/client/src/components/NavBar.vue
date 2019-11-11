@@ -58,5 +58,6 @@ export default {
 <style scoped>
     nav{
         height:1.2rem!important;
+        z-index: 101;
     }
 </style>
