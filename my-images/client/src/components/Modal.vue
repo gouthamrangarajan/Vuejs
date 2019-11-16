@@ -56,6 +56,6 @@ export default {
      transform: scale(0) skewX(60deg);
  }
  .modal{
-     z-index: 102;
+     z-index: 103;
  }
 </style>

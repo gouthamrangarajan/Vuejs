@@ -106,5 +106,6 @@ export default {
   position: absolute;
   width:100%;
   margin-top:-1.5rem;  
+  z-index:100;
 }
 </style>

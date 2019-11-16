@@ -74,7 +74,7 @@ img{
 }
 .message{
     position:absolute;
-    z-index:2;
+    z-index:101;
 }
 .alert-enter-active,
 .alert-leave-active{
