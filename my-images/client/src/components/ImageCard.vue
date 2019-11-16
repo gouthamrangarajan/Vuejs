@@ -1,9 +1,11 @@
 <template>       
 <div class="card" :id="'card'+num">
     <div class="card-image">
-        <figure class="image" @click="$emit('imageSelected')">
-         <img :src="'/imgs/'+num"/>
-        </figure>
+        <transition name="fade">
+            <figure class="image" @click="$emit('imageSelected')" v-if="imgId>0">
+                <img :src="'/imgs/'+imgId"/>
+            </figure>
+        </transition>
     </div>
     <div class="card-content">
         <div class="content">             
@@ -48,18 +50,43 @@ export default {
             })[0];    
             if(dt)       
             {                
-                var dat=new Date(dt);
+                var dat=new Date(dt.modified);
                 return dat.toLocaleDateString() ;
             }
             else
              return '';
-        }
+        },
+        imgId(){
+              var dt= this.$store.state.imgModified.filter((el,ind)=>{
+                if(ind+1==this.num){
+                    return true;
+                }
+            })[0];    
+            if(dt)       
+            {                
+              return parseInt(dt.fileId);
+            }
+            else
+             return -1;
+        },
+         imgsLen(){return this.$store.state.imgLen;},
     },
     methods:{
         deleteImg(){
             this.isProcessing=true;
-            this.$store.dispatch('deleteImg',this.num);                     
+            this.$store.dispatch('deleteImg',this.imgId);                     
+            setTimeout(()=>{
+                this.isProcessing=false;
+                this.showAlert=false;
+            },300);
         }
+    },
+    watch:{
+        imgsLen(newVal,oldVal){        
+            if(newVal<oldVal){
+                this.$forceUpdate();                    
+            }
+      }
     }
 }
 </script>

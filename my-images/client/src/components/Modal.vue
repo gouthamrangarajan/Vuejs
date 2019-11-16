@@ -3,8 +3,8 @@
     <div class="modal is-active" v-show="open">
         <div class="modal-background" v-show="showBckg"></div>
         <div class="modal-content">
-            <p class="image" v-if="imageNum>0">
-             <img :src="'/imgs/'+imageNum"/>
+            <p class="image" v-if="imageInd>0">
+             <img :src="'/imgs/'+imgId"/>
             </p>
         </div>
         <transition name="fade">
@@ -20,7 +20,7 @@ export default {
         return {showBckg:false}
     },
     props:{
-      imageNum:{
+      imageInd:{
           type:Number,
           required:true
       },
@@ -42,6 +42,21 @@ export default {
                     this.showBckg=true;
                 },500);
             }         
+        }
+    },
+    computed:{
+         imgId(){
+              var dt= this.$store.state.imgModified.filter((el,ind)=>{
+                if(ind+1==this.imageInd){
+                    return true;
+                }
+            })[0];    
+            if(dt)       
+            {                
+              return parseInt(dt.fileId);
+            }
+            else
+             return -1;
         }
     }
 }

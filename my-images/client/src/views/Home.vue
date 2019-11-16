@@ -2,7 +2,7 @@
   <section class="hero is-light is-bold">
     <div class="hero-body">
       <div class="container">  
-          <modal :open="showModal" @close="showModal=false" :imageNum="selectedImgNum"></modal> 
+          <modal :open="showModal" @close="showModal=false" :imageInd="selectedImgInd"></modal> 
           <div class="field">
             <div class="control is-pulled-right">
               <label class="checkbox has-text-danger">
@@ -11,13 +11,13 @@
               </label>
             </div>
          </div>    
-          <div class="columns" v-for="num in outerLen" :key="num">
-              <div class="column is-4" v-for="innum in 3" :key="'in'+num+innum">
-                <transition name="img" appear>
-                  <template v-if="showImgs && getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0" appear>
-                    <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"
-                       @imageSelected="changeSelImg(getImgNum(num,innum))"></image-card>
-                  </template>
+          <div class="columns" tag="div" v-for="num in outerLen" :key="num">
+              <div class="column is-4" v-for="innum in 3" :key="'in'+num+innum">   
+                <transition name="img">                           
+                  <template v-if="showImgs && getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0"> 
+                    <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"                      
+                        @imageSelected="changeSelImg(getImgNum(num,innum))"></image-card>                
+                  </template>           
                 </transition>
               </div>        
           </div>  
@@ -41,7 +41,7 @@ import Modal from '@/components/Modal.vue'
 export default {
   name: 'home',
   data(){
-    return {selectedImgNum:-1,showModal:false,reverseData:false,showImgs:true}
+    return {selectedImgInd:-1,showModal:false,reverseData:false,showImgs:true}
   },
   components: {
     ImageCard,Modal
@@ -54,7 +54,7 @@ export default {
   },
   methods:{
     changeSelImg(num){
-      this.selectedImgNum=num;
+      this.selectedImgInd=num;
       this.showModal=true;
     },
     getImgNum(outerNum,innerNum){
@@ -78,8 +78,7 @@ export default {
   watch:{
     reverseData(){this.refreshAll();},
     imgsLen(newVal,oldVal){        
-      if(newVal<oldVal){
-        this.$forceUpdate();    
+      if(newVal<oldVal){         
         this.refreshAll();   
       }
     }
@@ -103,6 +102,9 @@ export default {
 .img-enter,.img-leave-to{
   opacity: 0;
   transform: translateX(10rem);
+}
+.img-move{
+  transition:all 0.3s;
 }
 .field{
   position: absolute;
