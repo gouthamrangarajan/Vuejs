@@ -23,7 +23,7 @@ app.get('/imgs/modified',(req,res)=>{
         var len=files.length;
         var ind=0;
         files.forEach(fl=>{
-            fs.stat(__dirname+'/imgs/'+fl,function(err,stats){                
+            fs.stat(__dirname+'/imgs/'+fl,function(err,stats){                         
                 if(stats&&stats.mtime){
                     modified.push(stats.mtime)
                 }
@@ -35,13 +35,48 @@ app.get('/imgs/modified',(req,res)=>{
     });
 })
 app.get('/imgs/:id',(req,res)=>{
-    var id=req.params.id;
+    let id=req.params.id;
     res.sendFile(path.join(__dirname+'/imgs/'+id+'.jpg'));
 })
 
 app.get('/*',(req,res)=>{
-    var srcPath=req.params[0];
+    let srcPath=req.params[0];
     res.sendFile((path.join(__dirname+'/client/dist/'+srcPath)));
+})
+app.delete('/imgs/:id',(req,res)=>{
+    let id=req.params.id;
+    let location=path.join(__dirname+'/imgs/'+id+'.jpg');
+    fs.unlink(location, (err) => {
+        if (err) {
+            res.status(500).json('Error');
+        }
+        else{
+            let errorRetry=0;
+            fs.readdir(__dirname+'/imgs',(err,files)=>{                                      
+                let errored=false;
+                let ind=1;
+                while(errorRetry<3){
+                    errored=false;
+                    ind=1;
+                    files.forEach(fl=>{                    
+                        fs.rename(__dirname+'/imgs/'+fl, __dirname+'/imgs/'+ind+'.jpg', function(err) {
+                            if ( err ){
+                                console.log('ERROR: ' + err);
+                                errorRetry++;
+                                errored=true;
+                            }
+                        });
+                        ind++;                 
+                    });
+                    if(errored==false){
+                        errorRetry=4;
+                    }                    
+                }
+            });   
+            //file removed
+            res.json('Image removed.');         
+        }     
+    });            
 })
 app.post('/upload', function(req, res) {
     if (!req.files || Object.keys(req.files).length === 0) {

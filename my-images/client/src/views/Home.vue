@@ -14,9 +14,9 @@
           <div class="columns" v-for="num in outerLen" :key="num">
               <div class="column is-4" v-for="innum in 3" :key="'in'+num+innum">
                 <transition name="img" appear>
-                  <template v-if="getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0 && showImgs" appear>
-                    <image-card :num="getImgNum(num,innum)" @imageSelected="changeSelImg(getImgNum(num,innum))"
-                      ></image-card>
+                  <template v-if="showImgs && getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0" appear>
+                    <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"
+                     @imageSelected="changeSelImg(getImgNum(num,innum))"></image-card>
                   </template>
                 </transition>
               </div>        
@@ -63,17 +63,23 @@ export default {
          data=(this.imgsLen+1)-data;
        }       
        return data;
+    },
+    refreshAll(){
+      this.showImgs=false;
+      setTimeout(()=>{
+        this.showImgs=true;
+      },300);
+
     }
   },
   mounted(){
     
   },
   watch:{
-    reverseData(){
-      this.showImgs=false;
-      setTimeout(()=>{
-        this.showImgs=true;
-      },300);
+    reverseData(){this.refreshAll();},
+    imgsLen(newVal,oldVal){
+      if(newVal<oldVal)
+        this.refreshAll();
     }
   }
 }
@@ -99,7 +105,6 @@ export default {
 .field{
   position: absolute;
   width:100%;
-  margin-top:-1.5rem;
-  z-index: 100;
+  margin-top:-1.5rem;  
 }
 </style>

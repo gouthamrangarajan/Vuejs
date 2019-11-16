@@ -47,10 +47,12 @@ export default {
     },
     watch:{
         imgsLen(newVal,oldVal){
-            setTimeout(()=>{
-                var elToScroll=document.getElementById('card'+newVal);
-                elToScroll.scrollIntoView();
-            },500)
+            if(newVal>0){
+                setTimeout(()=>{
+                    var elToScroll=document.getElementById('card'+newVal);
+                    elToScroll.scrollIntoView();
+                },500)
+            }
         }
     }
 }

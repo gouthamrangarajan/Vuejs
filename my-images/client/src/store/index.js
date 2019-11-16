@@ -31,6 +31,10 @@ export default new Vuex.Store({
       {
         data="Invalid file.";
       }
+      else if(data.toString().indexOf("500") >-1)
+     {
+       data="Error removing image.";
+     }
       state.notificationMsg=data;
     },
     setNotificationSuccess(state,data){
@@ -49,6 +53,30 @@ export default new Vuex.Store({
         console.log(err);        
       }
     },   
+    async deleteImg({commit},data){
+      try{
+        let resp=await axios.delete('/imgs/'+data);        
+        commit('setNotificationMsg',resp.data);
+        commit('setNotificationSuccess',true);                    
+      }
+      catch(err){
+        commit('setNotificationMsg',err);
+        commit('setNotificationSuccess',false);
+      }
+      commit('setNotificationDisplay',true); 
+      setTimeout(() => {
+        commit('setNotificationDisplay',false);
+      }, 3000);  
+      try{
+        var resp=await axios.get('/imgs/total');        
+        commit('setImgLen',resp.data);
+        resp=await axios.get('/imgs/modified');             
+        commit('setImgModified',resp.data);
+      }
+      catch(err){
+        console.log(err);        
+      }
+    },
     async uploadImage({commit},data){
       try{
         var resp=await axios.post('/upload',data,{
