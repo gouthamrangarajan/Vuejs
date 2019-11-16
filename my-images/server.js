@@ -38,7 +38,7 @@ app.get('/imgs/modified',(req,res)=>{
 app.get('/imgs/:id',(req,res)=>{    
     let id=req.params.id;
     if(id<1)
-        res.send(400).json('Image not found');
+        res.status(400).json('Image not found');
     res.sendFile(path.join(__dirname+'/imgs/'+id+'.jpg'));
 })
 
