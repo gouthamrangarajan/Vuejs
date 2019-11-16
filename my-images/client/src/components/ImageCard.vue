@@ -16,7 +16,8 @@
             <div class="message-body">
                 Are you sure? Once deleted it cannot be undone.
                 <div class="buttons">
-                    <div class="button is-success is-light" @click="deleteImg">Yes</div>
+                    <div :class="{'button is-success':true,'is-loading':isProcessing,'is-light':!isProcessing}"
+                         @click="deleteImg">Yes</div>
                     <div class="button" @click="showAlert=false">No</div>
                 </div>
             </div>
@@ -36,7 +37,7 @@ export default {
         }
     },
     data(){
-        return {showAlert:false}
+        return {showAlert:false,isProcessing:false}
     },
     computed:{
         uploaded(){
@@ -56,6 +57,7 @@ export default {
     },
     methods:{
         deleteImg(){
+            this.isProcessing=true;
             this.$store.dispatch('deleteImg',this.num);                     
         }
     }

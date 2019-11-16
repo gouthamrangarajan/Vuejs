@@ -16,7 +16,7 @@
                 <transition name="img" appear>
                   <template v-if="showImgs && getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0" appear>
                     <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"
-                     @imageSelected="changeSelImg(getImgNum(num,innum))"></image-card>
+                       @imageSelected="changeSelImg(getImgNum(num,innum))"></image-card>
                   </template>
                 </transition>
               </div>        
@@ -77,9 +77,11 @@ export default {
   },
   watch:{
     reverseData(){this.refreshAll();},
-    imgsLen(newVal,oldVal){
-      if(newVal<oldVal)
-        this.refreshAll();
+    imgsLen(newVal,oldVal){        
+      if(newVal<oldVal){
+        this.$forceUpdate();    
+        this.refreshAll();   
+      }
     }
   }
 }

@@ -59,13 +59,14 @@ app.delete('/imgs/:id',(req,res)=>{
                     errored=false;
                     ind=1;
                     files.forEach(fl=>{                    
-                        fs.rename(__dirname+'/imgs/'+fl, __dirname+'/imgs/'+ind+'.jpg', function(err) {
-                            if ( err ){
-                                console.log('ERROR: ' + err);
-                                errorRetry++;
-                                errored=true;
-                            }
-                        });
+                        try{
+                            fs.renameSync(__dirname+'/imgs/'+fl, __dirname+'/imgs/'+ind+'.jpg');
+                        }
+                        catch(err){                                                  
+                            console.log('ERROR: ' + err);
+                            errorRetry++;
+                            errored=true;                            
+                        }
                         ind++;                 
                     });
                     if(errored==false){
