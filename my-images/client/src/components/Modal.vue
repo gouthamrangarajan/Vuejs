@@ -4,7 +4,7 @@
         <div class="modal-background" v-show="showBckg"></div>
         <div class="modal-content">
             <p class="image" v-if="imageInd>0">
-             <img :src="'/imgs/'+imgId"/>
+             <img :src="'/imgs/'+imgId" />
             </p>
         </div>
         <transition name="fade">
@@ -33,16 +33,17 @@ export default {
         close(){
             this.showBckg=false;
             this.$emit('close');
-        }
+        },        
     },
     watch:{
         open(newVal,oldVal){
             if(newVal==true){
                 setTimeout(()=>{
-                    this.showBckg=true;
-                },500);
-            }         
-        }
+                    this.showBckg=true;                                      
+                },300);               
+            }                
+        },
+       
     },
     computed:{
          imgId(){
@@ -57,18 +58,18 @@ export default {
             }
             else
              return -1;
-        }
+        },      
     }
 }
 </script>
 <style scoped>
  .modal-enter-active,
  .modal-leave-active{
-     transition:all 0.5s;
+     transition:all 0.3s;
  }
  .modal-enter,
  .modal-leave-to{
-     transform: scale(0) skewX(60deg);
+     transform: scaleX(0);
  }
  .modal{
      z-index: 103;
