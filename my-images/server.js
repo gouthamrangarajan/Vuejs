@@ -43,8 +43,15 @@ app.get('/imgs/:id',(req,res)=>{
 })
 
 app.get('/*',(req,res)=>{
-    let srcPath=req.params[0];
-    res.sendFile((path.join(__dirname+'/client/dist/'+srcPath)));
+    let srcPath=req.params[0];   
+    let availTypes=[".css",".js",".ico"];
+    let srcPathextn=path.extname(srcPath.toLowerCase());
+    if(availTypes.includes(srcPathextn)){        
+        res.sendFile((path.join(__dirname+'/client/dist/'+srcPath)));
+    }
+    else{        
+        res.sendFile((path.join(__dirname+'/client/dist/index.html')));
+    }
 })
 app.delete('/imgs/:id',(req,res)=>{
     let id=req.params.id;
