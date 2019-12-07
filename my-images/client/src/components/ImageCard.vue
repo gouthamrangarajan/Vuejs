@@ -1,32 +1,22 @@
 <template>       
-<div class="card" :id="'card'+num">
+<div class="card z-depth-5 hoverable" :id="'card'+num"  v-if="imgId>0" style="overflow:visible">
     <div class="card-image">
-        <transition name="fade">
-            <figure class="image" @click="$emit('imageSelected')" v-if="imgId>0">
-                <img :src="'/imgs/'+imgId"/>
-            </figure>
-        </transition>
-    </div>
-    <div class="card-content">
-        <div class="content">             
-            <p>{{uploaded}}</p>         
-        </div>              
-    </div>
-    <div class="card-footer">
-      <transition name="alert">
-         <div class="message is-danger" v-show="showAlert">
-            <div class="message-body">
-                Are you sure? Once deleted it cannot be undone.
-                <div class="buttons">
-                    <div :class="{'button is-success':true,'is-loading':isProcessing,'is-light':!isProcessing}"
-                         @click="deleteImg">Yes</div>
-                    <div class="button" @click="showAlert=false">No</div>
-                </div>
-            </div>
+        <transition-group name="fade">   
+            <template v-if="imgId>0">       
+                <img :src="'/imgs/'+imgId" :key="1" class="materialboxed" :data-caption="uploaded" />   
+                <span class="card-title" :key="2">{{uploaded}}</span>                         
+            </template>
+        </transition-group>
+    </div>  
+    <transition name="fade">
+        <div class="card-reveal" v-show="!isProcessing">
+            <span class="card-title red-text text-darken-4">Are you sure?<i class="material-icons right grey-text text-darken-1">close</i></span>
+            <p>This action is permanent and cannot be undone.</p>
+            <a :class="{'btn blue waves-effect waves-light right':true,'disabled':isProcessing}" @click="deleteImg">Proceed</a>
         </div>
-      </transition>
-        <a class="card-footer-item button is-danger is-outlined" @click="showAlert=true">Remove</a>
-    </div>
+    </transition>
+    <a class="btn-floating halfway-fab waves-effect waves-light grey darken-1 btn-small activator"
+     :key="3"><i class="material-icons">delete</i></a>  
 </div>               
 </template>
 <script>
@@ -39,7 +29,10 @@ export default {
         }
     },
     data(){
-        return {showAlert:false,isProcessing:false}
+        return {isProcessing:false}
+    },
+    mounted(){
+    
     },
     computed:{
         uploaded(){
@@ -73,44 +66,22 @@ export default {
     },
     methods:{
         deleteImg(){
-            this.isProcessing=true;
-            this.$store.dispatch('deleteImg',this.imgId);                     
+            this.isProcessing=true;                  
+            this.$store.dispatch('deleteImg',this.imgId);
             setTimeout(()=>{
-                this.isProcessing=false;
-                this.showAlert=false;
-            },300);
+                this.isProcessing=false;                             
+            },300);            
         }
     },
     watch:{
-        imgsLen(newVal,oldVal){        
-            if(newVal<oldVal){
-                this.$forceUpdate();                    
-            }
-      }
+       
     }
 }
 </script>
 <style scoped>
-img{
-    cursor: pointer;
-}
-.card:hover{
-    box-shadow:0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
-}
 .card-image{
-    max-height: 43vh;
+    max-height: 38vh;
     overflow: hidden;
 }
-.message{
-    position:absolute;
-    z-index:101;
-}
-.alert-enter-active,
-.alert-leave-active{
-    transition:all 0.3s;
-}
-.alert-enter,.alert-leave-to{
-    opacity: 0;
-    transform: translateX(-1rem);
-}
+
 </style>

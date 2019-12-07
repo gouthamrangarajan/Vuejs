@@ -1,15 +1,9 @@
-<template>
-    <transition name="slide">      
-        <div :class="{'notification':true,'is-success':isSuccess,'is-danger':isSuccess==false}"
-            v-show="showNotification">
-            <button class="delete" @click="close"></button>
-            {{msg}}
-        </div>      
-    </transition>
-</template>
 <script>
 export default {
     name:'Notification',
+    render(){
+        return null;
+    },
     computed:{
         showNotification(){
             return this.$store.state.showNotification;
@@ -22,21 +16,28 @@ export default {
         }        
     },
     methods:{
-        close(){
-            this.$store.dispatch('closeNotification');
+
+    },
+    watch:{
+        showNotification(newVal,oldVal){            
+            if(newVal){
+                var toastHTML = this.msg;
+                var classes='white-text';
+                if(this.isSuccess){
+                    classes+=' green darken-4';                     
+                }
+                else{
+                    classes+= ' red darken-4';
+                }
+                M.toast({html: toastHTML,classes});
+                setTimeout(()=>{
+                    this.$store.dispatch('refreshImgInfo');
+                },500);
+            }
         }
     }
 }
 </script>
 <style scoped>
-.notification{    
-    z-index:200;        
-}
-.slide-enter-active,.slide-leave-active{
-    transition:all 0.3s;
-}
-.slide-enter,
-.slide-leave-to{
-    transform: translateY(-20rem);
-}
+
 </style>

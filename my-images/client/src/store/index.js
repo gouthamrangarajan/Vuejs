@@ -99,10 +99,10 @@ export default new Vuex.Store({
         commit('setNotificationMsg',err);
         commit('setNotificationSuccess',false);
       }
-      commit('setNotificationDisplay',true);
+      commit('setNotificationDisplay',false);
         setTimeout(() => {
-          commit('setNotificationDisplay',false);
-        }, 3000);  
+          commit('setNotificationDisplay',true);
+        }, 500);  
     },
     closeNotification({commit}){
       commit('setNotificationDisplay',false);

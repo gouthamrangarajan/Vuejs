@@ -1,23 +1,25 @@
 <template>
-  <div id="app">  
-    <nav-bar></nav-bar>
-    <router-view/>
+  <div id="app" class="grey lighten-4">   
+    <side-nav/>   
+    <router-view :key="$route.fullPath"/>
+    <notification></notification>
   </div>
 </template>
 <script>
-import 'bulma/css/bulma.min.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import NavBar from '@/components/NavBar.vue'
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
+import SideNav from '@/components/SideNav.vue'
+import Notification from '@/components/Notification.vue'
 export default {
   name:'App',
-  mounted(){
+  mounted(){    
      this.$store.dispatch('refreshImgInfo');     
   },
   components:{
-    NavBar
+    SideNav,Notification
   },
   created(){
-    document.body.classList.add("has-navbar-fixed-top");
+
   }
 }
 </script>
@@ -35,5 +37,11 @@ export default {
 }
 #app{
   font-family: 'Roboto', sans-serif;
+}
+section{
+   height: 95vh;
+   overflow-Y: auto;
+   overflow-X:hidden;
+   scroll-behavior: smooth;
 }
 </style>
