@@ -9,7 +9,7 @@
   </div>  
   <transition-group  name="img" tag="div" :key="2">
     <div class="row clearfix" tag="div" v-for="num in outerLen" :key="num" v-show="showImgs">
-            <div class="col l4" v-for="innum in 3" :key="'in'+num+innum">   
+            <div class="col m4" v-for="innum in 3" :key="'in'+num+innum">   
               <transition name="img">                           
                 <template v-if="getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0"> 
                   <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"></image-card>                
