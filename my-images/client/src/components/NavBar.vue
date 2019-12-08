@@ -5,14 +5,16 @@
         <a class="brand-logo center">My Photos</a>
       </div>  
   </nav>    
-   <a data-target="slide-out" class="sidenav-trigger btn btn-large btn-flat white-text cyan darken-1"><i class="material-icons">menu</i></a>
+   <a data-target="slide-out" class="sidenav-trigger btn btn-large btn-flat white-text cyan darken-1">
+     <i class="material-icons">menu</i>
+    </a>
   <ul id="slide-out" class="sidenav">   
-      <li :class="{'active':active=='home'}"><router-link to="/">Home</router-link></li>
+      <li :class="{'active cyan':active=='home'}"><router-link to="/" class="waves-effect waves-light">Home</router-link></li>
       <li><div class="divider"></div></li>
       <li><a class="subheader">Kool Effects</a></li>
-      <li :class="{'active':active=='carousel'}"><router-link to="/carousel">Carousel</router-link></li>     
-      <li :class="{'active':active=='slider'}"><router-link to="/slider">Slider</router-link></li>   
-      <li :class="{'active':active=='fullslider'}"><router-link to="/fullslider">Fullscreen Slider</router-link></li>      
+      <li :class="{'active cyan':active=='carousel'}"><router-link to="/carousel" class="waves-effect waves-light">Carousel</router-link></li>     
+      <li :class="{'active cyan':active=='slider'}"><router-link to="/slider" class="waves-effect waves-light">Slider</router-link></li>   
+      <li :class="{'active cyan':active=='fullslider'}"><router-link to="/fullslider" class="waves-effect waves-light">Fullscreen Slider</router-link></li>      
     </ul>
  </div>    
 </template>

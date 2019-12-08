@@ -5,7 +5,7 @@
     <ul class="slides">
       <li v-for="(num,ind) in imgsLen" :key="num">
         <img :src="'/imgs/'+num">
-        <div class="caption center-align">       
+        <div class="caption right-align">       
            <h3>{{uploaded[ind] | localDate}}</h3>   
            <template v-if="isFullScreen">
               <router-link to="/"  class="btn btn-large light-blue darken-4">Home</router-link>
