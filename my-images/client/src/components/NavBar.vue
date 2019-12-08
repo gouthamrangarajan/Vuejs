@@ -1,6 +1,11 @@
 <template>
  <div>
-   <a href="#"  data-target="slide-out" class="sidenav-trigger btn cyan darken-1"><i class="material-icons">menu</i></a>
+   <nav class="cyan darken-1">  
+      <div class="nav-wrapper">
+        <a class="brand-logo center">My Photos</a>
+      </div>  
+  </nav>    
+   <a data-target="slide-out" class="sidenav-trigger btn btn-large btn-flat white-text cyan darken-1"><i class="material-icons">menu</i></a>
   <ul id="slide-out" class="sidenav">   
       <li :class="{'active':active=='home'}"><router-link to="/">Home</router-link></li>
       <li><div class="divider"></div></li>
@@ -13,7 +18,7 @@
 </template>
 <script>
 export default {
-    name:'SideNav',
+    name:'NavBar',
     mounted(){
          var elems = document.querySelectorAll('.sidenav');
          var instances = M.Sidenav.init(elems, null);
@@ -28,3 +33,14 @@ export default {
     }    
 }
 </script>
+<style scoped>
+nav, .sidenav-trigger{
+  height: 2.8rem;
+  line-height: 2.8rem;
+}
+.sidenav-trigger{
+  position: fixed;
+  margin-top:-2.8rem;
+  margin-left:-0.5rem;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="grey lighten-4">   
-    <side-nav/>   
+    <nav-bar/>   
     <router-view :key="$route.fullPath"/>
     <notification></notification>
   </div>
@@ -8,7 +8,7 @@
 <script>
 import 'materialize-css/dist/css/materialize.min.css'
 import 'materialize-css/dist/js/materialize.min.js'
-import SideNav from '@/components/SideNav.vue'
+import NavBar from '@/components/NavBar.vue'
 import Notification from '@/components/Notification.vue'
 export default {
   name:'App',
@@ -16,7 +16,7 @@ export default {
      this.$store.dispatch('refreshImgInfo');     
   },
   components:{
-    SideNav,Notification
+    NavBar,Notification
   },
   created(){
 
@@ -39,7 +39,7 @@ export default {
   font-family: 'Roboto', sans-serif;
 }
 section{
-   height: 95vh;
+   height: 94vh;
    overflow-Y: auto;
    overflow-X:hidden;
    scroll-behavior: smooth;
