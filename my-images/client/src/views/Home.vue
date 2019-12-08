@@ -53,7 +53,7 @@ export default {
     intializeMaterialBox(){
        setTimeout(() => {
           var elems = document.querySelectorAll('.materialboxed');
-          var instances = M.Materialbox.init(elems, null);
+          var instances = M.Materialbox.init(elems, {});
         }, 3000);   
     },
     changeSelImg(num){

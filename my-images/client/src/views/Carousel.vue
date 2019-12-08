@@ -1,10 +1,17 @@
 <template>
  <transition name="fade" appear>
    <section>
-    <div class="carousel">
-      <a class="carousel-item" v-for="num in imgsLen" :href="'#'+num+'!'" :key="num">
+    <div class="carousel non-full-width">
+      <a class="carousel-item" v-for="num in imgsLen"  :key="num">
         <img :src="'/imgs/'+num">
       </a>    
+    </div>
+    <div class="container">
+      <div class="carousel carousel-slider">
+        <a class="carousel-item" v-for="num in imgsLen" :key="num">
+          <img :src="'/imgs/'+num">
+        </a>    
+      </div>
     </div>
    </section>
  </transition>
@@ -16,11 +23,18 @@ export default {
     imgsLen(){return this.$store.state.imgLen;},    
   },
   mounted(){
-        var elems = document.querySelectorAll('.carousel');
-        var instances = M.Carousel.init(elems,null);
+        let elems = document.querySelectorAll('.carousel.non-full-width');
+        let instances = M.Carousel.init(elems,{});
+        elems = document.querySelectorAll('.carousel.carousel-slider');
+        instances = M.Carousel.init(elems,{fullwidth:true});
   }
 }
 </script>
 <style scoped>
-
+.container{
+  padding-bottom: 8vh;
+}
+a{
+  cursor: pointer;
+}
 </style>

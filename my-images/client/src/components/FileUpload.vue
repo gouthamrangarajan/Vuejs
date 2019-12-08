@@ -15,7 +15,7 @@ export default {
     name:'FileUpload',
     mounted(){
         var elems = document.querySelectorAll('.fixed-action-btn');
-        var instances = M.FloatingActionButton.init(elems, null);
+        var instances = M.FloatingActionButton.init(elems, {});
     },
      data(){
         return {fl:{}}

@@ -36,7 +36,7 @@ export default {
   },
   mounted(){
     var elems = document.querySelectorAll('.slider');
-    var instances = M.Slider.init(elems, null);
+    var instances = M.Slider.init(elems, {});
   },
   filters:{
     localDate(val){
@@ -53,6 +53,6 @@ export default {
 </script>
 <style scoped>
  section{
-   padding-top:4vh;
+   padding-top:8vh;
  }
 </style>
