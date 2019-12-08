@@ -23,15 +23,14 @@ app.get('/imgs/modified',(req,res)=>{
         var len=files.length;
         var ind=0;
         files.forEach(fl=>{
-            fs.stat(__dirname+'/imgs/'+fl,function(err,stats){   
-                let fileId=fl.replace(path.extname(fl),"");                      
-                if(stats&&stats.mtime){
-                    modified.push({modified:stats.mtime,fileId});
-                }
-                ind++;
-                if(ind==len)
-                res.json(modified);  
-            });
+            let stats=fs.statSync(__dirname+'/imgs/'+fl);            
+            let fileId=fl.replace(path.extname(fl),"");                                     
+            if(stats&&stats.mtime){
+                modified.push({modified:stats.mtime,fileId});
+            }
+            ind++;
+            if(ind==len)
+            res.json(modified);              
         });      
     });
 })
