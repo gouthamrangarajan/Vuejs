@@ -36,7 +36,7 @@ import FileUpload from '@/components/FileUpload.vue'
 export default {
   name: 'home',
   data(){
-    return {selectedImgInd:-1,showModal:false,reverseData:false,showImgs:true}
+    return {reverseData:false,showImgs:true}
   },
   components: {
     ImageCard,FileUpload
@@ -55,11 +55,7 @@ export default {
           var elems = document.querySelectorAll('.materialboxed');
           var instances = M.Materialbox.init(elems, {});
         }, 3000);   
-    },
-    changeSelImg(num){
-      this.selectedImgInd=num;
-      this.showModal=true;
-    },
+    },    
     getImgNum(outerNum,innerNum){     
        var data= (innerNum+((outerNum-1)*3));
        if(this.reverseData){

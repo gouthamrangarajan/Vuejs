@@ -9,6 +9,7 @@
      <i class="material-icons">menu</i>
     </a>
   <ul id="slide-out" class="sidenav">   
+      <li><div class="user-view"></div></li>
       <li :class="{'active cyan':active=='home'}"><router-link to="/" class="waves-effect waves-light">Home</router-link></li>
       <li><div class="divider"></div></li>
       <li><a class="subheader">Kool Effects</a></li>

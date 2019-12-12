@@ -14,10 +14,10 @@ export default new Vuex.Store({
   },
   mutations: {
     setImgLen(state,data){
-      state.imgLen=data;
+      state.imgLen=data;      
     },
     setImgModified(state,data){
-      state.imgModified=data;      
+      state.imgModified=data;            
     },
     setUploadPercent(state,data){
       state.uploadPercent=data;

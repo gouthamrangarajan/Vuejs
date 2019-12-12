@@ -3,10 +3,10 @@
    <section class="container">
       <div :class="{'slider':true,'fullscreen':isFullScreen}">
     <ul class="slides">
-      <li v-for="(num,ind) in imgsLen" :key="num">
-        <img :src="'/imgs/'+num">
+      <li v-for="num in imgsLen" :key="num">
+        <img :src="'/imgs/'+imgIds[num-1]">
         <div class="caption right-align">       
-           <h3>{{uploaded[ind] | localDate}}</h3>   
+           <h3>{{uploaded[num-1] | localDate}}</h3>   
            <template v-if="isFullScreen">
               <router-link to="/"  class="btn btn-large light-blue darken-4">Home</router-link>
            </template>
@@ -26,6 +26,9 @@ export default {
     uploaded(){
         return this.$store.state.imgModified;            
     }, 
+    imgIds(){
+         return this.$store.state.imgModified.map(el=> el.fileId);
+    },
     isFullScreen(){
       var dt=this.$route.name;
       if(dt=="fullslider")
@@ -34,9 +37,19 @@ export default {
         return false;
     }
   },
+  methods:{
+    setUpSlider(){
+      var elems = document.querySelectorAll('.slider');
+      var instances = M.Slider.init(elems, {});
+    }
+  },
   mounted(){
-    var elems = document.querySelectorAll('.slider');
-    var instances = M.Slider.init(elems, {});
+     this.setUpSlider();
+  },
+  watch:{
+    imgsLen(newVal,oldVal){
+      this.setUpSlider();
+    }
   },
   filters:{
     localDate(val){

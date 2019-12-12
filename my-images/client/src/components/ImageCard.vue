@@ -1,8 +1,8 @@
 <template>       
-<div class="card z-depth-5 hoverable" :id="'card'+num"  v-if="imgId>0" style="overflow:visible">
+<div class="card z-depth-5 hoverable" :id="'card'+num"  v-if="num>0" style="overflow:visible">
     <div class="card-image">
         <transition-group name="fade">   
-            <template v-if="imgId>0">       
+            <template v-if="imgId!='-1'">       
                 <img :src="'/imgs/'+imgId" :key="1" class="materialboxed" :data-caption="uploaded" />   
                 <span class="card-title" :key="2">{{uploaded}}</span>                         
             </template>
@@ -57,10 +57,10 @@ export default {
             })[0];    
             if(dt)       
             {                
-              return parseInt(dt.fileId);
+              return dt.fileId;
             }
             else
-             return -1;
+             return '-1';
         },
          imgsLen(){return this.$store.state.imgLen;},
     },

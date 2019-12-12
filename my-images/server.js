@@ -3,6 +3,7 @@ const path = require('path')
 const app =express()
 const fs=require('fs')
 const fileUpload = require('express-fileupload');
+const uuidv4 = require('uuid/v4');
 
 const port=process.env.PORT||3000
 app.use(fileUpload({
@@ -34,10 +35,10 @@ app.get('/imgs/modified',(req,res)=>{
         });      
     });
 })
-app.get('/imgs/:id',(req,res)=>{    
+app.get('/imgs/:id',(req,res)=>{        
     let id=req.params.id;
-    if(id<1)
-        res.status(400).json('Image not found');
+    if(id=="-1"||id=="undefined")
+        res.status(400).json('Image not found');    
     res.sendFile(path.join(__dirname+'/imgs/'+id+'.jpg'));
 })
 
@@ -60,29 +61,6 @@ app.delete('/imgs/:id',(req,res)=>{
             res.status(500).json('Error');
         }
         else{
-            let errorRetry=0;
-            fs.readdir(__dirname+'/imgs',(err,files)=>{                                      
-                let errored=false;
-                let ind=1;
-                while(errorRetry<3){
-                    errored=false;
-                    ind=1;
-                    files.forEach(fl=>{                    
-                        try{
-                            fs.renameSync(__dirname+'/imgs/'+fl, __dirname+'/imgs/'+ind+'.jpg');
-                        }
-                        catch(err){                                                  
-                            console.log('ERROR: ' + err);
-                            errorRetry++;
-                            errored=true;                            
-                        }
-                        ind++;                 
-                    });
-                    if(errored==false){
-                        errorRetry=4;
-                    }                    
-                }
-            });   
             //file removed
             res.json('Image removed.');         
         }     
@@ -102,15 +80,12 @@ app.post('/upload', function(req, res) {
         return res.status(400).json("Invalid file size.");
     }
     // Use the mv() method to place the file somewhere on your server
-    fs.readdir(__dirname+'/imgs',(err,files)=>{              
-        var len=files.length;
-        len++;
-        fl.mv(__dirname+'/imgs/'+len+'.jpg', function(err) {
-            if (err)
-              return res.status(500).send(err);
-        
-            res.json('File uploaded!');
-          });
-    });    
+    fl.mv(__dirname+'/imgs/'+uuidv4()+'.jpg', function(err) {
+        if (err)
+            return res.status(500).send(err);
+    
+        res.json('File uploaded!');
+        });
+       
   });
 app.listen(port,()=>console.log(`listening on port ${port}`))
