@@ -29,7 +29,7 @@ export default {
   },
   watch:{
     $route(to,from){
-       if(to.fullPath.indexOf("fullslider")>-1){
+       if(to.path.toLowerCase().indexOf("fullslider")>-1){
          this.displayNavAndFooter=false;
        }
        else{
