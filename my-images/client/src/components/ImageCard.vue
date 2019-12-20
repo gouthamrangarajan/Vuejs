@@ -20,6 +20,7 @@
 </div>               
 </template>
 <script>
+import {mapGetters} from 'vuex'
 export default {
     name:'ImageCard',   
     props:{
@@ -35,8 +36,9 @@ export default {
     
     },
     computed:{
+        ...mapGetters(['sortedImgModified']),        
         uploaded(){
-            var dt= this.$store.state.imgModified.filter((el,ind)=>{
+            var dt= this.sortedImgModified.filter((el,ind)=>{
                 if(ind+1==this.num){
                     return true;
                 }
@@ -50,7 +52,7 @@ export default {
              return '';
         },
         imgId(){
-              var dt= this.$store.state.imgModified.filter((el,ind)=>{
+              var dt= this.sortedImgModified.filter((el,ind)=>{
                 if(ind+1==this.num){
                     return true;
                 }
@@ -61,8 +63,7 @@ export default {
             }
             else
              return '-1';
-        },
-         imgsLen(){return this.$store.state.imgLen;},
+        }         
     },
     methods:{
         deleteImg(){
@@ -72,15 +73,13 @@ export default {
                 this.isProcessing=false;                             
             },300);            
         }
-    },
-    watch:{
-       
     }
+   
 }
 </script>
 <style scoped>
 .card-image{
-    max-height: 38vh;
+    height: 38vh;
     overflow: hidden;
 }
 

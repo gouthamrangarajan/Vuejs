@@ -15,7 +15,7 @@ app.get('/',(req,res)=>{
 })
 app.get('/imgs/total',(req,res)=>{  
     fs.readdir(__dirname+'/imgs',(err,files)=>{                      
-        res.json(files.length);
+        res.json(files.length-1);
     });
 })
 app.get('/imgs/modified',(req,res)=>{
@@ -24,10 +24,12 @@ app.get('/imgs/modified',(req,res)=>{
         var len=files.length;
         var ind=0;
         files.forEach(fl=>{
-            let stats=fs.statSync(__dirname+'/imgs/'+fl);            
-            let fileId=fl.replace(path.extname(fl),"");                                     
-            if(stats&&stats.mtime){
-                modified.push({modified:stats.mtime,fileId});
+            if(fl!="readme.txt"){
+                let stats=fs.statSync(__dirname+'/imgs/'+fl);            
+                let fileId=fl.replace(path.extname(fl),"");                                     
+                if(stats&&stats.mtime){
+                    modified.push({modified:stats.mtime,fileId});
+                }
             }
             ind++;
             if(ind==len)
@@ -37,14 +39,14 @@ app.get('/imgs/modified',(req,res)=>{
 })
 app.get('/imgs/:id',(req,res)=>{        
     let id=req.params.id;
-    if(id=="-1"||id=="undefined")
+    if(id=="-1"||id=="undefined" || id==undefined)
         res.status(400).json('Image not found');    
     res.sendFile(path.join(__dirname+'/imgs/'+id+'.jpg'));
 })
 
 app.get('/*',(req,res)=>{
     let srcPath=req.params[0];   
-    let availTypes=[".css",".js",".ico"];
+    let availTypes=[".css",".js",".ico",".map"];
     let srcPathextn=path.extname(srcPath.toLowerCase());
     if(availTypes.includes(srcPathextn)){        
         res.sendFile((path.join(__dirname+'/client/dist/'+srcPath)));

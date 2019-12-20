@@ -1,32 +1,36 @@
 <template>
+ <section>
  <transition name="fade" appear>
-   <section v-if="imgsLen>0"> 
+   <div v-if="imgLen>0"> 
     <div class="carousel non-full-width">
-      <a class="carousel-item" v-for="num in imgsLen"  :key="num">
+      <a class="carousel-item" v-for="num in imgLen"  :key="num">
         <img :src="'/imgs/'+imgIds[num-1]">
       </a>    
     </div>
     <div class="container">
       <div class="carousel carousel-slider">
-        <a class="carousel-item" v-for="num in imgsLen" :key="num">
+        <a class="carousel-item" v-for="num in imgLen" :key="num">
           <img :src="'/imgs/'+imgIds[num-1]">
         </a>    
       </div>
     </div>
+   </div>
+    </transition>
    </section>
- </transition>
 </template>
 <script>
+import {mapGetters,mapState} from 'vuex'
 export default {
   name:'Carousel',
   computed:{
-    imgsLen(){return this.$store.state.imgLen;},    
+    ...mapGetters(['sortedImgModified']),
+    ...mapState(['imgLen']),    
     imgIds(){
-         return this.$store.state.imgModified.map(el=> el.fileId);
+         return this.sortedImgModified.map(el=> el.fileId);
      }
   },
   watch:{
-    imgsLen(newVal,oldVal){
+    imgLen(newVal,oldVal){
       this.setUpCarousel();
     }
   },

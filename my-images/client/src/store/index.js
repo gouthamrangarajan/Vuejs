@@ -12,6 +12,23 @@ export default new Vuex.Store({
     notificationMsg:'',
     isNotificationSuccess:true
   },
+  getters:{
+    sortedImgModified(state){
+      return state.imgModified.sort((a,b)=>{
+        let aDt=new Date(a.modified);
+        let bDt=new Date(b.modified);
+        if(aDt>bDt){
+          return 1;
+        }
+        else if(aDt<bDt){
+          return -1;
+        }
+        else{
+          return 0;
+        }
+      })
+    }
+  },
   mutations: {
     setImgLen(state,data){
       state.imgLen=data;      

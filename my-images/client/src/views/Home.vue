@@ -11,7 +11,7 @@
     <div class="row clearfix" tag="div" v-for="num in outerLen" :key="num" v-show="showImgs">
             <div class="col m4" v-for="innum in 3" :key="'in'+num+innum">   
               <transition name="img">                           
-                <template v-if="getImgNum(num,innum)<=imgsLen && getImgNum(num,innum)>0"> 
+                <template v-if="getImgNum(num,innum)<=imgLen && getImgNum(num,innum)>0"> 
                   <image-card :num="getImgNum(num,innum)" :key="'imgCard'+num+innum"></image-card>                
                 </template>           
               </transition>
@@ -33,6 +33,7 @@
 // @ is an alias to /src
 import ImageCard from '@/components/ImageCard.vue'
 import FileUpload from '@/components/FileUpload.vue'
+import {mapState} from 'vuex'
 export default {
   name: 'home',
   data(){
@@ -42,13 +43,12 @@ export default {
     ImageCard,FileUpload
   },  
   computed:{
-    imgsLen(){return this.$store.state.imgLen;},
+    ...mapState(['imgLen']),
     outerLen(){
-      return Math.ceil(this.imgsLen/3);
+      return Math.ceil(this.imgLen/3);
     }
   },
-  created(){     
-  },
+ 
   methods:{
     intializeMaterialBox(){
        setTimeout(() => {
@@ -59,7 +59,7 @@ export default {
     getImgNum(outerNum,innerNum){     
        var data= (innerNum+((outerNum-1)*3));
        if(this.reverseData){
-         data=(this.imgsLen+1)-data;
+         data=(this.imgLen+1)-data;
        }              
        return data;
     },
@@ -76,7 +76,7 @@ export default {
   },
   watch:{
     reverseData(){this.refreshAll();},
-    imgsLen(newVal,oldVal){        
+    imgLen(newVal,oldVal){        
       if(newVal<oldVal){         
         this.refreshAll();   
       }

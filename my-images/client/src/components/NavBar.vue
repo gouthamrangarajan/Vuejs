@@ -1,10 +1,12 @@
 <template>
  <div>
-   <nav class="cyan darken-1">  
-      <div class="nav-wrapper">
-        <a class="brand-logo center">My Photos</a>
-      </div>  
-  </nav>    
+   <div class="navbar-fixed">
+    <nav class="cyan darken-1">  
+        <div class="nav-wrapper">
+          <a class="brand-logo center">My Photos</a>
+        </div>  
+    </nav>    
+   </div>
    <a data-target="slide-out" class="sidenav-trigger btn btn-large btn-flat white-text cyan darken-1">
      <i class="material-icons">menu</i>
     </a>
@@ -43,7 +45,8 @@ nav, .sidenav-trigger{
 }
 .sidenav-trigger{
   position: fixed;
-  margin-top:-2.8rem;
+  margin-top:-4.3rem;
   margin-left:-0.5rem;
+  z-index:999;
 }
 </style>

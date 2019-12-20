@@ -3,10 +3,10 @@
    <section class="container">
       <div :class="{'slider':true,'fullscreen':isFullScreen}">
     <ul class="slides">
-      <li v-for="num in imgsLen" :key="num">
+      <li v-for="num in imgLen" :key="num">
         <img :src="'/imgs/'+imgIds[num-1]">
         <div class="caption right-align">       
-           <h3>{{uploaded[num-1] | localDate}}</h3>   
+           <h3>{{sortedImgModified[num-1] | localDate}}</h3>   
            <template v-if="isFullScreen">
               <router-link to="/"  class="btn btn-large light-blue darken-4">Home</router-link>
            </template>
@@ -19,15 +19,14 @@
  </transition>
 </template>
 <script>
+import {mapGetters,mapState} from 'vuex'
 export default {
   name:'Slider',
   computed:{
-    imgsLen(){return this.$store.state.imgLen;},      
-    uploaded(){
-        return this.$store.state.imgModified;            
-    }, 
+    ...mapGetters(['sortedImgModified']),
+    ...mapState(['imgLen']),      
     imgIds(){
-         return this.$store.state.imgModified.map(el=> el.fileId);
+         return this.sortedImgModified.map(el=> el.fileId);
     },
     isFullScreen(){
       var dt=this.$route.name;
@@ -47,7 +46,7 @@ export default {
      this.setUpSlider();
   },
   watch:{
-    imgsLen(newVal,oldVal){
+    imgLen(newVal,oldVal){
       this.setUpSlider();
     }
   },

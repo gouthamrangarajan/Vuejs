@@ -40,8 +40,12 @@ export default {
         imgsLen(newVal,oldVal){
             if(newVal>0){
                 setTimeout(()=>{
-                    var elToScroll=document.getElementById('card'+newVal);
-                    elToScroll.scrollIntoView();
+                    var elToScroll=document.getElementById('card'+newVal);                    
+                    window.scrollTo({
+                        top: elToScroll.offsetTop,
+                        left: elToScroll.offsetLeft,
+                        behavior: 'smooth'
+                    });
                 },500)
             }
         }
