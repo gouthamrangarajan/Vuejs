@@ -55,7 +55,7 @@ export default {
   font-family: 'Roboto', sans-serif;
 }
 section{
-   min-height: 85vh;
+   min-height: 75vh;
    overflow:hidden;   
 }
  body {
