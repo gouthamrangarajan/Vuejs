@@ -79,7 +79,7 @@ export default {
 </script>
 <style scoped>
 .card-image{
-    height: 38vh;
+    max-height: 38vh;
     overflow: hidden;
 }
 
