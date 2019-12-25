@@ -6,7 +6,7 @@
       <li v-for="num in imgLen" :key="num">
         <img :src="'/imgs/'+imgIds[num-1]">
         <div class="caption right-align">       
-           <h3>{{sortedImgModified[num-1] | localDate}}</h3>   
+           <h3>{{sliderImgs[num-1] | localDate}}</h3>   
            <template v-if="isFullScreen">
               <router-link to="/"  class="btn btn-large light-blue darken-4">Home</router-link>
            </template>
@@ -19,14 +19,16 @@
  </transition>
 </template>
 <script>
-import {mapGetters,mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
   name:'Slider',
   computed:{
-    ...mapGetters(['sortedImgModified']),
-    ...mapState(['imgLen']),      
+    ...mapGetters(['sliderImgs']),        
     imgIds(){
-         return this.sortedImgModified.map(el=> el.fileId);
+         return this.sliderImgs.map(el=> el.fileId);
+    },
+    imgLen(){
+      return this.sliderImgs.length;
     },
     isFullScreen(){
       var dt=this.$route.name;

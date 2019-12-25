@@ -25,8 +25,8 @@
 export default {
     name:'NavBar',
     mounted(){
-         var elems = document.querySelectorAll('.sidenav');
-         var instances = M.Sidenav.init(elems, null);
+         let elems = document.querySelectorAll('.sidenav');
+         let instances = M.Sidenav.init(elems, null);
     },
     computed:{
       active(){
@@ -35,6 +35,11 @@ export default {
       }
     },
     watch:{     
+      $route(to,from){
+        let elem = document.querySelectorAll('.sidenav')[0];
+        let instance = M.Sidenav.getInstance(elem);
+        instance.close();
+      }
     }    
 }
 </script>

@@ -27,6 +27,21 @@ export default new Vuex.Store({
           return 0;
         }
       })
+    },
+    sliderImgs(state){
+      return state.imgModified.sort((a,b)=>{
+        let aDt=new Date(a.modified);
+        let bDt=new Date(b.modified);
+        if(aDt<bDt){
+          return 1;
+        }
+        else if(aDt>bDt){
+          return -1;
+        }
+        else{
+          return 0;
+        }
+      }).slice(0,5)
     }
   },
   mutations: {
