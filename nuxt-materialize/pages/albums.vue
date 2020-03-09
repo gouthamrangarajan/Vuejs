@@ -152,17 +152,15 @@ export default {
     },
     watch:{
       ftAlbums:'resetPage',
-      pageInfo:{
-        handler(newVal,oldVal){
-        if(oldVal && newVal &&
-          newVal.currPage!=oldVal.currPage){
-            setTimeout(()=>{
-              this.initializeMaterialize();
+      pgedAlbums:{
+        immediate:true,
+        handler(){
+          setTimeout(()=>{
+            this.initializeMaterialize()
           },300)
         }
       }
     }
-  }
 }
 </script>
 <style scoped>
