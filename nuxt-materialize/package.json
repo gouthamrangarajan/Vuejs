@@ -13,7 +13,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "materialize-css": "^1.0.0-rc.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.11.0"
   },
   "devDependencies": {}
 }
