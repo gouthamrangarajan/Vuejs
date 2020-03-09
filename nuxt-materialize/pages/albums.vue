@@ -72,9 +72,6 @@ export default {
       if(this.albums.length==0){
         this.$store.dispatch('albums/refresh')
       }
-      setTimeout(()=>{
-        this.initializeMaterialize()
-      },300)
     },
     computed:{
         ...mapState({
