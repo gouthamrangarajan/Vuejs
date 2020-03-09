@@ -3,7 +3,7 @@
     <pagination :info="paginationData" id="albums_pagination_1" @changeLen="pageInfo.pageLen=$event;pageInfo.currPage=1"
      @decrease="decreasePage" @increase="increasePage"/>
      <div class="z-depth-5 mt-reduce-one white">
-      <table class="striped responsive">
+      <table class="striped responsive-table">
         <thead class="white-text">
             <tr  class="light-blue accent-4">
                 <th rowspan="2" class="center">Title</th>
