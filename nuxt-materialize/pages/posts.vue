@@ -1,8 +1,8 @@
 <template>
   <div class="container">
      <pagination :info="paginationData" id="posts_pagination_1" @changeLen="pageInfo.pageLen=$event;pageInfo.currPage=1"
-     @decrease="decreasePage" @increase="increasePage">
-        </pagination>
+            @decrease="decreasePage" @increase="increasePage">
+      </pagination>
       <div class="z-depth-5 mt-reduce-one">
         <transition-group name="records" tag="ul" class="row  collapsible" v-show="pgedPosts.length>0">
           <li  v-for="pst in pgedPosts" :key="pst.id">
@@ -26,9 +26,9 @@
             </transition>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-red btn-flat">Close</a>
+          <a href="#  !" class="modal-close waves-effect waves-red btn-flat">Close</a>
+         </div>
       </div>
-  </div>
   </div>
 </template>
 <script>
