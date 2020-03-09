@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-materialize",
+  "version": "1.0.0",
+  "description": "nuxt &amp; materialize 101",
+  "author": "RG",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "materialize-css": "^1.0.0-rc.2",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
