@@ -8,7 +8,7 @@
                 <div class="col s4">
                   <h4 class="header pink-text text-darken-2">Materialize</h4>
                 </div>
-                <div class="col s4 .hide-on-med-and-down">
+                <div class="col s4 hide-on-med-and-down">
                   <h4 class="header white-text">JSONPlaceholder</h4>
                 </div>
               </div>
