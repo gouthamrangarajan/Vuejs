@@ -72,6 +72,9 @@ export default {
       if(this.albums.length==0){
         this.$store.dispatch('albums/refresh')
       }
+      setTimeout(()=>{
+            this.initializeMaterialize()
+          },300)
     },
     computed:{
         ...mapState({
@@ -149,13 +152,10 @@ export default {
     },
     watch:{
       ftAlbums:'resetPage',
-      pgedAlbums:{
-        immediate:true,
-        handler(){
+      pgedAlbums(newVal,oldVal){
           setTimeout(()=>{
             this.initializeMaterialize()
           },300)
-        }
       }
     }
 }

@@ -61,6 +61,9 @@ export default {
       if(this.posts.length==0){
         this.$store.dispatch('posts/refresh')
       }
+      setTimeout(()=>{
+            this.initializeMaterialize()
+          },300)
     },
     computed:{
         ...mapState({
@@ -138,13 +141,10 @@ export default {
     },
     watch:{
       ftPosts:'resetPage',
-      pgedPosts:{
-        immediate:true,
-        handler(){
+      pgedPosts(newVal,oldVal){
           setTimeout(()=>{
             this.initializeMaterialize()
           },300)
-        }
       }
     }
 }
