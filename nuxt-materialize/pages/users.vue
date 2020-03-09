@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <transition-group name="records">
-      <div class="col s6 l4" v-for="usr in ftUsers" :key="usr.id">
+      <div class="col s12 l4" v-for="usr in ftUsers" :key="usr.id">
         <user-card :user="usr">
         </user-card>
       </div>

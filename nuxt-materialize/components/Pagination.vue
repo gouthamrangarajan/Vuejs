@@ -1,7 +1,7 @@
 <template>
  <div class="row">
    <transition name="fade">
-   <div class="col s6 drop-down m4 offset-m4" v-show="info.display">
+   <div class="col s12 drop-down m4 offset-m4" v-show="info.display">
       <a :class="'right btn light-blue darken-4 dropdown-trigger-'+id" :data-target="'dropdown_'+id">
         Show {{info.length}} entries
         <i class="material-icons right">arrow_drop_down</i>
@@ -14,7 +14,7 @@
    </div>
    </transition>
    <transition name="fade">
-   <div class="col s6 m4" v-show="info.display">
+   <div class="col s12 m4" v-show="info.display">
       <div class="card-panel mt-reduce-half">
         <span class="deep-orange-text">
            {{info.fromTo}} of {{info.total}}
