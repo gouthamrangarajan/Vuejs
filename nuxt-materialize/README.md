@@ -2,6 +2,8 @@
 
 > nuxt &amp; materialize 101
 
+a simple app using nuxt, materialize and json place holder api
+
 ## Build Setup
 
 ``` bash
