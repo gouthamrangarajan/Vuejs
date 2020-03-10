@@ -61,9 +61,9 @@ export default{
           ['Todos',  this.todos],
           ['Users', this.users],
         ]);
-        let position='right'
+        let positionVal='right'
         if(window.innerWidth<993)
-          position='bottom'
+          positionVal='top'
          var options = {
           is3D:true,
           colors:[this.chartColors[0],this.chartColors[1],this.chartColors[2],this.chartColors[3]],
@@ -74,7 +74,7 @@ export default{
               fontSize:16,
               color:'#1a237e',
             },
-            position:'right'
+            position:positionVal
           }
         };
 
