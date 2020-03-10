@@ -4,16 +4,16 @@
      <div class="card-content">
        <span class="card-title">Google Charts</span>
      </div>
-     <div class="card-tabs">
+     <div class="card-tabs" v-if="windowWidth>=993">
       <ul class="tabs tabs-fixed-width tabs-transparent">
-        <li class="tab"><a href="#piechart">Pie</a></li>
-          <li class="tab"><a href="#barchart">Bar</a></li>
+        <li class="tab"><a href="#piechart">Chart 1</a></li>
+          <li class="tab"><a href="#barchart">Chart 2</a></li>
       </ul>
      </div>
      <div class="card-content grey lighten-4">
-       <div id="barchart" class="chart">
-        </div>
        <div id="piechart" class="chart">
+        </div>
+        <div id="barchart" class="chart">
         </div>
      </div>
    </div>
@@ -25,6 +25,16 @@ import {mapGetters} from 'vuex'
 import {GoogleCharts} from 'google-charts'
 export default{
   transition:'slide',
+  head(){
+      return{
+        title:'Nuxt Materialize',
+        meta:[
+            {'hid':'description',
+            'name':'description',
+            'content':'nuxt materialize jsonplaceholder'}
+        ]
+      }
+  },
   mounted(){
     this.unsubscribe=this.$store.subscribe((mutation)=>{
       if(mutation.type=='todos/setData'){
@@ -48,6 +58,12 @@ export default{
             users:'users/dataLength',
             todos:'todos/dataLength'
         }),
+        windowWidth(){
+          if(process.client)
+            return window.innerWidth
+          else
+            return 1024;
+        }
     },
     data(){
       return {
@@ -57,11 +73,13 @@ export default{
     methods:{
       init(){
         GoogleCharts.load(this.drawPieChart, {'packages':['corechart']});
-          GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
+        GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
+        if(this.windowWidth>=993){
           setTimeout(()=>{
             let el = document.querySelectorAll('.tabs');
             let instance = M.Tabs.init(el, {});
-          },500);
+          },700);
+        }
       },
       getPieChartData(){
         return google.visualization.arrayToDataTable([
@@ -82,7 +100,7 @@ export default{
       },
       getBasicOptions(){
         let positionVal='right'
-        if(window.innerWidth<993)
+        if(this.windowWidth<993)
           positionVal='top'
 
          return {
@@ -145,8 +163,7 @@ export default{
   }
 @media only screen and (max-width:992px) {
     .chart{
-      width:400px;
-      margin-left:-1.5rem;
+      width:350px;
     }
 
 }

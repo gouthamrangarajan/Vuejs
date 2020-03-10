@@ -39,7 +39,10 @@ export default {
   },
   computed:{
     windowWidth(){
-      return window.innerWidth
+      if(process.client)
+        return window.innerWidth
+      else
+        return 1024
     }
   }
 }
