@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "google-charts": "^2.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "nuxt": "^2.11.0"
   },

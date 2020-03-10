@@ -54,13 +54,15 @@ export default {
       pagination,
       userCard
     },
-    mounted(){
+    created(){
       if(this.users.length==0){
        this.$store.dispatch('users/refresh')
       }
       if(this.posts.length==0){
         this.$store.dispatch('posts/refresh')
       }
+    },
+    mounted(){
       setTimeout(()=>{
             this.initializeMaterialize()
           },300)

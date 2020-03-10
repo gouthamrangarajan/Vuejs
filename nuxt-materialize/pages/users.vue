@@ -26,7 +26,7 @@ export default {
   components:{
       userCard
   },
-  mounted(){
+  created(){
     if(this.users.length==0){
       this.$store.dispatch('users/refresh')
     }

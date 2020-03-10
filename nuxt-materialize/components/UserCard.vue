@@ -1,8 +1,8 @@
 <template>
-<div class="card blue-grey lighten-5">
+<div class="card">
         <div class="card-image">
           <i class="material-icons large right">person</i>
-          <span class="card-title teal-text">{{user.name}}</span>
+          <span class="card-title red-text">{{user.name}}</span>
         </div>
         <div class="card-content">
             @{{user.username}}
