@@ -1,7 +1,12 @@
 <template>
  <div class="row">
+   <div class="col s12 l4">
+     <div class="right">
+      <slot></slot>
+     </div>
+   </div>
    <transition name="fade">
-   <div class="col s12 drop-down l4 offset-l4" v-show="info.display">
+   <div class="col s12 drop-down l4" v-show="info.display">
       <a :class="'right btn light-blue darken-4 dropdown-trigger-'+id" :data-target="'dropdown_'+id">
         Show {{info.length}} entries
         <i class="material-icons right">arrow_drop_down</i>
