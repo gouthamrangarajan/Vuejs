@@ -4,14 +4,14 @@
     <div class="navbar-fixed">
     <nav class="white">
       <div class="nav-wrapper row">
-        <div class="col s8 l6">
+        <div class="col s10 l6">
           <div class="input-field">
             <input id="search" type="search" required placeholder="search" v-model.trim="searchTxt">
             <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
             <i class="material-icons" @click="searchTxt=''">close</i>
           </div>
         </div>
-        <div class="col l6 s4">
+        <div class="col l6 s2">
             <a href="#" data-target="side-nav" class="sidenav-trigger"><i class="material-icons teal-text text-darken-4">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li :class="{'active':$route.path=='/'}"><nuxt-link to="/" class="teal-text text-darken-4">Home</nuxt-link></li>

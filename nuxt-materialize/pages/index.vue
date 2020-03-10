@@ -106,6 +106,8 @@ export default{
     }
     #chart{
       width:450px;
-  }
+      margin-left:-3rem;
+    }
+
 }
 </style>
