@@ -3,7 +3,7 @@
    <div class="card large">
      <div class="card-content">
        <span class="card-title indigo-text text-darken-4">Google Charts</span>
-        <div id="chart"  style="width:900px; height:500px;">
+        <div id="chart">
         </div>
      </div>
    </div>
@@ -91,4 +91,16 @@ export default{
   .card{
     width:90%;
   }
+  #chart{
+    width:900px;
+    height:500px;
+  }
+@media only screen and (max-width:992px) {
+    .card{
+      width:100%;
+    }
+    #chart{
+      width:450px;
+  }
+}
 </style>
