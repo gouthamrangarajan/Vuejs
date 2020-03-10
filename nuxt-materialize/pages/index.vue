@@ -4,10 +4,10 @@
      <div class="card-content">
        <span class="card-title">Google Charts</span>
      </div>
-     <div class="card-tabs" v-if="windowWidth>=993">
+     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width tabs-transparent">
-        <li class="tab"><a href="#piechart">Chart 1</a></li>
-          <li class="tab"><a href="#barchart">Chart 2</a></li>
+        <li class="tab"><a href="#piechart">Pie</a></li>
+          <li class="tab"><a href="#barchart">Bar</a></li>
       </ul>
      </div>
      <div class="card-content grey lighten-4">
@@ -58,12 +58,12 @@ export default{
             users:'users/dataLength',
             todos:'todos/dataLength'
         }),
-        windowWidth(){
-          if(process.client)
-            return window.innerWidth
-          else
-            return 1024;
-        }
+      windowWidth(){
+        if(process.client)
+          return window.innerWidth
+        else
+          return 1024;
+      }
     },
     data(){
       return {
@@ -74,12 +74,10 @@ export default{
       init(){
         GoogleCharts.load(this.drawPieChart, {'packages':['corechart']});
         GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
-        if(this.windowWidth>=993){
-          setTimeout(()=>{
-            let el = document.querySelectorAll('.tabs');
-            let instance = M.Tabs.init(el, {});
-          },700);
-        }
+        setTimeout(()=>{
+          let el = document.querySelectorAll('.tabs');
+          let instance = M.Tabs.init(el, {});
+        },700);
       },
       getPieChartData(){
         return google.visualization.arrayToDataTable([
@@ -127,7 +125,8 @@ export default{
       drawBarChart(){
         let data=this.getBarChartData()
         let options=this.getBasicOptions()
-        options.bars='horizontal'
+        if(this.windowWidth>=993)
+          options.bars='horizontal'
         options.animation={
           duration:500,
           easing:'out',
@@ -140,7 +139,6 @@ export default{
               color:'#1a237e',
           },
         }
-
         options.bar= {groupWidth: "70%"}
         let chart = new google.charts.Bar(document.getElementById('barchart'));
         chart.draw(data, google.charts.Bar.convertOptions(options));
@@ -163,7 +161,7 @@ export default{
   }
 @media only screen and (max-width:992px) {
     .chart{
-      width:350px;
+      width:300px;
     }
 
 }
