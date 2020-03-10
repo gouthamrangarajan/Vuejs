@@ -30,7 +30,9 @@ export default{
       }
   },
   mounted(){
-    this.init();
+    setTimeout(() => {
+      this.init();
+    }, 300);
   },
   computed:{
         ...mapGetters({
@@ -59,6 +61,9 @@ export default{
           ['Todos',  this.todos],
           ['Users', this.users],
         ]);
+        let position='right'
+        if(window.innerWidth<993)
+          position='bottom'
          var options = {
           is3D:true,
           colors:[this.chartColors[0],this.chartColors[1],this.chartColors[2],this.chartColors[3]],
