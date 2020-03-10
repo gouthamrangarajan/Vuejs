@@ -33,7 +33,7 @@
      <div id="album-user-modal" class="modal bottom-sheet">
         <div class="modal-content container">
             <transition name="fade">
-              <user-card :user="users.filter(el=>el.id==modalUserId)[0]" v-if="modalUserId!=-1"></user-card>
+              <user-modal-content :userId="modalUserId" v-if="modalUserId!=-1"></user-modal-content>
             </transition>
         </div>
         <div class="modal-footer">
@@ -45,7 +45,7 @@
 <script>
 import {mapState} from 'vuex'
 import pagination from '@/components/Pagination.vue'
-import userCard from '@/components/UserCard.vue'
+import userModalContent from '@/components/UserModalContent.vue'
 export default {
   transition:'slide',
   head(){
@@ -63,7 +63,7 @@ export default {
     },
     components:{
       pagination,
-      userCard
+      userModalContent
     },
     mounted(){
       this.unsubscribe=this.$store.subscribe((mutation)=>{

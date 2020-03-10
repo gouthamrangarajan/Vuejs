@@ -1,16 +1,20 @@
 <template>
+<div class="container">
   <div class="row">
-    <transition-group name="records">
-      <div class="col s12 l4" v-for="usr in ftUsers" :key="usr.id">
-        <user-card :user="usr">
-        </user-card>
-      </div>
+    <pagination :info="paginationData" id="users_pagination_1" @changeLen="pageInfo.pageLen=$event;pageInfo.currPage=1"
+            @decrease="decreasePage" @increase="increasePage">
+    </pagination>
+    <transition-group name="records" tag="ul" class="collection  mt-reduce-one z-depth-5">
+      <user-collection-item v-for="usr in pgedUsers" :key="usr.id" :user="usr">
+      </user-collection-item>
     </transition-group>
   </div>
+</div>
 </template>
 <script>
 import {mapState} from 'vuex'
-import userCard from '@/components/UserCard.vue'
+import pagination from '@/components/Pagination.vue'
+import userCollectionItem from '@/components/UserCollectionItem.vue'
 export default {
   transition:'scale',
   head(){
@@ -24,10 +28,10 @@ export default {
       }
   },
   components:{
-      userCard
+      pagination,userCollectionItem
   },
   data(){
-      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},unsubscribe:null}
+      return {pageInfo:{currPage:1,totalPages:0,pageLen:5},unsubscribe:null}
     },
   mounted(){
       this.unsubscribe=this.$store.subscribe((mutation)=>{
@@ -72,6 +76,49 @@ export default {
         }
         return this.users;
     },
+    pgedUsers(){
+      let endInd=(this.pageInfo.currPage*this.pageInfo.pageLen)
+      return this.ftUsers.slice(endInd-this.pageInfo.pageLen,endInd)
+    },
+    paginationData(){
+      var display=this.pgedUsers.length>0;
+      var end=(this.pageInfo.currPage*this.pageInfo.pageLen);
+      var start=end-this.pageInfo.pageLen;
+      if(end>this.ftUsers.length){
+          end=this.ftUsers.length;
+      }
+      var fromTo= (start+1)+'-'+end;
+      return {
+          fromTo,
+          isFirstPage:this.pageInfo.currPage==1,
+          isLastPage: this.pageInfo.currPage*this.pageInfo.pageLen >= this.ftUsers.length,
+          length:this.pageInfo.pageLen,
+          display,
+          pgLenList:[5,10,15,20],
+          total:this.ftUsers.length
+      };
+    }
+  },
+  methods:{
+    increasePage(){
+      var isLastPage= this.pageInfo.currPage*this.pageInfo.pageLen >= this.ftUsers.length;
+      if(isLastPage==true){
+          return;
+      }
+      this.pageInfo.currPage++;
+    },
+    decreasePage(){
+      if(this.pageInfo.currPage==1){
+          return;
+      }
+      this.pageInfo.currPage--;
+    },
+    resetPage(){
+      this.pageInfo.currPage=1
+    },
+  },
+  watch:{
+      ftUsers:'resetPage',
   }
 }
 </script>
