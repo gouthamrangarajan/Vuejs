@@ -14,11 +14,16 @@
         <div class="col l6 s2">
             <a href="#" data-target="side-nav" class="sidenav-trigger"><i class="material-icons teal-text text-darken-4">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li :class="{'active':$route.path=='/'}"><nuxt-link to="/" class="teal-text text-darken-4">Home</nuxt-link></li>
-              <li :class="{'active':$route.path=='/posts'}"><nuxt-link to="/posts" class="teal-text text-darken-4">Posts</nuxt-link></li>
-              <li :class="{'active':$route.path=='/albums'}"><nuxt-link to="/albums" class="teal-text text-darken-4">Albums</nuxt-link></li>
-              <li :class="{'active':$route.path=='/users'}"><nuxt-link to="/users" class="teal-text text-darken-4">Users</nuxt-link></li>
-              <li :class="{'active':$route.path=='/todos'}"><nuxt-link to="/todos" class="teal-text text-darken-4">Todos</nuxt-link></li>
+              <li :class="{'active':$route.path=='/'}"><nuxt-link to="/"
+                 class="waves-effect waves-teal teal-text text-darken-4">Home</nuxt-link></li>
+              <li :class="{'active':$route.path=='/posts'}"><nuxt-link to="/posts"
+                class="waves-effect waves-teal teal-text text-darken-4">Posts</nuxt-link></li>
+              <li :class="{'active':$route.path=='/albums'}"><nuxt-link to="/albums"
+                 class="waves-effect waves-teal teal-text text-darken-4">Albums</nuxt-link></li>
+              <li :class="{'active':$route.path=='/users'}"><nuxt-link to="/users"
+                class="waves-effect waves-teal teal-text text-darken-4">Users</nuxt-link></li>
+              <li :class="{'active':$route.path=='/todos'}"><nuxt-link to="/todos"
+                class="waves-effect waves-teal teal-text text-darken-4">Todos</nuxt-link></li>
             </ul>
         </div>
       </div>
@@ -26,11 +31,16 @@
     </div>
     <ul class="sidenav" id="side-nav">
           <li><div class="user-view"></div></li>
-          <li :class="{'active':$route.path=='/'}"><nuxt-link to="/" class="teal-text text-darken-4">Home</nuxt-link></li>
-          <li :class="{'active':$route.path=='/posts'}"><nuxt-link to="/posts" class="teal-text text-darken-4">Posts</nuxt-link></li>
-          <li :class="{'active':$route.path=='/albums'}"><nuxt-link to="/albums" class="teal-text text-darken-4">Albums</nuxt-link></li>
-          <li :class="{'active':$route.path=='/users'}"><nuxt-link to="/users" class="teal-text text-darken-4">Users</nuxt-link></li>
-          <li :class="{'active':$route.path=='/todos'}"><nuxt-link to="/todos" class="teal-text text-darken-4">Todos</nuxt-link></li>
+          <li :class="{'active':$route.path=='/'}"><nuxt-link to="/"
+             class="waves-effect waves-teal teal-text text-darken-4">Home</nuxt-link></li>
+          <li :class="{'active':$route.path=='/posts'}"><nuxt-link to="/posts"
+             class="waves-effect waves-teal teal-text text-darken-4">Posts</nuxt-link></li>
+          <li :class="{'active':$route.path=='/albums'}"><nuxt-link to="/albums"
+             class="waves-effect waves-teal teal-text text-darken-4">Albums</nuxt-link></li>
+          <li :class="{'active':$route.path=='/users'}"><nuxt-link to="/users"
+             class="waves-effect waves-teal teal-text text-darken-4">Users</nuxt-link></li>
+          <li :class="{'active':$route.path=='/todos'}"><nuxt-link to="/todos"
+             class="waves-effect waves-teal teal-text text-darken-4">Todos</nuxt-link></li>
       </ul>
   </div>
 </transition>
@@ -86,5 +96,11 @@ i{
 .nav-slide-enter,
 .nav-slide-leave-to{
    transform:translateY(-45rem);
+}
+li.active{
+  background-color: #004d40!important;
+}
+li.active a{
+  color: #fff!important;
 }
 </style>

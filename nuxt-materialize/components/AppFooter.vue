@@ -1,5 +1,5 @@
 <template functional>
-    <footer class="page-footer cyan lighten-2">
+    <footer class="page-footer cyan accent-4">
         <div class="container">
               <div class="row">
                 <div class="col s4">
