@@ -3,7 +3,7 @@
 > nuxt &amp; materialize 101
 
 a simple app using nuxt, materialize and json place holder api
->deployed version  https://nuxt-materialize.netlify.com/posts
+>deployed version  https://nuxt-materialize.netlify.com
 ## Build Setup
 
 ``` bash
