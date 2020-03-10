@@ -1,9 +1,19 @@
 <template>
 <div class="container">
-   <div class="card large">
+   <div class="card blue white-text">
      <div class="card-content">
-       <span class="card-title indigo-text text-darken-4">Google Charts</span>
-        <div id="chart">
+       <span class="card-title">Google Charts</span>
+     </div>
+     <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width tabs-transparent">
+        <li class="tab"><a href="#piechart">Pie</a></li>
+          <li class="tab"><a href="#barchart">Bar</a></li>
+      </ul>
+     </div>
+     <div class="card-content grey lighten-4">
+       <div id="barchart" class="chart">
+        </div>
+       <div id="piechart" class="chart">
         </div>
      </div>
    </div>
@@ -41,43 +51,87 @@ export default{
     },
     data(){
       return {
-         chartColors:[
-          '#b71c1c','#0d47a1','#e65100','#004d40'
-        ],
         unsubscribe:null
       }
     },
     methods:{
       init(){
-          GoogleCharts.load(this.drawChart, {'packages':['corechart']});
+        GoogleCharts.load(this.drawPieChart, {'packages':['corechart']});
+          GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
+          setTimeout(()=>{
+            let el = document.querySelectorAll('.tabs');
+            let instance = M.Tabs.init(el, {});
+          },500);
       },
-      drawChart(){
-          var data = google.visualization.arrayToDataTable([
+      getPieChartData(){
+        return google.visualization.arrayToDataTable([
           ['Category','Total'],
           ['Posts',     this.posts],
           ['Albums',      this.albums],
           ['Todos',  this.todos],
           ['Users', this.users],
         ]);
+      },
+      getBarChartData(){
+        return google.visualization.arrayToDataTable([
+          ['All','Posts','Albums','Todos','Users'],
+          [' ',0,0,0,0],
+          [' ', this.posts,this.albums,this.todos,this.users],
+          [' ',0,0,0,0],
+        ]);
+      },
+      getBasicOptions(){
         let positionVal='right'
         if(window.innerWidth<993)
           positionVal='top'
-         var options = {
-          is3D:true,
-          colors:[this.chartColors[0],this.chartColors[1],this.chartColors[2],this.chartColors[3]],
+
+         return {
+          colors:['#b71c1c','#0d47a1','#e65100','#004d40'],
+          backgroundColor:'#f5f5f5',
+          title:'JSONPlaceholder',
           fontName:'Roboto',
+          titleTextStyle:{
+              fontName:'Roboto',
+              fontSize:16,
+              color:'#1a237e',
+          },
+          fontSize:16,
           legend:{
             textStyle:{
-              fontName:'Roboto',
+            fontName:'Roboto',
               fontSize:16,
               color:'#1a237e',
             },
             position:positionVal
           }
         };
+      },
+      drawBarChart(){
+        let data=this.getBarChartData()
+        let options=this.getBasicOptions()
+        options.bars='horizontal'
+        options.animation={
+          duration:500,
+          easing:'out',
+          startup:true
+        }
+        options.hAxis={
+           titleTextStyle:{
+              fontName:'Roboto',
+              fontSize:16,
+              color:'#1a237e',
+          },
+        }
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart'));
-
+        options.bar= {groupWidth: "70%"}
+        let chart = new google.charts.Bar(document.getElementById('barchart'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      },
+      drawPieChart(){
+        let data=this.getPieChartData()
+        let options=this.getBasicOptions()
+        options.is3D=true
+        let chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }
     }
@@ -85,20 +139,14 @@ export default{
 </script>
 
 <style scoped>
-  .card{
-    width:90%;
-  }
-  #chart{
+  .chart{
     width:900px;
     height:500px;
   }
 @media only screen and (max-width:992px) {
-    .card{
-      width:100%;
-    }
-    #chart{
-      width:450px;
-      margin-left:-3rem;
+    .chart{
+      width:400px;
+      margin-left:-1.5rem;
     }
 
 }

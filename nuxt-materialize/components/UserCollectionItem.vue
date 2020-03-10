@@ -7,9 +7,15 @@
     <br/><i class="material-icons tiny">phone</i>&nbsp;{{user.phone}}
     <br/><i class="material-icons tiny">perm_media</i>&nbsp;<a>{{user.website}}</a>
   </p>
+  <p v-if="windowWidth<993">
+      <i class="material-icons tiny">home</i><br/>
+        {{user.address.street}},{{user.address.suite}}
+        <br/>
+        {{user.address.city}},{{user.address.zipcode}}
+  </p>
   <p class="secondary-content right-align">
     {{user.username}}<br/>
-    <span class="black-text">
+    <span class="black-text" v-if="windowWidth>=993">
         <i class="material-icons tiny">home</i><br/>
         {{user.address.street}},{{user.address.suite}}
         <br/>
@@ -31,6 +37,11 @@ export default {
       default:false
     }
   },
+  computed:{
+    windowWidth(){
+      return window.innerWidth
+    }
+  }
 }
 </script>
 
