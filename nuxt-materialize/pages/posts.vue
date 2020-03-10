@@ -48,24 +48,25 @@ export default {
       }
     },
     data(){
-      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},modalUserId:-1}
+      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},modalUserId:-1,unsubscribe:null}
     },
     components:{
       pagination,
       userCard
     },
-    created(){
-      if(this.users.length==0){
-       this.$store.dispatch('users/refresh')
-      }
-      if(this.posts.length==0){
-        this.$store.dispatch('posts/refresh')
-      }
-    },
     mounted(){
-      setTimeout(()=>{
+      this.unsubscribe=this.$store.subscribe((mutation)=>{
+        if(mutation.type=='posts/setData'){
             this.initializeMaterialize()
-          },300)
+          }
+      })
+      this.$store.dispatch('users/refresh')
+      this.$store.dispatch('posts/refresh')
+    },
+    destroyed(){
+      if(this.unsubscribe){
+        this.unsubscribe();
+      }
     },
     computed:{
         ...mapState({

@@ -26,11 +26,22 @@ export default {
   components:{
       userCard
   },
-  created(){
-    if(this.users.length==0){
+  data(){
+      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},unsubscribe:null}
+    },
+  mounted(){
+      this.unsubscribe=this.$store.subscribe((mutation)=>{
+        if(mutation.type=='users/setData'){
+
+          }
+      })
       this.$store.dispatch('users/refresh')
-    }
-  },
+    },
+    destroyed(){
+      if(this.unsubscribe){
+        this.unsubscribe();
+      }
+    },
   computed:{
     ...mapState({
         users:state=>state.users.data,

@@ -15,24 +15,21 @@ import {mapGetters} from 'vuex'
 import {GoogleCharts} from 'google-charts'
 export default{
   transition:'slide',
-  created(){
-    if(this.users==0){
-       this.$store.dispatch('users/refresh')
-      }
-      if(this.albums==0){
-        this.$store.dispatch('albums/refresh')
-      }
-      if(this.posts==0){
-        this.$store.dispatch('posts/refresh')
-      }
-      if(this.todos==0){
-          this.$store.dispatch('todos/refresh')
-      }
-  },
   mounted(){
-    setTimeout(() => {
-      this.init();
-    }, 300);
+    this.unsubscribe=this.$store.subscribe((mutation)=>{
+      if(mutation.type=='todos/setData'){
+        this.init()
+      }
+    })
+    this.$store.dispatch('users/refresh')
+    this.$store.dispatch('albums/refresh')
+    this.$store.dispatch('posts/refresh')
+    this.$store.dispatch('todos/refresh')
+  },
+  destroyed(){
+    if(this.unsubscribe){
+      this.unsubscribe();
+    }
   },
   computed:{
         ...mapGetters({
@@ -47,6 +44,7 @@ export default{
          chartColors:[
           '#b71c1c','#0d47a1','#e65100','#004d40'
         ],
+        unsubscribe:null
       }
     },
     methods:{
@@ -82,12 +80,6 @@ export default{
 
         chart.draw(data, options);
       }
-    },
-    watch:{
-      albums:'init',
-       users:'init',
-       todos:'init',
-       posts:'init'
     }
 }
 </script>
