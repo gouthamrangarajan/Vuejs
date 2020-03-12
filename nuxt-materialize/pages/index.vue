@@ -12,6 +12,19 @@
      </div>
      <div class="card-content grey lighten-4">
        <div id="piechart" class="chart">
+          <div class="valign-wrapper center-align" style="height:85%;width:100%;margin-left:50%">
+                <div class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="barchart" class="chart">
         </div>
