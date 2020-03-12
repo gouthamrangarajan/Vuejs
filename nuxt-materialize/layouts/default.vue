@@ -32,8 +32,7 @@ export default{
 .records-move{
   transition:all 0.3s;
 }
-.records-enter-active,
-.records-leave-active{
+.records-enter-active{
   transition:all 0.3s;
 }
 .records-enter,
