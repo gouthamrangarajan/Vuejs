@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col l6 s2">
-            <a href="#" data-target="side-nav" class="sidenav-trigger"><i class="material-icons teal-text text-darken-4">menu</i></a>
+            <a data-target="side-nav" class="sidenav-trigger"><i class="material-icons teal-text text-darken-4">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li :class="{'active':$route.path=='/'}"><nuxt-link to="/"
                  class="waves-effect waves-teal teal-text text-darken-4">Home</nuxt-link></li>
@@ -31,6 +31,8 @@
     </div>
     <ul class="sidenav" id="side-nav">
           <li><div class="user-view"></div></li>
+          <li><a class="sidenav-close" ref="closeSideNav" v-show="false">
+            Clicking this will close Sidenav</a></li>
           <li :class="{'active':$route.path=='/'}"><nuxt-link to="/"
              class="waves-effect waves-teal teal-text text-darken-4">Home</nuxt-link></li>
           <li :class="{'active':$route.path=='/posts'}"><nuxt-link to="/posts"
@@ -67,6 +69,9 @@ export default {
   watch:{
     $route(){
       this.searchTxt='';
+      if(window.innerWidth<993){
+        this.$refs.closeSideNav.click()
+      }
     }
   }
 }

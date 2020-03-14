@@ -26,6 +26,9 @@ export default{
 *{
   font-family: 'Roboto', sans-serif;
 }
+body{
+  background-color: #f5f5f5 !important;
+}
 .app{
   min-height: 58vh;
 }
@@ -37,7 +40,7 @@ export default{
 }
 .records-enter,
 .records-leave-to{
-  transform:translateX(2rem);
+  transform:translateX(2px);
   opacity:0;
 }
 .fade-move{

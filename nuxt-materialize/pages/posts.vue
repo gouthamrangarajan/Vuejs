@@ -4,7 +4,7 @@
             @decrease="decreasePage" @increase="increasePage">
       </pagination>
       <div class="z-depth-5 mt-reduce-one">
-        <transition-group name="records" tag="ul" class="row  collapsible" v-show="pgedPosts.length>0">
+        <transition-group name="records" tag="ul" class="row collapsible" v-show="pgedPosts.length>0">
           <li  v-for="pst in pgedPosts" :key="pst.id">
             <div class="collapsible-header blue-grey darken-1">
                   <span class="white-text"> {{pst.title}} </span>
