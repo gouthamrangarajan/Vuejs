@@ -13,7 +13,7 @@
                     </span>
                   </transition>
                 </th>
-                <th colspan="3" class="center" style="cursor:default">User</th>
+                <th colspan="3" class="center hide-on-med-and-down" style="cursor:default">User</th>
             </tr>
             <tr  class="light-blue accent-4">
               <th @click="changeSort(1)">Name
