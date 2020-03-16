@@ -6,7 +6,7 @@
       <table class="striped responsive-table">
         <thead class="white-text">
             <tr  class="light-blue accent-4">
-                <th rowspan="2" @click="changeSort(0)" class="center" style="width:40%">Title
+                <th rowspan="2" @click="changeSort(0)" class="center" :style="thStyle[0]">Title
                   <transition name="fade">
                     <span class="right" v-if="sortInfo.column==0">
                         <sort :order="sortInfo.order"/>
@@ -16,21 +16,21 @@
                 <th colspan="3" class="center hide-on-med-and-down" style="cursor:default">User</th>
             </tr>
             <tr  class="light-blue accent-4">
-              <th @click="changeSort(1)" style="width:20%">Name
+              <th @click="changeSort(1)" :style="thStyle[1]">Name
                 <transition name="fade">
                   <span class="right" v-if="sortInfo.column==1">
                       <sort :order="sortInfo.order"/>
                   </span>
                 </transition>
               </th>
-              <th @click="changeSort(2)" style="width:20%">User Name
+              <th @click="changeSort(2)" :style="thStyle[2]">User Name
                 <transition name="fade">
                   <span class="right" v-if="sortInfo.column==2">
                       <sort :order="sortInfo.order"/>
                   </span>
                 </transition>
               </th>
-              <th @click="changeSort(3)" style="width:20%">Email
+              <th @click="changeSort(3)" :style="thStyle[3]">Email
                 <transition name="fade">
                   <span class="right" v-if="sortInfo.column==3">
                       <sort :order="sortInfo.order"/>
@@ -202,7 +202,23 @@ export default {
             pgLenList:[10,25,50,100],
             total:this.ftAlbums.length
         };
-      }
+      },
+      thStyle(){
+        var width=[]
+        if(process.client && window.innerWidth>992){
+          width.push({width:'40%'})
+          width.push({width:'20%'})
+          width.push({width:'20%'})
+          width.push({width:'20%'})
+        }
+       else{
+         width.push({})
+         width.push({})
+         width.push({})
+         width.push({})
+       }
+       return width;
+    }
   },
   methods:{
     increasePage(){
