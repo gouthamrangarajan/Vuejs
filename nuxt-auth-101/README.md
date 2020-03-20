@@ -1,6 +1,7 @@
 # nuxt-auth-101
 
 > nuxt auth 101
+
 A simple authorization in nuxt using @nuxt/auth.
 available users user1@email.com , user2@email.com, pwd is same as email
 
