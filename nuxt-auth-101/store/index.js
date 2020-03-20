@@ -43,8 +43,6 @@ export const actions={
     if(localStorage){
       let bearer_token=localStorage.getItem('auth._token.local')
       axios.post('/api/auth/register',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
-        console.log(response)
-        console.log(response.data)
         data.fn(response.data.msg)
       }).catch(err=>{
         data.fn(err.response.data.msg)

@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const jwtSign='NUXT_AUTH_101';
 
+//prepopulated users pwd is same as email
 const users=[
   {name:'user1',email:'user1@email.com',pwd:'$2b$10$OeqvXXA65x9AmQYMDgPFfuo8iM4UzUsry7reEhrdyp1NtKxeyKIxC',currToken:''},
   {name:'user2',email:'user2@email.com',pwd:'$2b$10$1x9m/DOiNK.kmjUKg9cXQOI2VklY622KC3SvoBrkcZCh.7.ydRBwa',currToken:''}
   ]
 
+//called by nuxt auth
 router.post('/login',(req,res)=>{
   if(!req.body || !req.body.email || !req.body.password){
     res.status('400').json({msg:'Bad request'});
@@ -33,6 +35,7 @@ router.post('/login',(req,res)=>{
 });
 })
 
+//called by nuxt auth
 router.get('/user',(req,res)=>{
   if(!req.headers || !req.headers.authorization){
     res.status('401').json({msg:'Invalid request'});
@@ -55,6 +58,7 @@ router.get('/user',(req,res)=>{
   });
 })
 
+//called by nuxt auth
 router.post('/logout',(req,res)=>{
   if(!req.headers || !req.headers.authorization){
     res.status('401').json({msg:'Invalid request'});
@@ -77,6 +81,8 @@ router.post('/logout',(req,res)=>{
     }
   });
 })
+
+//called manually from ui to get all users
 router.get('/users',(req,res)=>{
   if(!req.headers || !req.headers.authorization){
     res.status('401').json({msg:'Invalid request'});
@@ -99,6 +105,8 @@ router.get('/users',(req,res)=>{
     }
   });
 })
+
+//called manually from ui to register a user
 router.post('/register',(req,res)=>{
   if(!req.headers || !req.headers.authorization){
     res.status('401').json({msg:'Invalid request'});
