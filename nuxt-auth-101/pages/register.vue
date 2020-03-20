@@ -24,8 +24,8 @@
             </div>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-green" @click="submit">Submit</a>
-              <nuxt-link to="/" class="waves-effect waves-red">View Users</nuxt-link>
+              <a class="waves-effect waves-light" @click="submit">Submit</a>
+              <nuxt-link to="/" class="waves-effect waves-light">View Users</nuxt-link>
             </div>
         </div>
       </div>
