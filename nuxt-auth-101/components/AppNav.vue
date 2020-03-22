@@ -3,10 +3,14 @@
    <div class="navbar-fixed">
     <nav class="white">
       <div class="nav-wrapper row">
-        <div class="input-field col s5">
-          <input type="search" required placeholder="search" v-model.trim="srchTxt">
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons hide-on-med-and-down" @click="srchTxt=''">close</i>
+        <div class="col s5">
+          <transition name="fade" appear>
+            <div class="input-field" v-show="showSearch">
+              <input type="search" required placeholder="search" v-model.trim="srchTxt">
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons hide-on-med-and-down" @click="srchTxt=''">close</i>
+            </div>
+          </transition>
         </div>
         <div class="col s3">
           <a class="brand-logo cyan-text text-darken-2 col s3">Nuxt <span class="hide-on-small-only">Auth</span> <span class="hide-on-med-and-down">101</span></a>
@@ -35,6 +39,12 @@ export default {
       set(val){
         this.$store.dispatch('search',val)
       }
+    },
+    showSearch(){
+      if(this.$route.path=='/register')
+        return false
+      else
+        return true
     }
   },
   methods:{
@@ -59,7 +69,10 @@ nav{
   height: 2.8rem;
   line-height: 2.8rem;
 }
-nav i{
-  margin-top:-0.8rem;
+i{
+  margin-top:-1.3rem;
+}
+.input-field{
+  margin-top:0.5rem!important;
 }
 </style>

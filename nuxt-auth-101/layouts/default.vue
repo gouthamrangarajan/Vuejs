@@ -49,4 +49,13 @@ export default {
 .slide-enter,.slide-leave-to{
   transform: translateX(50rem);
 }
+.fade-enter-active,
+.fade-leave-active{
+  transition:all 0.3s;
+}
+.fade-enter,
+.fade-leave-to{
+  opacity: 0;
+}
+
 </style>
