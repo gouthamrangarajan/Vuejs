@@ -51,7 +51,7 @@ export default {
   methods:{
     logout(){
       this.$auth.logout()
-      this.$nextTick(()=>{window.location.href=window.location.href})
+      setTimeout(()=>{window.location.href=window.location.href},300)
     }
   },
 }
