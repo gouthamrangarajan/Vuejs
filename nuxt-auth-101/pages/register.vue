@@ -58,9 +58,9 @@ export default {
       }
       else{
            M.toast({html: msg[0],classes:'green darken-4 white-text'})
-           setTimeout(()=>{
-             window.location.href=window.location.href;
-           },500);
+           this.register.name=''
+           this.register.email=''
+           this.register.password=''
       }
     }
   }

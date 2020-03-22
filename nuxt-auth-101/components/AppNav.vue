@@ -45,14 +45,15 @@ export default {
         return false
       else
         return true
-    }
+    },
+
   },
   methods:{
     logout(){
       this.$auth.logout()
-      window.location.href=window.location.href
+      this.$nextTick(()=>{window.location.href=window.location.href})
     }
-  }
+  },
 }
 </script>
 <style scoped>
