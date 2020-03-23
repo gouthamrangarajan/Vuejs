@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 const jwtSign='NUXT_AUTH_101';
 
 //prepopulated users pwd is same as email
-const usersData=require('./usersData')
+const usersData=require('./modals/usersData')
 const users=usersData.data
 
 //called manually from ui to get all users
