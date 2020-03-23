@@ -1,5 +1,6 @@
 <template>
-    <table class="z-depth-5 hoverable striped">
+  <div class="table-container z-depth-5 hoverable">
+    <table class="striped">
           <thead>
             <tr class="light-blue accent-4 white-text">
               <th class="center" style="width:40%">Name</th>
@@ -8,15 +9,16 @@
           </thead>
           <transition-group tag="tbody" name="records">
             <tr v-for="usr in users" :key="usr.email">
-               <td class="center">
-                 {{usr.name}}
-               </td>
-               <td class="center">
-                 {{usr.email}}
-               </td>
+              <td class="center">
+                {{usr.name}}
+              </td>
+              <td class="center">
+                {{usr.email}}
+              </td>
             </tr>
           </transition-group>
       </table>
+  </div>
 </template>
 <script>
 export default {
@@ -41,5 +43,10 @@ export default {
 .records-enter,.records-leave-to{
   opacity: 0;
   transform: translateX(2px);
+}
+.table-container{
+  max-height: 34rem;
+  overflow-y:auto;
+  overflow-x:hidden;
 }
 </style>

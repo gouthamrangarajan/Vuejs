@@ -4,27 +4,20 @@
      <div class="col s12">
         <div class="card blue-grey darken-3 hoverable  z-depth-5">
           <div class="card-content">
-            <span class="card-title orange-text text-accent-2">Register</span>
+            <span class="card-title orange-text text-accent-2">Change Password</span>
             <div class="row white-text">
               <div class="input-field col s12">
-                  <i class="material-icons prefix">person</i>
-                  <input id="name" type="text" class="validate white-text" v-model.trim="register.name" @keyup.enter="submit">
-                  <label for="name">Name</label>
+                  <input id="pwd" type="password" class="validate white-text" v-model.trim="chngPwd.currPwd" @keyup.enter="submit">
+                  <label for="pwd">Current</label>
               </div>
               <div class="input-field col s12">
-                  <i class="material-icons prefix">email</i>
-                  <input id="userName" type="text" class="validate white-text" v-model.trim="register.email" @keyup.enter="submit">
-                  <label for="userName">Email</label>
-              </div>
-              <div class="input-field col s12">
-                  <i class="material-icons prefix">vpn_key</i>
-                  <input id="pwd" type="password" class="validate white-text" v-model.trim="register.password" @keyup.enter="submit">
-                  <label for="pwd">Password</label>
+                  <input id="new" type="password" class="validate white-text" v-model.trim="chngPwd.newPwd" @keyup.enter="submit">
+                  <label for="new">New</label>
               </div>
             </div>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light" @click="submit">Submit</a>
+              <a class="waves-effect waves-light" @click="submit">Change</a>
               <nuxt-link to="/" class="waves-effect waves-light">View Users</nuxt-link>
             </div>
         </div>
@@ -38,15 +31,15 @@ import UsrBtn from '@/components/UsrBtn.vue'
 export default {
   transition:'fade',
   data(){
-    return {register:{email:'',password:'',name:''}}
+    return {chngPwd:{currPwd:'',newPwd:''}}
   },
   components:{
     UsrBtn
   },
   methods:{
     submit(){
-      let record={name:this.register.name,email:this.register.email,password:this.register.password};
-      this.$store.dispatch('registerUser',{record:record,fn:this.parseResponse})
+      let record={currentPassword:this.chngPwd.currPwd,newPassword:this.chngPwd.newPwd};
+      this.$store.dispatch('changePassword',{record:record,fn:this.parseResponse})
     },
     parseResponse(msg){
       let errMsg='';
@@ -63,9 +56,8 @@ export default {
       }
       else{
            M.toast({html: msg[0],classes:'green darken-4 white-text'})
-           this.register.name=''
-           this.register.email=''
-           this.register.password=''
+           this.chngPwd.currPwd=''
+           this.chngPwd.newPwd=''
       }
     }
   }

@@ -5,18 +5,18 @@
           <app-usr-tbl></app-usr-tbl>
       </div>
     </div>
-    <add-usr-btn></add-usr-btn>
+    <usr-btn></usr-btn>
   </div>
 </template>
 
 <script>
 import AppUsrTbl from '@/components/AppUsrTbl.vue'
-import AddUsrBtn from '@/components/AddUsrBtn.vue'
+import UsrBtn from '@/components/UsrBtn.vue'
 export default {
-  transition:'slide',
+  transition:'fade',
   components:{
     AppUsrTbl,
-    AddUsrBtn
+    UsrBtn
   }
 }
 </script>

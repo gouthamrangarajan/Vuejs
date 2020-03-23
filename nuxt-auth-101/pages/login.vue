@@ -31,7 +31,7 @@
 </template>
 <script>
 export default {
- transition:'scale',
+ transition:'fade',
  data(){
    return {login:{email:'',password:''}}
  },
@@ -52,6 +52,6 @@ export default {
   width:98%!important;
 }
 .valign-wrapper{
-  height: 100vh;
+  min-height: 68vh;
 }
 </style>

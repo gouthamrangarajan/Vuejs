@@ -32,7 +32,7 @@ router.post('/login',(req,res)=>{
         res.status('401').json({msg:'Invalid credentials'});
         return;
     }
-});
+  });
 })
 
 //called by nuxt auth
@@ -158,6 +158,72 @@ router.post('/register',(req,res)=>{
     }
   });
 })
+
+//called manually from ui to change password
+router.post('/password/change',(req,res)=>{
+  if(!req.headers || !req.headers.authorization){
+    res.status('401').json({msg:'Invalid request'});
+    return;
+  }
+
+  if(!req.body || !req.body.currentPassword || !req.body.newPassword){
+    res.status('400').json({msg:['Bad request']});
+    return;
+  }
+  let msg=[];
+
+  if(req.body.currentPassword.trim().length<8){
+    msg.push('Please check the current password');
+  }
+
+  if(req.body.newPassword.trim().length<8){
+    msg.push('New password should be minimum of eight characters');
+  }
+
+  if(msg.length>0){
+    res.status('400').json({msg:msg});
+    return;
+  }
+  jwt.verify(req.headers.authorization.replace("Bearer ",""), jwtSign, function(err, decoded) {
+    if(decoded) {
+      let user=users.filter(el=>el.email.toLowerCase()==decoded.email.trim().toLowerCase())[0];
+      if(!user){
+          res.status('400').json({msg:['User does not exist...']});
+          return;
+        }
+      bcrypt.compare(req.body.currentPassword, user.pwd, function(err, result) {
+        if(!result){
+            res.status('400').json({msg:['Please check the current password']});
+            return;
+        }
+        else{
+          bcrypt.compare(req.body.newPassword, user.pwd, function(err, result) {
+            if(result){
+              res.status('400').json({msg:['New password cannot be same as current']});
+              return;
+            }
+            else{
+              bcrypt.hash(req.body.newPassword,10,function(err,hash){
+                if(err){
+                   res.status('500').json({msg:['Error, try again...']});
+                   return;
+                }
+                user.pwd=hash;
+                res.status('200').json({msg:['Successfully updated password']});
+                return;
+              });
+            }
+          });
+        }
+      });
+    }
+    else{
+      res.status('401').json({msg:['Not authorized']});
+      return;
+    }
+  });
+})
+
 function validateEmail(email) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());

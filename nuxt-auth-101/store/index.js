@@ -48,5 +48,15 @@ export const actions={
         data.fn(err.response.data.msg)
       })
    }
+  },
+  changePassword({commit},data){
+    if(localStorage){
+      let bearer_token=localStorage.getItem('auth._token.local')
+      axios.post('/api/auth/password/change',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
+        data.fn(response.data.msg)
+      }).catch(err=>{
+        data.fn(err.response.data.msg)
+      })
+   }
   }
 }

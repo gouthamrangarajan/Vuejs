@@ -1,6 +1,5 @@
 <template>
-<transition name="nav-slide">
-   <div class="navbar-fixed">
+  <div class="navbar-fixed">
     <nav class="white">
       <div class="nav-wrapper row">
         <div class="col s5">
@@ -16,19 +15,22 @@
           <a class="brand-logo cyan-text text-darken-2 col s3">Nuxt <span class="hide-on-small-only">Auth</span> <span class="hide-on-med-and-down">101</span></a>
         </div>
         <div class="col s4">
-          <ul class="right">
-            <li><a class="teal-text text-darken-2"><span class="hide-on-small-only">Welcome</span> {{name}}</a></li>
-            <li><a class="teal-text" @click="logout">Logout</a></li>
-          </ul>
+          <transition name="nav-slide">
+            <ul class="right"  v-if="isLoggedIn">
+              <li><a class="teal-text text-darken-2"><span class="hide-on-small-only">Welcome</span> {{name}}</a></li>
+            </ul>
+          </transition>
         </div>
       </div>
     </nav>
   </div>
-</transition>
 </template>
 <script>
 export default {
   computed:{
+    isLoggedIn(){
+      return this.$auth.loggedIn;
+    },
     name(){
       return this.$auth.user.name
     },
@@ -41,18 +43,15 @@ export default {
       }
     },
     showSearch(){
-      if(this.$route.path=='/register')
-        return false
-      else
+      if(this.$route.path=='/')
         return true
+      else
+        return false
     },
 
   },
   methods:{
-    logout(){
-      this.$auth.logout()
-      setTimeout(()=>{window.location.href=window.location.href},300)
-    }
+
   },
 }
 </script>
