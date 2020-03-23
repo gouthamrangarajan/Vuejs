@@ -34,7 +34,7 @@ export const actions={
   refreshUsers({commit}){
     if(localStorage){
       let bearer_token=localStorage.getItem('auth._token.local')
-      axios.get('/api/auth/users',{headers:{Authorization:bearer_token}}).then(response=>{
+      axios.get('/api/users/all',{headers:{Authorization:bearer_token}}).then(response=>{
         commit('setUsers',response.data);
       })
    }
@@ -42,7 +42,7 @@ export const actions={
   registerUser({commit},data){
     if(localStorage){
       let bearer_token=localStorage.getItem('auth._token.local')
-      axios.post('/api/auth/register',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
+      axios.post('/api/users/register',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
         data.fn(response.data.msg)
       }).catch(err=>{
         data.fn(err.response.data.msg)
@@ -52,7 +52,7 @@ export const actions={
   changePassword({commit},data){
     if(localStorage){
       let bearer_token=localStorage.getItem('auth._token.local')
-      axios.post('/api/auth/password/change',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
+      axios.post('/api/users/password/change',data.record,{headers:{Authorization:bearer_token}}).then(response=>{
         data.fn(response.data.msg)
       }).catch(err=>{
         data.fn(err.response.data.msg)

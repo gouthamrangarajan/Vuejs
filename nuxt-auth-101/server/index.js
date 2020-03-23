@@ -4,6 +4,7 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 var bodyParser = require('body-parser')
 var auth = require('./auth')
+var users=require('./users')
 
 app.use(bodyParser.json())
 
@@ -25,6 +26,7 @@ async function start () {
   }
 
    app.use('/api/auth',auth);
+   app.use('/api/users',users);
 
   // Give nuxt middleware to express
   app.use(nuxt.render);
