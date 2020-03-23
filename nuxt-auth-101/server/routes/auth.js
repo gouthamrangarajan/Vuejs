@@ -5,8 +5,15 @@ var jwt = require('jsonwebtoken');
 const jwtSign='NUXT_AUTH_101';
 
 //prepopulated users pwd is same as email
-const usersData=require('./modals/usersData')
-const users=usersData.data
+const usersData=require('../modals/usersData');
+const users=usersData.data;
+
+//auth middleware
+const verifyAuth=require('../middleware/auth');
+router.use(verifyAuth().unless({
+  url:'/login',
+  method:['POST']
+}));
 
 //called by nuxt auth
 router.post('/login',(req,res)=>{
@@ -35,50 +42,21 @@ router.post('/login',(req,res)=>{
 
 //called by nuxt auth
 router.get('/user',(req,res)=>{
-  if(!req.headers || !req.headers.authorization){
-    res.status('401').json({msg:'Invalid request'});
-    return;
-  }
   jwt.verify(req.headers.authorization.replace("Bearer ",""), jwtSign, function(err, decoded) {
-    if(decoded) {
       let user=users.filter(el=>el.email.toLowerCase()==decoded.email.trim().toLowerCase())[0];
-      if(!user || user.currToken==''){
-          res.status('403').json({msg:'Invalid user'});
-          return;
-      }
       res.status('200').json({user:{name:user.name,email:user.email}});
       return;
-    }
-    else{
-      res.status('401').json({msg:'Not authorized'});
-      return;
-    }
   });
 })
 
 //called by nuxt auth
 router.post('/logout',(req,res)=>{
-  if(!req.headers || !req.headers.authorization){
-    res.status('401').json({msg:'Invalid request'});
-    return;
-  }
   jwt.verify(req.headers.authorization.replace("Bearer ",""), jwtSign, function(err, decoded) {
-    if(decoded) {
-      let user=users.filter(el=>el.email.toLowerCase()==decoded.email.trim().toLowerCase())[0];
-      if(!user || user.currToken==''){
-          res.status('403').json({msg:'Invalid user'});
-          return;
-      }
-      user.currToken='';
-      res.status('200').json({msg:'succesfully logged out'});
-      return;
-    }
-    else{
-      res.status('401').json({msg:'Not authorized'});
-      return;
-    }
+    let user=users.filter(el=>el.email.toLowerCase()==decoded.email.trim().toLowerCase())[0];
+    user.currToken='';
+    res.status('200').json({msg:'succesfully logged out'});
+    return;
   });
 })
-
 
 module.exports = router

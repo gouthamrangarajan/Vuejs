@@ -3,8 +3,8 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 var bodyParser = require('body-parser')
-var auth = require('./auth')
-var users=require('./users')
+var auth = require('./routes/auth')
+var users=require('./routes/users')
 
 app.use(bodyParser.json())
 
