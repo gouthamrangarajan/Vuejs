@@ -1,5 +1,22 @@
 <template>
 <div class="container">
+  <transition name="fade">
+      <template v-if="users.length==0">
+       <div class="valign-wrapper center-align" style="height:85%;width:100%;margin-left:50%">
+                <div class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+      </template>
+    </transition>
   <div class="row">
     <pagination :info="paginationData" id="users_pagination_1" @changeLen="pageInfo.pageLen=$event;pageInfo.currPage=1"
             @decrease="decreasePage" @increase="increasePage">
@@ -31,21 +48,14 @@ export default {
       pagination,userCollectionItem
   },
   data(){
-      return {pageInfo:{currPage:1,totalPages:0,pageLen:5},unsubscribe:null}
+      return {pageInfo:{currPage:1,totalPages:0,pageLen:5}}
     },
   mounted(){
-      this.unsubscribe=this.$store.subscribe((mutation)=>{
-        if(mutation.type=='users/setData'){
 
-          }
-      })
-      this.$store.dispatch('users/refresh')
     },
-    destroyed(){
-      if(this.unsubscribe){
-        this.unsubscribe();
-      }
-    },
+  destroyed(){
+
+  },
   computed:{
     ...mapState({
         users:state=>state.users.data,

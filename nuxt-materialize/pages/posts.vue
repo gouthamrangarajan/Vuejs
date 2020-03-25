@@ -1,5 +1,22 @@
 <template>
   <div class="container">
+    <transition name="fade">
+      <template v-if="posts.length==0">
+       <div class="valign-wrapper center-align" style="height:85%;width:100%;margin-left:50%">
+                <div class="preloader-wrapper active">
+                    <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+      </template>
+    </transition>
      <pagination :info="paginationData" id="posts_pagination_1" @changeLen="pageInfo.pageLen=$event;pageInfo.currPage=1"
             @decrease="decreasePage" @increase="increasePage">
       </pagination>
@@ -48,25 +65,17 @@ export default {
       }
     },
     data(){
-      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},modalUserId:-1,unsubscribe:null}
+      return {pageInfo:{currPage:1,totalPages:0,pageLen:10},modalUserId:-1}
     },
     components:{
       pagination,
       userModalContent
     },
     mounted(){
-      this.unsubscribe=this.$store.subscribe((mutation)=>{
-        if(mutation.type=='posts/setData'){
-            this.initializeMaterialize()
-          }
-      })
-      this.$store.dispatch('users/refresh')
-      this.$store.dispatch('posts/refresh')
+      this.initializeMaterialize()
     },
     destroyed(){
-      if(this.unsubscribe){
-        this.unsubscribe();
-      }
+
     },
     computed:{
         ...mapState({

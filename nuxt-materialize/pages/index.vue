@@ -48,24 +48,8 @@ export default{
         ]
       }
   },
-  mounted(){
-    this.unsubscribe=this.$store.subscribe((mutation)=>{
-      if(mutation.type=='todos/setData'){
-        this.init()
-      }
-    })
-    this.$store.dispatch('users/refresh')
-    this.$store.dispatch('albums/refresh')
-    this.$store.dispatch('posts/refresh')
-    this.$store.dispatch('todos/refresh')
-  },
-  destroyed(){
-    if(this.unsubscribe){
-      this.unsubscribe();
-    }
-  },
   computed:{
-        ...mapGetters({
+       ...mapGetters({
             posts:'posts/dataLength',
             albums:'albums/dataLength',
             users:'users/dataLength',
@@ -78,19 +62,19 @@ export default{
           return 1024;
       }
     },
-    data(){
-      return {
-        unsubscribe:null
-      }
-    },
     methods:{
       init(){
-        GoogleCharts.load(this.drawPieChart, {'packages':['corechart']});
-        GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
-        setTimeout(()=>{
-          let el = document.querySelectorAll('.tabs');
-          let instance = M.Tabs.init(el, {});
-        },700);
+        if(this.posts>0
+          && this.albums>0
+          && this.todos>0
+           && this.users>0){
+          GoogleCharts.load(this.drawPieChart, {'packages':['corechart']});
+          GoogleCharts.load(this.drawBarChart, {'packages':['bar']});
+          setTimeout(()=>{
+            let el = document.querySelectorAll('.tabs');
+            let instance = M.Tabs.init(el, {});
+          },700);
+        }
       },
       getPieChartData(){
         return google.visualization.arrayToDataTable([
@@ -162,6 +146,32 @@ export default{
         options.is3D=true
         let chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
+      }
+    },
+    watch:{
+      posts:{
+        immediate:true,
+        handler(){
+          this.init()
+        }
+      },
+      todos:{
+        immediate:true,
+        handler(){
+          this.init()
+        }
+      },
+      albums:{
+        immediate:true,
+        handler(){
+          this.init()
+        }
+      },
+      users:{
+        immediate:true,
+        handler(){
+          this.init()
+        }
       }
     }
 }

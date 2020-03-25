@@ -12,11 +12,13 @@ import api from '@/api/users'
       }
   }
 export const actions= {
-    refresh({commit}){
-        api.getAll(result=>{
-            commit('setData',result);
-        });
+  refresh(context){
+    if(context.state.data.length==0){
+      api.getAll(result=>{
+          context.commit('setData',result);
+      });
     }
+   }
   }
  export const getters={
      dataLength:state=>{

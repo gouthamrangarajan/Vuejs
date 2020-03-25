@@ -17,6 +17,12 @@ export default{
   components:{
     NavBar,
     AppFooter
+  },
+  created(){
+    this.$store.dispatch('users/refresh')
+    this.$store.dispatch('albums/refresh')
+    this.$store.dispatch('posts/refresh')
+    this.$store.dispatch('todos/refresh')
   }
 }
 </script>

@@ -11,13 +11,17 @@ import api from '@/api/albums'
           state.data=result;
       }
   }
-export const actions= {
-    refresh({commit}){
+
+  export const actions= {
+    refresh(context){
+      if(context.state.data.length==0){
         api.getAll(result=>{
-            commit('setData',result);
+            context.commit('setData',result);
         });
+      }
     }
   }
+
   export const getters={
      dataLength:state=>{
          return state.data.length;
