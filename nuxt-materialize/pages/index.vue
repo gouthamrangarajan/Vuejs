@@ -67,7 +67,7 @@ export default{
         this.windowWidth=window.innerWidth
         this.init()
         var d = new Date()
-        d.setFullYear(d.getFullYear() + 1);
+        d.setFullYear(d.getFullYear() + 1)
         var expires = "expires="+ d.toUTCString()
         document.cookie='windowWidth='+window.innerWidth+ ";" + expires + ";path=/";
       }
