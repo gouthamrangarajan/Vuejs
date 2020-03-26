@@ -23,6 +23,8 @@ export default{
     this.$store.dispatch('albums/refresh')
     this.$store.dispatch('posts/refresh')
     this.$store.dispatch('todos/refresh')
+    if(process.client)
+      document.cookie='windowWidth='+window.innerWidth
   }
 }
 </script>

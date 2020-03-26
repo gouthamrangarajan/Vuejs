@@ -37,6 +37,19 @@
 import {mapGetters} from 'vuex'
 import {GoogleCharts} from 'google-charts'
 export default{
+  asyncData({req}){
+    if(process.server){
+      if(req && req.headers){
+        let cookie=req.headers.cookie
+        if(cookie && cookie.indexOf('windowWidth=')>-1)
+          return {windowWidth:parseInt(cookie.replace('windowWidth=',''))}
+      }
+      return {windowWidth:1024}
+    }
+    else{
+      return {windowWidth:window.innerWidth}
+    }
+  },
   transition:'slide',
   head(){
       return{
@@ -54,13 +67,7 @@ export default{
             albums:'albums/dataLength',
             users:'users/dataLength',
             todos:'todos/dataLength'
-        }),
-      windowWidth(){
-        if(process.client)
-          return window.innerWidth
-        else
-          return 1024;
-      }
+        })
     },
     methods:{
       init(){
