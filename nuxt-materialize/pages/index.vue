@@ -61,18 +61,6 @@ export default{
         ]
       }
   },
-  mounted(){
-    if(process.client){
-      if(this.windowWidth!=window.innerWidth){
-        this.windowWidth=window.innerWidth
-        this.init()
-        var d = new Date()
-        d.setFullYear(d.getFullYear() + 1)
-        var expires = "expires="+ d.toUTCString()
-        document.cookie='windowWidth='+window.innerWidth+ ";" + expires + ";path=/";
-      }
-    }
-  },
   computed:{
        ...mapGetters({
             posts:'posts/dataLength',
@@ -82,7 +70,19 @@ export default{
         })
     },
     methods:{
+      checkWindowWidth(){
+        if(process.client){
+          if(this.windowWidth!=window.innerWidth){
+              this.windowWidth=window.innerWidth
+              var d = new Date()
+              d.setFullYear(d.getFullYear() + 1)
+              var expires = "expires="+ d.toUTCString()
+              document.cookie='windowWidth='+window.innerWidth+ ";" + expires + ";path=/";
+            }
+        }
+      },
       init(){
+        this.checkWindowWidth()
         if(this.posts>0
           && this.albums>0
           && this.todos>0
