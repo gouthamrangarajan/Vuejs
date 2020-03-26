@@ -23,8 +23,14 @@ export default{
     this.$store.dispatch('albums/refresh')
     this.$store.dispatch('posts/refresh')
     this.$store.dispatch('todos/refresh')
-    if(process.client)
-      document.cookie='windowWidth='+window.innerWidth
+    if(process.client){
+      if(!document.cookie || document.cookie.indexOf('windowWidth')==-1){
+        var d = new Date()
+        d.setFullYear(d.getFullYear() + 1);
+        var expires = "expires="+ d.toUTCString()
+        document.cookie='windowWidth='+window.innerWidth+ ";" + expires + ";path=/";
+      }
+    }
   }
 }
 </script>
