@@ -5,11 +5,13 @@
     <nav class="white">
       <div class="nav-wrapper row">
         <div class="col s10 l6">
-          <div class="input-field">
-            <input id="search" type="search" required placeholder="search" v-model.trim="searchTxt">
-            <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
-            <i class="material-icons" @click="searchTxt=''">close</i>
-          </div>
+          <transition name="nav-slide">
+            <div class="input-field" v-show="showSearch">
+              <input id="search" type="search" required placeholder="search" v-model.trim="searchTxt">
+              <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+              <i class="material-icons" @click="searchTxt=''">close</i>
+            </div>
+          </transition>
         </div>
         <div class="col l6 s2">
             <a data-target="side-nav" class="sidenav-trigger"><i class="material-icons teal-text text-darken-4">menu</i></a>
@@ -64,6 +66,11 @@ export default {
           set(value){
               this.$store.dispatch('search',value);
           }
+      },
+      showSearch(){
+        if(this.$route.fullPath=='/')
+          return false
+        return true
       }
   },
   watch:{
