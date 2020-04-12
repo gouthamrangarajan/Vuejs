@@ -5,8 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    information:[{id:1,data:'Information1',edit:false,dock:false},{id:2,data:'Information2',edit:false,dock:false},
-              {id:3,data:'Information3',edit:false,dock:false},{id:4,data:'Information4',edit:false,dock:false},              
+    information:[{id:1,data:'Information1',edit:false,dock:false,dt:new Date()},
+                {id:2,data:'Information2',edit:false,dock:false,dt:new Date()},
+              {id:3,data:'Information3',edit:false,dock:false,dt:new Date()},
+              {id:4,data:'Information4',edit:false,dock:false,dt:new Date()},              
               ],
     nextInfoId:5,
     curMode:'',
@@ -17,12 +19,19 @@ export default new Vuex.Store({
       return state.information.filter(el=>el.edit)[0]
     },
     dockableInfo(state){
-      return state.information.filter(el=>el.dock)
+      return state.information.filter(el=>el.dock).sort((a,b)=>{
+        if(a.dt>b.dt)
+          return -1
+        else if(b.dt>a.dt)
+          return 1
+        else
+          return 0
+      })
     }
   },
   mutations: {
     ADD_INFO(state){
-      state.information.push({id:state.nextInfoId,edit:true,dock:false,data:''})
+      state.information.push({id:state.nextInfoId,edit:true,dock:false,data:'',dt:new Date()})
       state.nextInfoId++
       state.curMode='Add'
       state.modalOpened=true
@@ -51,6 +60,7 @@ export default new Vuex.Store({
     START_EDIT(state,id){      
       let dt=state.information.filter(el=>el.id==id)[0]      
       dt.edit=true
+      dt.dt=new Date()
       state.curMode='Edit'
       state.modalOpened=true
       state.dock=false
