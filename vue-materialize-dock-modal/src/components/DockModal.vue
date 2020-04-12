@@ -58,6 +58,7 @@ export default {
             let elem = document.getElementById('modal1')   
             let instance=M.Modal.getInstance(elem)
             instance.open()
+            this.removeDock(this.openedId)
         },        
     },
     mounted(){

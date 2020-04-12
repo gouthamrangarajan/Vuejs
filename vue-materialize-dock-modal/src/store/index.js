@@ -54,6 +54,7 @@ export default new Vuex.Store({
       dt.edit=true
       state.curMode='Edit'
       state.modalOpened=true
+      state.dock=false
     },
     DOCK_INFO(state,id){
       let dt=state.information.filter(el=>el.id==id)[0]      
