@@ -110,16 +110,31 @@ export default {
 h4 i{
     font-size: 1rem;
 }
+.input-field{
+    min-height: 20rem;
+}
 .slide-move{
     transition:all 0.3s;
 }
 .slide-enter-active{
     transition:all 0.3s;
 }
+.slide-leave-active{
+    animation:fade-out 0.3s;
+}
 .slide-enter{
     transform: translateY(-30rem);
 }
-.input-field{
-    min-height: 20rem;
+.slide-leave-to{
+    opacity:0;
+}
+
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
 }
 </style>
