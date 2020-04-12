@@ -1,6 +1,8 @@
 # vue-materialize-doc-modal
 
-> Simple Dockable Modal using Vuejs & Materialize
+Simple Dockable Modal using Vuejs & Materialize.
+CodePen version https://codepen.io/GouthamRangarajan/full/KKdwOpO
+
 
 ## Project setup
 ```
