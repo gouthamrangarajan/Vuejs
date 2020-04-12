@@ -1,6 +1,6 @@
 # vue-materialize-doc-modal
 
-## Simple Dockable Modal using Vuejs & Materialize
+> Simple Dockable Modal using Vuejs & Materialize
 
 ## Project setup
 ```
