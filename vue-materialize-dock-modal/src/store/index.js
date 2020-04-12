@@ -21,9 +21,9 @@ export default new Vuex.Store({
     dockableInfo(state){
       return state.information.filter(el=>el.dock).sort((a,b)=>{
         if(a.dt>b.dt)
-          return -1
-        else if(b.dt>a.dt)
           return 1
+        else if(b.dt>a.dt)
+          return -1
         else
           return 0
       })

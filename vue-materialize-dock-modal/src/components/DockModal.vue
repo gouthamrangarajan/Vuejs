@@ -7,21 +7,21 @@
                     <i class="material-icons right waves-effect waves-red" @click="removeDock(info.id)">close</i>
                     <i class="material-icons right waves-effect waves-green" @click="edit(info.id)">launch</i>
                 </span>
-            </a>
-            <template v-if="remainingDockedInfo.length>0">
-                <div :key="-1" class="right">                      
-                    <a class='dropdown-trigger btn grey darken-3 yellow-text' data-target='dropdown1'>
-                        More
-                        <i class="material-icons right">arrow_drop_up</i>
-                    </a>                    
-                    <ul id='dropdown1' class='dropdown-content'>
-                        <li v-for="info in remainingDockedInfo" :key="info.id">
-                            <a  @click="edit(info.id)">{{info.data|trim}}</a>
-                        </li>                        
-                    </ul>
-                </div>
-            </template>
+            </a>            
         </transition-group>       
+        <transition name="fade">            
+            <div :key="-1" class="right" v-if="remainingDockedInfo.length>0">                      
+                <a class='dropdown-trigger btn grey darken-3 yellow-text' data-target='dropdown1'>
+                    More
+                    <i class="material-icons right">arrow_drop_up</i>
+                </a>                    
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li v-for="info in remainingDockedInfo" :key="info.id">
+                        <a  @click="edit(info.id)">{{info.data|trim}}</a>
+                    </li>                        
+                </ul>
+            </div>            
+        </transition>
         <modal></modal>     
     </div>
 </template>
