@@ -46,8 +46,7 @@ export default new Vuex.Store({
     REMOVE_DOCK(state,id){
       let dt=state.information.filter(el=>el.id==id)[0]      
       dt.edit=false
-      dt.dock=false
-      state.modalOpened=false
+      dt.dock=false      
     },
     START_EDIT(state,id){      
       let dt=state.information.filter(el=>el.id==id)[0]      
