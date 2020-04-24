@@ -41,8 +41,7 @@ export default {
     methods:{
         ...mapActions(['dockInfo','removeDock','removeEdit']),
          save(){
-            this.modalDt=this.$refs.modalDtEl.innerText
-            console.log(this.modalDt)
+            this.modalDt=this.$refs.modalDtEl.innerText            
             this.$store.dispatch('saveInfo',{id:this.openedId,data:this.modalDt,html:this.modalHtml})
         },
         openModal(){

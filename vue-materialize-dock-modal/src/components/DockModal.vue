@@ -8,20 +8,7 @@
                     <i class="material-icons right waves-effect waves-green" @click="edit(info.id)">launch</i>
                 </span>
             </a>            
-        </transition-group>       
-        <transition name="fade">            
-            <div :key="-1" class="right" v-if="remainingDockedInfo.length>0">                      
-                <a class='dropdown-trigger btn grey darken-3 yellow-text' data-target='dropdown1'>
-                    More
-                    <i class="material-icons right">arrow_drop_up</i>
-                </a>                    
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li v-for="info in remainingDockedInfo" :key="info.id">
-                        <a  @click="edit(info.id)">{{info.data|trim}}</a>
-                    </li>                        
-                </ul>
-            </div>            
-        </transition>
+        </transition-group>               
         <modal></modal>     
     </div>
 </template>
@@ -60,17 +47,7 @@ export default {
                 return val.substring(0,15)
             }
         }
-    },        
-    watch:{        
-        remainingDockedInfo(newVal,oldVal){            
-            if(newVal.length>oldVal.length){                
-                this.$nextTick(()=>{
-                  let elems = document.querySelectorAll('.dropdown-trigger')
-                  let instances = M.Dropdown.init(elems, {})
-                })
-            }
-        }
-    }
+    },            
 }
 </script>
 <style scoped>
@@ -111,11 +88,5 @@ export default {
     100%{
         opacity: 0;
     }
-}
-.dropdown-content{
-    height: 13rem;
-    width:9rem!important;
-    overflow-y:auto;
-    overflow-x: hidden;
 }
 </style>

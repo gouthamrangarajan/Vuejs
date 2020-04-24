@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     information:[{id:1,data:'Information1',html:'<p>Information1</p>',edit:false,dock:false,dt:new Date()},
-                {id:2,data:'Information2NewLineInformation',html:'<p>Information2<br/>NewLineInformation</p>',edit:false,dock:false,dt:new Date()},
+                {id:2,data:'Information2New Line Information',html:'<p>Information2<br/>New&nbsp;line&nbsp;information</p>',edit:false,dock:false,dt:new Date()},
               {id:3,data:'Information3',html:'<p>Information3</p>',edit:false,dock:false,dt:new Date()},
               {id:4,data:'Information4',html:'<p>Information4</p>',edit:false,dock:false,dt:new Date()},              
               ],
