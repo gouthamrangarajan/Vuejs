@@ -8,9 +8,10 @@
                 </h4>                       
              <div class="row">                
                 <div class="row">
-                    <div class="input-field col s12 z-depth-1  grey lighten-4">
-                        <textarea class="materialize-textarea" v-model="modalDt" id="textarea">
-                        </textarea>                        
+                    <div class="input-field col s12">
+                       <ckeditor :editor="editor" v-model="modalHtml" :config="editorConfig"></ckeditor>
+                       <div v-show="false" ref="modalDtEl" v-html="modalHtml">
+                       </div>                        
                     </div>
                 </div>                
             </div>
@@ -23,10 +24,11 @@
 </template>
 <script>
 import {mapGetters,mapActions,mapState} from 'vuex'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 export default {
     name:'Modal',
     data(){
-        return{openedId:-1,modalDt:''}
+        return{openedId:-1,modalDt:'',editorConfig:{},modalHtml:'',editor:ClassicEditor}
     },
     mounted(){
         let elems = document.getElementById('modal1')
@@ -39,7 +41,9 @@ export default {
     methods:{
         ...mapActions(['dockInfo','removeDock','removeEdit']),
          save(){
-            this.$store.dispatch('saveInfo',{id:this.openedId,info:this.modalDt})
+            this.modalDt=this.$refs.modalDtEl.innerText
+            console.log(this.modalDt)
+            this.$store.dispatch('saveInfo',{id:this.openedId,data:this.modalDt,html:this.modalHtml})
         },
         openModal(){
             let elem = document.getElementById('modal1')   
@@ -53,11 +57,8 @@ export default {
             if(newVal){
                 this.openedId=newVal.id                
                 this.modalDt=newVal.data
-                this.openModal()
-                this.$nextTick(()=>{
-                    let elem = document.getElementById('textarea')   
-                    M.textareaAutoResize(elem)
-                })
+                this.modalHtml=newVal.html
+                this.openModal()                
             }
         },
     }

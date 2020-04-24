@@ -7,7 +7,7 @@
             </thead>
             <transition-group name="records" tag="tbody">
                 <tr v-for="info in information" :key="info.id">
-                    <td>{{info.data}}</td>
+                    <td v-html="trim(info.html)"></td>
                     <td><i class="tiny material-icons" @click="startEdit(info.id)">create</i></td>
                 </tr>
             </transition-group>
@@ -22,7 +22,13 @@ export default {
         ...mapState(['information'])
     },
     methods:{
-        ...mapActions(['startEdit'])
+        ...mapActions(['startEdit']),
+        trim(val){           
+            if(val.length>50)
+                return val.substring(0,50)+'<br/>...'           
+            else
+                return val
+        }
     }
 }
 </script>
