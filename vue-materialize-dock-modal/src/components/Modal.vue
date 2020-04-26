@@ -18,7 +18,8 @@
             </div>
             <div class="modal-footer">
                  <a class="modal-close waves-effect waves-light btn blue darken-4" @click="save">Save</a>    
-                 <a class="modal-close waves-effect waves-red btn-flat" @click="removeEdit">Close</a>                                  
+                 <a class="modal-close waves-effect waves-red btn-flat" @click="removeEdit">Close</a>         
+                 <a class="waves-effect waves-orange btn-flat" @click="reset">Reset</a>                                  
             </div>
         </div>     
 </template>
@@ -52,21 +53,24 @@ export default {
     },
     methods:{
         ...mapActions(['dockInfo','removeDock']),
+         reset(){
+            var html=this.editableInfo.html
+            this.$store.dispatch('setDirtyInfo',{id:this.openedId,dirtyHtml:html})
+         },
          removeEdit(){
-             var html=this.editableInfo.html
-             this.$store.dispatch('setDirtyInfo',{id:this.openedId,dirtyHtml:html})
-             this.$store.dispatch('removeEdit',this.openedId)
+            this.reset()
+            this.$store.dispatch('removeEdit',this.openedId)
          },
          save(){
             let dt=this.$refs.rawDtEl.innerText               
             this.$store.dispatch('saveInfo',{id:this.openedId,raw:dt,html:this.modalHtml,dirtyHtml:this.modalHtml})
-        },
-        openModal(){
+         },
+         openModal(){
             let elem = document.getElementById('modal1')   
             let instance=M.Modal.getInstance(elem)
             instance.open()
             this.removeDock(this.openedId)
-        },   
+         },   
     },
     watch:{
         editableInfo(newVal,oldVal){                 
