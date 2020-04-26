@@ -2,7 +2,7 @@
     <div class="dock-modal">
         <transition-group name="slide">
             <a class="btn grey darken-3 yellow-text right" v-for="info in dockedInfo" :key="info.id">
-                {{info.data|trim}}
+                {{info.raw|trim}}
                 <span>
                     <i class="material-icons right waves-effect waves-red" @click="removeDock(info.id)">close</i>
                     <i class="material-icons right waves-effect waves-green" @click="edit(info.id)">launch</i>
@@ -13,7 +13,7 @@
     </div>
 </template>
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 import Modal from '@/components/Modal.vue'
 export default {
     name:'DockModal',
@@ -27,20 +27,21 @@ export default {
         ...mapGetters(['dockableInfo']),       
         dockedInfo(){
             return this.dockableInfo.slice(0,this.dockItemsLen)
-        },  
-        remainingDockedInfo(){
-            return this.dockableInfo.slice(this.dockItemsLen)
-        }    
+        } 
     },
     methods:{
-        ...mapActions(['removeDock']),      
+        removeDock(id){
+            var item=this.dockableInfo.filter(el=>el.id==id)[0]
+            this.$store.dispatch('setDirtyInfo',{id:item.id,dirtyHtml:item.html})
+            this.$store.dispatch('removeDock',id)
+        },        
         edit(id){
             this.$store.dispatch('startEdit',id)
         },                                
     },    
     filters:{
-        trim(val){
-            if(val.trim().length==0){
+        trim(val){            
+            if(!val || val.trim().length==0){
                 return "New Information"
             }
             else{

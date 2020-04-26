@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                        <ckeditor :editor="editor" v-model="modalHtml" :config="editorConfig"></ckeditor>
-                       <div v-show="false" ref="modalDtEl" v-html="modalHtml">
+                       <div v-show="false" ref="rawDtEl" v-html="modalHtml">
                        </div>                        
                     </div>
                 </div>                
@@ -18,7 +18,7 @@
             </div>
             <div class="modal-footer">
                  <a class="modal-close waves-effect waves-light btn blue darken-4" @click="save">Save</a>    
-                 <a class="modal-close waves-effect waves-red btn-flat" @click="removeEdit(openedId)">Close</a>                 
+                 <a class="modal-close waves-effect waves-red btn-flat" @click="removeEdit">Close</a>                                  
             </div>
         </div>     
 </template>
@@ -28,7 +28,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 export default {
     name:'Modal',
     data(){
-        return{openedId:-1,modalDt:'',editorConfig:{},modalHtml:'',editor:ClassicEditor}
+        return{openedId:-1,editorConfig:{},editor:ClassicEditor}
     },
     mounted(){
         let elems = document.getElementById('modal1')
@@ -37,12 +37,29 @@ export default {
     computed:{
          ...mapState(['curMode']),
          ...mapGetters(['editableInfo']),  
+         modalHtml:{
+             get(){                 
+                 if(this.editableInfo)                 
+                    return this.editableInfo.dirtyHtml
+                else
+                  return ''
+             },
+             set(val){
+                 if(this.editableInfo)
+                    this.$store.dispatch('setDirtyInfo',{id:this.openedId,dirtyHtml:val})
+             }
+         }
     },
     methods:{
-        ...mapActions(['dockInfo','removeDock','removeEdit']),
+        ...mapActions(['dockInfo','removeDock']),
+         removeEdit(){
+             var html=this.editableInfo.html
+             this.$store.dispatch('setDirtyInfo',{id:this.openedId,dirtyHtml:html})
+             this.$store.dispatch('removeEdit',this.openedId)
+         },
          save(){
-            this.modalDt=this.$refs.modalDtEl.innerText            
-            this.$store.dispatch('saveInfo',{id:this.openedId,data:this.modalDt,html:this.modalHtml})
+            let dt=this.$refs.rawDtEl.innerText               
+            this.$store.dispatch('saveInfo',{id:this.openedId,raw:dt,html:this.modalHtml,dirtyHtml:this.modalHtml})
         },
         openModal(){
             let elem = document.getElementById('modal1')   
@@ -52,11 +69,9 @@ export default {
         },   
     },
     watch:{
-        editableInfo(newVal,oldVal){
+        editableInfo(newVal,oldVal){                 
             if(newVal){
-                this.openedId=newVal.id                
-                this.modalDt=newVal.data
-                this.modalHtml=newVal.html
+                this.openedId=newVal.id                             
                 this.openModal()                
             }
         },

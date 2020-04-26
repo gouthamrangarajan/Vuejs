@@ -34,7 +34,7 @@ export default {
 </script>
 <style scoped>
 .container{
-    max-height: 70vh;
+    max-height: 68vh;
     overflow-y:auto;
     overflow-x:hidden;
     padding:0.5rem;
