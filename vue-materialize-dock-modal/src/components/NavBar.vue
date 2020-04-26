@@ -1,9 +1,11 @@
 <template functional>
-<nav class="white">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo center teal-text">Vue Materialize</a>      
-    </div>
-</nav>
+  <div class="navbar-fixed">
+    <nav class="white">
+        <div class="nav-wrapper">
+        <a href="#" class="brand-logo center teal-text">Vue Materialize</a>      
+        </div>
+    </nav>
+   </div>
 </template>
 <script>
 export default {

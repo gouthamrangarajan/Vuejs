@@ -1,27 +1,32 @@
 <template>
-    <div class="dock-modal">
-        <transition-group name="slide">
-            <a class="btn grey darken-3 yellow-text right" v-for="info in dockedInfo" :key="info.id">
-                {{info.raw|trim}}
-                <span>
-                    <i class="material-icons right waves-effect waves-red" @click="removeDock(info.id)">close</i>
-                    <i class="material-icons right waves-effect waves-green" @click="edit(info.id)">launch</i>
-                </span>
-            </a>            
-        </transition-group>               
-        <modal></modal>     
+    <div>
+        <modal></modal>    
+        <confirm-modal :confirm="triggerConfirmModal" :id="'confirmModal2'" :successAction="removeDock"></confirm-modal>
+        <div class="dock-modal">
+            <transition-group name="slide">
+                <a class="btn grey darken-3 yellow-text right" v-for="info in dockedInfo" :key="info.id">
+                    {{info.raw|trim}}
+                    <span>
+                        <i class="material-icons right waves-effect waves-red" @click="confirmRemoveDock(info.id)">close</i>
+                        <i class="material-icons right waves-effect waves-green" @click="edit(info.id)">launch</i>
+                    </span>
+                </a>            
+            </transition-group>                       
+        </div>
     </div>
 </template>
 <script>
 import {mapGetters} from 'vuex'
+import ConfirmModal from '@/components/ConfirmModal.vue'
 import Modal from '@/components/Modal.vue'
 export default {
     name:'DockModal',
     data(){
-        return {dockItemsLen:4}
+        return {dockItemsLen:4,triggerConfirmModal:false,confirmId:-1}
     },
     components:{
-        Modal
+        Modal,
+        ConfirmModal
     },
     computed:{        
         ...mapGetters(['dockableInfo']),       
@@ -30,10 +35,20 @@ export default {
         } 
     },
     methods:{
-        removeDock(id){
-            var item=this.dockableInfo.filter(el=>el.id==id)[0]
-            this.$store.dispatch('setDirtyInfo',{id:item.id,dirtyHtml:item.html})
-            this.$store.dispatch('removeDock',id)
+        confirmRemoveDock(id){            
+            this.confirmId=id
+            var item=this.dockableInfo.filter(el=>el.id==id)[0]            
+            if(item.html!=item.dirtyHtml){               
+               this.triggerConfirmModal=true
+               this.$nextTick(()=>{this.triggerConfirmModal=false}) 
+            }
+            else
+                this.removeDock()
+        },
+        removeDock(){
+          var item=this.dockableInfo.filter(el=>el.id==this.confirmId)[0]
+          this.$store.dispatch('setDirtyInfo',{id:item.id,dirtyHtml:item.html})
+          this.$store.dispatch('removeDock',this.confirmId)
         },        
         edit(id){
             this.$store.dispatch('startEdit',id)

@@ -1,14 +1,12 @@
 <template>
   <div class="home">     
     <info-tbl></info-tbl>     
-    <dock-modal></dock-modal>     
-    <transition name="scale" appear>   
-      <div class="fixed-action-btn" @click="addInfo" v-show="!modalOpened" :key="1">
-        <a class="btn-floating btn-large red">
+    <dock-modal></dock-modal>         
+      <div class="fixed-action-btn" @click="addInfo"  :key="1">
+        <a class="btn-floating btn-large red pulse">
           <i class="large material-icons">add</i>
         </a>
-      </div>
-    </transition>
+      </div>    
   </div>
 </template>
 <script>
