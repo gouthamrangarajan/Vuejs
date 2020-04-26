@@ -37,7 +37,7 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_INFO(state){
-      state.information.push({id:state.nextInfoId,edit:true,dock:false,raw:'',html:'<p></p>',dirtyHtml:'<p></p>',dt:new Date()})
+      state.information.push({id:state.nextInfoId,edit:true,dock:false,raw:'',html:'',dirtyHtml:'',dt:new Date()})
       state.nextInfoId++
       state.curMode='Add'
       state.modalOpened=true
