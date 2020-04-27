@@ -8,8 +8,8 @@ export default new Vuex.Store({
     information:[
                 {id:1,raw:'Information1',html:'<p>Information1</p>',dirtyHtml:'<p>Information1</p>'
                   ,edit:false,dock:false,dt:new Date()},
-                {id:2,raw:'Information2New Line Information',html:'<p>Information2<br/>New&nbsp;line&nbsp;information</p>'
-                  ,dirtyHtml:'<p>Information2<br/>New&nbsp;line&nbsp;information</p>'
+                {id:2,raw:'Information2New Line Information',html:'<p>Information2<br>New&nbsp;line&nbsp;information</p>'
+                  ,dirtyHtml:'<p>Information2<br>New&nbsp;line&nbsp;information</p>'
                   ,edit:false,dock:false,dt:new Date()},
                 {id:3,raw:'Information3',html:'<p>Information3</p>',dirtyHtml:'<p>Information3</p>'
                   ,edit:false,dock:false,dt:new Date()},      
