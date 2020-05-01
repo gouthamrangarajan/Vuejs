@@ -50,6 +50,9 @@ form{
     width:20rem;
 }
 form i{
-    margin-top:-0.5rem;
+    margin-top:-0.6rem;
+}
+.brand-logo{
+    margin-left:0.8rem;
 }
 </style>
