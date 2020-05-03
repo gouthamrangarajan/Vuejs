@@ -1,7 +1,7 @@
 <template>
       <nav class="transparent">
         <div class="nav-wrapper">
-            <a class="brand-logo cyan-text text-darken-1">Logo</a>
+            <a :class="'brand-logo '+logoColor">Logo</a>
               <ul class="right hide-on-med-and-down">               
                 <li v-for="item in menu" :key="item.id" :class="{'active':item.active}">
                     <router-link :to="item.path"><i class="material-icons black-text">{{item.icon}}</i></router-link>
@@ -18,6 +18,7 @@
     </nav>
 </template>
 <script>
+import {mapState, mapActions} from 'vuex'
 export default {
     name:'NavBar',
     data(){
@@ -26,6 +27,12 @@ export default {
            {id:2,icon:'notifications',path:'/menu1',active:false},
            {id:3,icon:'person',path:'/menu2',active:false}
        ]}
+    },
+    computed:{
+        ...mapState(['theme']),
+        logoColor(){
+            return this.theme.replace(/\s/g, '-text ').replace("darken-1","darken-4") 
+        }
     },
     watch:{
         $route:{

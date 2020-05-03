@@ -1,7 +1,7 @@
 <template>
  <transition name="fade" appear>
     <div class="settings  right-align" @click.stop>
-        <a class="btn indigo darken-4 waves-effect waves-light" @click="showSetting=!showSetting">
+        <a :class="'btn waves-effect waves-light hoverable '+settingsBtnColor" @click="showSetting=!showSetting">
             <transition name="rotate1" appear>
                 <i class="material-icons" v-show="showSetting" :key="1">settings</i>
             </transition>
@@ -12,9 +12,16 @@
         <transition name="scale">
             <div class="card small" v-show="showSetting">
                 <div class="card-content">
-                    <span class="card-title blue-text">
-                        Some Settings...
+                    <span class="card-title left">
+                        Theme:
                     </span>
+                    <div class="colors-container clearfix">
+                        <div v-for="(clr,ind) in availableColors" :key="ind" 
+                          @click="setTheme(clr)"
+                          :class="['left z-depth-1 hoverable',clr,theme==clr?'active':'']">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </transition>
@@ -22,12 +29,21 @@
  </transition>
 </template>
 <script>
+import {mapActions,mapState} from 'vuex'
 export default {
     name:'Settings',
     data(){
         return {
-            showSetting:false
+            showSetting:false,
+            availableColors:['teal darken-1','cyan darken-1','blue darken-1','indigo darken-1']
+
         }
+    },
+    computed:{
+        ...mapState(['theme']), 
+        settingsBtnColor(){
+            return this.theme.replace("darken-1","darken-4")
+        }       
     },
     created(){
         window.addEventListener('click',this.closeSetting)
@@ -36,6 +52,7 @@ export default {
         window.removeEventListener('click',this.closeSetting)
     },
     methods:{
+        ...mapActions(['setTheme']),
         closeSetting(){
             this.showSetting=false;
         }
@@ -76,5 +93,18 @@ export default {
 
 .rotate2-enter{
     transform: rotate(-90deg);
+}
+.colors-container > div{
+    width:3.5rem;
+    height: 6rem;
+    margin-left:0.3rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition:all 0.3s;
+}
+.colors-container > div.active{
+    border:2px dotted #616161;      
+    transform: scale(1.1);
+    transition:all 0.3s;
 }
 </style>

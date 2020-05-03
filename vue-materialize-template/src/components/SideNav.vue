@@ -1,13 +1,13 @@
 <template>
     <div class="left side-nav-container" :style="navContainerStyle">
-        <ul :class="sideNavClass" :style="navStyle" id="appSideNav">
+        <ul :class="navClass" :style="navStyle" id="appSideNav">
             <li :key="-1">
                 <div class="user-view">
                     <i class="large material-icons white-text">person</i>
                     <a class="white-text">Welcome</a>
                 </div>
             </li>
-            <li v-for="item in menu" :key="item.id" :class="{'active':item.active}">
+            <li v-for="item in menu" :key="item.id" :class="[item.active?navLiActiveClass:'']">
                 <router-link class="white-text waves-effect waves-light" :to="item.path">{{item.text}}</router-link>
             </li>        
         </ul>
@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
     name:'SideNav',
     props:{
@@ -41,17 +42,21 @@ export default {
         this.navWidth=this.value-2  
         if(window.innerWidth<1024){
             this.isMobile=true
-            let elem = document.getElementById('appSideNav');
+            let  elem = document.getElementById('appSideNav');
             let instance = M.Sidenav.init(elem, {});
         }
     },
     computed:{
-        sideNavClass(){
-          let cl="sidenav teal darken-1"  
+        ...mapState(['theme']),
+        navClass(){
+          let cl="sidenav "+this.theme
           if(!this.isMobile){
               cl+=" sidenav-fixed"
           }
           return cl
+        },
+        navLiActiveClass(){
+           return this.theme.replace(" darken-1","")+ " darken-4" 
         },
         navContainerStyle(){
             return {width:this.navContainerWidth+'rem'}
@@ -61,7 +66,7 @@ export default {
             return {width:this.navWidth+'rem',transform:'translateX('+offset+'rem)'}
         }
     },
-    methods:{
+    methods:{      
         toggleWidth(){
             if(!this.isMobile){
                 let top=this.initialValue-1
@@ -109,9 +114,7 @@ export default {
         justify-content: center;
         align-items: center;        
     }
-    li.active{
-        background-color: #004d40 !important;
-    }
+  
     .btn-floating{
         margin-top:0.5rem;
     }
