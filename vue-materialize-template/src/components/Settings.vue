@@ -10,7 +10,7 @@
             </transition>
         </a>
         <transition name="scale">
-            <div class="card small" v-show="showSetting">
+            <div class="card" v-show="showSetting">
                 <div class="card-content">
                     <span class="card-title left">
                         Theme:
@@ -21,6 +21,8 @@
                           :class="['left z-depth-1 hoverable',clr,theme==clr?'active':'']">
 
                         </div>
+                    </div>
+                    <div class="clearfix">
                     </div>
                 </div>
             </div>

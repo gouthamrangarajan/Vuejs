@@ -2,14 +2,24 @@
 <transition name="fade" appear>
   <div class="row">
     <div class="col s12">
-      <div class="col s6 l4" v-for="index in 3" :key="'c1_'+index">
-        <div class="card small">
+      <div class="col s12 l6" v-for="index in 2" :key="'c1_'+index">
+        <div class="card medium hoverable">
           <div class="card-content">
             <span class="card-title">Chart {{index}}</span>
+            <transition name="fade" appear>
+              <template v-if="index==1">
+                  <line-chart></line-chart>
+              </template>
+            </transition>
+            <transition name="fade" appear>
+              <template v-if="index==2">
+                <bar-chart></bar-chart>
+              </template>
+            </transition>
           </div>
         </div>  
       </div>
-      <div class="col s6 l3" v-for="index in 4" :key="'c2_'+index">
+      <div class="col s6 l4" v-for="index in 3" :key="'c2_'+index">
         <div class="card">
           <div class="card-content">
             <span class="card-title">Statistics {{index}}</span>
@@ -32,11 +42,13 @@
 
 <script>
 // @ is an alias to /src
-
+import LineChart from '@/components/LineChart.vue'
+import BarChart from '@/components/BarChart.vue'
 export default {
   name: 'Home',
-  components: {
-  
+  components: { 
+    LineChart,
+    BarChart
   }
 }
 </script>

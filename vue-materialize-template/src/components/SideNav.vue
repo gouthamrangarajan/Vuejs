@@ -42,8 +42,8 @@ export default {
         this.navWidth=this.value-2  
         if(window.innerWidth<1024){
             this.isMobile=true
-            let  elem = document.getElementById('appSideNav');
-            let instance = M.Sidenav.init(elem, {});
+            let  elem = document.getElementById('appSideNav')
+            let instance = M.Sidenav.init(elem, {})
         }
     },
     computed:{
@@ -98,7 +98,13 @@ export default {
         value:{
             immediate:true,
             handler(newVal,oldVal){
-                this.navContainerWidth=newVal                
+                this.navContainerWidth=newVal   
+                if(newVal==this.initialValue){
+                    this.$store.dispatch('openNavigationDrawer')
+                }             
+                else if(newVal==2 && window.innerWidth>=1024){
+                    this.$store.dispatch('closeNavigationDrawer')
+                }
             }
         }
     }
