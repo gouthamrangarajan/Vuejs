@@ -23,11 +23,9 @@ export default {
                 ['2017', 1030, 540, 350]
                 ])
 
-            let options = {
-                chart: {
-                    title: 'Company Performance',
-                    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-                },
+            let options = {                
+                title: 'Company Performance',
+                subtitle: 'Sales, Expenses, and Profit: 2014-2017',                
                 bars: 'horizontal',
                 hAxis:{                        
                     gridlines: {
@@ -35,14 +33,23 @@ export default {
                         }
                 },
                 titleTextStyle: {
-                    fontSize:22,
+                    fontSize:20,
                     color:'#212121'
                 },
+                animation:{
+                    duration:1000,
+                    startup:true,
+                    easing:'linear'
+                },
+                legend:{
+                    textStyle:{
+                        fontSize:14
+                    }
+                }
             }
 
-            let chart = new google.charts.Bar(document.getElementById('bar_chart'))
-
-            chart.draw(data, google.charts.Bar.convertOptions(options))
+            let chart = new google.visualization.BarChart(document.getElementById('bar_chart'))
+            chart.draw(data, options)
         }
     },
     watch:{

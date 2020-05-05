@@ -38,22 +38,37 @@ export default {
                 [14,  4.2,  6.2,  3.4]
             ])
             let options = {
-                    chart: {
-                        title: 'Box Office Earnings in First Two Weeks of Opening',                    
-                        subtitle: 'in millions of dollars (USD)',                   
-                      },                                                                  
+                    
+                    title: 'Box Office Earnings in First Two Weeks of Opening',                    
+                    subtitle: 'in millions of dollars (USD)',                                                                                                       
                     vAxis:{                        
                         gridlines: {
                                 color: 'transparent'
                             }
                     },
+                     hAxis:{                        
+                        gridlines: {
+                                color: 'transparent'
+                            }
+                    },
                     titleTextStyle: {
-                        fontSize:22,
+                        fontSize:20,
                         color:'#212121'
                     },
+                    animation:{
+                        duration:1000,
+                        startup:true,
+                        easing:'linear'
+                    },
+                    curveType: 'function',                    
+                    legend:{
+                        textStyle:{
+                            fontSize:14
+                    }
                 }
-            let chart = new google.charts.Line(document.getElementById('line_chart'))
-            chart.draw(data, google.charts.Line.convertOptions(options))
+                }
+            let chart = new google.visualization.LineChart(document.getElementById('line_chart'))
+            chart.draw(data, options)
         }
     },
     watch:{

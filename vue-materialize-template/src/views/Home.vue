@@ -5,7 +5,7 @@
       <div class="col s12 l6" v-for="index in 2" :key="'c1_'+index">
         <div class="card medium hoverable">
           <div class="card-content">
-            <span class="card-title">Chart {{index}}</span>
+            <span class="card-title">Chart</span>
             <transition name="fade" appear>
               <template v-if="index==1">
                   <line-chart></line-chart>
