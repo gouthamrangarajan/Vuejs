@@ -1,7 +1,7 @@
 <template>  
   <transition name="fade" appear>
   <div class="card-panel">    
-    <span class="title">Menu2</span>
+    <span class="title">Notifications</span>
   </div>  
 </transition>
 </template>

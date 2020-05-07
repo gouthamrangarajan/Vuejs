@@ -19,14 +19,14 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/menu1',
-    name: 'Menu1',    
-    component: () => import(/* webpackChunkName: "menu1" */ '../views/Menu1.vue')
+    path: '/form',
+    name: 'Form',    
+    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
   },
   {
-    path: '/menu2',
-    name: 'Menu2',
-    component: () => import(/* webpackChunkName: "menu2" */ '../views/Menu2.vue')
+    path: '/notifications',
+    name: 'Notification',
+    component: () => import(/* webpackChunkName: "notification" */ '../views/Notifications.vue')
   }
 ]
 

@@ -7,11 +7,11 @@
                     <a class="white-text">Welcome</a>
                 </div>
             </li>
-            <li v-for="item in menu" :key="item.id" :class="[item.active?navLiActiveClass:'']">
+            <li v-for="item in menu" :key="item.id" :class="[item.active?navLiActiveClass+' active':'']">
                 <router-link class="white-text waves-effect waves-light" :to="item.path">{{item.text}}</router-link>
             </li>        
         </ul>
-        <a class="sidenav-trigger right btn-floating white waves-effect waves-green" @click="toggleWidth"
+        <a class="sidenav-trigger right btn-floating white waves-effect waves-red" @click="toggleWidth"
             data-target="appSideNav">
             <i class="material-icons  grey-text text-darken-1">more_vert</i>
         </a>
@@ -33,8 +33,9 @@ export default {
             isMobile:false,
             menu:[
            {id:1,text:'Dashboard',path:'/',active:true},
-           {id:2,text:'Menu1',path:'/menu1',active:false},
-           {id:3,text:'Menu2',path:'/menu2',active:true}
+           {id:2,text:'Form',path:'/form',active:false},
+           {id:3,text:'Notifications',path:'/notifications',active:false},
+           {id:4,text:'About',path:'/about',active:false}
        ]}
     },
     mounted(){
@@ -123,5 +124,5 @@ export default {
   
     .btn-floating{
         margin-top:0.5rem;
-    }
+    }    
 </style>

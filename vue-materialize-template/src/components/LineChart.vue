@@ -39,8 +39,7 @@ export default {
             ])
             let options = {
                     
-                    title: 'Box Office Earnings in First Two Weeks of Opening',                    
-                    subtitle: 'in millions of dollars (USD)',                                                                                                       
+                    title: 'Box Office Earnings in First Two Weeks of Opening \n in millions of dollars (USD)',                                                                                            
                     vAxis:{                        
                         gridlines: {
                                 color: 'transparent'
@@ -52,7 +51,7 @@ export default {
                             }
                     },
                     titleTextStyle: {
-                        fontSize:20,
+                        fontSize:18,
                         color:'#212121'
                     },
                     animation:{

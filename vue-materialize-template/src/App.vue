@@ -55,4 +55,10 @@ body{
 .fade-leave-to{
   opacity: 0;
 }
+li{
+    transition:all 0.3s;
+}
+li.active{
+    transition:all 0.3s;
+}
 </style>

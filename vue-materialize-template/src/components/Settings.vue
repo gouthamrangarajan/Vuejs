@@ -66,7 +66,7 @@ export default {
     position: fixed;
     margin-top:12rem;
     right: 0rem;
-    z-index: 1;
+    z-index: 3;
 }
 .settings .btn{
     opacity: 0.7;
@@ -105,7 +105,7 @@ export default {
     transition:all 0.3s;
 }
 .colors-container > div.active{
-    border:2px dotted #616161;      
+    border:2px dotted #ff8a65;      
     transform: scale(1.1);
     transition:all 0.3s;
 }

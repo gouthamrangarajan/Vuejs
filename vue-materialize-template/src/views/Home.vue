@@ -28,10 +28,10 @@
         </div>  
       </div>
       <div class="col s12 l6" v-for="index in 2" :key="'c3_'+index">
-        <div class="card large">
+        <div class="card">
           <div class="card-content">
             <span class="card-title">Table {{index}}</span>
-            
+             <tbl></tbl>
           </div>
         </div>  
       </div>
@@ -44,11 +44,13 @@
 // @ is an alias to /src
 import LineChart from '@/components/LineChart.vue'
 import BarChart from '@/components/BarChart.vue'
+import Tbl from '@/components/Tbl.vue'
 export default {
   name: 'Home',
   components: { 
     LineChart,
-    BarChart
+    BarChart,
+    Tbl
   }
 }
 </script>

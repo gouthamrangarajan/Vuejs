@@ -24,8 +24,7 @@ export default {
                 ])
 
             let options = {                
-                title: 'Company Performance',
-                subtitle: 'Sales, Expenses, and Profit: 2014-2017',                
+                title: 'Company Performance \n Sales, Expenses, and Profit: 2014-2017',                
                 bars: 'horizontal',
                 hAxis:{                        
                     gridlines: {
@@ -33,7 +32,7 @@ export default {
                         }
                 },
                 titleTextStyle: {
-                    fontSize:20,
+                    fontSize:18,
                     color:'#212121'
                 },
                 animation:{
