@@ -69,22 +69,13 @@ export default {
     },
     methods:{      
         toggleWidth(){
-            if(!this.isMobile){
-                let top=this.initialValue-1
-                let val=0
+            if(!this.isMobile){                
                 if(this.navContainerWidth==this.initialValue){                
-                    val=-1                    
+                    this.$emit('input',2)                  
                 }
                 else if(this.navContainerWidth==2){                    
-                    val=1
-                }
-                if(val!=0){
-                    for(let i=1;i<top;i++){
-                        setTimeout(()=>{                        
-                            this.$emit('input',this.navContainerWidth+val)
-                        },15*i)
-                    }
-                }
+                    this.$emit('input',20)        
+                }                
             }
         }
     },
@@ -124,5 +115,8 @@ export default {
   
     .btn-floating{
         margin-top:0.5rem;
-    }    
+    }   
+    .side-nav-container,.sidenav{
+        transition:all 0.3s;
+    } 
 </style>
