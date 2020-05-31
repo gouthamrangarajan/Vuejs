@@ -1,6 +1,8 @@
 # web-learnings
 
 > simple project to display the collected learning links for html, javascript, css etc.
+> deployed version along with firebase database storage: https://weblearnings-e679a.web.app/
+
 
 ## Build Setup
 
