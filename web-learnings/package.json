@@ -1,0 +1,24 @@
+{
+  "name": "web-learnings",
+  "version": "1.0.0",
+  "description": "simple project to display the collected learning links for html, javascript, css etc.",
+  "author": "RG",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "materialize-css": "^1.0.0-rc.2",
+    "nuxt": "^2.0.0",
+    "yt-player": "^3.4.3"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  }
+}
