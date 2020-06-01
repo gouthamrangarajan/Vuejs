@@ -51,7 +51,8 @@ export default {
         this.checkAndPausePlay()
     },
     currVideoId(newVal){
-        this.checkAndPausePlay()
+       if(newVal!='')
+          this.checkAndPausePlay()
     }
   }
 }
