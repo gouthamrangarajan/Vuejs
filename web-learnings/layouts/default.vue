@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="app">
     <NavBar></NavBar>
-    <nuxt />
+    <div class="main">
+        <nuxt />
+    </div>
     <AppFooter></AppFooter>
   </div>
 </template>
@@ -23,10 +25,6 @@ export default {
     NavBar:()=>import ('@/components/NavBar.vue'),
     AppFooter
   },
-  created(){
-    if(process.client)
-      this.$store.dispatch('learnings/initialize')
-  }
 }
 </script>
 <style>
@@ -58,5 +56,8 @@ export default {
 }
 input{
    border-bottom:1px solid #9e9e9e!important;
+ }
+.main{
+   min-height: 75vh;
  }
 </style>
