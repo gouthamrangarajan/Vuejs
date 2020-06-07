@@ -53,7 +53,8 @@ export default {
     checkAndExecuteAction(){
       if(!this.actionExecuted && document)
         setTimeout(()=>{
-            let elem = document.getElementById(this.checkId)
+          let elem = document.getElementById(this.checkId)
+          if(elem){
             let bounding = elem.getBoundingClientRect()
             if (
               bounding.top >= 0 &&
@@ -70,7 +71,8 @@ export default {
               }
 
             }
-          },600)
+          }
+        },600)
     }
   },
   computed:{

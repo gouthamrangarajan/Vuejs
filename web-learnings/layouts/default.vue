@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app grey lighten-4">
     <NavBar></NavBar>
     <div class="main">
         <nuxt />
