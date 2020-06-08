@@ -12,9 +12,13 @@
         <div class="input-field white-text">
            <i class="material-icons prefix">search</i>
             <input type="text" class="validate white-text" placeholder="Search..." v-model.trim="searchTxt" ref="srch">
-            <a :class="{'btn-flat yellow-text right waves-effect waves-light':true,'disabled':searchTxt.length==0}"
+            <a :class="{'btn-flat yellow-text left waves-effect waves-light':true,'disabled':searchTxt.length==0}"
               @click.stop="searchTxt=''">
               Clear
+            </a>
+             <a class="btn-flat yellow-text right waves-effect waves-light"
+              @click.stop="closePanel">
+              Close
             </a>
         </div>
       </div>
@@ -32,13 +36,11 @@ export default {
     let instances = M.Tooltip.init(elem, {})
     if(window){
       window.addEventListener('click',this.closePanel)
-      window.addEventListener('scroll',this.closePanel)
     }
   },
   destroyed(){
     if(window){
       window.removeEventListener('click',this.closePanel)
-      window.removeEventListener('scroll',this.closePanel)
     }
   },
   methods:{
