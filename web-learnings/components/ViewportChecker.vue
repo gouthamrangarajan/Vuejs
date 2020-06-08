@@ -72,7 +72,7 @@ export default {
 
             }
           }
-        },600)
+        },300)
     }
   },
   computed:{
@@ -82,8 +82,11 @@ export default {
     srchTxt:{
       immediate:true,
       handler(){
-      if(process.client)
-        this.checkAndExecuteAction()
+        if(process.client){
+          setTimeout(()=>{
+            this.checkAndExecuteAction()
+          },300)
+        }
      }
     }
   }
