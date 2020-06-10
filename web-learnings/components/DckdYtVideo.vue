@@ -63,11 +63,9 @@ export default {
   bottom: 0;
   left:0;
   z-index: 3;
-  border-radius: 5px;
 }
 .card{
   margin-bottom: 0;
-  border-radius: 5px;
 }
 .card-content{
   padding:0.2rem;
