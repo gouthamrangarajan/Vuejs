@@ -55,8 +55,7 @@
                             <input v-model.trim="tg.txt" placeholder="Tag" :id="'tgInp_'+tg.id">
                           </div>
                       </transition-group>
-                      <a class="btn-floating halfway-fab waves-effect waves-light tooltipped tool-tip" @click="addTag()"
-                                  data-position="bottom" data-tooltip="Add Tag">
+                      <a class="btn-floating halfway-fab waves-effect waves-light" @click="addTag()">
                         <i class="material-icons">add</i>
                       </a>
                     </div>
