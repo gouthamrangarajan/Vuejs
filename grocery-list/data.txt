@@ -1,0 +1,89 @@
+Milk 2
+Banana  
+Channa dhal big 2
+Ponni raw rice 2
+Idli rice 1
+channa dhaliya 2
+thick aval  3
+Roasted Vermicilli 2
+Indian Snacks
+Pori big 2
+Poori (pani) 3
+Corriander
+Mint leaves
+Bread
+Phav Bhajji  Bun
+Beans
+Vendakka
+Bitter guard
+Kovakka
+Peerthanga
+Lemon
+Indian Mango
+Small Basmathi Rice
+Panner
+Ghee 1
+Moong dhall big
+Peanut Raw
+
+  items:[{
+          id:1,
+          name:'Milk',
+          count:2,
+          status:'To Buy'
+        },
+        {
+          id:2,
+          name:'Bananas',
+          count:4,
+          status:'Bought'
+        },
+        {
+          id:3,
+          name:'Channa Dhal',
+          count:2,
+          status:'To Buy'
+        },
+        {
+          id:4,
+          name:'Pori',
+          count:3,
+          status:'To Buy'
+        },
+        {
+          id:5,
+          name:'Indian Snacks',
+          count:1,
+          status:'To Buy'
+        },
+        {
+          id:6,
+          name:'Roasted Vermicilli',
+          count:3,
+          status:'To Buy'
+        },
+        {
+          id:7,
+          name:'Thick Aval',
+          count:3,
+          status:'To Buy'
+        },
+        {
+          id:8,
+          name:'Channa Dhaliya',
+          count:2,
+          status:'To Buy'
+        },
+        {
+          id:9,
+          name:'Idli rice',
+          count:1,
+          status:'To Buy'
+        },
+        {
+          id:10,
+          name:'Ponni raw rice',
+          count:2,
+          status:'To Buy'
+        }
+      ]
