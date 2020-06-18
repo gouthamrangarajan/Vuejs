@@ -1,7 +1,7 @@
 # grocery-list
 
 > a simple app for grocery list using Vue , Nuxt and materialize
-sample firebase hosted version https://grocery-list-c0614.web.app/
+>>sample firebase hosted version https://grocery-list-c0614.web.app/
 
 ## Build Setup
 
