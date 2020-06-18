@@ -7,28 +7,30 @@ export const state=()=>({
 export const getters={
   ftLearnings:state=>{
     let dt=state.learnings.data
-    let lclSrchTxt=state.srchTxt.toLowerCase()
+    let lclSrchTxtArray=state.srchTxt.toLowerCase().split(" ")
       return dt.filter(el=>{
         let allow=false
-        if(lclSrchTxt=='')
+        if(lclSrchTxtArray.length==0)
           allow=true
-        if(!allow)
-          if(el.title.toLowerCase().indexOf(lclSrchTxt)>-1)
-            allow=true
-        if(!allow && el.subtitle && el.subtitle.toLowerCase().indexOf(lclSrchTxt)>-1)
-            allow=true
-        if(!allow && el.url)
-          if(el.url.toLowerCase().indexOf(lclSrchTxt)>-1)
-            allow=true
-        if(!allow){
-          el.tags.forEach(tgEl=>{
-             if(!allow && tgEl.toLowerCase().indexOf(lclSrchTxt)>-1)
-               allow=true
-          })
-        }
+
+        lclSrchTxtArray.forEach(lclSrchTxt=>{
+          if(!allow)
+            if(el.title.toLowerCase().indexOf(lclSrchTxt)>-1)
+              allow=true
+          if(!allow && el.subtitle && el.subtitle.toLowerCase().indexOf(lclSrchTxt)>-1)
+              allow=true
+          if(!allow && el.url)
+            if(el.url.toLowerCase().indexOf(lclSrchTxt)>-1)
+              allow=true
+          if(!allow){
+            el.tags.forEach(tgEl=>{
+              if(!allow && tgEl.toLowerCase().indexOf(lclSrchTxt)>-1)
+                allow=true
+            })
+          }
+        })
         return allow
       })
-
   }
 }
 export const actions={
