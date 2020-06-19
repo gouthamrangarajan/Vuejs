@@ -6,7 +6,7 @@
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-green btn-flat" @click="$emit('input',false);successFn()">Yes</a>
-      <a class="modal-close waves-effect waves-green btn-flat" @click="$emit('input',false)">No</a>
+      <a class="modal-close waves-effect waves-red btn-flat" @click="$emit('input',false)">No</a>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   mounted(){
     if(process.client){
        let elems = document.querySelectorAll('.modal')
-       let instances = M.Modal.init(elems, {})
+       let instances = M.Modal.init(elems, {dismissible:false})
     }
   },
   watch:{
