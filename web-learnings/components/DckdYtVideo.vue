@@ -66,6 +66,7 @@ export default {
 }
 .card{
   margin-bottom: 0;
+  border-radius: 5px;
 }
 .card-content{
   padding:0.2rem;
