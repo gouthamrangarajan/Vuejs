@@ -155,11 +155,6 @@ i,.activator{
 .page{
   overflow-x:hidden;
 }
-@media only screen and (max-width: 991px){
-  .page{
-    margin-top:3rem;
-  }
-}
 .scale-enter-active,
 .scale-leave-active{
   transition: all 0.3s;

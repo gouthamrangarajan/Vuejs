@@ -25,7 +25,7 @@ export default {
 }
 </script>
 <style scoped>
-nav{
+nav,.navbar-fixed{
   height: 2.8rem;
   line-height: 2.8rem;
 }
