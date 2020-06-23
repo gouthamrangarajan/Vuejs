@@ -31,6 +31,19 @@ export default {
 *{
   font-family: 'Roboto', sans-serif;
 }
+body::-webkit-scrollbar {
+  width: 1em;  
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color:#00bcd4;
+  outline: 1px solid #00bcd4;
+  border-radius:4px;
+}
 .records-move{
   transition: all 0.3s;
 }

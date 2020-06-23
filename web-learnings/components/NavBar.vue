@@ -33,7 +33,7 @@ export default {
 </script>
 <style scoped>
 nav,.navbar-fixed{
-  height: 3rem;
-  line-height: 3rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
 }
 </style>
