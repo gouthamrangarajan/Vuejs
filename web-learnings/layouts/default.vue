@@ -71,6 +71,6 @@ input{
    border-bottom:1px solid #9e9e9e!important;
  }
 .main{
-   min-height: 75vh;
+   min-height: 78vh;
  }
 </style>
