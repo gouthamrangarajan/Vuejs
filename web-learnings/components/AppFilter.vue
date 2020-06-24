@@ -3,7 +3,7 @@
     <a class="btn-flat waves-effect waves-green tooltipped" data-position="left" data-tooltip="Filter"
       @click="togglePanelDisplay" id="filterBtn">
        <transition name="scale-in"  mode="out-in" appear>
-         <i class="material-icons" v-if="searchTxt.length==0 && showFilter" :key="1">filter_list</i>
+         <i class="material-icons" v-if="srchTxt.length==0 && showFilter" :key="1">filter_list</i>
          <i class="material-icons red-text" v-else-if="showFilter" :key="2">filter_list</i>
        </transition>
       </a>
@@ -11,14 +11,18 @@
       <div class="card-panel grey darken-3" v-show="showPanel">
         <div class="input-field white-text">
            <i class="material-icons prefix">search</i>
-            <input type="text" class="validate white-text" placeholder="Search..." v-model.trim="searchTxt" ref="srch">
-            <a :class="{'btn-flat yellow-text left waves-effect waves-light':true,'disabled':searchTxt.length==0}"
-              @click.stop="searchTxt=''">
-              Clear
-            </a>
-             <a class="btn-flat yellow-text right waves-effect waves-light"
+            <input type="text" class="validate white-text" placeholder="Search..." v-model.trim="searchTxt" ref="srch"
+              @keyup.enter="submit">
+            <a class="btn-flat yellow-text right waves-effect waves-light"
               @click.stop="closePanel">
               Close
+            </a>
+            <a :class="{'btn-flat yellow-text right waves-effect waves-light':true,'disabled':searchTxt.length==0}"
+              @click.stop="searchTxt='';submit()">
+              Clear
+            </a>           
+             <a class="btn-flat green-text right waves-effect waves-light"  @click.stop="submit">
+              Submit <i class="material-icons right">send</i>
             </a>
         </div>
       </div>
@@ -29,18 +33,20 @@
 import {mapState} from 'vuex'
 export default {
   data(){
-    return {showPanel:false,showFilter:true}
+    return {showPanel:false,showFilter:true,searchTxt:''}
   },
   mounted(){
     let elem=document.getElementById('filterBtn')
     let instances = M.Tooltip.init(elem, {})
     if(window){
       window.addEventListener('click',this.closePanel)
+      window.addEventListener('scroll',this.closePanel)
     }
   },
   destroyed(){
     if(window){
       window.removeEventListener('click',this.closePanel)
+      window.removeEventListener('scroll',this.closePanel)
     }
   },
   methods:{
@@ -53,18 +59,13 @@ export default {
         if(this.showPanel)
           this.$refs.srch.focus()
       })
+    },
+    submit(){       
+        this.$store.dispatch('setSrchTxt',this.searchTxt)
     }
   },
   computed:{
-    ...mapState(['srchTxt']),
-    searchTxt:{
-      get(){
-        return this.srchTxt
-      },
-      set(value){
-        this.$store.dispatch('setSrchTxt',value)
-      }
-    }
+    ...mapState(['srchTxt']),   
   },
   watch:{
     $route:{
@@ -86,7 +87,7 @@ export default {
   right: 0;
   padding:0.6rem 0.4rem 0.4rem 0.4rem;
 }
-.card-panel i{
+.card-panel i.prefix{
   margin-top:-0.5rem;
   cursor: pointer;
 }

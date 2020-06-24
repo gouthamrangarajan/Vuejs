@@ -32,7 +32,7 @@ export default {
   font-family: 'Roboto', sans-serif;
 }
 body::-webkit-scrollbar {
-  width: 1em;  
+  width: 0.5rem;  
 }
  
 body::-webkit-scrollbar-track {
