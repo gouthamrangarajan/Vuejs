@@ -1,14 +1,15 @@
+# nuxt-tailwindcss
+
 > tailwindCss components using nuxt 
+```bash
 # completed items
 # Buttons
 # Cards
 # Nav
 
-# nuxt-tailwindcss
-
 ## Build Setup
 
-```bash
+
 # install dependencies
 $ npm install
 
