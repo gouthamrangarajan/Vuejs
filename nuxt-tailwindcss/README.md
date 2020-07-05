@@ -1,3 +1,9 @@
+> tailwindCss components using nuxt 
+# completed items
+# Buttons
+# Cards
+# Nav
+
 # nuxt-tailwindcss
 
 ## Build Setup
