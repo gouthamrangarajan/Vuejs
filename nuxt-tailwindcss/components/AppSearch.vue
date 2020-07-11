@@ -20,7 +20,7 @@
                         <transition-group name="records" tag="tbody">
                             <tr v-for="(item,index) in ftItems" :key="item.id" @click.stop="$router.push({path:item.path})"
                                 :class="{'cursor-pointer':true,'bg-gray-100':isEven(index+1)}">
-                                <td  class="border px-4 py-2 hover:text-blue-700">{{item.name}}</td>                           
+                                <td  class="border px-4 py-2 hover:text-indigo-700">{{item.name}}</td>                           
                             </tr>                   
                         </transition-group>
                     </table>  

@@ -16,5 +16,8 @@ export const data=[
     {id:Math.random().toString(16).slice(8),name:'DatePicker',path:'/datepicker'},
     {id:Math.random().toString(16).slice(8),name:'FullCalendar',path:'/fullcalendar'},
     {id:Math.random().toString(16).slice(8),name:'Icons',path:'/icon'},
-    {id:Math.random().toString(16).slice(8),name:'Scrollbar',path:'/Scrollbar'},
+    {id:Math.random().toString(16).slice(8),name:'Scrollbar',path:'/scrollbar'},
+    {id:Math.random().toString(16).slice(8),name:'FixedActionButton',path:'/fixedActionBtn'},
+    {id:Math.random().toString(16).slice(8),name:'ToolTips',path:'/toolTips'},
+    {id:Math.random().toString(16).slice(8),name:'Switch',path:'/switch'},
 ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="app fonts-sans bg-gray-100 min-h-screen flex flex-col w-screen"> 
+  <div class="app font-app bg-gray-100 min-h-screen flex flex-col w-screen"> 
     <AppNav></AppNav>
     <div class="main p-4 mt-6">
       <Nuxt />

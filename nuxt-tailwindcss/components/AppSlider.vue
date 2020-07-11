@@ -1,19 +1,19 @@
 <template>
-<div class="slider flex items-center w-full rounded py-4 px-8 white-text shadow-2xl mt-2 lg:mt-0">
-    <div class="flex justify-between w-full">
-        <a class="py-2 px-4 border rounded bg-transparent hover:bg-gray-900
+<div class="slider flex items-center w-full rounded white-text shadow-2xl mt-2 lg:mt-0">
+    <div class="flex justify-between w-full pl-1 pr-1">
+        <a class=" border rounded-full bg-transparent hover:bg-gray-900 p-2
              shadow cursor-pointer opacity-75 hover:opacity-100  text-white border-none z-10"
             @click="decreaseIndex">
             <i class="material-icons">chevron_left</i>
         </a>
         <transition :name="transition">
-            <nuxt-link class="slider-item py-2 px-4 border rounded bg-white hover:bg-gray-900 hover:text-white
-                 shadow-md w-48 lg:w-64 cursor-pointer text-center border-none"
+            <nuxt-link class="slider-item border rounded-md bg-white hover:bg-gray-900 hover:text-white
+                 shadow-md w-48 lg:w-64 cursor-pointer text-center border-none p-2"
              v-show="showItem" :to="selectedItem.path" >
                 {{selectedItem.name}}
             </nuxt-link>
         </transition>
-        <a class="py-2 px-4 border rounded bg-transparent hover:bg-gray-900
+        <a class="border rounded-full bg-transparent hover:bg-gray-900 p-2
              shadow cursor-pointer opacity-75 hover:opacity-100  text-white  border-none z-10"
             @click="increaseIndex">
             <i class="material-icons">chevron_right</i>
@@ -25,7 +25,7 @@
 import {mapGetters} from 'vuex'
 export default {
     data(){
-        return {selectedIndex:0,showItem:true,transition:'slide',intr:{}}
+        return {selectedIndex:0,showItem:true,transition:'slide',intr:{},moveBtnClicked:false}
     },
    computed:{
        ...mapGetters({items:'stItems'}),
@@ -46,7 +46,7 @@ export default {
        startSlider(){
         this.intr=setInterval(()=>{
             this.moveNext()
-        },7000)
+        },5000)
        },
        moveNext(){
           this.transition='slide-opp'
@@ -73,18 +73,26 @@ export default {
           },600)
        },
        increaseIndex(){
-          this.pauseSlider()
-          this.moveNext()
-          setTimeout(()=>{
-              this.startSlider()
-          },1000)
+         if(!this.moveBtnClicked){
+             this.moveBtnClicked=true
+            this.pauseSlider()
+            this.moveNext()
+            setTimeout(()=>{
+                this.startSlider()
+                this.moveBtnClicked=false
+            },1000)
+         }
       },
       decreaseIndex(){
-          this.pauseSlider()
-          this.movePrev()
-          setTimeout(()=>{
-              this.startSlider()
-          },1000)
+          if(!this.moveBtnClicked){
+             this.moveBtnClicked=true 
+            this.pauseSlider()
+            this.movePrev()
+            setTimeout(()=>{
+                this.startSlider()
+                this.moveBtnClicked=false
+            },1000)
+          }
       }
    }
 
