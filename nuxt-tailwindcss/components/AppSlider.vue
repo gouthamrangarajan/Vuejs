@@ -1,20 +1,20 @@
 <template>
 <div class="slider flex items-center w-full rounded white-text shadow-2xl mt-2 lg:mt-0">
     <div class="flex justify-between w-full pl-1 pr-1">
-        <a class=" border rounded-full bg-transparent hover:bg-gray-900 p-2
-             shadow cursor-pointer opacity-75 hover:opacity-100  text-white border-none z-10"
+        <a class=" border rounded-md bg-transparent hover:bg-gray-900 px-2 py-1 pt-2
+             shadow cursor-pointer opacity-50 hover:opacity-100  text-white border-none z-10"
             @click="decreaseIndex">
             <i class="material-icons">chevron_left</i>
         </a>
         <transition :name="transition">
             <nuxt-link class="slider-item border rounded-md bg-white hover:bg-gray-900 hover:text-white
-                 shadow-md w-48 lg:w-64 cursor-pointer text-center border-none p-2"
+                 shadow-md w-48 lg:w-64 cursor-pointer text-center border-none px-2 py-1 pt-2"
              v-show="showItem" :to="selectedItem.path" >
                 {{selectedItem.name}}
             </nuxt-link>
         </transition>
-        <a class="border rounded-full bg-transparent hover:bg-gray-900 p-2
-             shadow cursor-pointer opacity-75 hover:opacity-100  text-white  border-none z-10"
+        <a class="border rounded-md bg-transparent hover:bg-gray-900 px-2 py-1 pt-2
+             shadow cursor-pointer opacity-50 hover:opacity-100  text-white  border-none z-10"
             @click="increaseIndex">
             <i class="material-icons">chevron_right</i>
         </a>
