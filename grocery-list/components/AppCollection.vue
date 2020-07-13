@@ -102,16 +102,22 @@ export default {
 }
 </script>
 <style scoped>
-
 .card-content{
-  overflow-y:hidden;
-  transition: all 0.3s;
+  overflow-y:auto!important;
 }
-.card-content.active{
-  overflow-y:auto;
-  transition: all 0.3s;
+.card-content::-webkit-scrollbar {
+  width: 0.5rem;  
 }
-
+ 
+.card-content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.card-content::-webkit-scrollbar-thumb {
+  background-color:#00bcd4;
+  outline: 1px solid #00bcd4;
+  border-radius:5px;
+}
 .pending{
   background: linear-gradient(.25turn,#c2185b,#7b1fa2) ;
 }
