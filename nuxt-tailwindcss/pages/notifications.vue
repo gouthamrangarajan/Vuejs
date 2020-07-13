@@ -8,7 +8,7 @@
             <transition name="fade" appear>
               <span :class="['icon float-right ml-2 -mr-3 -mt-2 p-1',isoutlined && !isInversed ? 'text-yellow-700':'text-yellow-500']" 
                 v-show="dismissible" @click.stop="dismiss">
-                <i :class="['material-icons border rounded-full',isoutlined && !isInversed ? 'border-yellow-700':'border-yellow-500']">close</i>
+                <i class="material-icons font-semibold">close</i>
               </span>
             </transition>
         </a>  
