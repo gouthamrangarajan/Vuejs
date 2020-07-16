@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="mr-2 inline-flex">                        
-            <input type="text" class="bg-gray-300 focus:bg-gray-200 rounded-l px-4 py-2 outline-none"
+        <div class="mr-2 inline-flex justify-end">                        
+            <input type="text" class="bg-gray-200 focus:bg-gray-300 rounded-l px-4 py-2 outline-none"
                 v-model.trim="searchTxt" @focus="showSrchedItems=true"
                 @click.stop="showSrchedItems=true"  @keyup="showSrchedItems=true"
                 placeholder="Search..." ref="input"/> 
-            <span class="icon bg-gray-300 rounded-r px-4 py-2 cursor-pointer"
+            <span class="icon bg-gray-200 rounded-r px-4 py-2 cursor-pointer"
                  @click.stop="iconClicked">
                 <transition name="fade" mode="out-in">
                     <i class="material-icons" v-if="searchTxt==''" :key="1">search</i>
@@ -85,13 +85,14 @@ export default {
      display: none;
  }
 }
+
 input{
-    width: 25rem;
-}
-table{
-    width: 15rem;
+    width:25rem;
 }
 
+table{
+    width:17rem;
+}
 .tbl-container::before{
   position:absolute;
   left:10%;
