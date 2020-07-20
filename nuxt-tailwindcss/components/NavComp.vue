@@ -1,20 +1,22 @@
 <template>
     <nav :class="'py-2 px-4 flex justify-around h-12 shadow items-center '+bgColor">
         <div  v-for="item in menu" :key="item.id">
-            <a class="text-lg text-white cursor-pointer" @mouseover.stop="showInnerMenu(item.id)">
+            <a :class="'text-lg text-white cursor-pointer '+textColor" @mouseover.stop="showInnerMenu(item.id)">
                 {{item.name}}&nbsp;
                 <i class="material-icons float-right mt-1">
                     keyboard_arrow_down
                 </i>
             </a>
             <transition name="inner-menu">   
-                <div class="bg-white inner-menu absolute px-4 py-2 rounded shadow-md
-                            mt-2 -ml-3 flex flex-col" v-show="item.showChildren">
-                    <a  class="px-2 py-1 text-gray-600 cursor-pointer"
-                        v-for="child in item.children" :key="child.id">
+                <ul class="bg-white inner-menu absolute rounded shadow-md
+                            mt-2 -ml-3 flex flex-col pt-1" v-show="item.showChildren">                 
+                 <li v-for="child in item.children" :key="child.id" 
+                    :class="'cursor-pointer px-4 py-2 text-gray-600 hover:text-white hover:'+bgColor">
+                    <a  class="px-2 py-1 cursor-pointer">
                     {{child.name}}
                     </a>
-                </div>
+                  </li>
+                </ul>
             </transition>
         </div>   
     </nav>
@@ -36,6 +38,11 @@ export default {
             type:String,
             required:false,
             default:'bg-teal-700'
+        },
+        textColor:{
+            type:String,
+            required:false,
+            default:'text-white'
         }
     },
     created(){
@@ -66,7 +73,7 @@ export default {
   border-style:solid;
   border-color:transparent transparent rgba(255,255,255,var(--bg-opacity)) transparent ;
   margin-left:-8px;
-  margin-top:-13px;
+  margin-top:-10px;
   border-radius:2px;
   transition:all 0.3s;
 }

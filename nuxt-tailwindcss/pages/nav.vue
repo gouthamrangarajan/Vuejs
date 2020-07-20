@@ -15,8 +15,8 @@
         <div class="mt-24"></div>
         <NavComp bg-color="bg-purple-700"></NavComp>
         <div class="mt-24"></div>
-        <NavComp bg-color="bg-pink-700"></NavComp>
-        <div class="mb-16"></div>        
+        <NavComp bg-color="bg-pink-700"></NavComp>        
+        <div class="mb-24"></div>        
     </div>
 </template>
 <script>

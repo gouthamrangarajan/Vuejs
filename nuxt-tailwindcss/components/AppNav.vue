@@ -5,7 +5,7 @@
     </h3>
     <div class="flex items-center flex-1 justify-end">
         <AppSearch></AppSearch>
-        <nuxt-link to="/" class="text-blue-600 hover:text-white font-semibold hover:bg-blue-700 px-4 py-2 rounded mr-2">
+        <nuxt-link to="/" class="text-blue-700 hover:text-white font-semibold hover:bg-blue-700 px-4 py-2 rounded mr-2">
             Home
         </nuxt-link>           
     </div>
