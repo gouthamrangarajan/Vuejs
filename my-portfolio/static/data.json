@@ -1,0 +1,39 @@
+{"info":{
+  "about":
+      "11 years experience in Dot net web and windows application. Big fan of Vue.js javascript framework, Asp .Net core & Cloud applications" ,   
+    "media":[
+        {"name":"LinkedIn","url":"https://www.linkedin.com/in/gouthamrangarajan"},
+        {"name":"Github","url":"https://github.com/gouthamrangarajan"},
+        {"name":"Codepen","url":"https://codepen.io/GouthamRangarajan"}
+    ],
+    "codePen":[
+        {"url":"https://codepen.io/GouthamRangarajan/full/rNxRmzx"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/dyGvbLJ"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/VwLXoeK"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/JjPVbjb"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/ExYNjdR"},        
+        {"url":"https://codepen.io/GouthamRangarajan/full/bGVRPKo"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/BexpzX"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/dwBxPM"}
+    ],    
+    "gitHub":[
+      {"url":"https://github.com/gouthamrangarajan/Vuejs", "name":"Vue js"},
+      {"url":"https://github.com/gouthamrangarajan/Asp.Net", "name":"Asp.Net"},
+      {"url":"https://github.com/gouthamrangarajan/DataStructuresCsharp", "name":"Data Structures"}
+    ],
+    "cloud":{
+      "firebase":[
+        {"description":"A PWA project using Nuxt and Firebase to display a collection of you tube videos(along with the ability to play video) and documentation of the topics Vue, Nuxt, HTML, CSS frameworks etc ","url":"https://weblearnings-e679a.web.app/"},
+        {"description":"A PWA project using Nuxt and Firebase to dispaly a collection of location visited using Google Maps","url":"https://location-list-279502.web.app/"},
+        {"other":[{"url":"https://grocery-list-c0614.web.app/"}]}
+      ],
+      "aws":[
+        {"description":"Image gallery using Vuejs, Express js","url":"http://vueimages.us-east-1.elasticbeanstalk.com/"}
+      ],
+      "netlify":[{
+        "other":[{"url":"https://vuebulmajsonplaceholder.netlify.app/"},
+                  {"url":"https://nuxt-materialize.netlify.app/"}]
+      }]
+    }    
+  }
+}
