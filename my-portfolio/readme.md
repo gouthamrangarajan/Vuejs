@@ -1,3 +1,4 @@
+>simple nuxt app to show my portfolio
 # my-porfolio
 
 ## Build Setup
