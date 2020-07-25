@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col lg:flex-row justify-center items-center space-y-2 lg:space-x-24 p-1">
-        <div class="bg-white rounded px-6 py-4 flex flex-row">
+        <div class="bg-white rounded px-6 py-4 flex flex-row w-full lg:w-auto">
             <div class="flex flex-col">
                 <span class="text-red-700 text-xl">Media</span>
                 <div v-for="item in media" :key="item.id" class="px-0 lg:px-2">
@@ -15,15 +15,15 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white rounded py-4 px-6 flex flex-col">
+        <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
             <span class="text-red-700 text-xl">Github Repos</span>
              <div v-for="item in github" :key="item.id" class="px-2">
                     <a class="cursor-pointer text-blue-700" @click="openUrl(item.url)">{{item.name}}</a>
              </div>
         </div>
-        <div class="bg-white rounded py-4 px-6 flex flex-col">
+        <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
             <span class="text-blue-700 text-xl">Resume&nbsp;&nbsp;
-               <a class="cursor-pointer" href="/Goutham Rangarajan.docx" download>
+               <a class="cursor-pointer float-right text-green-700" href="/Goutham Rangarajan.docx" download>
                 <i class="material-icons">file_download</i>
                 </a>
             </span>
