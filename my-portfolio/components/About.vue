@@ -1,5 +1,5 @@
 <template>
-    <div class="flex w-full items-center justify-center">
+    <div class="flex w-full items-center justify-center p-1">
         <div class="flex flex-col items-start rounded px-6 py-4 shadow bg-white">
             <span class="text-teal-700  text-xl">About</span>
             <p class="text-md">{{about}}</p>

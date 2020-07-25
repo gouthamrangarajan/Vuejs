@@ -1,13 +1,13 @@
 <template>
-    <div class="flex flex-col lg:flex-row justify-center items-center space-y-2 lg:space-x-24">
-        <div class="bg-white rounded px-1 lg:px-6 py-4 flex flex-row">
+    <div class="flex flex-col lg:flex-row justify-center items-center space-y-2 lg:space-x-24 p-1">
+        <div class="bg-white rounded px-6 py-4 flex flex-row">
             <div class="flex flex-col">
                 <span class="text-red-700 text-xl">Media</span>
                 <div v-for="item in media" :key="item.id" class="px-0 lg:px-2">
                     {{item.name}}
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col w-full">
                 <div class="text-xl">&nbsp;</div>
                 <div v-for="item in media" :key="item.id">
                     <a class="cursor-pointer underline text-blue-700 text-sm lg:text-base"

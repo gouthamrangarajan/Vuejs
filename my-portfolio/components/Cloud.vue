@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center">
+    <div class="flex justify-center p-1">
         <div class="cloud flex flex-col justify-center bg-white py-4 px-6 rounded shadow">
             <span class="text-xl text-orange-700">Cloud Hostings:</span>
             <div v-for="cloud in category" :key="cloud.id">
@@ -8,12 +8,12 @@
                     <div class="px-4">
                         <div v-for="(item,index) in cloud.collection" :key="index">
                             <template v-if="item.url">
-                                <a class="cursor-pointer underline text-blue-700" @click="launch(item.url)">{{item.url}}</a>
-                                <p class="px-8">{{item.description}}</p>
+                                <a class="cursor-pointer underline text-blue-700 text-justify" @click="launch(item.url)">{{item.url}}</a>
+                                <p class="px-4 text-justify">{{item.description}}</p>
                             </template>
                             <template v-if="item.other">
                                 <div v-for="(otherItem,otherindex) in item.other" :key="otherindex">
-                                <a class="cursor-pointer underline text-blue-700" @click="launch(otherItem.url)">{{otherItem.url}}</a>  
+                                <a class="cursor-pointer underline text-blue-700 text-justify" @click="launch(otherItem.url)">{{otherItem.url}}</a>  
                                 </div>    
                             </template>
                         </div>                     
