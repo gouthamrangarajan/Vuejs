@@ -1,5 +1,5 @@
 >simple nuxt app to show my portfolio
->https://portfolio-6d6eb7.netlify.app/
+>>https://portfolio-6d6eb7.netlify.app/
 # my-porfolio
 
 ## Build Setup
