@@ -7,7 +7,7 @@
         <transition name="scale">
             <div class="flex flex-col items-center justify-center h-full w-full" v-show="showImg">    
                 <img src="@/assets/my-avatar.jpg" class="object-contain rounded m-auto shadow-2xl"> 
-                <a class="text-white bottom-0 mb-12" href="mailto:rgouthamraja@yahoo.com">rgouthamraja@yahoo.com</a>
+                <a class="text-white bottom-0 mb-24" href="mailto:rgouthamraja@yahoo.com">rgouthamraja@yahoo.com</a>
             </div>  
         </transition>              
     </div>
