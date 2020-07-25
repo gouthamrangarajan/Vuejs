@@ -7,8 +7,7 @@
      <div class="mt-4"></div>
      <cloud></cloud>
      <div class="mt-4"></div>
-     <codePen></codePen>
-     <div class="h-64"></div>
+     <codePen></codePen>     
   </div>
 </template>
 
