@@ -4,11 +4,12 @@
         <a class="cursor-pointer fixed right-0 mt-1 mr-2 text-orange-700 font-semibold text-3xl" @click="closeModal">
             &times;
         </a>
-        <div class="pt-32">
-            <transition name="scale">
-                <img src="@/assets/my-avatar.jpg" class="object-contain rounded m-auto shadow-2xl" v-show="showImg"> 
-            </transition>
-        </div>
+        <transition name="scale">
+            <div class="flex flex-col items-center justify-center h-full w-full" v-show="showImg">    
+                <img src="@/assets/my-avatar.jpg" class="object-contain rounded m-auto shadow-2xl"> 
+                <a class="text-white bottom-0" href="mailto:rgouthamraja@yahoo.com">rgouthamraja@yahoo.com</a>
+            </div>  
+        </transition>              
     </div>
   </transition>
 </template>
