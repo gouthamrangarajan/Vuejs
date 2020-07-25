@@ -31,7 +31,7 @@
         {"description":"Image gallery using Vuejs, Express js","url":"http://vueimages.us-east-1.elasticbeanstalk.com/"}
       ],
       "netlify":[
-        {"description":"A naive JAMSTACK implementation of my portfolio site with CI/CD","url":"https://portfolio-6d6eb7.netlify.app/"},
+        {"description":"A naive JAMSTACK implementation of my portfolio site with CI/CD","url":"https://portfolio-gouthamrangarajan.netlify.app/"},
         {"other":[{"url":"https://vuebulmajsonplaceholder.netlify.app/"},
                   {"url":"https://nuxt-materialize.netlify.app/"}]
       }]
