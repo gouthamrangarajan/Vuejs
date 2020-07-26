@@ -6,7 +6,7 @@
             </a>
         </div>
         <div>
-            <iframe :src="url" :height="height" :width="width" scrolling="no"  frameborder="0" ></iframe>
+            <iframe :src="url" :height="height" :width="width" scrolling="no"  frameborder="0" loading="lazy"></iframe>
         </div>
     </div>
 </template>

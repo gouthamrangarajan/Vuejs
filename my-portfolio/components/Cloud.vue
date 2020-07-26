@@ -1,32 +1,30 @@
 <template>
-    <div class="flex justify-center p-1">
-        <div class="cloud flex flex-col justify-center bg-white py-4 px-6 rounded shadow">
-            <span class="text-xl text-orange-700">Cloud Projects:</span>
-            <div v-for="cloud in category" :key="cloud.id">
-                <div class="p-2">
-                    <span class="text-lg text-yellow-700 uppercase"> {{cloud.name}}</span>
-                    <div class="px-4">
-                        <div v-for="(item,index) in cloud.collection" :key="index">
-                            <template v-if="item.url">
-                                <a class="cursor-pointer underline text-blue-700 text-justify" @click="launch(item.url)">{{item.url}}</a>
-                                <p class="px-4 text-justify text-sm">{{item.description}}</p>
-                            </template>
-                            <template v-if="item.other">
-                                <div v-for="(otherItem,otherindex) in item.other" :key="otherindex">
-                                <a class="cursor-pointer underline text-blue-700 text-justify" @click="launch(otherItem.url)">{{otherItem.url}}</a>  
-                                </div>    
-                            </template>
-                        </div>                     
-                    </div>
-                </div>
-            </div>        
-        </div>
+   <div>
+     <div class="py-2 flex flex-col">
+        <div class="px-4 pt-2 flex flex-col items-center">
+            <span class="text-xl text-orange-700">Cloud Projects</span>
+            <div v-for="cloud in category" :key="cloud.id" class="flex flex-col items-center justify-center mt-2 mb-6">
+                <span class="text-xl text-yellow-700 uppercase"> {{cloud.name}}</span>
+                <scrollableRow :id="cloud.name+'items'" :itemsLength="getProject(cloud.collection).length">
+                    <template v-slot:items>
+                        <div v-for="(item,index) in getProject(cloud.collection)" :key="index">
+                            <cloudProjectCard :project="item"></cloudProjectCard>
+                        </div>                 
+                    </template>  
+                </scrollableRow>
+            </div>                
+        </div>       
     </div>
+   </div>
 </template>
 <script>
 export default {
     data(){
         return {category:[]}
+    },
+    components:{
+        scrollableRow:()=>import('@/components/ScrollableRow.vue'),
+        cloudProjectCard:()=>import('@/components/CloudProjectCard.vue')
     },
     created(){
         let data=require('@/static/data.json')        
@@ -52,9 +50,34 @@ export default {
         })
     },
     methods:{
-        launch(url){
-            window.open(url)
-        }
+       getProject(data){
+           let retData=
+            data.filter(el=>{ 
+               if(el.url)
+                return true
+               else
+                 return false
+            }).map(el=>el)
+          
+         let others= data.filter(el=>{
+            if(el.other)
+                return true
+            else
+                return false
+          })
+
+          if(others.length==1)
+            others[0].other.forEach(el=>retData.push(el))
+
+          return retData.sort((a,b)=>{
+              if(a.order>b.order)
+                return 1
+              else if(a.order<b.order)
+                return -1
+              else
+                return 0
+          });
+       }       
     }
 }
 </script>

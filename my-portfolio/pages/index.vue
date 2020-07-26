@@ -4,7 +4,7 @@
      <about></about>
      <div class="mt-4"></div>
      <statistics></statistics>
-     <div class="mt-4"></div>
+     <div class="mt-4"></div>    
      <cloud></cloud>
      <div class="mt-8"></div>
      <codePen></codePen>     
