@@ -3,7 +3,8 @@
      <div class="py-2 flex flex-col">
         <div class="px-4 pt-2 flex flex-col items-center">
             <span class="text-xl text-orange-700">Cloud Projects</span>
-            <div v-for="cloud in category" :key="cloud.id" class="flex flex-col items-center justify-center mt-1 mb-3 lg:mb-7">
+            <div v-for="(cloud,outerIndex) in category" :key="cloud.id" 
+                :class="{'flex flex-col items-center mt-1 lg:mb-7':true,'-mt-24 lg:mt-1':outerIndex!=0}">
                 <span class="text-xl text-yellow-700 uppercase"> {{cloud.name}}</span>
                 <scrollableRow :id="cloud.name+'items'" :itemsLength="getProject(cloud.collection).length">
                     <template v-slot:items>

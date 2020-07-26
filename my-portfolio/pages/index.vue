@@ -6,7 +6,7 @@
      <statistics></statistics>
      <div class="mt-4"></div>    
      <cloud></cloud>
-     <div class="mt-8"></div>
+     <div class="mt-4"></div>
      <codePen></codePen>     
   </div>
 </template>
