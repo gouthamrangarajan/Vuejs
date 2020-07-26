@@ -8,7 +8,7 @@
             <template v-slot:items>
                 <div class="iframecontainer" v-for="item in collection" :key="item.id" 
                     :id="'item_'+item.id">
-                    <iframecard v-bind="item"> </iframecard>
+                    <iframecard v-bind="item" :width="iFrameWidth"> </iframecard>
                 </div>
             </template>
         </scrollableRow>
@@ -18,7 +18,8 @@
 export default {
     data(){
         return {
-            collection:[]           
+            collection:[],
+            iFrameWidth:600           
         }
     },
     created(){
@@ -27,6 +28,10 @@ export default {
             let id=Math.random().toString(16).slice(8)
             this.collection.push({id,url:el.url})            
          })        
+         if(process.client && window){
+            if(window.innerWidth<991)
+                this.iFrameWidth=425
+        }
     },
     components:{
         iframecard:()=>import('@/components/IFrameCard'),

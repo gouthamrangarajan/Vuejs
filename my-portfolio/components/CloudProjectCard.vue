@@ -35,4 +35,9 @@ export default {
 .card{
     width:600px;
 }
+@media only screen and (max-width: 991px){
+    .card{
+        width:400px;
+    }
+}
 </style>

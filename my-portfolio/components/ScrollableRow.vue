@@ -42,7 +42,7 @@ export default {
     created(){
         if(process.client && window){
             if(window.innerWidth<991)
-                this.scrollDistance=600
+                this.scrollDistance=425
         }
     },
     methods:{
@@ -92,10 +92,5 @@ export default {
 }
 .scrollmarker {
     transition:all 0.3s;
-}
-@media only screen and (max-width:991px){
-    .row{
-        width:95vw;
-    }
 }
 </style>
