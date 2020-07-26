@@ -3,12 +3,12 @@
      <div class="py-2 flex flex-col">
         <div class="px-4 pt-2 flex flex-col items-center">
             <span class="text-xl text-orange-700">Cloud Projects</span>
-            <div v-for="cloud in category" :key="cloud.id" class="flex flex-col items-center justify-center mt-2 mb-6">
+            <div v-for="cloud in category" :key="cloud.id" class="flex flex-col items-center justify-center mt-1 mb-7">
                 <span class="text-xl text-yellow-700 uppercase"> {{cloud.name}}</span>
                 <scrollableRow :id="cloud.name+'items'" :itemsLength="getProject(cloud.collection).length">
                     <template v-slot:items>
                         <div v-for="(item,index) in getProject(cloud.collection)" :key="index">
-                            <cloudProjectCard :project="item"></cloudProjectCard>
+                            <cloudProjectCard :project="item" :occupyFull="getProject(cloud.collection).length==1"></cloudProjectCard>
                         </div>                 
                     </template>  
                 </scrollableRow>

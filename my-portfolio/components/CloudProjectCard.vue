@@ -1,5 +1,5 @@
 <template>
-    <div class="card bg-white rounded-t">
+    <div :class="{'bg-white rounded-t':true,'card':!occupyFull,'card-full':occupyFull}">
         <div class="py-4 px-6 h-24">            
             <a class="cursor-pointer underline text-blue-700 text-justify text-lg" @click="launch(project.url)">{{project.url}}</a>
             <template v-if="project.description">
@@ -17,6 +17,11 @@ export default {
         project:{
             type:Object,
             required:true
+        },
+        occupyFull:{
+            type:Boolean,
+            required:false,
+            default:false
         }
     },
     methods:{

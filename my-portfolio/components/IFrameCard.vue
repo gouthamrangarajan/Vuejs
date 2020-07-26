@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex justify-end">
-            <a class="cursor-pointer px-2 pb-1 pt-2 bg-green-500 hover:bg-green-700 text-white text-sm rounded-full" @click="launch">
+            <a class="btn cursor-pointer px-2 pb-1 pt-2 bg-green-500 hover:bg-green-700 text-white text-sm rounded-full" @click="launch">
                 <i class="material-icons">launch</i>
             </a>
         </div>
@@ -38,5 +38,8 @@ export default {
 <style scoped>
 i{
     font-size:1rem !important;
+}
+.btn{
+    transition:all 0.3s;
 }
 </style>
