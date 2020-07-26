@@ -93,4 +93,9 @@ export default {
 .scrollmarker {
     transition:all 0.3s;
 }
+@media only screen and (max-width:991px){
+    .row{
+        width:95vw;
+    }
+}
 </style>
