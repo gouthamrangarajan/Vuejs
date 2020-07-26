@@ -1,5 +1,5 @@
 <template>
-      <div :class="{'mt-1 row flex flex-row space-x-1':true}" :id="id" @scroll="itemsScrolled">   
+      <div :class="{'mt-1 row flex flex-row space-x-1':true,'items-center justify-center':itemsLength==1}" :id="id" @scroll="itemsScrolled">   
             <transition name="fade">         
                 <a class="scrollmarker cursor-pointer bg-teal-500 hover:bg-teal-700 text-white absolute text-2xl px-4 pb-2 pt-1
                     flex items-center justify-center left-0 mt-64 rounded-full opacity-75 hover:opacity-100 hover:shadow-2xl
