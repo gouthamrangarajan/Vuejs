@@ -30,7 +30,7 @@ export default {
          })        
          if(process.client && window){
             if(window.innerWidth<991)
-                this.iFrameWidth=425
+                this.iFrameWidth=420
         }
     },
     components:{
