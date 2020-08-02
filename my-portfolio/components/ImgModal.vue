@@ -5,9 +5,9 @@
             &times;
         </a>
         <transition name="scale">
-            <div class="flex flex-col items-center justify-center h-full w-full" v-show="showImg">    
-                <img src="@/assets/my-avatar.jpg" class="object-contain rounded m-auto shadow-2xl"> 
-                <a class="text-white bottom-0 mb-24" href="mailto:rgouthamraja@yahoo.com">rgouthamraja@yahoo.com</a>
+            <div class="flex flex-col items-center justify-center h-full w-full space-y-8" v-show="showImg">    
+                <img src="@/assets/my-avatar.jpg" class="object-contain rounded  shadow-2xl"> 
+                <a class="text-white" href="mailto:rgouthamraja@yahoo.com">rgouthamraja@yahoo.com</a>
             </div>  
         </transition>              
     </div>
