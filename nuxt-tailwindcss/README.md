@@ -8,6 +8,7 @@
 # Nav
 # Notifications
 # FullCalendar
+# DatePicker
 
 ## Build Setup
 
