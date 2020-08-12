@@ -224,11 +224,11 @@ export default {
 }
 .slide-left-enter,
 .slide-left-leave-to{    
-    transform:translateX(20px);
+    transform:translateX(2px);
 }
 .slide-right-enter,
 .slide-right-leave-to{    
-    transform:translateX(-20px);
+    transform:translateX(-2px);
 }
 .scale-move{
     transform:all 0.3s;
