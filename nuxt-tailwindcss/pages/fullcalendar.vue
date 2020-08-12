@@ -36,7 +36,8 @@
                             </h5> 
                             <transition-group name="scale">
                                 <div v-for="event in getEvents(idt.date,currMonthIndex,currYear)" :key="event.id"
-                                    :class="['truncate w-48 p-1 bg-'+event.color+'-600 flex items-center rounded text-white mb-1']">
+                                    :class="['truncate w-48 p-1 bg-'+event.color+'-600 flex items-center rounded text-white mb-1']"
+                                    @click.stop="editEvent(event.id,'td_'+index+'_'+index1)">
                                     <template v-if="event.icon">
                                         <i class="material-icons">{{event.icon}}</i>
                                     </template>
@@ -49,7 +50,7 @@
             </tbody>
         </transition>
     </table>
-    <addEventModal v-model="showModal" v-bind="modalData" @addEvent="addEvent"></addEventModal>
+    <addEventModal v-model="showModal" v-bind="modalData" @saveEvent="saveEvent"></addEventModal>
    </div>
 </template>
 <script>
@@ -74,7 +75,10 @@ export default {
                     left:50,
                     top:50
                 },
-                eventDate:null
+                eventDate:null,
+                eventId:0,
+                eventName:'',
+                title:'Add Event'
             }            
         }
   },
@@ -155,12 +159,43 @@ export default {
                 this.modalData.offset.left=x
             }
             this.modalData.date=new Date(year,monthIndex,dayPart)
+            this.modalData.eventId=0
+            this.modalData.eventName=''
+            this.modalData.title='Add Event'
             this.showModal=true
         }   
     },
-    addEvent(data){
-        this.events.push({id:this.nextEventId,color:'indigo',name:data.name,date:data.date})
-        this.nextEventId++
+    editEvent(eventId,elId){
+         if(this.showModal)
+            this.showModal=false
+        else{
+            let el=document.getElementById(elId)
+            const {x,y}=el.getBoundingClientRect()
+            this.modalData.offset.top=y
+            this.modalData.offset.left=x-300
+            if(this.modalData.offset.left<0){
+                this.modalData.offset.left=x
+            }
+            let ft=this.events.filter(el=>el.id==eventId)[0]
+            this.modalData.date=ft.date
+            this.modalData.eventId=eventId
+            this.modalData.eventName=ft.name
+            this.modalData.title='Edit Event'
+            this.showModal=true
+        }   
+    },
+    saveEvent(data){
+        if(data.id==0){
+            this.events.push({id:this.nextEventId,color:'indigo',name:data.name,date:data.date})
+            this.nextEventId++
+        }
+        else{
+            let ft=this.events.filter(el=>el.id==data.id)[0]
+            if(ft)
+            {
+                ft.name=data.name
+            }
+        }
     }
   },
   computed:{    

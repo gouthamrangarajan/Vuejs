@@ -4,7 +4,7 @@
             v-show="value" @click.stop>
             <div class="flex justify-between">
                 <span class="text-2xl text-orange-600">
-                    Add Event
+                    {{title}}
                 </span>
                 <a class="text-lg text-red-700 cursor-pointer" @click.stop="close">
                     &times;
@@ -42,7 +42,23 @@ export default {
             default:function(){
                 return new Date()
             }
+        },
+        title:{
+            type:String,
+            required:false,
+            default:'Add Event'
+        },
+        eventName:{
+            type:String,
+            required:false,
+            default:''
+        },
+        eventId:{
+            type:Number,
+            required:false,
+            default:0
         }
+        
     },
     data(){
         return {name:''}
@@ -57,8 +73,10 @@ export default {
     },
     watch:{
         value(newVal){            
-            if(newVal)
+            if(newVal){
                 setTimeout(()=>{this.$refs.input.focus()},300)                            
+                this.name=this.eventName
+            }
         }
     },
     methods:{
@@ -66,11 +84,10 @@ export default {
             if(this.name=='')
                 return
 
-            this.$emit('addEvent',{name:this.name,date:this.date})
-            this.name=''
+            this.$emit('saveEvent',{name:this.name,date:this.date,id:this.eventId})            
             this.close()    
         },
-        close(){
+        close(){            
             this.$emit('input',false)
         }
     }
