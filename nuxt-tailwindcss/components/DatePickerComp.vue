@@ -17,12 +17,12 @@
             <transition :name="transition" mode="out-in" appear>
                 <tbody v-show="bodyDisplay">
                     <tr>
-                        <td v-for="(day,index) in dayNames" :key="index" class="text-sm text-center">
+                        <td v-for="(day,index) in dayNames" :key="index" class="text-xs text-center">
                             {{day}}
                         </td>
                     </tr>
                     <tr v-for="(dt,index) in weeksData" :key="index">
-                        <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" class="text-sm cursor-pointer"
+                        <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" class="text-xs cursor-pointer"
                             :id="'td_'+index+'_'+index1" @click.stop="emitDate(idt.date,idt.ind)">
                             <div class="td__container flex flex-col w-full h-full items-center">                                   
                                <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true,
