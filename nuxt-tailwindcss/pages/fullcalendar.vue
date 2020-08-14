@@ -18,9 +18,9 @@
         <transition :name="transition" mode="out-in" appear>
             <tbody v-show="display">
                 <tr v-for="(dt,index) in weeksData" :key="index">
-                    <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" class="border border-gray-300 h-32 text-sm cursor-pointer"
-                        :id="'td_'+index+'_'+index1" @click.stop="toggleshowModal('td_'+index+'_'+index1,idt.date,currMonthIndex,currYear)">
-                        <div class="td__container flex flex-col w-full h-full items-center">
+                    <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" class="border border-gray-300 h-32 text-sm cursor-pointer">
+                        <div class="td__container flex flex-col w-full h-full items-center" 
+                             :id="'div_'+index+'_'+index1" @click.stop="toggleshowModal('div_'+index+'_'+index1,idt.date,currMonthIndex,currYear)">
                             <template v-if="index==0">
                             <span>{{dayNames[index1]}}</span>
                             </template>
