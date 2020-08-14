@@ -22,10 +22,11 @@
     ],
     "cloud":{
       "firebase":[
-        {"order":1,"imgSrc":"/Stock.PNG","description":"A Vue project with Firebase authentication to view tracked stocks with graph","url":"https://stockapi-90a27.firebaseapp.com/"},
-        {"order":2,"imgSrc":"/WL.PNG","description":"A PWA project using Nuxt and Firebase to display a collection of you tube videos(along with the ability to play video) and documentation of the topics Vue, Nuxt, HTML, CSS frameworks etc ","url":"https://weblearnings-e679a.web.app/"},
-        {"order":3,"imgSrc":"/Locations.PNG","description":"A PWA project using Nuxt and Firebase to dispaly a collection of location visited using Google Maps","url":"https://location-list-279502.web.app/"},        
-        {"other":[{"order":4,"url":"https://grocery-list-c0614.web.app/","imgSrc":"/GL.PNG"}]}
+        {"order":1,"imgSrc":"/Calendar.PNG","description":"A google calendar inspirted ui design","url":"https://calendar-b42b8.web.app/"},
+        {"order":2,"imgSrc":"/Stock.PNG","description":"A Vue project with Firebase authentication to view tracked stocks with graph","url":"https://stockapi-90a27.firebaseapp.com/"},
+        {"order":3,"imgSrc":"/WL.PNG","description":"A PWA project using Nuxt and Firebase to display a collection of you tube videos(along with the ability to play video) and documentation of the topics Vue, Nuxt, HTML, CSS frameworks etc ","url":"https://weblearnings-e679a.web.app/"},
+        {"order":4,"imgSrc":"/Locations.PNG","description":"A PWA project using Nuxt and Firebase to dispaly a collection of location visited using Google Maps","url":"https://location-list-279502.web.app/"},        
+        {"other":[{"order":5,"url":"https://grocery-list-c0614.web.app/","imgSrc":"/GL.PNG"}]}
       ],
       "aws":[
         {"order":1,"description":"Image gallery using Vuejs, Express js","url":"http://vueimages.us-east-1.elasticbeanstalk.com/","imgSrc":"/Gallery.PNG"}
