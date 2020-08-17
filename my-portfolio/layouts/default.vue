@@ -28,7 +28,7 @@ export default {
   overflow: hidden;
 }
 body::-webkit-scrollbar {
-  width: 0.5rem;  
+  width: 0.3rem;  
 }
  
 body::-webkit-scrollbar-track {
