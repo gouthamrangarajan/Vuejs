@@ -106,11 +106,7 @@ export default {
   overflow-y:auto!important;
 }
 .card-content::-webkit-scrollbar {
-  width: 0.5rem;  
-}
- 
-.card-content::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  width: 0.25rem;  
 }
  
 .card-content::-webkit-scrollbar-thumb {
