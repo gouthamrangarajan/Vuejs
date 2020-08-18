@@ -8,7 +8,7 @@
             <template v-slot:items>
                 <div class="iframecontainer" v-for="item in collection" :key="item.id" 
                     :id="'item_'+item.id">
-                    <iframecard v-bind="item" :width="iFrameWidth"> </iframecard>
+                    <codePenCard v-bind="item"> </codePenCard>
                 </div>
             </template>
         </scrollableRow>
@@ -26,7 +26,7 @@ export default {
         let data=require('@/static/data.json')        
         data.info.codePen.forEach(el=>{
             let id=Math.random().toString(16).slice(8)
-            this.collection.push({id,url:el.url})            
+            this.collection.push({id,url:el.url,imgSrc:el.imgSrc})            
          })        
          if(process.client && window){
             if(window.innerWidth<991)
@@ -34,7 +34,8 @@ export default {
         }
     },
     components:{
-        iframecard:()=>import('@/components/IFrameCard'),
+        // iframecard:()=>import('@/components/IFrameCard'),
+        codePenCard:()=>import('@/components/CodePenCard'),
         scrollableRow:()=>import('@/components/ScrollableRow')
     },
     methods:{

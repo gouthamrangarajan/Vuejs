@@ -7,13 +7,13 @@
         {"name":"Codepen","url":"https://codepen.io/GouthamRangarajan"}
     ],
     "codePen":[
-        {"url":"https://codepen.io/GouthamRangarajan/full/JjXdemz"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/mdPbymQ"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/rNxRmzx"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/dyGvbLJ"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/VwLXoeK"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/JjPVbjb"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/ExYNjdR"}     
+        {"url":"https://codepen.io/GouthamRangarajan/full/JjXdemz","imgSrc":"/CodePen1.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/mdPbymQ","imgSrc":"/CodePen2.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/rNxRmzx","imgSrc":"/CodePen3.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/dyGvbLJ","imgSrc":"/CodePen4.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/VwLXoeK","imgSrc":"/CodePen5.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/JjPVbjb","imgSrc":"/CodePen6.png"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/ExYNjdR","imgSrc":"/CodePen7.png"}     
     ],    
     "gitHub":[
       {"url":"https://github.com/gouthamrangarajan/Vuejs", "name":"Vue js"},

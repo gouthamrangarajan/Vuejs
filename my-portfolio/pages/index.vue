@@ -6,7 +6,7 @@
      <statistics></statistics>
      <div class="mt-4"></div>    
      <cloud></cloud>
-     <div class="-mt-16 lg:mt-4"></div>
+     <div class="-mt-16 lg:mt-8"></div>
      <codePen></codePen>     
   </div>
 </template>
