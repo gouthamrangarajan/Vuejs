@@ -18,8 +18,7 @@
 export default {
     data(){
         return {
-            collection:[],
-            iFrameWidth:600           
+            collection:[]            
         }
     },
     created(){
@@ -27,14 +26,9 @@ export default {
         data.info.codePen.forEach(el=>{
             let id=Math.random().toString(16).slice(8)
             this.collection.push({id,url:el.url,imgSrc:el.imgSrc})            
-         })        
-         if(process.client && window){
-            if(window.innerWidth<991)
-                this.iFrameWidth=415
-        }
+         })                
     },
-    components:{
-        // iframecard:()=>import('@/components/IFrameCard'),
+    components:{        
         codePenCard:()=>import('@/components/CodePenCard'),
         scrollableRow:()=>import('@/components/ScrollableRow')
     },
