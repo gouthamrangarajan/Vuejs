@@ -27,7 +27,7 @@
                             <div class="td__container flex flex-col w-full h-full items-center">                                   
                                <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true,
                                         'bg-blue-600 rounded text-white':currMonthIndex==todayMonthIndex && currYear==todayYear
-                                        && idt.date==todayDate && !checkSelectedDate(idt.date),
+                                        && idt.date==todayDate && idt.ind=='curr' && !checkSelectedDate(idt.date),
                                         'bg-teal-600 rounded text-white':checkSelectedDate(idt.date,idt.ind)}">{{idt.date}}&nbsp;                                                                                
                                 </h5>                                     
                             </div>

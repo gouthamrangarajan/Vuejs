@@ -26,7 +26,7 @@
                             </template>
                            <h5 :class="{'text-gray-500':idt.ind!='curr','px-2 py-1 text-center mb-1':true,
                                     'bg-blue-600 rounded-full text-white':currMonthIndex==todayMonthIndex && currYear==todayYear
-                                    && idt.date==todayDate}">{{idt.date}}&nbsp;
+                                    && idt.date==todayDate && idt.ind=='curr'}">{{idt.date}}&nbsp;
                                 <template v-if="idt.date==1 && index==0">
                                     {{monthNamesShort[currMonthIndex]}}
                                 </template>
@@ -35,7 +35,7 @@
                                 </template>
                             </h5> 
                             <transition-group name="scale">
-                                <div v-for="event in getEvents(idt.date,currMonthIndex,currYear)" :key="event.id"
+                                <div v-for="event in getEvents(idt.date,currMonthIndex,currYear,idt.ind)" :key="event.id"
                                     :class="['truncate w-48 p-1 bg-'+event.color+'-600 flex items-center rounded text-white mb-1']"
                                     @click.stop="editEvent(event.id,'td_'+index+'_'+index1)">
                                     <template v-if="event.icon">
@@ -144,8 +144,11 @@ export default {
             this.display=true
         },50)      
     },
-    getEvents(dayPart, monthIndex, year){
-        return this.events.filter(el=>el.date.getFullYear()==year && el.date.getMonth()==monthIndex && dayPart==el.date.getDate());
+    getEvents(dayPart, monthIndex, year,ind){
+        if(ind=='curr')
+            return this.events.filter(el=>el.date.getFullYear()==year && el.date.getMonth()==monthIndex && dayPart==el.date.getDate());
+        else
+            return [];
     },
     toggleshowModal(elId,dayPart,monthIndex,year){
         if(this.showModal)

@@ -18,7 +18,7 @@ body{
   overflow-x:hidden;
 }
 body::-webkit-scrollbar {
-  width: 0.5rem;  
+  width: 0.25rem;  
 }
  
 body::-webkit-scrollbar-track {
