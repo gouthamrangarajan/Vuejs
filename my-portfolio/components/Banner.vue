@@ -26,6 +26,6 @@ export default {
 </script>
 <style scoped>
 .banner{
-    background: linear-gradient(#000,#f7fafc);
+    background: linear-gradient(#000,#edf2f7);
 }
 </style>
