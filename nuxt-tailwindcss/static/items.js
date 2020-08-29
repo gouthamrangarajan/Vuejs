@@ -20,5 +20,5 @@ export const data=[
     {id:Math.random().toString(16).slice(8),name:'FixedActionButton',path:'/fixedactionbtn'},
     {id:Math.random().toString(16).slice(8),name:'ToolTips',path:'/tooltips'},
     {id:Math.random().toString(16).slice(8),name:'Switch',path:'/switch'},
-    {id:Math.random().toString(16).slice(8),name:'SlidingBorderMemu',path:'/slidebordermenu'},
+    {id:Math.random().toString(16).slice(8),name:'SlidingBorderMenu',path:'/slidebordermenu'},
 ]
