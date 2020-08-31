@@ -26,7 +26,7 @@
                                         'bg-blue-700 text-white':checkRange(startYear,startMonthIndex,idt.date,idt.ind),
                                         'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && startMonthIndex==startDate.getMonth(),
                                         'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && startMonthIndex==endDate.getMonth()}" 
-                                :id="'td_'+index+'_'+index1"   @click="selectDate(startYear,startMonthIndex,idt.date)">
+                                :id="'td_'+index+'_'+index1"   @click="selectDate(startYear,startMonthIndex,idt.date,idt.ind)">
                                 <div class="td__container flex flex-col w-full h-full items-center">
                                      <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true}">
                                         {{idt.date}}
@@ -62,7 +62,7 @@
                                 'bg-blue-700 text-white':checkRange(endYear,endMonthIndex,idt.date,idt.ind),
                                 'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && endMonthIndex==startDate.getMonth(),
                                 'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && endMonthIndex==endDate.getMonth()}" 
-                                :id="'td_'+index+'_'+index1" @click="selectDate(endYear,endMonthIndex,idt.date)">
+                                :id="'td_'+index+'_'+index1" @click="selectDate(endYear,endMonthIndex,idt.date,idt.ind)">
                                 <div class="td__container flex flex-col w-full h-full items-center">
                                      <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true}">                                     
                                         {{idt.date}}
@@ -94,7 +94,9 @@ export default {
         }
     },
     methods:{
-        selectDate(year,month,day){            
+        selectDate(year,month,day,ind){            
+            if(ind!='curr')
+                return;
             if(this.selectedField=='start_date'){
                 this.startDate=new Date(year,month,day)
                 this.selectedField='end_date'
