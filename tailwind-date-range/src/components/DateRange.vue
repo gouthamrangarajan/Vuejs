@@ -1,6 +1,16 @@
 <template>
-    <div class="rounded border border-gray-300  p-1">
+    <div class="rounded p-1">
         <div class="input-field flex flex-col md:flex-row space-y-2 md:space-y-0 w-full justify-around">
+            <div class="flex flex-col border border-gray-300 shadow">
+                <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setToday">Today</a>
+                <hr/>
+                <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setThisWeek">This Week</a>
+                <hr/>
+                <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setLastWeek">Last Week</a>
+                <hr/>
+                <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setThisMonth">This Month</a>
+                <hr/>
+            </div>
             <div class="flex flex-col">
                 <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer':true,'border border-blue-600':selectedField=='start_date'}"
                      placeholder="Start" readonly @click="selectedField='start_date'" :value="displayDate(startDate)">
@@ -23,7 +33,7 @@
                         </tr>
                          <tr v-for="(dt,index) in startMonthData" :key="index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
-                                        'bg-blue-700 text-white':checkRange(startYear,startMonthIndex,idt.date,idt.ind),
+                                        'bg-blue-500 text-white':checkRange(startYear,startMonthIndex,idt.date,idt.ind),
                                         'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && startMonthIndex==startDate.getMonth(),
                                         'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && startMonthIndex==endDate.getMonth()}" 
                                 :id="'td_'+index+'_'+index1"   @click="selectDate(startYear,startMonthIndex,idt.date,idt.ind)">
@@ -59,7 +69,7 @@
                         </tr>
                         <tr v-for="(dt,index) in endMonthData" :key="index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
-                                'bg-blue-700 text-white':checkRange(endYear,endMonthIndex,idt.date,idt.ind),
+                                'bg-blue-500 text-white':checkRange(endYear,endMonthIndex,idt.date,idt.ind),
                                 'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && endMonthIndex==startDate.getMonth(),
                                 'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && endMonthIndex==endDate.getMonth()}" 
                                 :id="'td_'+index+'_'+index1" @click="selectDate(endYear,endMonthIndex,idt.date,idt.ind)">
@@ -132,6 +142,54 @@ export default {
             if(dt>=this.startDate && dt<=this.endDate){                
                 return true
             }
+            return false
+        },
+        resetVisibleDates(){
+            let index=this.startDate.getMonth()
+            let year=this.startDate.getFullYear()
+            while(this.startMonthIndex>index || year>this.startYear){
+                this.decreaseMonth()
+            }
+            while(this.startMonthIndex<index || year<this.endYear){
+                this.increaseMonth()
+            }
+        },
+        setToday(){
+            let dt=new Date()
+            this.startDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())
+            this.endDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())            
+            this.resetVisibleDates()
+            this.emitRange()
+        },
+        setThisWeek(){
+            let dt=new Date()
+            while(dt.getDay()>0){                
+                dt.setDate(dt.getDate()-1)                
+            }
+            this.startDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())
+            this.endDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())
+            this.endDate.setDate(this.endDate.getDate()+6)
+            this.resetVisibleDates()
+            this.emitRange()
+        },
+         setLastWeek(){
+            let dt=new Date()
+            while(dt.getDay()>0){                
+                dt.setDate(dt.getDate()-1)                
+            }
+            dt.setDate(dt.getDate()-7)
+            this.startDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())            
+            this.endDate=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate())
+            this.endDate.setDate(this.endDate.getDate()+6)
+            this.resetVisibleDates()
+            this.emitRange()
+        },
+        setThisMonth(){
+            let dt=new Date()
+            this.startDate=new Date(dt.getFullYear(),dt.getMonth(),1) 
+            this.endDate=new Date(dt.getFullYear(),dt.getMonth()+1,0)  
+            this.resetVisibleDates()
+            this.emitRange()  
         }
     }
 }
