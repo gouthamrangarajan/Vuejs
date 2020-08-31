@@ -12,7 +12,7 @@
                 <hr/>
             </div>
             <div class="flex flex-col">
-                <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer':true,'border border-blue-600':selectedField=='start_date'}"
+                <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer border':true,'border-blue-600':selectedField=='start_date'}"
                      placeholder="Start" readonly @click="selectedField='start_date'" :value="displayDate(startDate)">
                 <table class="table-fixed w-64">
                      <thead>
@@ -48,7 +48,7 @@
                 </table>
             </div>
             <div class="flex flex-col">
-                <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer':true,'border border-blue-600':selectedField=='end_date'}"
+                <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer border':true,'border-blue-600':selectedField=='end_date'}"
                      placeholder="End" readonly @click="selectedField='end_date'" :value="displayDate(endDate)">            
                 <table class="table-fixed w-64">
                      <thead>
