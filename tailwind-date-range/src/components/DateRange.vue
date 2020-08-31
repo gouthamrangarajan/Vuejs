@@ -1,7 +1,7 @@
 <template>
-    <div class="rounded p-1">
+    <div class="rounded p-1 date-range">
         <div class="input-field flex flex-col md:flex-row space-y-2 md:space-y-0 w-full justify-around">
-            <div class="flex flex-col border border-gray-300 shadow">
+            <div class="flex flex-col border border-gray-300 shadow btn-group md:h-64">
                 <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setToday">Today</a>
                 <hr/>
                 <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setThisWeek">This Week</a>
@@ -19,19 +19,19 @@
                         <tr>
                             <th colspan="7" class="p-1 font-normal">
                                 <div class="flex justify-between items-center pl-1">     
-                                    <a class="btn p-1 hover:bg-gray-200 cursor-pointer rounded" @click="decreaseMonth">&lt;</a>                                                   
+                                    <a class="btn p-1 hover:bg-gray-200 cursor-pointer rounded" @click="changeAnimationAnddecreaseMonth">&lt;</a>                                                   
                                     <h4 class="text-base">{{monthNamesShort[startMonthIndex]}} {{startYear}}</h4>                                   
                                 </div>
                             </th>
                         </tr>           
                     </thead>
-                    <tbody>
-                        <tr>
+                    <transition-group :name="transition" tag="tbody">
+                        <tr :key="-1">
                             <td v-for="day in dayNames" :key="day" class="text-xs text-center">
                                 {{day}}
                             </td>
                         </tr>
-                         <tr v-for="(dt,index) in startMonthData" :key="index">
+                         <tr v-for="(dt,index) in startMonthData" :key="monthNamesShort[startMonthIndex]+'_'+index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
                                         'bg-blue-500 text-white':checkRange(startYear,startMonthIndex,idt.date,idt.ind),
                                         'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && startMonthIndex==startDate.getMonth(),
@@ -44,7 +44,7 @@
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                    </transition-group>
                 </table>
             </div>
             <div class="flex flex-col">
@@ -56,18 +56,18 @@
                             <th colspan="7" class="p-1 font-normal">
                                 <div class="flex justify-between items-center pl-1">                                                        
                                     <h4 class="text-base">{{monthNamesShort[endMonthIndex]}} {{endYear}}</h4>     
-                                     <a class="btn p-1 hover:bg-gray-200 cursor-pointer rounded" @click="increaseMonth">&gt;</a>                                                                                 
+                                     <a class="btn p-1 hover:bg-gray-200 cursor-pointer rounded" @click="changeAnimationAndincreaseMonth">&gt;</a>                                                                                 
                                 </div>
                             </th>
                         </tr>           
                     </thead>
-                    <tbody>
-                        <tr>
+                    <transition-group :name="transition" tag="tbody">
+                        <tr :key="-1">
                             <td v-for="day in dayNames" :key="day" class="text-xs text-center">
                                 {{day}}
                             </td>
                         </tr>
-                        <tr v-for="(dt,index) in endMonthData" :key="index">
+                        <tr v-for="(dt,index) in endMonthData" :key="monthNamesShort[endMonthIndex]+'_'+index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
                                 'bg-blue-500 text-white':checkRange(endYear,endMonthIndex,idt.date,idt.ind),
                                 'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && endMonthIndex==startDate.getMonth(),
@@ -80,7 +80,7 @@
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                    </transition-group>
                 </table>
             </div>
         </div>        
@@ -98,6 +98,7 @@ export default {
     },
     data(){
         return {
+            transition:'records',
             selectedField:'start_date',
             startDate:null,
             endDate:null
@@ -147,11 +148,20 @@ export default {
         resetVisibleDates(){
             let index=this.startDate.getMonth()
             let year=this.startDate.getFullYear()
-            while(this.startMonthIndex>index || year>this.startYear){
-                this.decreaseMonth()
+            let lclindex=1
+            
+            while( this.startYear>year || (year==this.startYear && this.startMonthIndex>index)){
+                if(lclindex>10000)
+                    break            
+                this.changeAnimationAnddecreaseMonth()
+                lclindex++
             }
-            while(this.startMonthIndex<index || year<this.endYear){
-                this.increaseMonth()
+            lclindex=1
+            while(this.startYear<year || (year==this.startYear && this.startMonthIndex<index)){
+                if(lclindex>10000)
+                    break                
+                this.changeAnimationAndincreaseMonth()
+                lclindex++;
             }
         },
         setToday(){
@@ -190,12 +200,37 @@ export default {
             this.endDate=new Date(dt.getFullYear(),dt.getMonth()+1,0)  
             this.resetVisibleDates()
             this.emitRange()  
+        },
+        changeAnimationAnddecreaseMonth(){
+            this.transition='records-reverse'
+            this.decreaseMonth()
+        },
+        changeAnimationAndincreaseMonth(){
+            this.transition='records'
+            this.increaseMonth()
         }
     }
 }
 </script>
 <style scoped>
-input,td{
+input,td,.btn-group{
     transition: all 0.3s;
+}
+.records-enter-active,
+.records-reverse-enter-active{
+    transition:all 0.3s;
+}
+.records-enter-from,
+.records-leave-to{
+    opacity: 0;
+    transform:translateX(2px);
+}
+.records-reverse-enter-from,
+.records-reverse-leave-to{
+    opacity: 0;
+    transform:translateX(-2px);
+}
+.date-Range{
+    overflow-x:hidden;
 }
 </style>

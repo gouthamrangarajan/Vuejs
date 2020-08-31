@@ -48,6 +48,9 @@ export default {
 .btn{
   transition: all 0.3s;;
 }
+.fade-move{
+  transition:all 0.3s;
+}
 .fade-enter-active,
 .fade-leave-active{
   transition :all 0.3s;
