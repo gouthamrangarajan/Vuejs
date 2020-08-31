@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app bg-gray-100 h-screen flex flex-col items-center">
      <AppNav></AppNav>
-     <div :class="{'app__section py-4 px-6 bg-white w-full lg:w-1/2 rounded shadow mt-12 flex flex-col':true,
+     <div :class="{'app__section py-4 px-6 bg-white w-full xl:w-1/2 rounded shadow mt-12 flex flex-col':true,
           'app__section-initialHeight':!showPicker,'app__section-finalHeight':showPicker}">
           <span class="text-lg text-orange-700 mb-2">Selected Range:&nbsp;&nbsp;&nbsp;{{selectedRange}}</span>
           <a class="btn w-full bg-pink-500 hover:bg-pink-600 py-2 px-4 rounded text-lg text-white text-center cursor-pointer"
@@ -60,8 +60,7 @@ export default {
   opacity: 0;
 }
 .app__section{  
-  transition: all 0.3s;
-  overflow: hidden;
+  transition: all 0.3s;  
 }
 .app__section-initialHeight{
   height:8rem;
@@ -71,7 +70,7 @@ export default {
 }
 @media only screen and (max-width:767px) {
  .app__section-finalHeight{
-    height: 45rem;  
+    height: 50rem;  
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="rounded p-1 date-range">
         <div class="input-field flex flex-col md:flex-row space-y-2 md:space-y-0 w-full justify-around">
-            <div class="flex flex-col border border-gray-300 shadow btn-group md:h-64">
+            <div class="flex flex-col border border-gray-300  btn-group md:h-64">
                 <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setToday">Today</a>
                 <hr/>
                 <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setThisWeek">This Week</a>
@@ -10,6 +10,16 @@
                 <hr/>
                 <a class="btn hover:bg-gray-200 py-1 px-3 cursor-pointer rounded w-40" @click="setThisMonth">This Month</a>
                 <hr/>
+                <div class="mt-2">
+                    <p class="border-r-4 rounded-t border-teal-600 py-1 px-3">
+                        Select
+                        <transition name="fade" mode="out-in">
+                           <span :key="1" v-if="selectedField=='start_date'">Start Date</span>
+                           <span :key="2" v-else>End Date</span>
+                        </transition>
+                    </p>
+                </div>
+                <p class="text-xs italic px-3">*Click on Start/End text to <br/> select corresponding Date</p>
             </div>
             <div class="flex flex-col">
                 <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer border':true,'border-blue-600':selectedField=='start_date'}"
