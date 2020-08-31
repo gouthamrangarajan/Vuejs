@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="app bg-gray-100 h-screen flex flex-col items-center">
      <AppNav></AppNav>
-     <div class="app__section py-4 px-6 bg-white w-full lg:w-1/2 rounded shadow mt-12 flex flex-col">
+     <div :class="{'app__section py-4 px-6 bg-white w-full lg:w-1/2 rounded shadow mt-12 flex flex-col':true,
+          'app__section-initialHeight':!showPicker,'app__section-finalHeight':showPicker}">
           <span class="text-lg text-orange-700 mb-2">Selected Range:&nbsp;&nbsp;&nbsp;{{selectedRange}}</span>
           <a class="btn w-full bg-pink-500 hover:bg-pink-600 py-2 px-4 rounded text-lg text-white text-center cursor-pointer"
               @click="showPicker=!showPicker">
@@ -10,9 +11,11 @@
                 <span key="2" v-else>Hide</span>
              </transition>            
           </a>
-           <transition name="fade">
-               <DateRange v-show="showPicker" @select-range="selectedRange=$event.rangeStr"></DateRange>
-            </transition>
+          <div class="mt-2">
+            <transition name="fade">
+                <DateRange v-show="showPicker" @select-range="selectedRange=$event.rangeStr"></DateRange>
+              </transition>
+          </div>
      </div>
   </div>
 </template>
@@ -34,7 +37,7 @@ export default {
   },
   data(){
     return {
-      showPicker:true,
+      showPicker:false,
       selectedRange:''
     }
   }
@@ -53,8 +56,19 @@ export default {
 .fade-leave-to{
   opacity: 0;
 }
-.app__section{
-  min-height: 25rem;
+.app__section{  
   transition: all 0.3s;
+  overflow: hidden;
+}
+.app__section-initialHeight{
+  height:8rem;
+}
+.app__section-finalHeight{
+  height:25rem;
+}
+@media only screen and (max-width:767px) {
+ .app__section-finalHeight{
+    height: 45rem;  
+  }
 }
 </style>

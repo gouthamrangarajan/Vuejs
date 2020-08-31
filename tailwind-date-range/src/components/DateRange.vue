@@ -1,6 +1,6 @@
 <template>
     <div class="rounded border border-gray-300  p-1">
-        <div class="input-field flex w-full justify-around">
+        <div class="input-field flex flex-col md:flex-row space-y-2 md:space-y-0 w-full justify-around">
             <div class="flex flex-col">
                 <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer':true,'border border-blue-600':selectedField=='start_date'}"
                      placeholder="Start" readonly @click="selectedField='start_date'" :value="displayDate(startDate)">
@@ -24,7 +24,8 @@
                          <tr v-for="(dt,index) in startMonthData" :key="index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
                                         'bg-blue-700 text-white':checkRange(startYear,startMonthIndex,idt.date,idt.ind),
-                                        'rounded-l-full':idt.date==startDate.getDate(),'rounded-r-full':idt.date==endDate.getDate()}" 
+                                        'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && startMonthIndex==startDate.getMonth(),
+                                        'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && startMonthIndex==endDate.getMonth()}" 
                                 :id="'td_'+index+'_'+index1"   @click="selectDate(startYear,startMonthIndex,idt.date)">
                                 <div class="td__container flex flex-col w-full h-full items-center">
                                      <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true}">
@@ -59,7 +60,8 @@
                         <tr v-for="(dt,index) in endMonthData" :key="index">
                             <td v-for="(idt,index1) in dt" :key="'td_'+index+'_'+index1" :class="{'text-xs cursor-pointer':true,
                                 'bg-blue-700 text-white':checkRange(endYear,endMonthIndex,idt.date,idt.ind),
-                                'rounded-l-full':idt.date==startDate.getDate(),'rounded-r-full':idt.date==endDate.getDate()}" 
+                                'rounded-l-full':startDate!=null &&idt.date== startDate.getDate() && endMonthIndex==startDate.getMonth(),
+                                'rounded-r-full':endDate!=null && idt.date==endDate.getDate() && endMonthIndex==endDate.getMonth()}" 
                                 :id="'td_'+index+'_'+index1" @click="selectDate(endYear,endMonthIndex,idt.date)">
                                 <div class="td__container flex flex-col w-full h-full items-center">
                                      <h5 :class="{'text-gray-500':idt.ind!='curr','p-1 text-center':true}">                                     
