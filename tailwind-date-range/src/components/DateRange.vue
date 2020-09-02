@@ -19,7 +19,7 @@
                         </transition>
                     </p>
                 </div>
-                <p class="text-xs italic px-3">*Click on Start/End text to <br/> select corresponding Date</p>
+                <p class="text-xs italic px-3 text-gray-600">*Click on Start/End text to <br/> select corresponding Date</p>
             </div>
             <div class="flex flex-col">
                 <input :class="{'outline-none shadow appearance-none py-2 px-4 rounded cursor-pointer border':true,'border-blue-600':selectedField=='start_date'}"

@@ -1,13 +1,8 @@
 module.exports = {
-    purge: [],
-    theme: {
-      extend:{
-        fontFamily:{
-         
-        }
-      }
-    },
-    variants: {},
-    plugins: [],
-  }
-  
+  purge: [],
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+}

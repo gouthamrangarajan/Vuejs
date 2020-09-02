@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import './styles.css'
 import { defineAsyncComponent } from 'vue'
 const AppNav=defineAsyncComponent({
   loader:()=>import('./components/AppNav')

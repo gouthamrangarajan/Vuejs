@@ -6,11 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "tailwind": "./node_modules/.bin/tailwind build ./src/tailwind-build.css -c ./tailwind.config.js -o ./src/styles.css",
-    "prestart": "npm run tailwind",
     "start": "vue-cli-service serve"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "core-js": "^3.6.5",
     "tailwindcss": "^1.7.6",
     "vue": "^3.0.0-0"
