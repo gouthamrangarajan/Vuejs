@@ -87,8 +87,18 @@ export default {
 <style scoped>
  .row {
     width:98.5vw;
-    overflow:hidden;
+    overflow:auto;
     min-height: 450px;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.row {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .scrollmarker {
     transition:all 0.3s;
