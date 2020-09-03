@@ -4,7 +4,7 @@
             <div class="flex flex-col">
                 <span class="text-red-700 text-xl">Media</span>
                 <div v-for="item in media" :key="item.id" class="px-0 lg:px-2">
-                    {{item.name}}
+                    {{item.name}}:
                 </div>
             </div>
             <div class="flex flex-col w-full">
