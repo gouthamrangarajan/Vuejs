@@ -1,7 +1,14 @@
 <template>
     <div class="card bg-white rounded-t">
         <div class="py-4 px-6 h-32">            
-            <a class="cursor-pointer underline text-blue-700 text-justify text-lg" @click="launch(project.url)">{{project.url}}</a>
+            <a class="cursor-pointer underline text-blue-700 text-justify text-lg" @click="launch(project.url)">
+                <template v-if="project.title">
+                    {{project.title}}
+                </template>
+                <template v-else>
+                    {{project.url}}
+                </template>
+            </a>
             <template v-if="project.description">
                 <p class="px-4 mt-1 text-justify text-sm text-gray-600">{{project.description}}</p>                 
             </template>
@@ -39,5 +46,8 @@ export default {
     .card{
         width:400px;
     }
+}
+img{
+    height:19rem;
 }
 </style>

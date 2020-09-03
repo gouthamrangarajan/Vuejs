@@ -2,11 +2,13 @@
   <div class="bg-gray-100">
      <banner></banner>     
      <about></about>
-     <div class="mt-4"></div>
+     <div class="mt-2"></div>
      <statistics></statistics>
-     <div class="mt-4"></div>    
+     <div class="mt-2"></div>    
      <cloud></cloud>
-     <div class="-mt-16 lg:mt-8"></div>
+     <div class="mt-2"></div>
+     <gitHubItems></gitHubItems>     
+     <div class="mt-2"></div>
      <codePen></codePen>     
   </div>
 </template>
@@ -18,7 +20,8 @@ export default {
     codePen:()=>import('@/components/CodePen.vue'),    
     about:()=>import('@/components/About.vue'),
     statistics:()=>import('@/components/Statistics.vue'),
-    cloud:()=> import('@/components/Cloud.vue')
+    cloud:()=> import('@/components/Cloud.vue'),
+    gitHubItems:()=>import('@/components/GithubItems.vue')
   }
 }
 </script>

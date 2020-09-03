@@ -25,7 +25,7 @@ export default {
     },
     components:{
         scrollableRow:()=>import('@/components/ScrollableRow.vue'),
-        cloudProjectCard:()=>import('@/components/CloudProjectCard.vue')
+        cloudProjectCard:()=>import('@/components/ProjectCard.vue')
     },
     created(){
         let data=require('@/static/data.json')        
