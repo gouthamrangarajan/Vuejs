@@ -1,5 +1,5 @@
 <template>
-      <div :class="{'mt-1 row flex flex-row pb-2':true,'justify-center':itemsLength==1}" :id="id">        
+      <div :class="{'mt-1 row flex flex-row pb-2':true,'justify-center':itemsLength<4}" :id="id">        
              <slot name="items"></slot>
       </div>
 </template>
