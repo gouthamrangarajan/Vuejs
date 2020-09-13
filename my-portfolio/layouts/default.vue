@@ -45,9 +45,9 @@ body::-webkit-scrollbar-thumb {
     transform:translateY(-0.25rem);
 }
 .card:hover~.card{
-  transform: translateX(130px);
+  transform: translateX(260px);
 }
 .card:not(:first-child){
-  margin-left:-130px;
+  margin-left:-260px;
 }
 </style>
