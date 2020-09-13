@@ -5,13 +5,14 @@
             <span class="text-xl text-orange-700">Cloud Projects</span>
             <div v-for="cloud in category" :key="cloud.id"  class="flex flex-col items-center mt-1">
                 <span class="text-xl text-yellow-700 uppercase"> {{cloud.name}}</span>
-                <scrollableRow :id="cloud.name+'items'" :itemsLength="getProject(cloud.collection).length">
-                    <template v-slot:items>
-                        <div v-for="(item,index) in getProject(cloud.collection)" :key="index">
-                            <cloudProjectCard :project="item" :occupyFull="getProject(cloud.collection).length==1"></cloudProjectCard>
-                        </div>                 
+                <trickyCardRow :id="cloud.name+'items'" :itemsLength="getProject(cloud.collection).length">
+                    <template v-slot:items>                        
+                            <trickyProjectCard  v-for="(item,index) in getProject(cloud.collection)" :key="index"
+                                :project="item" :occupyFull="getProject(cloud.collection).length==1">
+
+                            </trickyProjectCard>                            
                     </template>  
-                </scrollableRow>
+                </trickyCardRow>
             </div>                
         </div>       
     </div>
@@ -23,8 +24,10 @@ export default {
         return {category:[]}
     },
     components:{
-        scrollableRow:()=>import('@/components/ScrollableRow.vue'),
-        cloudProjectCard:()=>import('@/components/ProjectCard.vue')
+        // scrollableRow:()=>import('@/components/ScrollableRow.vue'),        
+        // cloudProjectCard:()=>import('@/components/ProjectCard.vue'),
+        trickyCardRow:()=>import('@/components/TrickyCardRow.vue'),
+        trickyProjectCard:()=>import('@/components/TrickyProjectCard.vue'),
     },
     created(){
         let data=require('@/static/data.json')        

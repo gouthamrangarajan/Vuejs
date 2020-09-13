@@ -40,4 +40,14 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid #00bcd4;
   border-radius:5px;
 }
+
+.card:hover{
+    transform:translateY(-1rem);
+}
+.card:hover~.card{
+  transform: translateX(130px);
+}
+.card:not(:first-child){
+  margin-left:-130px;
+}
 </style>

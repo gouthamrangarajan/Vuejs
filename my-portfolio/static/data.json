@@ -7,13 +7,13 @@
         {"name":"Codepen","url":"https://codepen.io/GouthamRangarajan"}
     ],
     "codePen":[
-        {"url":"https://codepen.io/GouthamRangarajan/full/OJNvNjy","imgSrc":"/CodepenImgs/CodePen8.png"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/jOqVjQX","imgSrc":"/CodepenImgs/CodePen1.png"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/JjXdemz","imgSrc":"/CodepenImgs/CodePen2.png"},        
-        {"url":"https://codepen.io/GouthamRangarajan/full/rNxRmzx","imgSrc":"/CodepenImgs/CodePen4.png"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/dyGvbLJ","imgSrc":"/CodepenImgs/CodePen5.png"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/VwLXoeK","imgSrc":"/CodepenImgs/CodePen6.png"},
-        {"url":"https://codepen.io/GouthamRangarajan/full/ExYNjdR","imgSrc":"/CodepenImgs/CodePen7.png"}        
+        {"url":"https://codepen.io/GouthamRangarajan/full/OJNvNjy","imgSrc":"/CodepenImgs/CodePen8.png","title":"Vue 3 DropDown Menu"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/jOqVjQX","imgSrc":"/CodepenImgs/CodePen1.png","title":"Vue 3 Tailwind Sign Up"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/JjXdemz","imgSrc":"/CodepenImgs/CodePen2.png","title":"Vue 3 Tailwind Toastr"},        
+        {"url":"https://codepen.io/GouthamRangarajan/full/rNxRmzx","imgSrc":"/CodepenImgs/CodePen4.png","title":"Vue Sliding Border Menu"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/dyGvbLJ","imgSrc":"/CodepenImgs/CodePen5.png","title":"Vue Menu Icon Transition"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/VwLXoeK","imgSrc":"/CodepenImgs/CodePen6.png","title":"Vue Materialize DataTable"},
+        {"url":"https://codepen.io/GouthamRangarajan/full/ExYNjdR","imgSrc":"/CodepenImgs/CodePen7.png","title":"Vue Bulma Double Slide"}        
     ],    
     "gitHub":[
       {"url":"https://github.com/gouthamrangarajan/Vuejs", "name":"Vue js"},
