@@ -45,9 +45,17 @@ body::-webkit-scrollbar-thumb {
     transform:translateY(-0.25rem);
 }
 .card:hover~.card{
-  transform: translateX(260px);
+  transform: translateX(200px);
 }
 .card:not(:first-child){
-  margin-left:-260px;
+  margin-left:-200px;
+}
+@media only screen and (max-width:991px){
+  .card:hover~.card{
+    transform: translateX(130px);
+  }
+  .card:not(:first-child){
+    margin-left:-130px;
+  }
 }
 </style>

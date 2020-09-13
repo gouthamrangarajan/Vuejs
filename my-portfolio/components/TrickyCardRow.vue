@@ -31,6 +31,7 @@ export default {
     width:98.5vw;
     overflow:auto;
     min-height: 450px;
+    scroll-behavior: smooth;
 }
 .row::-webkit-scrollbar {
   width: 0.3rem;  
