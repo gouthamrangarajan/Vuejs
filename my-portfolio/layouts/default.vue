@@ -42,7 +42,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card:hover{
-    transform:translateY(-1rem);
+    transform:translateY(-0.25rem);
 }
 .card:hover~.card{
   transform: translateX(130px);
