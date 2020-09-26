@@ -40,7 +40,7 @@ export default {
   
 .row::-webkit-scrollbar-thumb {
   background-color:#00bcd4;
-  outline: 1px solid #00bcd4;
+  outline: 1px solid transparent;
   border-radius:5px;
 }
 .row::-webkit-scrollbar-track {
