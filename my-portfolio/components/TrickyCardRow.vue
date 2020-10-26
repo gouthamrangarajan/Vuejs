@@ -3,10 +3,10 @@
               @mouseenter="showMarker=true" @click="showMarker=true" @mouseleave="showMarker=false">        
              <slot name="items"></slot>
              <template v-if="itemsLength>4">
-                <div :class="['row__marker absolute left-0 cursor-pointer bg-gray-800 text-white flex items-center justify-center opacity-0 rounded w-12',{'opacity-50':showMarker}]" @click="scrollLeft">
+                <div :class="['row__marker absolute left-0 cursor-pointer bg-gray-800 text-white flex items-center justify-center opacity-0 rounded w-12',{'lg:opacity-50':showMarker}]" @click="scrollLeft">
                     <a><i class="material-icons">navigate_before</i></a>   
                 </div> 
-                <div :class="['row__marker absolute right-0 cursor-pointer bg-gray-800 text-white flex items-center justify-center opacity-0 rounded w-12',{'opacity-50':showMarker}]" @click="scrollRight">
+                <div :class="['row__marker absolute right-0 cursor-pointer bg-gray-800 text-white flex items-center justify-center opacity-0 rounded w-12',{'lg:opacity-50':showMarker}]" @click="scrollRight">
                     <a><i class="material-icons">navigate_next</i></a>   
                 </div>          
              </template>
