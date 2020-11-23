@@ -7,6 +7,7 @@
         {"name":"Codepen","url":"https://codepen.io/GouthamRangarajan"}
     ],
     "codePen":[
+        {"url":"https://codepen.io/GouthamRangarajan/full/BazXNgQ","imgSrc":"/CodepenImgs/CodePen9.png","title":"Vue 3 History Mode"},
         {"url":"https://codepen.io/GouthamRangarajan/full/OJNvNjy","imgSrc":"/CodepenImgs/CodePen8.png","title":"Vue 3 DropDown Menu"},
         {"url":"https://codepen.io/GouthamRangarajan/full/jOqVjQX","imgSrc":"/CodepenImgs/CodePen1.png","title":"Vue 3 Tailwind Sign Up"},
         {"url":"https://codepen.io/GouthamRangarajan/full/JjXdemz","imgSrc":"/CodepenImgs/CodePen2.png","title":"Vue 3 Tailwind Toastr"},        
