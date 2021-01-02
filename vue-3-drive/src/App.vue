@@ -11,7 +11,7 @@
 
 <script>
 import {useFiles} from "@/composables/useFiles";
-import {defineAsyncComponent,computed,ref,  watchEffect} from "vue";
+import {defineAsyncComponent,computed,ref,watch, watchEffect} from "vue";
 import {getModalInfo} from '@/composables/getModalInfo';
 import {getMenuFiles} from '@/composables/getMenuFiles';
 export default {
@@ -37,6 +37,10 @@ export default {
     });                
     const {modalFile,moveModalFile,showModal,openModal} = getModalInfo(sortedFiles);
     
+    watch(showModal,()=>{
+      setMenu('all')
+    })
+
     const searchFileAndOpenModal=(fileName)=>{      
       setMenu('all')
       const info=fileList.value.filter(el=>el.name==fileName)[0]
