@@ -10,12 +10,12 @@
           <div class="flex items-center space-x-1">
             <i class="material-icons">search</i>
             <input class="w-32 lg:w-64 border-none outline-none bg-transparent" placeholder="Search in Drive" v-model.trim="srchTxt"
-              @focus="srchOpen=true" @click.stop> 
+              @focus="srchOpen=true" @click.stop="srchOpen=true"> 
           </div>
           <i class="material-icons">arrow_drop_down</i>
         </div>
-        <transition-group name="fade" tag="ul" :class="[{'w-56 lg:w-96 border-t border-gray-300 mt-3 py-1 search__results h-56':srchOpen}]">
-          <li v-for="item in srchResults" :key="item" class="py-1 px-3 hover:bg-gray-300 text-gray-700 cursor-pointer rounded"
+        <transition-group name="fade" tag="ul" :class="[{'h-0':!srchOpen},{'w-full border-t border-gray-300 mt-3 py-1 search__results h-56':srchOpen}]">
+          <li v-for="item in srchResults" :key="item" class="w-56 lg:w-96 py-1 px-3 hover:bg-gray-300 text-gray-700 cursor-pointer rounded"
             @click.stop="selectFile(item)">
             <a>{{item}}</a>
           </li>
@@ -70,10 +70,8 @@ export default {
 nav{
     height: 8vh;
 }
-li{
-  transition: all 0.3s;
-}
-.search{
+
+li,.search{
   transition: all 0.3s;
   overflow:hidden 
 }

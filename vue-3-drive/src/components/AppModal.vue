@@ -15,7 +15,7 @@
                 navigate_before
             </i>
             <div :class="['rounded viewer p-1 flex',{'items-center justify-center':fileType!='txt'},
-                            {'bg-white':fileType=='txt'},{'bg-white':loading}]" @click.stop>        
+                            {'bg-white':fileType=='txt'},{'bg-black bg-opacity-75':loading}]" @click.stop>        
                 <transition name="fade" mode="out-in">
                     <div v-if="loading" :key="1" class="w-full flex items-center justify-center">
                         <div class="animate-pulse flex space-x-4 w-full lg:w-4/12">                            
@@ -82,16 +82,20 @@
                         if(this.fileType=='img'){                              
                             const fileRead=new FileReader();
                             fileRead.onload=(e)=>{
-                                this.imgUrl= e.target.result;                                     
-                                this.loading=false;
+                                setTimeout(()=>{
+                                    this.imgUrl= e.target.result;                                     
+                                    this.loading=false;
+                                },1000);
                             }
                             fileRead.readAsDataURL(this.file);
                         }
                         else if(this.fileType=='txt'){         
                             const fileRead=new FileReader();
                             fileRead.onload=(e)=>{
-                                this.txt= e.target.result;
-                                this.loading=false;                
+                                setTimeout(()=>{
+                                    this.txt= e.target.result;
+                                    this.loading=false;                
+                                },1000);
                             }
                             fileRead.readAsText(this.file);
                         }                                              
