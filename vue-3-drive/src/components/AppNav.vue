@@ -14,8 +14,8 @@
           </div>
           <i class="material-icons">arrow_drop_down</i>
         </div>
-        <transition-group name="fade" tag="ul" :class="[{'h-0':!srchOpen},{'w-full border-t border-gray-300 mt-3 py-1 search__results h-56':srchOpen}]">
-          <li v-for="item in srchResults" :key="item" class="w-56 lg:w-96 py-1 px-3 hover:bg-gray-300 text-gray-700 cursor-pointer rounded"
+        <transition-group name="fade" tag="ul" :class="[{'h-0':!srchOpen},{'w-full mt-3 py-1 search__results h-56':srchOpen}]">
+          <li v-for="item in srchResults" :key="item" class="w-56 lg:w-96 py-1 px-3 hover:bg-gray-300 text-gray-700 cursor-pointer"
             @click.stop="selectFile(item)">
             <a>{{item}}</a>
           </li>
