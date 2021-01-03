@@ -2,10 +2,10 @@
     <div class="w-24 lg:w-48 sideNav">
         <div class="flex flex-col space-y-3">
             <div class="py-2 px-3 lg:px-4">
-                <a class="btn rounded lg:rounded-full flex items-center justify-between w-12 lg:w-40 cursor-pointer bg-white
-                        shadow py-1 px-1 lg:px-3 text-red-500 hover:text-red-700" 
+                <a class="btn rounded-full flex items-center justify-between w-12 lg:w-40 cursor-pointer bg-white
+                        shadow p-0 lg:py-1 lg:px-3 text-red-500 hover:text-red-700" 
                     @click="$refs.files.click">
-                    <i class="material-icons ml-1 lg:ml-0">upload</i>
+                    <i class="material-icons ml-3 lg:ml-0">upload</i>
                     <span class="invisible lg:visible">Upload file(s)</span>
                 </a>
             </div>
