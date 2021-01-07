@@ -43,6 +43,8 @@
 
 <script>
     import {getFileType} from '@/composables/getFileType'    
+    import {readFile} from '@/composables/readFile'
+    import { watchEffect,ref, watch} from 'vue'
     export default {        
         props:{
             modelValue:{
@@ -53,61 +55,43 @@
                 required:true
             }
         },
-        data(){
-            return{                
-                imgUrl:'',
-                txt:'',
-                loading:false
-            }
-        },
-        methods:{
-            close(){
-                this.$emit('update:modelValue',false)
-            },
-            checkAndProgress(indicator){                
-                if(this.modelValue)
-                    this.$emit('progress',indicator)
-            }
-        },
-        computed:{
-            fileType(){
-                return getFileType(this.file);
-            }
-        },
-        watch:{
-            file:{
-                handler(){
-                    if(this.modelValue){                         
-                        this.loading=true;                  
-                        if(this.fileType=='img'){                              
-                            const fileRead=new FileReader();
-                            fileRead.onload=(e)=>{
-                                setTimeout(()=>{
-                                    this.imgUrl= e.target.result;                                     
-                                    this.loading=false;
-                                },1000);
-                            }
-                            fileRead.readAsDataURL(this.file);
+        emits:['progress','update:modelValue'],
+        setup(props,{emit}){
+            const imgUrl=ref('');
+            const txt=ref('');
+            const loading=ref(false);
+            const fileType=ref(null);
+            let res=readFile(props.file)
+            let stopFn=null
+            watchEffect(()=>{
+                fileType.value=getFileType(props.file);                
+                if(props.modelValue){
+                    loading.value=true
+                    res=readFile(props.file)
+                    if(stopFn)                        
+                        stopFn();                    
+                    stopFn=watch(res,()=>{                    
+                        if(fileType.value=='img'){                        
+                            imgUrl.value=res.value;
                         }
-                        else if(this.fileType=='txt'){         
-                            const fileRead=new FileReader();
-                            fileRead.onload=(e)=>{
-                                setTimeout(()=>{
-                                    this.txt= e.target.result;
-                                    this.loading=false;                
-                                },1000);
-                            }
-                            fileRead.readAsText(this.file);
-                        }                                              
-                    }
+                        else if(fileType.value=='txt'){
+                            txt.value=res.value
+                        }
+                        setTimeout(()=>{
+                            loading.value=false
+                        },1000);
+                    })
                 }
-            },
-            modelValue(){
-                if(this.modelValue){    
-                    setTimeout(()=>{this.$refs.inp.focus();},500)
-                }
-            }
-        }
+            });          
+            const close=()=>{
+                emit('update:modelValue',false);
+            };
+            const checkAndProgress=(indicator)=>{
+                if(props.modelValue)
+                    emit('progress',indicator);
+            };
+            return {imgUrl,txt,loading,fileType,close,checkAndProgress};
+        },                              
     }    
 </script>
 

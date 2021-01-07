@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import {ref,computed, onMounted, onUnmounted} from 'vue'
 export default { 
   props:{
     files:{
@@ -32,38 +33,33 @@ export default {
       required:true
     }
   },
-  data(){
-    return{
-      srchTxt:'',
-      srchOpen:false
-    }
-  },
-  computed:{
-     srchResults(){
-      let lclSrchTxt=this.srchTxt.toLowerCase()            
-      return this.files.filter(el=>{
+  setup(props,{emit}){
+    const srchTxt=ref('');
+    const srchOpen=ref(false);
+    const srchResults=computed(()=>{
+      let lclSrchTxt=srchTxt.value.toLowerCase()            
+      return props.files.filter(el=>{
           if(lclSrchTxt=='')
             return true;
           else return el.toLowerCase().indexOf(lclSrchTxt)>-1;
         }).sort() 
-     }
-  },
-  methods:{
-    selectFile(fileName){
-      this.$emit('fileSelected',fileName);
-      this.hideSrchResults();
-    },
-    hideSrchResults(){
-      this.srchOpen=false;
+    });
+    const selectFile=(fileName)=>{
+       emit('fileSelected',fileName);
+       hideSrchResults();
+    };
+    const hideSrchResults=()=>{
+      srchOpen.value=false;
     }
-  },
-  emits:['setMenu','fileSelected'],
-  mounted(){
-    window.addEventListener('click',this.hideSrchResults);
-  },
-  unmounted(){
-    window.removeEventListener('click',this.hideSrchResults);
-  }
+    onMounted(()=>{
+      window.addEventListener('click',hideSrchResults);
+    });
+    onUnmounted(()=>{
+      window.removeEventListener('click',hideSrchResults);
+    })
+    return {srchTxt,srchOpen,srchResults,selectFile,selectFile,hideSrchResults}
+  },  
+  emits:['setMenu','fileSelected'],  
 };
 </script>
 <style scoped>
