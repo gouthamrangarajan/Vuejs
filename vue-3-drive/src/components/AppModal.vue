@@ -20,7 +20,7 @@
                     <div v-if="loading" :key="1" class="w-full flex items-center justify-center">
                         <div class="animate-pulse flex space-x-4 w-full lg:w-4/12">                            
                             <div class="flex-1 space-y-4 py-1">
-                                <div class="h-4  w-3/4 text-blue-600 text-xl">Loading...</div>
+                                <!-- <div class="h-4  w-3/4 text-blue-600 text-xl">Loading...</div> -->
                                 <div class="space-y-2">
                                     <div class="h-4 bg-gray-600 rounded"></div>
                                     <div class="h-4 bg-gray-600 rounded w-5/6"></div>
@@ -115,19 +115,16 @@
 .viewer{
     width: 90%;
     height: 90%;
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow: auto;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
 .viewer::-webkit-scrollbar {
-  width:0.3rem;
-} 
-.viewer::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  display: none;
 }
- 
-.viewer::-webkit-scrollbar-thumb {
-  background-color:#00bcd4;
-  outline: 1px solid transparent;
-  border-radius:5px;
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.viewer {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>
