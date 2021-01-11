@@ -2,7 +2,7 @@
     <div class="h-56 w-56 bg-white flex flex-col rounded border border-gray-300 shadow p-1 
                 cursor-pointer">
         <div class="h-48 w-full overflow-hidden">
-            <img class="object-cover w-full h-full" :src="imgUrl" v-if="fileType=='img'">
+            <img class="object-cover w-full h-full" :src="imgUrl" v-if="fileType=='img' && imgUrl!=''">
             <pre v-else-if="fileType=='txt'" class="text-xs p-1">{{txt}}</pre>
             <div class="h-full items-center flex space-x-2 justify-center" v-else>
                 <img class="w-32 h-32 rounded" src="@/assets/pdf.png" v-if="fileType=='pdf'">      
