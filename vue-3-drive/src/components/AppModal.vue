@@ -42,8 +42,8 @@
 </template>
 
 <script>
-    import {getFileType} from '@/composables/getFileType'    
-    import {readFile} from '@/composables/readFile'
+    import getFileType from '@/composables/getFileType'    
+    import readFile from '@/composables/readFile'
     import { watchEffect,ref, watch} from 'vue'
     export default {        
         props:{

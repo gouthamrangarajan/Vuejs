@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import {useFiles} from "@/composables/useFiles";
+import useFiles from "@/composables/useFiles";
 import {defineAsyncComponent,computed,ref,watch, watchEffect} from "vue";
-import {getModalInfo} from '@/composables/getModalInfo';
-import {getMenuFiles} from '@/composables/getMenuFiles';
+import getModalInfo from '@/composables/getModalInfo';
+import getMenuFiles from '@/composables/getMenuFiles';
 export default {
   name: "App",
   setup(){       

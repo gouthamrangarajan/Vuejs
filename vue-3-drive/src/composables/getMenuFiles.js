@@ -1,6 +1,7 @@
-import {getFileType} from '@/composables/getFileType';    
-import {ref,watchEffect} from 'vue'
-export const getMenuFiles=(files,menu)=>{
+import getFileType from '@/composables/getFileType';    
+import {ref,watchEffect} from 'vue';
+
+const getMenuFiles=(files,menu)=>{
     const retDt=ref([]);
     watchEffect(()=>{
         retDt.value.splice(0);
@@ -13,3 +14,5 @@ export const getMenuFiles=(files,menu)=>{
     });
     return retDt;
 }
+
+export default getMenuFiles;

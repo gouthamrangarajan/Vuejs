@@ -1,6 +1,6 @@
 import {ref} from 'vue'
 
-export const useFiles=()=>{
+const useFiles=()=>{
 
     const fileList=ref([]);
     let nextFileId=1;
@@ -13,3 +13,5 @@ export const useFiles=()=>{
     }
     return {fileList,addFiles}
 }
+
+export default useFiles;

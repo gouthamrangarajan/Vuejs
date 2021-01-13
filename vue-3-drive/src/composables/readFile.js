@@ -1,5 +1,6 @@
 import {ref} from 'vue'
-export const readFile=(file)=>{     
+
+const readFile=(file)=>{     
     const result=ref(null)
     if(file && file.type){
         const {type}=file;  
@@ -21,3 +22,5 @@ export const readFile=(file)=>{
     }
     return result
 }
+
+export default readFile;

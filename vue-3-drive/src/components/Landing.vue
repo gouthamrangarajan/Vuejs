@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import {useDragDrop} from "@/composables/useDragDrop";    
+    import useDragDrop from "@/composables/useDragDrop";    
     import {ref,defineAsyncComponent,computed, watchEffect} from "vue";
     export default {
         setup(_,{emit}){

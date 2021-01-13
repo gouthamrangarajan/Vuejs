@@ -22,8 +22,8 @@
 
 <script>
 import {ref, watch} from 'vue';
-import {getFileType} from '@/composables/getFileType'
-import {readFile} from '@/composables/readFile'
+import getFileType from '@/composables/getFileType'
+import readFile from '@/composables/readFile'
 export default { 
     setup({file}){
         const {name,type}=file;   

@@ -1,6 +1,6 @@
 import {ref} from 'vue'
 
-export const useDragDrop=()=>{
+const useDragDrop=()=>{
     const dragging=ref(false);
     const fileList=ref([]);    
 
@@ -26,3 +26,5 @@ export const useDragDrop=()=>{
     }
     return {dragging,fileList,dropped,setDrag}
 }
+
+export default useDragDrop;

@@ -1,6 +1,7 @@
-import {getFileType} from '@/composables/getFileType';    
+import getFileType from '@/composables/getFileType';    
 import {ref} from 'vue'
-export const getModalInfo=(sortedFiles)=>{
+
+const getModalInfo=(sortedFiles)=>{
     const showModal=ref(false);
     const modalFile=ref(new File([""],"dummy"));
     let modalFileId=0;
@@ -52,3 +53,5 @@ export const getModalInfo=(sortedFiles)=>{
 
     return {showModal,modalFile,openModal,moveModalFile}
 }
+
+export default getModalInfo;

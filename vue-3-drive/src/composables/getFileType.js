@@ -1,4 +1,4 @@
-export const getFileType=(fl)=>{
+const getFileType=(fl)=>{
     if(fl){
         const {type}=fl;  
         if(type.startsWith("image/")){
@@ -23,3 +23,5 @@ export const getFileType=(fl)=>{
     }
     return ''
 }
+
+export default getFileType;
