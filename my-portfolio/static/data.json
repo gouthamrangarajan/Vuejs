@@ -40,6 +40,10 @@
         {"order":5,"imgSrc":"/CloudImgs/Locations.PNG","description":"A PWA project using Nuxt and Firebase to dispaly a collection of location visited using Google Maps","url":"https://location-list-279502.web.app/"},        
         {"other":[{"order":6,"url":"https://grocery-list-c0614.web.app/","imgSrc":"/CloudImgs/GL.PNG"}]}
       ],
+      "azure":[
+        {"order":1,"description":"OAuth SSO implementation from multiple providers. Web Api for SSO token generation hosted in Azure App Service, Nuxt and Azure Storage hosting for UI.","imgSrc":"/CloudImgs/SSO.PNG","url":"https://cleariam.z13.web.core.windows.net/admin"},
+        {"order":2,"description":"Serverless Chat application for SMS communication using Azure SignalR services. Twilio for mobile services, Vue 3 and Azure storage hosting for UI","imgSrc":"/CloudImgs/Azure_Chat.PNG","url":"https://clearmessage.z13.web.core.windows.net/"}
+      ],
       "aws":[
         {"order":1,"description":"Image gallery using Vuejs, Express js","url":"http://vueimages.us-east-1.elasticbeanstalk.com/","imgSrc":"/CloudImgs/Gallery.PNG"}
       ],
