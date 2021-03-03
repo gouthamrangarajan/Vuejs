@@ -1,5 +1,5 @@
 <template>
-      <div :class="{'mt-1 row flex flex-row pb-2':true,'justify-center':itemsLength<4}" :id="id" @scroll="itemsScrolled"
+      <div :class="{'mt-1 row flex flex-row pb-2':true,'justify-start lg:justify-center':itemsLength<4}" :id="id" @scroll="itemsScrolled"
               @mouseenter="showMarker=true" @click="showMarker=true" @mouseleave="showMarker=false">        
              <slot name="items"></slot>
              <template v-if="itemsLength>4">
