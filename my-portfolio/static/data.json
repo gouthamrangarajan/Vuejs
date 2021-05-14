@@ -93,7 +93,7 @@
           {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/WebApi%2BBackgroundTask",
             "title": "WebApi+BackgroundTask",
-            "imgSrc": "/GitHubImgs/WebApi+BackgroudWorker.PNG",
+            "imgSrc": "/GitHubImgs/WebApi_BackgroudWorker.PNG",
             "description": ".Net core web api + worker template example. Webapi + background task hosted on same instance"
           },
           {
