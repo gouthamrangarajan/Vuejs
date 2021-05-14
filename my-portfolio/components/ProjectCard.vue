@@ -19,7 +19,7 @@
       </template>
     </div>
     <template v-if="project.imgSrc">
-      <nuxt-img :src="project.imgSrc" class="rounded-b shadow object-contain" />
+      <img :src="project.imgSrc" class="rounded-b shadow object-contain" />
     </template>
   </div>
 </template>

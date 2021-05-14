@@ -15,8 +15,8 @@
           class="flex flex-col items-center justify-center h-full w-full space-y-8"
           v-show="showImg"
         >
-          <nuxt-img
-            src="/my-avatar.jpg"
+          <img
+            src="@/static/my-avatar.jpg"
             class="object-contain rounded shadow-2xl"
           />
           <a class="text-white" href="mailto:rgouthamraja@yahoo.com"

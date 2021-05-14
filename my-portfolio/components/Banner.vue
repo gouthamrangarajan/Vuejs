@@ -12,8 +12,8 @@
         </span>
       </div>
       <div @click="showModal = true">
-        <nuxt-img
-          src="/my-avatar.jpg"
+        <img
+          src="@/static/my-avatar.jpg"
           class="cursor-pointer rounded-full object-contain h-20 mt-1 mr-1"
         />
       </div>

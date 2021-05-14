@@ -9,7 +9,7 @@
       </a>
     </div>
     <div class="img__container">
-      <nuxt-img :src="imgSrc" class="object-contain rounded" />
+      <img :src="imgSrc" class="object-contain rounded" />
     </div>
   </div>
 </template>
