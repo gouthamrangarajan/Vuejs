@@ -75,37 +75,37 @@
           {
             "url": "https://github.com/gouthamrangarajan/Vuejs/tree/master/tailwind-date-range",
             "title": "Date Range Picker",
-            "imgSrc": "/GitHubImgs/DateRangePicker.PNG",
+            "imgSrc": "/GithubImgs/DateRangePicker.PNG",
             "description": "Date Range Picker using Vue 3, Composition Api & Tailwind CSS"
           },
           {
             "url": "https://github.com/gouthamrangarajan/Vuejs/tree/master/nuxt-auth-101",
             "title": "Nuxt Auth",
-            "imgSrc": "/GitHubImgs/NuxtAuth.PNG",
+            "imgSrc": "/GithubImgs/NuxtAuth.PNG",
             "description": "Simple Authorization implementation in nuxt using @nuxt/auth"
           },
           {
             "url": "https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-bulma-lightbox-nasa",
             "title": "Vue LightBox",
-            "imgSrc": "/GitHubImgs/LightBox.PNG",
+            "imgSrc": "/GithubImgs/LightBox.PNG",
             "description": "Lightbox implementation using Vue & Bulma CSS"
           },
           {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/WebApi%2BBackgroundTask",
             "title": "WebApi+BackgroundTask",
-            "imgSrc": "/GitHubImgs/WebApi_BackgroudWorker.PNG",
+            "imgSrc": "/GithubImgs/WebApi_BackgroudWorker.PNG",
             "description": ".Net core web api + worker template example. Webapi + background task hosted on same instance"
           },
           {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/RoutesSearchUsingGraph",
             "title": "Graph Data Structure in Asp.Net",
-            "imgSrc": "/GitHubImgs/Graph.PNG",
+            "imgSrc": "/GithubImgs/Graph.PNG",
             "description": "C# graph implementation to add and traverse routes. First searches fastest route using BFS and then searches all routes using DFS"
           },
           {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/AutoSuggestUsingTrie",
             "title": "Trie Data Structure in Asp.Net",
-            "imgSrc": "/GitHubImgs/Trie.PNG",
+            "imgSrc": "/GithubImgs/Trie.PNG",
             "description": "Trie in c#, ui autosuggest goes to server for suggestion. Two tries one from simple countries collection and another from 2 mb lorem ipsum file."
           }
         ]
@@ -184,7 +184,7 @@
         },
         {
           "order": 2,
-          "imgSrc": "/GitHubImgs/Drive.PNG",
+          "imgSrc": "/GithubImgs/Drive.PNG",
           "description": "A Simple Client Side Drive implementation using Vue 3, Composition Api & Tailwind CSS",
           "url": "https://vue-3-drive.netlify.app/"
         },
