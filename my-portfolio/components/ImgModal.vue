@@ -5,18 +5,34 @@
       v-show="value"
     >
       <a
-        class="cursor-pointer fixed right-0 mt-1 mr-2 text-orange-700 font-semibold text-3xl"
+        class="
+          cursor-pointer
+          fixed
+          right-0
+          mt-1
+          mr-2
+          text-orange-700
+          font-semibold
+          text-3xl
+        "
         @click="closeModal"
       >
         &times;
       </a>
       <transition name="scale">
         <div
-          class="flex flex-col items-center justify-center h-full w-full space-y-8"
+          class="
+            flex flex-col
+            items-center
+            justify-center
+            h-full
+            w-full
+            space-y-8
+          "
           v-show="showImg"
         >
           <img
-            src="@/static/my-avatar.jpg"
+            src="../static/my-avatar.jpg"
             class="object-contain rounded shadow-2xl"
           />
           <a class="text-white" href="mailto:rgouthamraja@yahoo.com"

@@ -36,10 +36,8 @@ export default {
     return { category: [] }
   },
   components: {
-    // scrollableRow:()=>import('@/components/ScrollableRow.vue'),
-    // cloudProjectCard:()=>import('@/components/ProjectCard.vue'),
-    trickyCardRow: () => import('@/components/TrickyCardRow.vue'),
-    trickyProjectCard: () => import('@/components/TrickyProjectCard.vue'),
+    trickyCardRow: () => import('../components/TrickyCardRow.vue'),
+    trickyProjectCard: () => import('../components/TrickyProjectCard.vue'),
   },
   async created() {
     let data = await import('../static/data.json')

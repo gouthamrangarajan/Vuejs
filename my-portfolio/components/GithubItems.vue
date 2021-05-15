@@ -26,8 +26,8 @@ export default {
     return { items: [] }
   },
   components: {
-    trickyCardRow: () => import('@/components/TrickyCardRow.vue'),
-    trickyProjectCard: () => import('@/components/TrickyProjectCard.vue'),
+    trickyCardRow: () => import('../components/TrickyCardRow.vue'),
+    trickyProjectCard: () => import('../components/TrickyProjectCard.vue'),
   },
   async created() {
     let data = await import('../static/data.json')
