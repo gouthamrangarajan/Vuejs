@@ -47,6 +47,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    'nuxt-vite',
   ],
   /*
    ** Nuxt.js modules

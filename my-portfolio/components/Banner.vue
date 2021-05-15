@@ -7,9 +7,7 @@
         <span class="banner__heading text-2xl text-white">
           Goutham Rangarajan
         </span>
-        <span class="banner__heading text-lg text-white italic">
-          RG
-        </span>
+        <span class="banner__heading text-lg text-white italic"> RG </span>
       </div>
       <div @click="showModal = true">
         <img
@@ -27,7 +25,7 @@ export default {
     return { showModal: false }
   },
   components: {
-    imgModal: () => import('@/components/ImgModal'),
+    imgModal: () => import('../components/ImgModal.vue'),
   },
 }
 </script>
