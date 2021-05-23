@@ -14,8 +14,7 @@
     <template v-if="itemsLength > 4">
       <div
         :class="[
-          'row__marker absolute left-0 cursor-pointer text-white rounded w-12',
-          { ' hidden ': !showMarker },
+          'row__marker absolute left-0 cursor-pointer text-white rounded w-12 hidden',
           { 'lg:flex lg:items-center lg:justify-center': showMarker },
         ]"
       >
@@ -35,8 +34,7 @@
       </div>
       <div
         :class="[
-          'row__marker absolute right-0 cursor-pointer text-white rounded w-12',
-          { ' hidden ': !showMarker },
+          'row__marker absolute right-0 cursor-pointer text-white rounded w-12 hidden',
           { 'lg:flex lg:items-center lg:justify-center': showMarker },
         ]"
       >
