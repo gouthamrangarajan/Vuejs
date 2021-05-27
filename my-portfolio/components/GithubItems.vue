@@ -7,44 +7,26 @@
           >Recent collection in Vue.js & Asp .Net</span
         >
       </div>
-      <trickyCardRow id="githubItems" :itemsLength="items.length">
+      <TrickyCardRow id="githubItems" :itemsLength="info.length">
         <template v-slot:items>
-          <trickyProjectCard
-            v-for="(item, index) in items"
+          <TrickyProjectCard
+            v-for="(item, index) in info"
             :key="index"
             :project="item"
-            :occupyFull="items.length == 1"
-          ></trickyProjectCard>
+            :occupyFull="info.length == 1"
+          ></TrickyProjectCard>
         </template>
-      </trickyCardRow>
+      </TrickyCardRow>
     </div>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return { items: [] }
-  },
-  components: {
-    trickyCardRow: () => import('../components/TrickyCardRow.vue'),
-    trickyProjectCard: () => import('../components/TrickyProjectCard.vue'),
-  },
-  async created() {
-    let data = await import('../static/data.json')
-    data.info.gitHub.forEach((el) => {
-      if (el.items) {
-        el.items.forEach((inel) => {
-          let id = Math.random().toString(16).slice(8)
-          this.items.push({
-            id,
-            url: inel.url,
-            title: inel.title,
-            imgSrc: inel.imgSrc,
-            description: inel.description,
-          })
-        })
-      }
-    })
+  props: {
+    info: {
+      type: Array,
+      required: true,
+    },
   },
 }
 </script>

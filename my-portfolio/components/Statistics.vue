@@ -10,37 +10,43 @@
       p-1
     "
   >
-    <div class="bg-white rounded px-6 py-4 flex flex-row w-full lg:w-auto">
-      <div class="flex flex-col">
-        <span class="text-red-700 text-xl">Media</span>
-        <div v-for="item in media" :key="item.id" class="px-0 lg:px-2">
-          {{ item.name }}:
+    <div class="bg-white rounded px-6 py-4 flex flex-col w-full lg:w-auto">
+      <span class="text-red-700 text-xl">Media</span>
+      <div class="flex flex-row">
+        <div class="flex flex-col">
+          <div v-for="item in info.media" :key="item.id" class="px-0 lg:px-2">
+            {{ item.name }}:
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col w-full">
-        <div class="text-xl">&nbsp;</div>
-        <div v-for="item in media" :key="item.id">
-          <a
-            class="cursor-pointer underline text-blue-700 text-sm lg:text-base"
-            @click="openUrl(item.url)"
-            >{{ item.url }}</a
-          >
+        <div class="flex flex-col w-full">
+          <div v-for="item in info.media" :key="item.id">
+            <a
+              class="
+                cursor-pointer
+                underline
+                text-blue-700 text-sm
+                lg:text-base
+              "
+              @click="openUrl(item.url)"
+              >{{ item.url }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
     <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
       <span class="text-red-700 text-xl">Github Repos</span>
-      <div v-for="item in github" :key="item.id" class="px-2">
+      <div v-for="item in info.github" :key="item.id" class="px-2">
         <a class="cursor-pointer text-blue-700" @click="openUrl(item.url)">{{
           item.name
         }}</a>
       </div>
     </div>
     <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
-      <span class="text-blue-700 text-xl"
-        >Resume&nbsp;&nbsp;
+      <span class="text-blue-700 text-xl flex items-center space-x-2"
+        ><span>Resume</span>
         <a
-          class="cursor-pointer float-right text-green-700"
+          class="cursor-pointer text-green-700 mt-1"
           href="/Goutham Rangarajan.docx"
           download
         >
@@ -52,22 +58,11 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      media: [],
-      github: [],
-    }
-  },
-  async created() {
-    let data = await import('../static/data.json')
-    data.info.media.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
-      this.media.push({ id, url: el.url, name: el.name })
-    })
-    data.info.gitHub.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
-      this.github.push({ id, url: el.url, name: el.name })
-    })
+  props: {
+    info: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     openUrl(url) {

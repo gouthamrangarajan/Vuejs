@@ -4,43 +4,27 @@
       <span class="text-xl text-black">CODEPEN</span>
       <span class="text-gray-600">Recent collection in HTML, CSS & Vue.js</span>
     </div>
-    <trickyCardRow id="codepenitems" :itemsLength="collection.length">
+    <TrickyCardRow id="codepenitems" :itemsLength="info.length">
       <template v-slot:items>
-        <trickyCodePenCard
+        <TrickyProjectCard
           :project="item"
-          v-for="item in collection"
+          v-for="item in info"
           :key="item.id"
           :id="'item_' + item.id"
         >
-        </trickyCodePenCard>
+        </TrickyProjectCard>
       </template>
-    </trickyCardRow>
+    </TrickyCardRow>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      collection: [],
-    }
+  props: {
+    info: {
+      type: Array,
+      required: true,
+    },
   },
-  async created() {
-    let data = await import('../static/data.json')
-    data.info.codePen.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
-      this.collection.push({
-        id,
-        url: el.url,
-        imgSrc: el.imgSrc,
-        title: el.title,
-      })
-    })
-  },
-  components: {
-    trickyCodePenCard: () => import('../components/TrickyProjectCard.vue'),
-    trickyCardRow: () => import('../components/TrickyCardRow.vue'),
-  },
-  methods: {},
 }
 </script>
 

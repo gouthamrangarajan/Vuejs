@@ -4,27 +4,27 @@
       <div class="px-4 pt-2 flex flex-col items-center">
         <span class="text-xl text-orange-700">Cloud Projects</span>
         <div
-          v-for="cloud in category"
+          v-for="cloud in info"
           :key="cloud.id"
           class="flex flex-col items-center mt-1"
         >
           <span class="text-xl text-yellow-700 uppercase">
             {{ cloud.name }}</span
           >
-          <trickyCardRow
+          <TrickyCardRow
             :id="cloud.name + 'items'"
             :itemsLength="getProject(cloud.collection).length"
           >
             <template v-slot:items>
-              <trickyProjectCard
+              <TrickyProjectCard
                 v-for="(item, index) in getProject(cloud.collection)"
                 :key="index"
                 :project="item"
                 :occupyFull="getProject(cloud.collection).length == 1"
               >
-              </trickyProjectCard>
+              </TrickyProjectCard>
             </template>
-          </trickyCardRow>
+          </TrickyCardRow>
         </div>
       </div>
     </div>
@@ -32,30 +32,11 @@
 </template>
 <script>
 export default {
-  data() {
-    return { category: [] }
-  },
-  components: {
-    trickyCardRow: () => import('../components/TrickyCardRow.vue'),
-    trickyProjectCard: () => import('../components/TrickyProjectCard.vue'),
-  },
-  async created() {
-    let data = await import('../static/data.json')
-    Object.keys(data.info.cloud)
-      .sort((a, b) => {
-        if (a == 'firebase') return -1
-        else if (b == 'firebase') return 1
-        else if (a == 'netlify') return -1
-        else if (b == 'netlify') return 1
-        else if (a == 'aws') return -1
-        else if (b == 'aws') return 1
-        else return 0
-      })
-      .forEach((el) => {
-        let id = Math.random().toString(16).slice(8)
-        let collection = data.info.cloud[el]
-        this.category.push({ id, name: el, collection })
-      })
+  props: {
+    info: {
+      type: Array,
+      required: true,
+    },
   },
   methods: {
     getProject(data) {
