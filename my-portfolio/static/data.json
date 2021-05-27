@@ -116,7 +116,7 @@
         {
           "order": 1,
           "imgSrc": "/imgs/cloud/Chat.png",
-          "description": "A Vue 3 PWA single room chat project with Firebase google authentation and Firestore data for real time listener",
+          "description": "A Vue 3 PWA single room chat project with Firebase google authentication and Firestore data for real time listener",
           "url": "https://vue-superchat.web.app/"
         },
         {
