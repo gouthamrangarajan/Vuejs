@@ -12,6 +12,8 @@
         w-full
         lg:w-9/12
         xl:w-7/12
+        h-40
+        md:h-32
       "
     >
       <span class="text-teal-700 text-xl">About</span>

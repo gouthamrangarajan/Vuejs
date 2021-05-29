@@ -10,7 +10,19 @@
       p-1
     "
   >
-    <div class="bg-white rounded px-6 py-4 flex flex-col w-full lg:w-auto">
+    <div
+      class="
+        bg-white
+        rounded
+        px-6
+        py-4
+        flex flex-col
+        w-full
+        lg:w-auto
+        h-40
+        space-y-3
+      "
+    >
       <span class="text-red-700 text-xl">Media</span>
       <div class="flex flex-row">
         <div class="flex flex-col">
@@ -44,9 +56,23 @@
         </div>
       </div>
     </div>
-    <div class="flex w-full lg:w-auto space-x-1 lg:space-x-24 items-center">
-      <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
-        <span class="text-red-700 text-xl">Github Repos</span>
+    <div
+      class="flex w-full lg:w-auto space-x-1 lg:space-x-24 items-center h-40"
+    >
+      <div
+        class="
+          bg-white
+          rounded
+          py-4
+          px-6
+          flex flex-col
+          w-full
+          lg:w-auto
+          h-40
+          -mt-2
+        "
+      >
+        <span class="text-red-700 text-xl mb-1">Github Repos</span>
         <template v-if="info.github.length > 0">
           <div v-for="item in info.github" :key="item.id" class="px-2">
             <a
