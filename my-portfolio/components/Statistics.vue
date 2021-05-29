@@ -83,10 +83,10 @@
           </div>
         </template>
         <template v-else>
-          <div class="animate-pulse w-10/12">
+          <div class="animate-pulse w-10/12 xl:w-7/12">
             <div class="rounded bg-gray-400 h-4 w-full"></div>
           </div>
-          <div class="animate-pulse w-10/12 mt-2">
+          <div class="animate-pulse w-10/12 xl:w-7/12 mt-2">
             <div class="rounded bg-gray-400 h-4 w-full"></div>
           </div>
         </template>
