@@ -1,6 +1,6 @@
 <template>
   <nav class="h-40">
-    <div class="banner h-40 lg:h-48 flex flex-row justify-between">
+    <div class="banner h-48 flex flex-row justify-between">
       <div
         class="flex flex-col items-center pt-6 lg:pt-12 w-full pl-2 lg:pl-24"
       >

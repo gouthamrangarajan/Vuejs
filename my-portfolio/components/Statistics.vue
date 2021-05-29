@@ -34,25 +34,27 @@
         </div>
       </div>
     </div>
-    <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
-      <span class="text-red-700 text-xl">Github Repos</span>
-      <div v-for="item in info.github" :key="item.id" class="px-2">
-        <a class="cursor-pointer text-blue-700" @click="openUrl(item.url)">{{
-          item.name
-        }}</a>
+    <div class="flex w-full lg:w-auto space-x-1 lg:space-x-24 items-center">
+      <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
+        <span class="text-red-700 text-xl">Github Repos</span>
+        <div v-for="item in info.github" :key="item.id" class="px-2">
+          <a class="cursor-pointer text-blue-700" @click="openUrl(item.url)">{{
+            item.name
+          }}</a>
+        </div>
       </div>
-    </div>
-    <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
-      <span class="text-blue-700 text-xl flex items-center space-x-2"
-        ><span>Resume</span>
-        <a
-          class="cursor-pointer text-green-700 mt-1"
-          href="/Goutham Rangarajan.docx"
-          download
-        >
-          <i class="material-icons">file_download</i>
-        </a>
-      </span>
+      <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
+        <span class="text-blue-700 text-xl flex items-center space-x-2"
+          ><span>Resume</span>
+          <a
+            class="cursor-pointer text-green-700 mt-1"
+            href="/Goutham Rangarajan.docx"
+            download
+          >
+            <i class="material-icons">file_download</i>
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </template>
