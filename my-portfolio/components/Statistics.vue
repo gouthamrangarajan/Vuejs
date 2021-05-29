@@ -14,9 +14,19 @@
       <span class="text-red-700 text-xl">Media</span>
       <div class="flex flex-row">
         <div class="flex flex-col">
-          <div v-for="item in info.media" :key="item.id" class="px-0 lg:px-2">
-            {{ item.name }}:
-          </div>
+          <template v-if="info.media.length > 0">
+            <div v-for="item in info.media" :key="item.id" class="px-0 lg:px-2">
+              {{ item.name }}:
+            </div>
+          </template>
+          <template v-else>
+            <div class="animate-pulse w-48 mt-1 px-2">
+              <div class="rounded bg-gray-400 h-4 w-full"></div>
+            </div>
+            <div class="animate-pulse w-10/12 mt-2 px-2">
+              <div class="rounded bg-gray-400 h-4 w-full"></div>
+            </div>
+          </template>
         </div>
         <div class="flex flex-col w-full">
           <div v-for="item in info.media" :key="item.id">
@@ -37,11 +47,23 @@
     <div class="flex w-full lg:w-auto space-x-1 lg:space-x-24 items-center">
       <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
         <span class="text-red-700 text-xl">Github Repos</span>
-        <div v-for="item in info.github" :key="item.id" class="px-2">
-          <a class="cursor-pointer text-blue-700" @click="openUrl(item.url)">{{
-            item.name
-          }}</a>
-        </div>
+        <template v-if="info.github.length > 0">
+          <div v-for="item in info.github" :key="item.id" class="px-2">
+            <a
+              class="cursor-pointer text-blue-700"
+              @click="openUrl(item.url)"
+              >{{ item.name }}</a
+            >
+          </div>
+        </template>
+        <template v-else>
+          <div class="animate-pulse w-10/12">
+            <div class="rounded bg-gray-400 h-4 w-full"></div>
+          </div>
+          <div class="animate-pulse w-10/12 mt-2">
+            <div class="rounded bg-gray-400 h-4 w-full"></div>
+          </div>
+        </template>
       </div>
       <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
         <span class="text-blue-700 text-xl flex items-center space-x-2"
