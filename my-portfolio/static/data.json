@@ -73,6 +73,12 @@
       {
         "items": [
           {
+            "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/AzureADAuth",
+            "title": "AzureADWebApp+WebApi",
+            "imgSrc": "/imgs/github/AzureADWebApp+WebApi.png",
+            "description": ".Net core Azure AD authentication for web app and consume a Azure AD protected web api using Microsoft Identity Web"
+          },
+          {
             "url": "https://github.com/gouthamrangarajan/Vuejs/tree/master/tailwind-date-range",
             "title": "Date Range Picker",
             "imgSrc": "/imgs/github/DateRangePicker.png",
