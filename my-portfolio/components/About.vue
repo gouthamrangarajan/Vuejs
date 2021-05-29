@@ -24,6 +24,9 @@
         <div class="animate-pulse w-11/12">
           <div class="rounded bg-gray-400 h-4 w-full"></div>
         </div>
+        <div class="animate-pulse w-7/12 mt-1">
+          <div class="rounded bg-gray-400 h-4 w-full"></div>
+        </div>
       </template>
     </div>
   </div>
