@@ -6,8 +6,10 @@
       justify-center
       items-center
       space-y-2
-      lg:space-x-24
+      lg:space-x-2
+      xl:space-x-4
       p-1
+      w-full
     "
   >
     <div
@@ -18,7 +20,8 @@
         py-4
         flex flex-col
         w-full
-        lg:w-auto
+        lg:w-6/12
+        xl:w-5/12
         h-40
         space-y-3
       "
@@ -57,21 +60,18 @@
       </div>
     </div>
     <div
-      class="flex w-full lg:w-auto space-x-1 lg:space-x-24 items-center h-40"
+      class="
+        flex
+        w-full
+        lg:w-4/12
+        space-x-1
+        lg:space-x-2
+        xl:space-x-4
+        items-center
+        h-40
+      "
     >
-      <div
-        class="
-          bg-white
-          rounded
-          py-4
-          px-6
-          flex flex-col
-          w-full
-          lg:w-auto
-          h-40
-          -mt-2
-        "
-      >
+      <div class="bg-white rounded py-4 px-6 flex flex-col h-40 -mt-2 flex-1">
         <span class="text-red-700 text-xl mb-1">Github Repos</span>
         <template v-if="info.github.length > 0">
           <div v-for="item in info.github" :key="item.id" class="px-2">
@@ -91,7 +91,7 @@
           </div>
         </template>
       </div>
-      <div class="bg-white rounded py-4 px-6 flex flex-col w-full lg:w-auto">
+      <div class="bg-white rounded py-4 px-6 flex flex-col">
         <span class="text-blue-700 text-xl flex items-center space-x-2"
           ><span>Resume</span>
           <a
