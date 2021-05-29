@@ -26,15 +26,18 @@ export default {
   },
   async created() {
     let data = await import('../static/data.json')
+    let id = -1
     data.info.media.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
       this.statistics.media.push({ id, url: el.url, name: el.name })
+      id++
     })
+    id = 1
     data.info.gitHub.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
       this.statistics.github.push({ id, url: el.url, name: el.name })
+      id++
     })
     this.about = data.info.about
+    id = 1
     Object.keys(data.info.cloud)
       .sort((a, b) => {
         if (a == 'firebase') return -1
@@ -46,14 +49,14 @@ export default {
         else return 0
       })
       .forEach((el) => {
-        let id = Math.random().toString(16).slice(8)
         let collection = data.info.cloud[el]
         this.cloudItems.push({ id, name: el, collection })
+        id++
       })
+    id = 1
     data.info.gitHub.forEach((el) => {
       if (el.items) {
         el.items.forEach((inel) => {
-          let id = Math.random().toString(16).slice(8)
           this.githubItems.push({
             id,
             url: inel.url,
@@ -61,17 +64,19 @@ export default {
             imgSrc: inel.imgSrc,
             description: inel.description,
           })
+          id++
         })
       }
     })
+    id = 1
     data.info.codePen.forEach((el) => {
-      let id = Math.random().toString(16).slice(8)
       this.codePenItems.push({
         id,
         url: el.url,
         imgSrc: el.imgSrc,
         title: el.title,
       })
+      id++
     })
   },
 }
