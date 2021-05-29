@@ -24,7 +24,7 @@
       "
     >
       <span class="text-red-700 text-xl">Media</span>
-      <div class="flex flex-row">
+      <div class="flex flex-row md:space-x-48 lg:space-x-2">
         <div class="flex flex-col">
           <template v-if="info.media.length > 0">
             <div v-for="item in info.media" :key="item.id" class="px-0 lg:px-2">
@@ -47,7 +47,7 @@
                 cursor-pointer
                 underline
                 text-blue-700 text-sm
-                lg:text-base
+                md:text-base
               "
               @click="openUrl(item.url)"
               >{{ item.url }}</a
