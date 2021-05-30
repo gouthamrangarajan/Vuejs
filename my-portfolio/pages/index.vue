@@ -15,28 +15,26 @@
 
 <script>
 export default {
-  data() {
-    return {
+  async asyncData() {
+    const ret = {
       statistics: { media: [], github: [] },
       about: '',
       cloudItems: [],
       githubItems: [],
       codePenItems: [],
     }
-  },
-  async created() {
     let data = await import('../static/data.json')
     let id = -1
     data.info.media.forEach((el) => {
-      this.statistics.media.push({ id, url: el.url, name: el.name })
+      ret.statistics.media.push({ id, url: el.url, name: el.name })
       id++
     })
     id = 1
     data.info.gitHub.forEach((el) => {
-      this.statistics.github.push({ id, url: el.url, name: el.name })
+      ret.statistics.github.push({ id, url: el.url, name: el.name })
       id++
     })
-    this.about = data.info.about
+    ret.about = data.info.about
     id = 1
     Object.keys(data.info.cloud)
       .sort((a, b) => {
@@ -50,14 +48,14 @@ export default {
       })
       .forEach((el) => {
         let collection = data.info.cloud[el]
-        this.cloudItems.push({ id, name: el, collection })
+        ret.cloudItems.push({ id, name: el, collection })
         id++
       })
     id = 1
     data.info.gitHub.forEach((el) => {
       if (el.items) {
         el.items.forEach((inel) => {
-          this.githubItems.push({
+          ret.githubItems.push({
             id,
             url: inel.url,
             title: inel.title,
@@ -70,7 +68,7 @@ export default {
     })
     id = 1
     data.info.codePen.forEach((el) => {
-      this.codePenItems.push({
+      ret.codePenItems.push({
         id,
         url: el.url,
         imgSrc: el.imgSrc,
@@ -78,6 +76,7 @@ export default {
       })
       id++
     })
+    return ret
   },
 }
 </script>
