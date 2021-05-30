@@ -12,7 +12,7 @@
       <img
         @click="showModal = true"
         src="../static/my-avatar.jpg"
-        class="cursor-pointer rounded-full object-contain h-20 mt-1 mr-1"
+        class="cursor-pointer rounded-full object-contain h-20 mt-1 mr-1 w-20"
       />
       <imgModal v-model="showModal"></imgModal>
     </div>
