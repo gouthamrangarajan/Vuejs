@@ -13,7 +13,7 @@
         <img
           @click="showModal = true"
           src="../static/my-avatar.jpg"
-          class="cursor-pointer rounded-full object-fit mt-3 md:mt-1 lg:mt-0"
+          class="cursor-pointer rounded-full object-fit mt-2 md:mt-1 lg:mt-0"
         />
       </div>
       <imgModal v-model="showModal"></imgModal>
