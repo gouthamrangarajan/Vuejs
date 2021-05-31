@@ -11,6 +11,11 @@
     ],
     "codePen": [
       {
+        "url": "https://codepen.io/GouthamRangarajan/full/ZEevQPK",
+        "imgSrc": "/imgs/codepen/CodePen12.png",
+        "title": "Vue 3 DropDown Nav"
+      },
+      {
         "url": "https://codepen.io/GouthamRangarajan/full/GRraaYr",
         "imgSrc": "/imgs/codepen/CodePen11.png",
         "title": "Vue 3 Render Function"
