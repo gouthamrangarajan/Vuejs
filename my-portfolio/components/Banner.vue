@@ -9,11 +9,13 @@
         </span>
         <span class="banner__heading text-lg text-white italic"> RG </span>
       </div>
-      <img
-        @click="showModal = true"
-        src="../static/my-avatar.jpg"
-        class="cursor-pointer rounded-full object-contain h-20 mt-1 mr-1 w-20"
-      />
+      <div class="p-1 w-24 h-24">
+        <img
+          @click="showModal = true"
+          src="../static/my-avatar.jpg"
+          class="cursor-pointer rounded-full object-fit mt-3 md:mt-1 lg:mt-0"
+        />
+      </div>
       <imgModal v-model="showModal"></imgModal>
     </div>
   </nav>
