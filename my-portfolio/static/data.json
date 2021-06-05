@@ -178,14 +178,6 @@
           "url": "https://clearmessage.z13.web.core.windows.net/"
         }
       ],
-      "aws": [
-        {
-          "order": 1,
-          "description": "Image gallery using Vuejs, Express js",
-          "url": "http://vueimages.us-east-1.elasticbeanstalk.com/",
-          "imgSrc": "/imgs/cloud/Gallery.png"
-        }
-      ],
       "netlify": [
         {
           "order": 1,

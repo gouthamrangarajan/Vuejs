@@ -42,8 +42,8 @@ export default {
         else if (b == 'firebase') return 1
         else if (a == 'netlify') return -1
         else if (b == 'netlify') return 1
-        else if (a == 'aws') return -1
-        else if (b == 'aws') return 1
+        else if (a == 'azure') return -1
+        else if (b == 'azure') return 1
         else return 0
       })
       .forEach((el) => {
