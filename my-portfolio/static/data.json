@@ -11,6 +11,11 @@
     ],
     "codePen": [
       {
+        "url": "https://codepen.io/GouthamRangarajan/full/mdmLZvq",
+        "imgSrc": "/imgs/codepen/CodePen13.png",
+        "title": "Vue 3 Tailwind Switch"
+      },
+      {
         "url": "https://codepen.io/GouthamRangarajan/full/ZEevQPK",
         "imgSrc": "/imgs/codepen/CodePen12.png",
         "title": "Vue 3 DropDown Nav"
@@ -54,11 +59,6 @@
         "url": "https://codepen.io/GouthamRangarajan/full/VwLXoeK",
         "imgSrc": "/imgs/codepen/CodePen6.png",
         "title": "Vue Materialize DataTable"
-      },
-      {
-        "url": "https://codepen.io/GouthamRangarajan/full/ExYNjdR",
-        "imgSrc": "/imgs/codepen/CodePen7.png",
-        "title": "Vue Bulma Double Slide"
       }
     ],
     "gitHub": [
