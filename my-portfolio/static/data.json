@@ -78,6 +78,12 @@
       {
         "items": [
           {
+            "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/SignalR%2BBackgroundService",
+            "title": "SignalR+BackgroundService",
+            "imgSrc": "/imgs/github/SignalR+BackgroundService.png",
+            "description": ".Net core SignalR + BackgroundService to send notification to client/user"
+          },
+          {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/AzureADAuth",
             "title": "AzureADWebApp+WebApi",
             "imgSrc": "/imgs/github/AzureADWebApp+WebApi.png",
