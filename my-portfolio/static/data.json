@@ -11,6 +11,11 @@
     ],
     "codePen": [
       {
+        "url": "https://codepen.io/GouthamRangarajan/full/YzQzEmm",
+        "imgSrc": "/imgs/codepen/CodePen14.png",
+        "title": "Vue 3 Drag & Drop"
+      },
+      {
         "url": "https://codepen.io/GouthamRangarajan/full/mdmLZvq",
         "imgSrc": "/imgs/codepen/CodePen13.png",
         "title": "Vue 3 Tailwind Switch"
