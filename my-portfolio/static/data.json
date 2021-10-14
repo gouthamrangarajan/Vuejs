@@ -1,6 +1,6 @@
 {
   "info": {
-    "about": "12 years experience in Dot net web and windows application. Big fan of Vue.js javascript framework & Cloud applications",
+    "about": "12 years experience in Dot net web and windows application. Big fan of Vue.js, React.js javascript frameworks & Cloud applications",
     "media": [
       {
         "name": "LinkedIn",
@@ -10,6 +10,11 @@
       { "name": "Codepen", "url": "https://codepen.io/GouthamRangarajan" }
     ],
     "codePen": [
+      {
+        "url": "https://codepen.io/GouthamRangarajan/full/oNeXKbN",
+        "imgSrc": "/imgs/codepen/CodePen15.png",
+        "title": "Vue 3 Feedback"
+      },
       {
         "url": "https://codepen.io/GouthamRangarajan/full/YzQzEmm",
         "imgSrc": "/imgs/codepen/CodePen14.png",
