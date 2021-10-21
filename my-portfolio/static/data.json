@@ -88,6 +88,12 @@
       {
         "items": [
           {
+            "url": "https://github.com/gouthamrangarajan/reactjs/tree/main/img-slider",
+            "title": "React Image Slider",
+            "imgSrc": "/imgs/github/ReactImgSlider.png",
+            "description": "Image Slider using Reactjs & Tailwind CSS"
+          },
+          {
             "url": "https://github.com/gouthamrangarajan/Asp.Net/tree/master/SignalR%2BBackgroundService",
             "title": "SignalR+BackgroundService",
             "imgSrc": "/imgs/github/SignalR+BackgroundService.png",

@@ -4,7 +4,7 @@
       <div class="px-4 pt-2 flex flex-col items-center mb-1">
         <span class="text-xl text-black">Github</span>
         <span class="text-gray-600"
-          >Recent collection in Vue.js & Asp .Net</span
+          >Recent collection in React.js, Vue.js & Asp .Net</span
         >
       </div>
       <TrickyCardRow id="githubItems" :itemsLength="info.length">
