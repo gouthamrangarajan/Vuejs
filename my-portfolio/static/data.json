@@ -11,6 +11,11 @@
     ],
     "codePen": [
       {
+        "url": "https://codepen.io/GouthamRangarajan/full/zYdmZPJ",
+        "imgSrc": "/imgs/codepen/CodePen16.png",
+        "title": "Vue 3 D3"
+      },
+      {
         "url": "https://codepen.io/GouthamRangarajan/full/oNeXKbN",
         "imgSrc": "/imgs/codepen/CodePen15.png",
         "title": "Vue 3 Feedback"
