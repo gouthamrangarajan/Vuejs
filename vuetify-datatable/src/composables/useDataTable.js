@@ -36,7 +36,7 @@ export default function useDataTable() {
     });
     return { headers, loading, tblData, dataLength, tblOptions }
 }
-
+//mimic server
 const callTodoApi = async (page = 1, itemsPerPage = 10) => {
     await delay(1000);
     let rawResp = await fetch('https://jsonplaceholder.typicode.com/todos');

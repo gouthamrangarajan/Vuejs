@@ -1,8 +1,7 @@
 ### vuetify-datatable
-- a simple implementation vuetify datable with server side pagination 
+- a simple vuetify datable implementation with server side pagination 
 
-```
-vuejs
+```vue
 <v-data-table
       :items="tblData"
       :headers="headers"     
@@ -14,10 +13,9 @@ vuejs
     >
 
 ```
-- everytime options changes (page/sort etc.) , it will be watched and request is sent to server
+- everytime options changes (page/sort etc.) ,  request is sent to server
 
-```
-javascript
+```javascript
  watch(tblOptions, async (newVal) => {
     loading.value = true;
     let { page, itemsPerPage } = newVal;
@@ -26,10 +24,15 @@ javascript
     loading.value = false
 });
 ```
-- composition api is used but the similar approach can be achived in composition api
+### for every page which is configurable 
+
+- call Todo Api to fetch page data 
+- for every todo call user api to fetch user data (in background does not wait and shows skeleton loading in table cell)
+- can be extended to send sorting information and sorting can be achieved as well
+- composition api is used here but the similar approach can be achieved in options api
 
 ### Demo
 See [Codepen](https://codepen.io/GouthamRangarajan/pen/yLvwRyx).
 
-### Official Vuetify link for this functionality
+### Official Vuetify link 
 see [https://vuetifyjs.com/en/components/data-tables/#server-side-paginate-and-sort](https://vuetifyjs.com/en/components/data-tables/#server-side-paginate-and-sort)
