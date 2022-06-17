@@ -34,5 +34,7 @@
 ### Demo
 See [Codepen](https://codepen.io/GouthamRangarajan/pen/yLvwRyx).
 
+### screenshot
+![Screenshot](https://github.com/gouthamrangarajan/vuejs/blob/main/vuetify-datatable/Screenshot.jpg)
 ### Official Vuetify link 
 see [https://vuetifyjs.com/en/components/data-tables/#server-side-paginate-and-sort](https://vuetifyjs.com/en/components/data-tables/#server-side-paginate-and-sort)
