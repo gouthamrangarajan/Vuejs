@@ -27,8 +27,8 @@
 ### for every page which is configurable 
 
 - call Todo Api to fetch page data 
-- for every todo call user api to fetch user data (in background does not wait and shows skeleton loading in table cell)
-- can be extended to send sorting information and sorting can be achieved as well
+- for every todo call user api to fetch user data (background fetch, does not wait and shows skeleton loading in table cell)
+- can be extended to send sorting information to server and sorting can be achieved as well
 - composition api is used here but the similar approach can be achieved in options api
 
 ### Demo
