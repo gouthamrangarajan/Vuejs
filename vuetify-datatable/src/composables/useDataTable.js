@@ -1,4 +1,5 @@
 import { ref, watch } from '@vue/composition-api'
+
 export default function useDataTable() {
     const headers = ref([
         {
@@ -36,6 +37,12 @@ export default function useDataTable() {
     });
     return { headers, loading, tblData, dataLength, tblOptions }
 }
+/**
+ * calls todo api , 
+ * @param {number} page - page number for which results needs to be fetched
+ * @param {number} itemsPerPage - number of records per page for pagination
+ * @returns todo array
+ */
 //mimic server
 const callTodoApi = async (page = 1, itemsPerPage = 10) => {
     await delay(1000);
@@ -49,6 +56,11 @@ const callTodoApi = async (page = 1, itemsPerPage = 10) => {
     }
     return resp;
 }
+/**
+ * calls user api to know which user the todo item is linked to
+ * once user information is returned from api , the todoitem will be added with a new property username
+ * @param {todo} todo - todo item container userId
+ */
 const callUserApi = async (todo) => {
     await delay(500);
     let rawResp = await fetch(`https://jsonplaceholder.typicode.com/users/${todo.userId}`);
