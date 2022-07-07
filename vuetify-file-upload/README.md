@@ -1,7 +1,7 @@
 ### vuetify-file-upload
-#### A simple vuetify file input + drag and drop file upload
+#### A simple Vuetify file input + drag and drop file upload
 
-- attach ref to file input and trigger the file input click using ref
+- Attach ref to Vuetify file input and trigger the file input click using ref
 
 ```vue
     <v-file-input
@@ -28,7 +28,7 @@
 
 ```
 
-- composable to handle drag and drop events and attach this events to Vuetify/html element where drag and drop functionality is needed
+- Composable to handle drag and drop events and attach this events to Vuetify/html element where drag and drop functionality is needed
 
 ```vue
 <v-col cols="12" lg="5" :class="['d-flex flex-column justify-center align-center', {'drag-hover':dragging}]"
@@ -69,5 +69,10 @@ const fileUplElChanged=(ev)=>{
 
 
 ### Screenshots
+- Drag and Drop
 ![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vuetify-file-upload/Screenshot1.png)
 ![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vuetify-file-upload/Screenshot2.png)
+
+- File input upload
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vuetify-file-upload/Screenshot3.png)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vuetify-file-upload/Screenshot4.png)
