@@ -3,7 +3,7 @@
 
 - Attach ref to Vuetify file input and trigger the file input click using ref
 
-```vue
+```Vuejs
     <v-file-input
         multiple
         hide-input              
@@ -30,7 +30,7 @@
 
 - Composable to handle drag and drop events and attach this events to Vuetify/html element where drag and drop functionality is needed
 
-```vue
+```Vuejs
 <v-col cols="12" lg="5" :class="['d-flex flex-column justify-center align-center', {'drag-hover':dragging}]"
     @drop.prevent.stop="dropped" @dragover.prevent.stop="setDrag(true)"  @dragleave.prevent.stop="setDrag(false)">
 
@@ -65,6 +65,19 @@ const fileUplElChanged=(ev)=>{
     fileUplEl.value.$refs.input.value=null;
     //if needed callApi with consolidatedFiles
 }
+const consolidatedFiles=computed(()=>{
+    let consolidated=[];
+    for(let idx=0;idx<fileListFromDragDrop.value.length;idx++){
+        let file=fileListFromDragDrop.value[idx];
+        consolidated.push(file);
+    }
+    for(let idx=0;idx<fileListFromUplEl.value.length;idx++){
+        let file=fileListFromUplEl.value[idx];
+        consolidated.push(file);
+    }    
+    console.log('consolidated',consolidated);
+    return consolidated;
+})
 ```
 
 
