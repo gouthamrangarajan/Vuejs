@@ -50,7 +50,7 @@ export default {
 <RepeatableForm/>
 ```
 ### Screenshot
-![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/nuxt-ui-plugin-101/Screenshot1.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/nuxt-ui-plugin-101/Screenshot1.gif)
 
 
 ### further improvements
