@@ -40,7 +40,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
         <DownloadBtn></DownloadBtn>
         <UploadBtn></UploadBtn>
       </div>
-      <div class="w-72 lg:w-96 flex justify-end pr-2 lg:pr-0">
+      <div class="w-80 lg:w-96 flex justify-center lg:justify-end pr-2 lg:pr-0">
         <transition name="fade" mode="out-in">
           <div v-if="displayAddForm" class="w-full">
             <AddForm></AddForm>
