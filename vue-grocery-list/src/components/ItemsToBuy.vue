@@ -11,7 +11,7 @@ const { itemsToBuy } = storeToRefs(useGroceryItemsStore())
     <TransitionGroup
       name="list"
       tag="div"
-      class="relative py-1 px-3 flex flex-col w-64 lg:w-96 h-64 lg:h-96 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-green-50 scrollbar-thumb-green-500"
+      class="relative py-1 px-3 flex flex-col w-[22rem] lg:w-96 h-64 lg:h-96 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-track-green-50 scrollbar-thumb-green-500"
     >
       <div class="mt-4" v-for="item in itemsToBuy" :key="item.name">
         <ItemCard :item="item" :type="Grocery_Item_Status.TO_BUY"></ItemCard>
