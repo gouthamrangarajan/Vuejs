@@ -28,11 +28,14 @@ const addItemToStore = () => {
 const { style: btnTextStyle, onClick: submit } = useButtonTextStyle(addItemToStore)
 </script>
 <template>
-  <div class="shadow-2xl rounded-t-lg bg-white py-4 px-6 flex flex-col w-full z-10" ref="formEl">
+  <div
+    class="shadow-2xl rounded-t-lg bg-white py-2 lg:py-4 px-4 lg:px-6 flex flex-col w-full z-10"
+    ref="formEl"
+  >
     <div class="flex justify-between items-start border-b-2 border-gray-300">
       <span class="text-green-600 text-lg font-semibold">Add Item</span>
       <button
-        class="appearance-none outline-none -mr-3 -mt-3 rounded-full bg-gray-600 text-white hover:bg-opacity-90 transition-all duration-300 focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 focus:ring-offset-gray-50 p-1"
+        class="appearance-none outline-none -mr-3 -mt-1 lg:-mt-3 rounded-full bg-gray-600 text-white hover:bg-opacity-90 transition-all duration-300 focus:ring-1 focus:ring-offset-2 focus:ring-gray-600 focus:ring-offset-gray-50 p-1"
         @click="hideAddForm"
       >
         <XMarkIcon class="w-4 h-4"></XMarkIcon>
