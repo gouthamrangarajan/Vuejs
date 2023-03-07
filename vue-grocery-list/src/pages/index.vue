@@ -14,16 +14,16 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
 
 <template>
   <main
-    class="grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center w-full h-full py-1 px-3"
+    class="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-center items-center w-full h-full py-1 px-3"
   >
-    <div class="z-10 w-full flex justify-start md:justify-end">
+    <div class="z-10 w-full flex justify-start lg:justify-end">
       <ItemsToBuy></ItemsToBuy>
     </div>
     <div class="z-10 w-full flex justify-start">
       <ItemsBought></ItemsBought>
     </div>
 
-    <div class="md:col-span-2 pb-14 md:pb-4 flex justify-center">
+    <div class="lg:col-span-2 pb-14 lg:pb-4 flex justify-center">
       <RouterLink
         to="/about"
         class="appearance-none outline-none mr-14 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-all duration-300"
@@ -36,11 +36,11 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
       <div class="mb-2 lg:mb-4">
         <ClearAllBtn></ClearAllBtn>
       </div>
-      <div class="flex w-96 justify-end gap-3 mb-2 lg:mb-4">
+      <div class="flex lg:w-96 justify-end gap-3 mb-2 lg:mb-4">
         <DownloadBtn></DownloadBtn>
         <UploadBtn></UploadBtn>
       </div>
-      <div class="w-96 flex justify-end">
+      <div class="w-1/2 lg:w-96 flex justify-end pr-2 lg:pr-0">
         <transition name="fade" mode="out-in">
           <div v-if="displayAddForm" class="w-full">
             <AddForm></AddForm>
