@@ -4,6 +4,7 @@ import { computed, ref, watchEffect } from 'vue'
 import { useDraggable, useTimeAgo } from '@vueuse/core'
 import { useMotion, type MotionVariants } from '@vueuse/motion'
 import MinusCircleIcon from '@heroicons/vue/24/solid/MinusCircleIcon'
+import PaperAirplaneIcon from '@heroicons/vue/24/solid/PaperAirplaneIcon'
 import { useDraggedItemStore } from '@/stores/draggedItem'
 
 const props = defineProps<{ item: Grocery_Item; type: Grocery_Item_Status }>()
@@ -33,7 +34,7 @@ const variants = computed<MotionVariants>(() => ({
 }))
 
 useMotion(cardEl, variants)
-const { removeItem } = useGroceryItemsStore()
+const { removeItem, moveItemToBought } = useGroceryItemsStore()
 const { setDraggedItem, clearDraggedItem } = useDraggedItemStore()
 const { style, isDragging, x, y } = useDraggable(cardEl)
 const cardStyle = computed(() => {
@@ -76,7 +77,7 @@ watchEffect(() => {
         <MinusCircleIcon class="w-5 h-5"></MinusCircleIcon>
       </button>
     </div>
-    <div class="flex gap-3 text-sm text-gray-500">
+    <div class="flex gap-3 text-sm text-gray-500 items-center">
       <div>
         <span class="italic">Quantity: </span
         ><span class="font-semibold"> {{ item.quantity }}</span>
@@ -85,6 +86,13 @@ watchEffect(() => {
         <span class="italic">{{ timeAgoLabelText }}: </span
         ><span class="font-semibold"> {{ timeAgoText }}</span>
       </div>
+      <button
+        v-if="item.status == Grocery_Item_Status.TO_BUY"
+        class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
+        @click="moveItemToBought(item)"
+      >
+        <PaperAirplaneIcon class="w-5 h-5"></PaperAirplaneIcon>
+      </button>
     </div>
   </div>
 </template>
