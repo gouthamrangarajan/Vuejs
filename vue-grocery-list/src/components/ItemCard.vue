@@ -60,7 +60,7 @@ watchEffect(() => {
 <template>
   <div
     :class="[
-      'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
+      'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-56 lg:w-80 bg-white',
       { 'cursor-grab': props.type == Grocery_Item_Status.TO_BUY }
     ]"
     ref="cardEl"
