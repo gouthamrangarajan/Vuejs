@@ -14,7 +14,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
         name: 'Grocery List',
-        short_name: 'Grocery List',
+        short_name: 'Grocery',
         description: 'Grocery List',
         theme_color: '#ffffff',
         icons: [
