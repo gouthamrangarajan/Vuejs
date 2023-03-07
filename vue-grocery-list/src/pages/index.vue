@@ -16,10 +16,10 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
   <main
     class="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-center items-center w-full h-full py-1 px-3"
   >
-    <div class="z-10 w-full flex justify-start lg:justify-end">
+    <div class="w-full flex justify-start lg:justify-end">
       <ItemsToBuy></ItemsToBuy>
     </div>
-    <div class="z-10 w-full flex justify-start">
+    <div class="w-full flex justify-start">
       <ItemsBought></ItemsBought>
     </div>
 
@@ -36,11 +36,11 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
       <div class="mb-2 lg:mb-4">
         <ClearAllBtn></ClearAllBtn>
       </div>
-      <div class="flex lg:w-96 justify-end gap-3 mb-2 lg:mb-4">
+      <div class="flex pl-1 lg:pl-0 lg:w-96 justify-end gap-1 lg:gap-3 mb-2 lg:mb-4">
         <DownloadBtn></DownloadBtn>
         <UploadBtn></UploadBtn>
       </div>
-      <div class="w-1/2 lg:w-96 flex justify-end pr-2 lg:pr-0">
+      <div class="w-96 flex justify-end pr-2 lg:pr-0">
         <transition name="fade" mode="out-in">
           <div v-if="displayAddForm" class="w-full">
             <AddForm></AddForm>
