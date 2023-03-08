@@ -20,7 +20,7 @@ useRegisterSW({
 <style>
 .list-move,
 .list-leave-active {
-  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: all 0.3s ease;
 }
 .list-leave-active {
   position: absolute;
