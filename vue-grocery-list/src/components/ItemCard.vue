@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Grocery_Item, Grocery_Item_Status, useGroceryItemsStore } from '@/stores/groceryItems'
 import { computed, ref, watchEffect } from 'vue'
-import { useDraggable, useTimeAgo } from '@vueuse/core'
+import { useDraggable, useTimeAgo, useWindowSize } from '@vueuse/core'
 import { useMotion, type MotionVariants } from '@vueuse/motion'
 import MinusCircleIcon from '@heroicons/vue/24/solid/MinusCircleIcon'
 import PaperAirplaneIcon from '@heroicons/vue/24/solid/PaperAirplaneIcon'
@@ -37,9 +37,11 @@ useMotion(cardEl, variants)
 const { removeItem, moveItemToBought } = useGroceryItemsStore()
 const { setDraggedItem, clearDraggedItem } = useDraggedItemStore()
 const { style, isDragging, x, y } = useDraggable(cardEl)
+const { width } = useWindowSize()
 const cardStyle = computed(() => {
   let el = ''
   if (
+    width.value > 1023 &&
     style.value != 'left:0px;top:0px;' &&
     isDragging.value &&
     props.type == Grocery_Item_Status.TO_BUY

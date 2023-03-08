@@ -30,17 +30,19 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
         >About</RouterLink
       >
     </div>
-    <div
+    <TransitionGroup
+      tag="div"
+      name="list"
       class="fixed bottom-0 w-full left-0 flex items-end justify-around py-1 px-3 lg:py-0 lg:px-0"
     >
-      <div class="mb-2 lg:mb-4">
+      <div class="mb-2 lg:mb-4" :key="1">
         <ClearAllBtn></ClearAllBtn>
       </div>
-      <div class="flex pl-1 lg:pl-0 w-80 lg:w-96 justify-end gap-1 lg:gap-3 mb-2 lg:mb-4">
+      <div class="flex pl-1 lg:pl-0 w-80 lg:w-96 justify-end gap-1 lg:gap-3 mb-2 lg:mb-4" :key="2">
         <DownloadBtn></DownloadBtn>
         <UploadBtn></UploadBtn>
       </div>
-      <div class="w-80 lg:w-96 flex justify-end pr-2 lg:pr-0">
+      <div class="w-80 lg:w-96 flex justify-end pr-2 lg:pr-0" :key="3">
         <transition name="fade" mode="out-in">
           <div v-if="displayAddForm" class="w-full">
             <AddForm></AddForm>
@@ -50,7 +52,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
           </div>
         </transition>
       </div>
-    </div>
+    </TransitionGroup>
   </main>
 </template>
 <style scoped>
