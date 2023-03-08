@@ -9,6 +9,7 @@ import ClearAllBtn from '@/components/Buttons/ClearAllBtn.vue'
 import { useAddFormStore } from '@/stores/addForm'
 import DownloadBtn from '@/components/Buttons/DownloadBtn.vue'
 import UploadBtn from '@/components/Buttons/UploadBtn.vue'
+
 const { displayAddForm } = storeToRefs(useAddFormStore())
 </script>
 
@@ -30,7 +31,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
         >About</RouterLink
       >
     </div>
-    <TransitionGroup
+    <transition-Group
       tag="div"
       name="list"
       class="fixed bottom-0 w-full left-0 flex items-end justify-around py-1 px-3 lg:py-0 lg:px-0"
@@ -52,7 +53,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
           </div>
         </transition>
       </div>
-    </TransitionGroup>
+    </transition-Group>
   </main>
 </template>
 <style scoped>

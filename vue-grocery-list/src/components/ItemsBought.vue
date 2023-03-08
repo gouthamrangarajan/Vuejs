@@ -41,7 +41,7 @@ watch(isOverDropZone, (newVal) => {
     ref="containerEl"
   >
     <span class="text-xl text-red-600 font-semibold pl-5" :key="1">Item(s) Bought</span>
-    <TransitionGroup
+    <transition-group
       name="list"
       tag="div"
       class="relative py-1 px-3 flex flex-col h-64 lg:h-96 overflow-y-auto w-[22rem] lg:w-96 overflow-x-hidden scrollbar-thin scrollbar-track-green-50 scrollbar-thumb-green-500"
@@ -49,7 +49,7 @@ watch(isOverDropZone, (newVal) => {
       <div class="mt-4" v-for="item in itemsBought" :key="item.name">
         <ItemCard :item="item" :type="Grocery_Item_Status.BOUGHT"></ItemCard>
       </div>
-    </TransitionGroup>
+    </transition-group>
   </div>
 </template>
 

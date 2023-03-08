@@ -1,46 +1,25 @@
-# vue-grocery-list
+### Simple Grocery List using Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+#### Features
 
-## Recommended IDE Setup
+- Ability to Add/Remove item
+- Ability to move item from "To Buy" to "Bought Section" (also Drag and Drop)
+- Ability to clear all items
+- Ability to download grocery data so that it can shared across devices
+- Ability to upload grocery data
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+##### Frameworks & Libraries used
 
-## Type Support for `.vue` Imports in TS
+- [Vue 3](https://vuejs.org)
+- [Vite](https://vitejs.dev/)
+- [Vite PWA](https://vite-pwa-org.netlify.app/guide/)
+- [VueUse](https://vueuse.org/)
+- [VueUse Motion](https://vueuse-motion-demo.netlify.app/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Hero Icons](https://heroicons.com/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+##### Screenshots
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_1.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_2.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_3.gif)
