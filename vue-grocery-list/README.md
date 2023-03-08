@@ -1,6 +1,6 @@
-### Simple Grocery List using Vue
+## Simple Grocery List using Vue
 
-#### Features
+### Features
 
 - Ability to Add/Remove item
 - Ability to move item from "To Buy" to "Bought Section" (also Drag and Drop)
@@ -8,7 +8,7 @@
 - Ability to download grocery data so that it can shared across devices
 - Ability to upload grocery data
 
-##### Frameworks & Libraries used
+#### Frameworks & Libraries used
 
 - [Vue 3](https://vuejs.org)
 - [Vite](https://vitejs.dev/)
@@ -18,8 +18,8 @@
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Hero Icons](https://heroicons.com/)
 
-##### Screenshots
+#### Screenshots
 
-![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_1.gif)
-![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_2.gif)
-![Screenshot](https://github.com/gouthamrangarajan/Vuejs/tree/master/vue-grocery-list/Screenshot_3.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vue-grocery-list/Screenshot_1.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vue-grocery-list/Screenshot_2.gif)
+![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vue-grocery-list/Screenshot_3.gif)
