@@ -31,7 +31,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
         >About</RouterLink
       >
     </div>
-    <transition-Group
+    <transition-group
       tag="div"
       name="list"
       class="fixed bottom-0 w-full left-0 flex items-end justify-around py-1 px-3 lg:py-0 lg:px-0"
@@ -53,7 +53,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
           </div>
         </transition>
       </div>
-    </transition-Group>
+    </transition-group>
   </main>
 </template>
 <style scoped>
