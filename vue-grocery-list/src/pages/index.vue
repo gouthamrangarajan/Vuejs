@@ -14,9 +14,7 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
 </script>
 
 <template>
-  <main
-    class="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-center items-center w-full h-full py-1 px-3"
-  >
+  <main class="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-center items-center w-full h-full py-1 px-3">
     <div class="w-full flex justify-start lg:justify-end">
       <ItemsToBuy></ItemsToBuy>
     </div>
@@ -25,17 +23,12 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
     </div>
 
     <div class="lg:col-span-2 pb-14 lg:pb-4 flex justify-center">
-      <RouterLink
-        to="/about"
-        class="appearance-none outline-none mr-14 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-all duration-300"
-        >About</RouterLink
-      >
+      <RouterLink to="/about"
+        class="appearance-none outline-none mr-14 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-all duration-300">
+        About</RouterLink>
     </div>
-    <transition-group
-      tag="div"
-      name="list"
-      class="fixed bottom-0 w-full left-0 flex items-end justify-around py-1 px-3 lg:py-0 lg:px-0"
-    >
+    <transition-group tag="div" name="list"
+      class="fixed bottom-0 w-full left-0 flex items-end justify-around py-1 px-3 lg:py-0 lg:px-0">
       <div class="mb-2 lg:mb-4" :key="1">
         <ClearAllBtn></ClearAllBtn>
       </div>
@@ -61,10 +54,12 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
 .fade-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
+
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;

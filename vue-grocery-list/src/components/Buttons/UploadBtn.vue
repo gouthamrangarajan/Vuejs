@@ -41,9 +41,7 @@ watch(fileDialogFiles, async (newVal) => {
 <template>
   <button
     class="appearance-none outline-none rounded-full shadow-2xl bg-purple-600 text-white hover:bg-opacity-80 transition-all duration-300 focus:ring-1 focus:ring-offset-2 focus:ring-purple-600 focus:ring-offset-purple-50 p-1 font-semibold"
-    ref="btnEl"
-    @click="btnClick"
-  >
+    ref="btnEl" @click="btnClick">
     <ArrowUpTrayIcon class="w-7 h-7" :style="btnTextStyle"></ArrowUpTrayIcon>
   </button>
 </template>

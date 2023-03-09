@@ -22,13 +22,15 @@ useRegisterSW({
 .list-leave-active {
   transition: all 0.3s ease;
 }
+
 .list-leave-active {
   position: absolute;
 }
+
 .list-leave-from {
   opacity: 1;
 }
+
 .list-leave-to {
   opacity: 0;
-}
-</style>
+}</style>

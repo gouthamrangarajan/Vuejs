@@ -60,39 +60,30 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div
-    :class="[
-      'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
-      { 'cursor-grab': props.type == Grocery_Item_Status.TO_BUY }
-    ]"
-    ref="cardEl"
-    :style="cardStyle"
-  >
+  <div :class="[
+    'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
+    { 'cursor-grab': props.type == Grocery_Item_Status.TO_BUY }
+  ]" ref="cardEl" :style="cardStyle">
     <div class="flex justify-between w-full items-center">
       <span class="font-semibold underline underline-offset-[6px] text-lg text-gray-600">{{
         item.name
       }}</span>
       <button
         class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
-        @click="removeItem(item.name, props.type)"
-      >
+        @click="removeItem(item.name, props.type)">
         <MinusCircleIcon class="w-5 h-5"></MinusCircleIcon>
       </button>
     </div>
     <div class="flex gap-3 text-sm text-gray-500 items-center">
       <div>
-        <span class="italic">Quantity: </span
-        ><span class="font-semibold"> {{ item.quantity }}</span>
+        <span class="italic">Quantity: </span><span class="font-semibold"> {{ item.quantity }}</span>
       </div>
       <div>
-        <span class="italic">{{ timeAgoLabelText }}: </span
-        ><span class="font-semibold"> {{ timeAgoText }}</span>
+        <span class="italic">{{ timeAgoLabelText }}: </span><span class="font-semibold"> {{ timeAgoText }}</span>
       </div>
-      <button
-        v-if="item.status == Grocery_Item_Status.TO_BUY"
+      <button v-if="item.status == Grocery_Item_Status.TO_BUY"
         class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
-        @click="moveItemToBought(item)"
-      >
+        @click="moveItemToBought(item)">
         <PaperAirplaneIcon class="w-5 h-5"></PaperAirplaneIcon>
       </button>
     </div>

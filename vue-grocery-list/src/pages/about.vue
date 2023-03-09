@@ -28,12 +28,9 @@ useSlideUpMotion(seventhEl, 600)
         <li ref="fifthEl">Ability to download grocery data so that it can shared across devices</li>
         <li ref="sixthEl">Ability to upload grocery data</li>
       </ul>
-      <RouterLink
-        ref="seventhEl"
-        to="/"
-        class="appearance-none outline-none mt-2 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-colors duration-300"
-        >Home</RouterLink
-      >
+      <RouterLink ref="seventhEl" to="/"
+        class="appearance-none outline-none mt-2 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-colors duration-300">
+        Home</RouterLink>
     </div>
   </main>
 </template>
