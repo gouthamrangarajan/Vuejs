@@ -36,17 +36,17 @@ const variants = computed<MotionVariants>(() => ({
 useMotion(cardEl, variants)
 const { removeItem, moveItemToBought } = useGroceryItemsStore()
 const { setDraggedItem, clearDraggedItem } = useDraggedItemStore()
-const { style, isDragging, x, y } = useDraggable(cardEl)
-const { width } = useWindowSize()
+const { style: dragItemStyle, isDragging, x, y } = useDraggable(cardEl)
+const { width: windowWidth } = useWindowSize()
 const cardStyle = computed(() => {
   let el = ''
   if (
-    width.value > 1023 &&
-    style.value != 'left:0px;top:0px;' &&
+    windowWidth.value > 1023 &&
+    dragItemStyle.value != 'left:0px;top:0px;' &&
     isDragging.value &&
     props.type == Grocery_Item_Status.TO_BUY
   )
-    el = `${style.value}position:fixed;z-index:10;`
+    el = `${dragItemStyle.value}position:fixed;z-index:10;`
   return el
 })
 watchEffect(() => {

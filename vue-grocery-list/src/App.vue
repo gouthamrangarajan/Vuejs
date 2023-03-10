@@ -19,7 +19,8 @@ useRegisterSW({
 
 <style>
 .list-move,
-.list-leave-active {
+.list-leave-active,
+.list-enter-active {
   transition: all 0.3s ease;
 }
 
@@ -27,10 +28,8 @@ useRegisterSW({
   position: absolute;
 }
 
-.list-leave-from {
-  opacity: 1;
-}
-
+.list-enter-from,
 .list-leave-to {
   opacity: 0;
-}</style>
+}
+</style>
