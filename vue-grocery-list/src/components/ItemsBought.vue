@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useDraggedItemStore } from '@/stores/draggedItem'
 import { Grocery_Item_Status, useGroceryItemsStore } from '@/stores/groceryItems'
-import { useElementBounding } from '@vueuse/core'
+import { useElementBounding, useWindowSize } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import ItemCard from './ItemCard.vue'
 const { itemsBought } = storeToRefs(useGroceryItemsStore())
 const { draggedItem } = storeToRefs(useDraggedItemStore())
 const { setDraggedItemInItemBoughtSection } = useDraggedItemStore()
+const { width: windowWidth } = useWindowSize()
 const containerEl = ref<HTMLDivElement>()
 const {
   x: containerElX,
@@ -16,7 +17,7 @@ const {
   height: containerElHeight
 } = useElementBounding(containerEl)
 const isOverDropZone = computed(() => {
-  if (draggedItem.value) {
+  if (draggedItem.value && windowWidth.value > 1023) {
     if (
       containerElX.value <= draggedItem.value.x &&
       containerElY.value <= draggedItem.value.y &&
@@ -29,7 +30,8 @@ const isOverDropZone = computed(() => {
   return false
 })
 watch(isOverDropZone, (newVal) => {
-  setDraggedItemInItemBoughtSection(newVal)
+  if (windowWidth.value > 1023)
+    setDraggedItemInItemBoughtSection(newVal)
 })
 </script>
 <template>
