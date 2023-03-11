@@ -18,6 +18,8 @@
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Hero Icons](https://heroicons.com/)
 
+#### check the [demo](http://rg-grocery-list.netlify.app/)
+
 #### Screenshots
 
 ![Screenshot](https://github.com/gouthamrangarajan/Vuejs/blob/master/vue-grocery-list/Screenshot_1.gif)
