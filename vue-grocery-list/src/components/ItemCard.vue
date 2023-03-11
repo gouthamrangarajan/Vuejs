@@ -50,7 +50,7 @@ const cardStyle = computed(() => {
   return el
 })
 watchEffect(() => {
-  if (isDragging.value) setDraggedItem({ item: props.item, x: x.value, y: y.value })
+  if (isDragging.value && windowWidth.value > 1023) setDraggedItem({ item: props.item, x: x.value, y: y.value })
   else {
     clearDraggedItem()
     x.value = 0
