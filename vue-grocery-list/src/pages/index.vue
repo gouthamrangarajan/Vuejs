@@ -9,6 +9,7 @@ import ClearAllBtn from '@/components/Buttons/ClearAllBtn.vue'
 import { useAddFormStore } from '@/stores/addForm'
 import DownloadBtn from '@/components/Buttons/DownloadBtn.vue'
 import UploadBtn from '@/components/Buttons/UploadBtn.vue'
+import ItemsOrderChange from '@/components/ItemsOrderChange.vue'
 
 const { displayAddForm } = storeToRefs(useAddFormStore())
 </script>
@@ -21,7 +22,9 @@ const { displayAddForm } = storeToRefs(useAddFormStore())
     <div class="w-full flex justify-start">
       <ItemsBought></ItemsBought>
     </div>
-
+    <div class="w-full max-w-xl mx-auto flex justify-center lg:justify-end lg:col-span-2">
+      <ItemsOrderChange></ItemsOrderChange>
+    </div>
     <div class="lg:col-span-2 pb-14 lg:pb-4 flex justify-center">
       <RouterLink to="/about"
         class="appearance-none outline-none mr-14 text-gray-700 text-lg hover:opacity-90 border-b-2 border-transparent focus:border-green-700 transition-all duration-300">
