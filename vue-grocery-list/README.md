@@ -18,7 +18,7 @@
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Hero Icons](https://heroicons.com/)
 
-#### check the [demo](http://rg-grocery-list.netlify.app/)
+#### Check the [demo](http://rg-grocery-list.netlify.app/)
 
 #### Screenshots
 
