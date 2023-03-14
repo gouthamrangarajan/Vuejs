@@ -27,7 +27,7 @@ watch(fileDialogFiles, async (newVal) => {
         fileSystemAccessFile.value = fl
         await refreshFileData()
         const dt = JSON.parse(fileData.value as string) as Array<Grocery_Item>
-        if (dt.length > 0) {
+        if (dt.length > 0 && dt[0].name && dt[0].quantity) {
           resetItems(dt)
           resetFileDialog()
         }
