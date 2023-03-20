@@ -13,6 +13,7 @@
 - [VueUse Motion](https://vueuse-motion-demo.netlify.app/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Hero Icons](https://heroicons.com/)
+- [Faker](https://fakerjs.dev/)
 
 #### Screenshots
 
