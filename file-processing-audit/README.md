@@ -1,4 +1,4 @@
-## Simple Audit table for File Watcher & Processor
+## Simple Audit UI for File Watcher & Processor
 
 ### Features
 
