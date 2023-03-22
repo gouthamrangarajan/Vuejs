@@ -51,26 +51,32 @@ const cardStyle = computed(() => {
 })
 watchEffect(() => {
   if (isDragging.value && windowWidth.value > 1023) setDraggedItem({ item: props.item, x: x.value, y: y.value })
-  else {
+  else if (!isDragging.value) {
     clearDraggedItem()
     x.value = 0
     y.value = 0
   }
 })
+const dragStart = () => {
+  if (windowWidth.value <= 1023)
+    setDraggedItem({ item: props.item, x: 0, y: 0 })
+}
 </script>
 
 <template>
   <div :class="[
     'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
-    { 'cursor-grab': props.type == Grocery_Item_Status.TO_BUY }
-  ]" ref="cardEl" :style="cardStyle">
+    { 'cursor-grab': type == Grocery_Item_Status.TO_BUY }
+  ]" ref="cardEl" :style="cardStyle"
+    :draggable="true ? windowWidth <= 1023 && type == Grocery_Item_Status.TO_BUY : false" @dragstart="dragStart"
+    @dragend="clearDraggedItem">
     <div class="flex justify-between w-full items-center">
       <span class="font-semibold underline underline-offset-[6px] text-lg text-gray-600">{{
         item.name
       }}</span>
       <button
         class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
-        @click="removeItem(item.name, props.type)">
+        @click="removeItem(item.name, type)">
         <MinusCircleIcon class="w-5 h-5"></MinusCircleIcon>
       </button>
     </div>

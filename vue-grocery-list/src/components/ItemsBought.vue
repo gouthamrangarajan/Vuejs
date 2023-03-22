@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDraggedItemStore } from '@/stores/draggedItem'
 import { Grocery_Item_Status, useGroceryItemsStore } from '@/stores/groceryItems'
-import { useElementBounding, useWindowSize } from '@vueuse/core'
+import { useDropZone, useElementBounding, useWindowSize } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import ItemCard from './ItemCard.vue'
@@ -16,8 +16,8 @@ const {
   width: containerElWidth,
   height: containerElHeight
 } = useElementBounding(containerEl)
-const isOverDropZone = computed(() => {
-  if (draggedItem.value && windowWidth.value > 1023) {
+const isItemInDropZone = computed(() => {
+  if ((draggedItem.value && windowWidth.value > 1023)) {
     if (
       containerElX.value <= draggedItem.value.x &&
       containerElY.value <= draggedItem.value.y &&
@@ -27,17 +27,21 @@ const isOverDropZone = computed(() => {
       return true
     }
   }
+  else if (windowWidth.value <= 1023 && isOverDropZone.value) {
+    return true
+  }
   return false
 })
-watch(isOverDropZone, (newVal) => {
-  if (windowWidth.value > 1023)
-    setDraggedItemInItemBoughtSection(newVal)
+
+watch(isItemInDropZone, (newVal) => {
+  setDraggedItemInItemBoughtSection(newVal)
 })
+const { isOverDropZone } = useDropZone(containerEl, () => { })
 </script>
 <template>
   <div :class="[
     'py-2 px-4 border-dashed border-2 rounded flex flex-col',
-    isOverDropZone ? 'border-green-600' : 'border-transparent'
+    isItemInDropZone ? 'border-green-600' : 'border-transparent'
   ]" ref="containerEl">
     <span class="text-xl text-red-600 font-semibold pl-5" :key="1">Item(s) Bought</span>
     <TransitionGroup name="list" tag="div"
