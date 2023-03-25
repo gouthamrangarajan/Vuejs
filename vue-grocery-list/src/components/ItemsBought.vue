@@ -27,9 +27,6 @@ const isItemInDropZone = computed(() => {
       return true
     }
   }
-  else if (windowWidth.value <= 1023 && isOverDropZone.value) {
-    return true
-  }
   return false
 })
 
