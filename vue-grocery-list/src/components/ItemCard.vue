@@ -57,19 +57,14 @@ watchEffect(() => {
     y.value = 0
   }
 })
-const dragStart = () => {
-  if (windowWidth.value <= 1023)
-    setDraggedItem({ item: props.item, x: 0, y: 0 })
-}
+
 </script>
 
 <template>
   <div :class="[
     'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
     { 'cursor-grab': type == Grocery_Item_Status.TO_BUY }
-  ]" ref="cardEl" :style="cardStyle"
-    :draggable="true ? windowWidth <= 1023 && type == Grocery_Item_Status.TO_BUY : false" @dragstart="dragStart"
-    @dragend="clearDraggedItem">
+  ]" ref="cardEl" :style="cardStyle">
     <div class="flex justify-between w-full items-center">
       <span class="font-semibold underline underline-offset-[6px] text-lg text-gray-600">{{
         item.name

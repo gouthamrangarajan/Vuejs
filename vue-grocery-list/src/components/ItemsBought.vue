@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDraggedItemStore } from '@/stores/draggedItem'
 import { Grocery_Item_Status, useGroceryItemsStore } from '@/stores/groceryItems'
-import { useDropZone, useElementBounding, useWindowSize } from '@vueuse/core'
+import { useElementBounding, useWindowSize } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import ItemCard from './ItemCard.vue'
@@ -33,7 +33,7 @@ const isItemInDropZone = computed(() => {
 watch(isItemInDropZone, (newVal) => {
   setDraggedItemInItemBoughtSection(newVal)
 })
-const { isOverDropZone } = useDropZone(containerEl, () => { })
+
 </script>
 <template>
   <div :class="[
