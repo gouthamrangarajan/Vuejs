@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Grocery_Item, Grocery_Item_Status, useGroceryItemsStore } from '@/stores/groceryItems'
-import { computed, ref, watchEffect } from 'vue'
-import { useDraggable, useTimeAgo, useWindowSize } from '@vueuse/core'
+import { computed, ref, watch } from 'vue'
+import { useMousePressed, useTimeAgo } from '@vueuse/core'
 import { useMotion, type MotionVariants } from '@vueuse/motion'
 import MinusCircleIcon from '@heroicons/vue/24/solid/MinusCircleIcon'
 import PaperAirplaneIcon from '@heroicons/vue/24/solid/PaperAirplaneIcon'
@@ -32,61 +32,50 @@ const variants = computed<MotionVariants>(() => ({
     }
   }
 }))
-
 useMotion(cardEl, variants)
 const { removeItem, moveItemToBought } = useGroceryItemsStore()
+const dragEl = ref<HTMLElement>()
+const { pressed: allowDrag } = useMousePressed({ target: dragEl })
 const { setDraggedItem, clearDraggedItem } = useDraggedItemStore()
-const { style: dragItemStyle, isDragging, x, y } = useDraggable(cardEl)
-const { width: windowWidth } = useWindowSize()
-const cardStyle = computed(() => {
-  let el = ''
-  if (
-    windowWidth.value > 1023 &&
-    dragItemStyle.value != 'left:0px;top:0px;' &&
-    isDragging.value &&
-    props.type == Grocery_Item_Status.TO_BUY
-  )
-    el = `${dragItemStyle.value}position:fixed;z-index:10;`
-  return el
-})
-watchEffect(() => {
-  if (isDragging.value && windowWidth.value > 1023) setDraggedItem({ item: props.item, x: x.value, y: y.value })
-  else if (!isDragging.value) {
+watch(allowDrag, (newVal) => {
+  if (newVal)
+    setDraggedItem(props.item)
+  else
     clearDraggedItem()
-    x.value = 0
-    y.value = 0
-  }
 })
-
 </script>
 
 <template>
   <div :class="[
-    'shadow rounded-lg py-2 px-4 flex flex-col items-start gap-2 w-80 bg-white',
-    { 'cursor-grab': type == Grocery_Item_Status.TO_BUY }
-  ]" ref="cardEl" :style="cardStyle">
-    <div class="flex justify-between w-full items-center">
-      <span class="font-semibold underline underline-offset-[6px] text-lg text-gray-600">{{
-        item.name
-      }}</span>
-      <button
-        class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
-        @click="removeItem(item.name, type)">
-        <MinusCircleIcon class="w-5 h-5"></MinusCircleIcon>
-      </button>
+    'shadow rounded-lg py-2 px-4 w-96 bg-white flex items-stretch gap-3'
+  ]" ref="cardEl" :draggable="allowDrag">
+    <div :class="['border-2 border-dashed border-emerald-600 w-1.5', allowDrag ? 'cursor-grabbing' : 'cursor-grab']"
+      ref="dragEl">
     </div>
-    <div class="flex gap-3 text-sm text-gray-500 items-center">
-      <div>
-        <span class="italic">Quantity: </span><span class="font-semibold"> {{ item.quantity }}</span>
+    <div class="flex flex-col items-start gap-2 flex-1">
+      <div class="flex justify-between w-full items-center">
+        <span class="font-semibold underline underline-offset-[6px] text-lg text-gray-600">{{
+          item.name
+        }}</span>
+        <button
+          class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
+          @click="removeItem(item.name, type)">
+          <MinusCircleIcon class="w-5 h-5"></MinusCircleIcon>
+        </button>
       </div>
-      <div>
-        <span class="italic">{{ timeAgoLabelText }}: </span><span class="font-semibold"> {{ timeAgoText }}</span>
+      <div class="flex gap-3 text-sm text-gray-500 items-center">
+        <div>
+          <span class="italic">Quantity: </span><span class="font-semibold"> {{ item.quantity }}</span>
+        </div>
+        <div>
+          <span class="italic">{{ timeAgoLabelText }}: </span><span class="font-semibold"> {{ timeAgoText }}</span>
+        </div>
+        <button v-if="item.status == Grocery_Item_Status.TO_BUY"
+          class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
+          @click="moveItemToBought(item)">
+          <PaperAirplaneIcon class="w-5 h-5"></PaperAirplaneIcon>
+        </button>
       </div>
-      <button v-if="item.status == Grocery_Item_Status.TO_BUY"
-        class="outline-none appearance-none text-gray-600 p-1 hover:opacity-90 rounded-full focus:ring-1 focus:ring-gray-600 cursor-pointer transition-all duration-300"
-        @click="moveItemToBought(item)">
-        <PaperAirplaneIcon class="w-5 h-5"></PaperAirplaneIcon>
-      </button>
     </div>
   </div>
 </template>

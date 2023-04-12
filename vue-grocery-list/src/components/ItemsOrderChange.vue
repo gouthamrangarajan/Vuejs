@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Grocery_Item_Order, useGroceryItemsStore } from '@/stores/groceryItems';
+import { Grocery_Item_Order, useGroceryItemsStore } from '@/stores/groceryItems'
 import { storeToRefs } from 'pinia'
 import ChevronUpDownIcon from "@heroicons/vue/24/solid/ChevronUpDownIcon"
 import { ref } from 'vue'
@@ -8,7 +8,7 @@ const { itemsOrder } = storeToRefs(useGroceryItemsStore())
 const { changeItemsOrder } = useGroceryItemsStore()
 
 const changeOrder = (ev: Event) => {
-    changeItemsOrder((((ev.target) as HTMLSelectElement).value) as unknown as Grocery_Item_Order);
+    changeItemsOrder((((ev.target) as HTMLSelectElement).value) as unknown as Grocery_Item_Order)
 }
 
 const selectElRef = ref<HTMLSelectElement>()

@@ -5,7 +5,7 @@ export enum Grocery_Item_Status {
   TO_BUY,
   BOUGHT
 }
-export enum Grocery_Item_Order{
+export enum Grocery_Item_Order {
   NAME,
   DATE
 }
@@ -19,30 +19,39 @@ export interface Grocery_Item {
 
 export const useGroceryItemsStore = defineStore('grocery_items', () => {
   const items = useLocalStorage<Array<Grocery_Item>>('grocery_items', [])
-  const itemsOrder=ref<Grocery_Item_Order>(Grocery_Item_Order.NAME)
+  const itemsOrder = ref<Grocery_Item_Order>(Grocery_Item_Order.NAME)
   const itemsToBuy = computed(() =>
     items.value
       .filter((el) => el.status === Grocery_Item_Status.TO_BUY)
       .sort((a, b) => {
-        let ret=a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-        if(itemsOrder.value==Grocery_Item_Order.DATE)
-          ret=a.add_date && b.add_date && a.add_date > b.add_date ? -1 : 1
-        return ret;
+        let ret = a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+        if (itemsOrder.value == Grocery_Item_Order.DATE)
+          ret = a.add_date && b.add_date && a.add_date > b.add_date ? -1 : 1
+        return ret
       })
   )
   const itemsBought = computed(() =>
     items.value
       .filter((el) => el.status === Grocery_Item_Status.BOUGHT)
       .sort((a, b) => {
-        let ret=a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-        if(itemsOrder.value==Grocery_Item_Order.DATE)
-          ret=a.bought_date && b.bought_date && a.bought_date > b.bought_date ? -1 : 1
-        return ret;
+        let ret = a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+        if (itemsOrder.value == Grocery_Item_Order.DATE)
+          ret = a.bought_date && b.bought_date && a.bought_date > b.bought_date ? -1 : 1
+        return ret
       })
   )
+  const moveItemToBuy = (item: Grocery_Item) => {
+    if (item.status != Grocery_Item_Status.TO_BUY) {
+      item.add_date = new Date().toISOString()
+      item.bought_date = undefined
+      item.status = Grocery_Item_Status.TO_BUY
+    }
+  }
   const moveItemToBought = (item: Grocery_Item) => {
-    item.bought_date = new Date().toISOString()
-    item.status = Grocery_Item_Status.BOUGHT
+    if (item.status != Grocery_Item_Status.BOUGHT) {
+      item.bought_date = new Date().toISOString()
+      item.status = Grocery_Item_Status.BOUGHT
+    }
   }
   const addItem = (item: Grocery_Item) => {
     item.add_date = new Date().toISOString()
@@ -74,13 +83,14 @@ export const useGroceryItemsStore = defineStore('grocery_items', () => {
   const resetItems = (initItems: Array<Grocery_Item>) => {
     items.value = initItems
   }
-  const changeItemsOrder=(order:Grocery_Item_Order)=>{
-    itemsOrder.value=order;
+  const changeItemsOrder = (order: Grocery_Item_Order) => {
+    itemsOrder.value = order
   }
   return {
     items: readonly(items),
     itemsToBuy,
     itemsBought,
+    moveItemToBuy,
     moveItemToBought,
     addItem,
     removeItem,
