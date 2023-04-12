@@ -47,7 +47,7 @@ watch(allowDrag, (newVal) => {
 
 <template>
   <div :class="[
-    'shadow rounded-lg py-2 px-4 w-96 bg-white flex items-stretch gap-3'
+    'shadow rounded-lg py-2 px-4 w-80 lg:w-96 bg-white flex items-stretch gap-3'
   ]" ref="cardEl" :draggable="allowDrag">
     <div :class="['border-2 border-dashed border-emerald-600 w-1.5', allowDrag ? 'cursor-grabbing' : 'cursor-grab']"
       ref="dragEl">
